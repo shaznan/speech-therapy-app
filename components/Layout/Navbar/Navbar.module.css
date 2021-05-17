@@ -1,0 +1,36 @@
+.navbar {
+  background-color: white;
+  align-items: center;
+  display: flex;
+  height: 7vw;
+}
+
+.navlogo {
+  width: 10vw;
+  margin-left: 3vw;
+}
+
+.navitems {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 1rem 0rem 0rem 20rem;
+}
+
+.navitems li {
+  text-decoration: none;
+  list-style: none;
+  margin: 0 1.7rem;
+  opacity: 0.7;
+  transition: 0.2s ease-in-out;
+}
+
+.navitems li:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.active {
+  color: orange;
+  font-weight: bold;
+}
