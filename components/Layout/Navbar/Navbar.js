@@ -3,48 +3,64 @@ import logoImage from "./images/logo.png";
 import classes from "./Navbar.module.css";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import Grid from "@material-ui/core/Grid";
 
 function Navbar() {
   const router = useRouter();
+  const menuItems = [
+    "Home",
+    "About-us",
+    "Articles",
+    "Book-store",
+    "Contact-us",
+  ];
+
+  const toLowerCase = (item) => {
+    return item[0].toLowerCase() + item.slice(1);
+  };
+
+  //   const styles = (theme) => ({
+  //     root: {
+  //       padding: theme.spacing.unit,
+  //       [`${theme.breakpoints.up("md")} and (orientation: portrait)`]: {
+  //         flexDirection: "row",
+  //       },
+  //     },
+  //   });
+
   return (
     <Fragment>
       <div className={classes.navbar}>
-        <img className={classes.navlogo} src={logoImage} />
-        <ul className={classes.navitems}>
-          <li className={router.pathname == "/" ? classes.active : ""}>
-            <Link href="/">Home</Link>
-          </li>
-          <li className={router.pathname == "/about-us" ? classes.active : ""}>
-            <Link href="/about-us">About Us</Link>
-          </li>
-          <li className={router.pathname == "/articles" ? classes.active : ""}>
-            <Link href="/articles">Articles</Link>
-          </li>
-          <li
-            className={router.pathname == "/book-store" ? classes.active : ""}
-          >
-            <Link href="/book-store">Bookstore</Link>
-          </li>
-          <li
-            className={router.pathname == "/contact-us" ? classes.active : ""}
-          >
-            <Link href="/contact-us">Contact us</Link>
-          </li>
-        </ul>
+        <Grid container spacing={0}>
+          {" "}
+          {/* Material Ui Grid layout */}
+          <Grid item xl={3} xs={12}>
+            <img className={classes.navlogo} src={logoImage} />
+          </Grid>
+          <Grid item xl={9} xs={12}>
+            <ul className={classes.navitems}>
+              <Grid container spacing={0}>
+                {/* create navbar items */}
+                {menuItems.map((item) => (
+                  <Grid item xs={1.5}>
+                    <li
+                      className={
+                        router.pathname === "/" + toLowerCase(item) //convert in order to match exact route names
+                          ? classes.active
+                          : ""
+                      }
+                    >
+                      <Link href={"/" + toLowerCase(item)}>{item}</Link>
+                    </li>
+                  </Grid>
+                ))}
+              </Grid>
+            </ul>
+          </Grid>
+        </Grid>
       </div>
     </Fragment>
   );
 }
 
 export default Navbar;
-
-// import Image from "next/image";
-
-{
-  /* <Image
-          src={logoImage}
-          alt="Picture of the author"
-          width={616}
-          height={232}
-        /> */
-}

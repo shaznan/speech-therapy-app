@@ -1,27 +1,29 @@
 .navbar {
   background-color: white;
-  align-items: center;
-  display: flex;
-  height: 7vw;
+  height: 13vh;
 }
 
 .navlogo {
-  width: 10vw;
+  width: 12rem;
   margin-left: 3vw;
+  margin-top: 1.5rem;
+  /* background-color: orangered; */
 }
 
 .navitems {
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin: 1rem 0rem 0rem 20rem;
+  margin: 2.5rem 0rem 0rem 10rem;
+  /* background-color: orangered; */
 }
 
 .navitems li {
   text-decoration: none;
   list-style: none;
-  margin: 0 1.7rem;
+  margin: 1rem 1.7rem;
   opacity: 0.7;
+  font-size: large;
   transition: 0.2s ease-in-out;
 }
 
@@ -34,3 +36,18 @@
   color: orange;
   font-weight: bold;
 }
+
+/* Media Queries */
+
+/* @media only screen and (max-width: 600px) {
+  .navbar {
+    flex-direction: column;
+  }
+
+  .navlogo {
+    width: 100vw;
+    background-color: orangered;
+    justify-content: center;
+    margin-left: 60vw;
+  }
+} */
