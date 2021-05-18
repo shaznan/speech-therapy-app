@@ -1,6 +1,7 @@
 .navbar {
   background-color: white;
   height: 13vh;
+  position: relative;
 }
 
 .navlogo {
@@ -11,9 +12,6 @@
 }
 
 .navitems {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
   margin: 2.5rem 0rem 0rem 10rem;
   /* background-color: orangered; */
 }
@@ -21,15 +19,27 @@
 .navitems li {
   text-decoration: none;
   list-style: none;
-  margin: 1rem 1.7rem;
+  margin: 1rem;
   opacity: 0.7;
-  font-size: large;
+  font-size: 1vw;
   transition: 0.2s ease-in-out;
+  white-space: nowrap;
+  /* background-color: teal; */
+  text-align: center;
 }
 
 .navitems li:hover {
   opacity: 1;
   transform: scale(1.1);
+}
+
+.menuIcon {
+  display: none;
+  visibility: hidden;
+}
+
+.highlightmenuicon {
+  color: orange;
 }
 
 .active {
@@ -39,15 +49,48 @@
 
 /* Media Queries */
 
-/* @media only screen and (max-width: 600px) {
-  .navbar {
-    flex-direction: column;
+@media only screen and (max-width: 1280px) {
+  .navlogo {
+    width: 9rem;
+  }
+  .navitems {
+    position: absolute;
+    padding: 10rem 0rem;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.849);
+    text-align: center;
+    /* transition: 0.3s ease-in-out; */
+    transition: all 500ms cubic-bezier(0.215, 0.61, 0.355, 1);
   }
 
-  .navlogo {
-    width: 100vw;
-    background-color: orangered;
-    justify-content: center;
-    margin-left: 60vw;
+  .navbar .shownavitems {
+    right: 0rem;
+    top: -2.5rem;
   }
-} */
+
+  .navbar .hidenavitems {
+    right: 0rem;
+    top: -100rem;
+  }
+
+  .navitems li {
+    font-size: 2rem;
+    color: white;
+    margin: 1rem 0%;
+  }
+  .navitems .active {
+    color: orange;
+    font-weight: bold;
+  }
+
+  .menuIcon {
+    display: inline-block;
+    visibility: visible;
+    position: absolute;
+    right: 3vw;
+    top: 2rem;
+    font-size: 3rem !important;
+    /* width: 10vw; */
+  }
+}
