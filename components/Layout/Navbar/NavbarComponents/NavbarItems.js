@@ -4,8 +4,14 @@ import classes from "../Navbar.module.css";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-function NavbarItems({ menuItems, isNavVisible, formatItem }) {
+function NavbarItems({ menuItems, isNavVisible }) {
   const router = useRouter();
+
+  const formatItem = (item) => {
+    let toLowerCase = item[0].toLowerCase() + item.slice(1);
+    let removeSpacing = toLowerCase.replace(/\s+/g, "");
+    return removeSpacing;
+  };
 
   return (
     <Fragment>

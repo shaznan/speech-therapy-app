@@ -4,38 +4,29 @@ import Grid from "@material-ui/core/Grid";
 import NavbarLogo from "./NavbarComponents/NavbarLogo";
 import NavbarItems from "./NavbarComponents/NavbarItems";
 import NavMenuIcon from "./NavbarComponents/MenuIcon";
+import { useSelector, useDispatch } from "react-redux";
+import { navActions } from "../../../store/navSlice";
 
 function Navbar() {
-  const [isNavVisible, setIsNavVisible] = useState(false);
-  const [menuItems, setMenuItems] = useState([
-    "Home",
-    "About us",
-    "Articles",
-    "Bookstore",
-    "Contact us",
-    // "perform test",
-  ]);
+  const dispatch = useDispatch();
+  const isNavVisible = useSelector((state) => {
+    return state.navigation.isNavVisible;
+  });
 
-  const formatItem = (item) => {
-    let toLowerCase = item[0].toLowerCase() + item.slice(1);
-    let removeSpacing = toLowerCase.replace(/\s+/g, "");
-    return removeSpacing;
-  };
+  const menuItems = useSelector((state) => {
+    return state.navigation.menuItems;
+  });
 
   const onClickHandler = (e) => {
     e.preventDefault();
-    setIsNavVisible(!isNavVisible);
+    dispatch(navActions.setIsNavVisible());
   };
 
   return (
     <div className={classes.navbar}>
       <Grid container spacing={0}>
         <NavbarLogo />
-        <NavbarItems
-          menuItems={menuItems}
-          isNavVisible={isNavVisible}
-          formatItem={formatItem}
-        />
+        <NavbarItems menuItems={menuItems} isNavVisible={isNavVisible} />
         <NavMenuIcon
           onClickHandler={onClickHandler}
           isNavVisible={isNavVisible}
