@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import Grid from "@material-ui/core/Grid";
 import Link from "next/link";
-import classes from "../navbar.module.css";
+import classes from "./NavbarLogo.module.css";
 import logoImage from "../images/logo.png";
 
 function NavbarLogo() {

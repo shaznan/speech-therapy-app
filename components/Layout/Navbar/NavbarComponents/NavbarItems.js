@@ -2,8 +2,11 @@ import React, { Fragment } from "react";
 import Grid from "@material-ui/core/Grid";
 import classes from "../Navbar.module.css";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
-function NavbarItems({ menuItems, router, isNavVisible, formatItem }) {
+function NavbarItems({ menuItems, isNavVisible, formatItem }) {
+  const router = useRouter();
+
   return (
     <Fragment>
       <Grid item lg={6} xs={12}>

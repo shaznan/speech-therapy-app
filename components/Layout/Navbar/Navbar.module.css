@@ -4,13 +4,6 @@
   position: relative;
 }
 
-.navlogo {
-  width: 12rem;
-  margin-left: 3vw;
-  margin-top: 1.5rem;
-  /* background-color: orangered; */
-}
-
 .navitems {
   margin: 2.5rem 0rem 0rem 10rem;
   /* background-color: orangered; */
@@ -50,9 +43,6 @@
 /* Media Queries */
 
 @media only screen and (max-width: 1280px) {
-  .navlogo {
-    width: 9rem;
-  }
   .navitems {
     position: absolute;
     padding: 10rem 0rem;

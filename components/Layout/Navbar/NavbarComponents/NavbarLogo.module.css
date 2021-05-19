@@ -1,0 +1,12 @@
+.navlogo {
+  width: 12rem;
+  margin-left: 3vw;
+  margin-top: 1.5rem;
+  /* background-color: orangered; */
+}
+
+@media only screen and (max-width: 1280px) {
+  .navlogo {
+    width: 9rem;
+  }
+}

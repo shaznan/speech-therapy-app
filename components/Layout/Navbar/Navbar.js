@@ -1,14 +1,11 @@
-import React, { Fragment, useState } from "react";
+import React, { useState } from "react";
 import classes from "./Navbar.module.css";
-// import Link from "next/link";
-import { useRouter } from "next/router";
 import Grid from "@material-ui/core/Grid";
-import MenuIcon from "@material-ui/icons/Menu";
 import NavbarLogo from "./NavbarComponents/NavbarLogo";
 import NavbarItems from "./NavbarComponents/NavbarItems";
+import NavMenuIcon from "./NavbarComponents/MenuIcon";
 
 function Navbar() {
-  const router = useRouter();
   const [isNavVisible, setIsNavVisible] = useState(false);
   const [menuItems, setMenuItems] = useState([
     "Home",
@@ -30,34 +27,21 @@ function Navbar() {
     setIsNavVisible(!isNavVisible);
   };
 
-  // FIXME:
-  //fix the css issue
-  //change names when sending props to make sure component is reusable
-
   return (
-    <Fragment>
-      <div className={classes.navbar}>
-        {/* Material Ui Grid layout */}
-        <Grid container spacing={0}>
-          <NavbarLogo />
-          <NavbarItems
-            menuItems={menuItems}
-            router={router}
-            isNavVisible={isNavVisible}
-            formatItem={formatItem}
-          />
-          <Grid onClick={onClickHandler} item lg={3} xs={12}>
-            {/* <p className={classes.test}>hey</p> */}
-            <MenuIcon
-              fontSize="large"
-              className={`${classes.menuIcon} ${
-                isNavVisible ? classes.highlightmenuicon : ""
-              }`}
-            />
-          </Grid>
-        </Grid>
-      </div>
-    </Fragment>
+    <div className={classes.navbar}>
+      <Grid container spacing={0}>
+        <NavbarLogo />
+        <NavbarItems
+          menuItems={menuItems}
+          isNavVisible={isNavVisible}
+          formatItem={formatItem}
+        />
+        <NavMenuIcon
+          onClickHandler={onClickHandler}
+          isNavVisible={isNavVisible}
+        />
+      </Grid>
+    </div>
   );
 }
 
