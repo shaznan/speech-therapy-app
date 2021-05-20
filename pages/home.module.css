@@ -1,0 +1,29 @@
+.homecontainer {
+  height: 87vh;
+  background-color: orange;
+}
+
+.mainheading {
+  font-family: product-sans, sans-serif !important;
+}
+
+.mainheading span {
+  font-family: spydolls, sans-serif !important;
+  font-size: 7rem;
+  line-height: 0.8em !important;
+}
+
+.message {
+  font-family: "Open Sans", sans-serif;
+}
+
+.textcontainer {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  background-color: palegreen !important;
+}
+
+.hello {
+  background-color: rgb(138, 0, 138) !important;
+}

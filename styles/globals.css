@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+
 html,
 body {
   padding: 0;
@@ -14,4 +16,15 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "product-sans";
+  src: local("product-sans"),
+    url(../fonts/Product\ Sans\ Regular.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "spydolls";
+  src: local("spydolls"), url(../fonts/Spydolls\ demo.ttf) format("truetype");
 }
