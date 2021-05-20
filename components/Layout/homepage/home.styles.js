@@ -35,17 +35,6 @@ const useStyles = makeStyles({
     marginBottom: "3rem",
     opacity: 0.6,
   },
-  primarybutton: {
-    backgroundColor: "#ED1C24",
-    padding: "0.5rem 1.5rem",
-    fontWeight: "bold",
-    color: "white",
-    textTransform: "capitalize",
-    borderRadius: "7px",
-    ["@media (max-width:1280px)"]: {
-      fontSize: "1.5rem",
-    },
-  },
   imagecontainer: {
     height: "87vh",
     display: "flex",
@@ -57,12 +46,6 @@ const useStyles = makeStyles({
       textAlign: "center",
       width: "100%",
       marginBottom: "-6rem",
-    },
-  },
-  homepageimage: {
-    width: "31vw",
-    ["@media (max-width:1280px)"]: {
-      width: "90vw",
     },
   },
   linebreak: {

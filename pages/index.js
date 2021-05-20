@@ -1,10 +1,11 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment } from "react";
 import Navbar from "../components/Layout/Navbar/Navbar";
 import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
 import HomepageImage from "../assets/images/homepage_image.png";
-import { useStyles } from "./home.styles";
+import { useStyles } from "../components/Layout/homepage/home.styles";
+import HomepageText from "../components/Layout/homepage/HomepageText";
+import DynamicButton from "../components/Layout/Button/Button";
+import BannerImage from "../components/Layout/Banner/BannerImage";
 
 export default function Home() {
   const classes = useStyles();
@@ -16,23 +17,13 @@ export default function Home() {
         <Grid container spacing={0} className={classes.homecontainer}>
           <Grid item lg={6} xs={12} className={classes.textcontainer}>
             <div>
-              <Typography variant="h2" className={classes.mainheading}>
-                Elevate Your Verbal <br className={classes.linebreak} />
-                <span className={classes.textdecoration}>Fluency</span> With Us
-              </Typography>
-              <Typography variant="subtitle1" className={classes.subtitle}>
-                Try out our verbal fluency tests in order to elevate{" "}
-                <br className={classes.linebreak} /> your ability to retrieve
-                specific information within your{" "}
-                <br className={classes.linebreak} />
-                brain's restricted search parameters.
-              </Typography>
-              <Button className={classes.primarybutton}>Perform Test</Button>
+              <HomepageText />
+              <DynamicButton type="primary" text="Perform Test" />
             </div>
           </Grid>
           <Grid item lg={6} xs={12} className={classes.imagecontainer}>
             <div>
-              <img src={HomepageImage} className={classes.homepageimage} />
+              <BannerImage url={HomepageImage} />
             </div>
           </Grid>
         </Grid>
