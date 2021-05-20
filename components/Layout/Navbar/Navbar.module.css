@@ -2,6 +2,7 @@
   background-color: white;
   height: 13vh;
   position: relative;
+  z-index: 100;
 }
 
 .navitems {
