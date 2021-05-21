@@ -1,9 +1,15 @@
 import { makeStyles } from "@material-ui/core/styles";
+import bgImageOne from "../assets/images/bg_image_one_light.png";
 
 const useStyles = makeStyles({
-  homecontainer: {
+  "@global": {
+    body: {
+      backgroundColor: "#f6f6f7",
+    },
+  },
+
+  maincontainer: {
     display: "flex",
-    backgroundColor: "#f6f6f7;",
     ["@media (max-width:1280px)"]: {
       flexDirection: "column-reverse",
     },
@@ -21,6 +27,18 @@ const useStyles = makeStyles({
       height: "100vh",
     },
   },
+  bgimage: {
+    backgroundImage: `url(${bgImageOne})`,
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "70rem ",
+    backgroundPositionX: "-10rem",
+    backgroundPositionY: "25%",
+    zIndex: "100",
+    position: "relative",
+    // bottom: "0",
+  },
+
   mainheading: {
     fontFamily: "product-sans, sans-serif",
     marginBottom: "2rem",
@@ -30,11 +48,7 @@ const useStyles = makeStyles({
     fontSize: "7rem",
     lineHeight: "0.8em",
   },
-  subtitle: {
-    fontSize: "1.2rem",
-    marginBottom: "3rem",
-    opacity: 0.6,
-  },
+
   imagecontainer: {
     height: "87vh",
     display: "flex",
@@ -48,10 +62,14 @@ const useStyles = makeStyles({
       marginBottom: "-6rem",
     },
   },
-  linebreak: {
-    display: "static",
+  subtextcontainer: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    height: "35vh",
     ["@media (max-width:1280px)"]: {
-      display: "none",
+      width: "100%",
     },
   },
 });

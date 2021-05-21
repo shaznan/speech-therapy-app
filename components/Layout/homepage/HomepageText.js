@@ -1,6 +1,7 @@
 import React from "react";
 import Typography from "@material-ui/core/Typography";
-import { useStyles } from "./home.styles";
+import { useStyles } from "../../../styles/global.styles";
+import Paragraph from "../Typography/Paragraph";
 
 function HomepageText() {
   const classes = useStyles();
@@ -11,12 +12,11 @@ function HomepageText() {
         Elevate Your Verbal <br className={classes.linebreak} />
         <span className={classes.textdecoration}>Fluency</span> With Us
       </Typography>
-      <Typography variant="subtitle1" className={classes.subtitle}>
-        Try out our verbal fluency tests in order to elevate{" "}
-        <br className={classes.linebreak} /> your ability to retrieve specific
-        information within your <br className={classes.linebreak} />
-        brain's restricted search parameters.
-      </Typography>
+      <Paragraph
+        text="Try out our verbal fluency tests in order to elevate your ability to
+        retrieve specific information within your brain's restricted search
+        parameters."
+      />
     </div>
   );
 }

@@ -30,6 +30,8 @@ export default function MyApp({ Component, pageProps }) {
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
         <Provider store={store}>
+          {" "}
+          {/*Passing in redux store props*/}
           <Component {...pageProps} />
         </Provider>
       </ThemeProvider>
