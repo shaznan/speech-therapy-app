@@ -26,7 +26,7 @@ function NavbarItems({ menuItems, isNavVisible }) {
 
   return (
     <Fragment>
-      <Grid item lg={6} xs={12}>
+      <Grid item lg={6} xs={1}>
         <ul //show hide nav for mobile view
           className={`${classes.navitems} ${
             isNavVisible ? classes.shownavitems : classes.hidenavitems

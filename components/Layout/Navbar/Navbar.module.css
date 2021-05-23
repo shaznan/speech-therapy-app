@@ -79,6 +79,80 @@
   font-weight: bold;
 }
 
+.login_register {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  transition: 0.2s ease-in-out;
+  text-align: center;
+  /* background-color: burlywood; */
+}
+.login_registertext {
+  position: relative;
+  height: 45px;
+  margin-right: -7.5rem;
+  margin-top: 2.6rem;
+  padding: 10px 10px;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 1px;
+  color: #383736;
+  border: 2px #383736 solid;
+  border-radius: 4px;
+  text-transform: uppercase;
+  outline: 0;
+  overflow: hidden;
+  background: none;
+  z-index: 1;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+  -o-transition: 0.2s ease-in-out;
+  -ms-transition: 0.2s ease-in-out;
+  -moz-transition: 0.2s ease-in-out;
+  -webkit-transition: 0.2s ease-in-out;
+}
+
+.login_registertext:hover {
+  color: whitesmoke;
+}
+
+.login_registertext:before {
+  content: "";
+  position: absolute;
+  background: #383736;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 100%;
+  z-index: -1;
+  -webkit-transition: top 0.09s ease-in;
+}
+
+.login_registertext:hover:before {
+  top: 0;
+}
+
+/* .login_registertext:before {
+  content: "→";
+  position: absolute;
+  color: #383736;
+  left: 88%;
+  opacity: 0;
+  -webkit-transition: all 0.2s ease-in;
+}
+
+.login_registertext:hover:before {
+  left: 91%;
+  opacity: 1;
+}
+
+.login_registertext:hover {
+  border: 0px #fff solid;
+  -webkit-transform: scale(1.04, 1.04);
+  -webkit-transition: border 0.3s ease-out;
+  -webkit-transition: transform 250ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+} */
+
 /* Media Queries */
 
 @media only screen and (max-width: 1280px) {
@@ -117,9 +191,9 @@
     display: inline-block;
     visibility: visible;
     position: absolute;
-    right: 3vw;
-    top: 2rem;
-    font-size: 3rem !important;
+    left: 3vw;
+    top: 2.3rem;
+    font-size: 2.5rem !important;
     /* width: 10vw; */
   }
   .custombtncontainer {
@@ -130,5 +204,16 @@
   .custombutton {
     font-size: 1.5rem !important;
     width: 10rem;
+  }
+
+  .login_registertext {
+    margin-right: 1rem;
+    font-size: 0.6rem;
+    margin-top: 2.5rem;
+    margin-right: 1.2rem;
+    padding: 9px 6px 2px 6px;
+    height: 35px;
+    white-space: nowrap;
+    /* margin-bottom: 0mm; */
   }
 }

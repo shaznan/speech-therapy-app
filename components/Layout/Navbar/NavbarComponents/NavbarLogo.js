@@ -7,7 +7,7 @@ import logoImage from "../images/logo.png";
 function NavbarLogo() {
   return (
     <Fragment>
-      <Grid item lg={3} xs={12}>
+      <Grid item lg={2} xs={7} className={classes.logocontainer}>
         <Link href="/">
           <img className={classes.navlogo} src={logoImage} />
         </Link>

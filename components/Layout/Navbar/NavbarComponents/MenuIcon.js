@@ -7,9 +7,9 @@ import classes from "../Navbar.module.css";
 function NavMenuIcon({ onClickHandler, isNavVisible }) {
   return (
     <Fragment>
-      <Grid onClick={onClickHandler} item lg={3} xs={12}>
+      <Grid onClick={onClickHandler} item>
         <MenuIcon
-          fontSize="large"
+          // fontSize="small"
           className={`${classes.menuIcon} ${
             isNavVisible ? classes.highlightmenuicon : ""
           }`}

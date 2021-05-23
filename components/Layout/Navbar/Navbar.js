@@ -6,6 +6,7 @@ import NavbarItems from "./NavbarComponents/NavbarItems";
 import NavMenuIcon from "./NavbarComponents/MenuIcon";
 import { useSelector, useDispatch } from "react-redux";
 import { navActions } from "../../../store/navSlice";
+import LoginRegisterbtn from "./NavbarComponents/Login_RegisterBtn";
 
 function Navbar() {
   const dispatch = useDispatch();
@@ -31,6 +32,7 @@ function Navbar() {
           onClickHandler={onClickHandler}
           isNavVisible={isNavVisible}
         />
+        <LoginRegisterbtn />
       </Grid>
     </div>
   );
