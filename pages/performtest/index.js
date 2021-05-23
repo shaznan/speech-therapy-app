@@ -7,6 +7,7 @@ import Typography from "@material-ui/core/Typography";
 import Heading from "../../components/Layout/Typography/Heading";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Box from "@material-ui/core/Box";
+import DynamicButton from "../../components/Layout/Button/Button";
 
 const performtestStyles = makeStyles({
   title: {
@@ -19,30 +20,19 @@ const performtestStyles = makeStyles({
     justifyContent: "center",
     marginTop: "6rem",
     marginLeft: "-9rem",
-    // backgroundColor: "transparent",
-    // backgroundColor: "red",
-
-    // backgroundColor: "white",
-    // position: "relative",
   },
   time: {
     color: "#FFD105",
     width: "8rem !important",
     backgroundColor: "transparent",
     zIndex: 1,
-
-    // backgroundColor: "red",
-    // overlayStyle: { backgroundColor: "red" },
-    // borderRadius: "20px",
-    // backgroundSize: "cover",
-    // borderRadius: "20 !important",
   },
   currentprogress: {
     display: "flex",
     justifyContent: "center",
   },
   wordcount: {
-    marginTop: "3rem",
+    marginTop: "3.5rem",
     textAlign: "center",
     backgroundColor: "white",
     padding: "1rem 5rem",
@@ -64,26 +54,16 @@ const performtestStyles = makeStyles({
     backgroundColor: "white",
     padding: "1.5rem 2rem 2.5rem 2rem",
     borderRadius: 80,
-
-    // zIndex: +2,
   },
   countdownlabel: {
-    // marginRight: "12rem !important",
     marginLeft: "1.8rem",
     marginTop: "-3rem",
-    // top: "5rem",
-    // zIndex: +2,
   },
-  // countdownbg: {
-  //   backgroundColor: "white",
-  //   height: "8rem",
-  //   width: "8rem",
-  //   // zIndex: -1,
-  //   position: "absolute",
-  //   top: "0rem",
-
-  //   // bottom: "1rem",
-  // },
+  startnowcontainer: {
+    display: "flex",
+    justifyContent: "center",
+    marginTop: "3rem",
+  },
 });
 
 //FIXME:
@@ -128,7 +108,6 @@ function index() {
                     >
                       seconds
                     </Typography>
-                    {/* <div className={classes.countdownbg}></div> */}
                   </Box>
                 </Box>
               </Grid>
@@ -141,6 +120,11 @@ function index() {
                 </div>
               </Grid>
             </Grid>
+          </Grid>
+          <Grid item lg={12}>
+            <div className={classes.startnowcontainer}>
+              <DynamicButton type="primary" text="Start Now!" />
+            </div>
           </Grid>
         </Grid>
       </div>
