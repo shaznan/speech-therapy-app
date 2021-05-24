@@ -17,8 +17,6 @@ const navSlice = createSlice({
   },
 });
 
-// export const uiActions = navSlice.actions;
-
 export const navActions = navSlice.actions;
 
 export default navSlice;

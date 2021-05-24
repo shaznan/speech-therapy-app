@@ -3,7 +3,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
-  subtitle: {
+  paragraph: {
     fontSize: "1.2rem",
     marginBottom: "3rem",
     marginTop: "2rem",
@@ -18,11 +18,15 @@ const useStyles = makeStyles({
   },
 });
 
-function Paragraph({ text }) {
+function Paragraph({ text, customstyle = {} }) {
   const classes = useStyles();
   return (
     <Fragment>
-      <Typography variant="subtitle1" className={classes.subtitle}>
+      <Typography
+        variant="subtitle1"
+        className={classes.paragraph}
+        style={customstyle}
+      >
         {text}
       </Typography>
     </Fragment>

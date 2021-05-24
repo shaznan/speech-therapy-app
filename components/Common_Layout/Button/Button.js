@@ -1,6 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
+import ArrowRightIcon from "@material-ui/icons/ArrowRight";
 
 const useStyles = makeStyles({
   primarybutton: {
@@ -9,6 +10,9 @@ const useStyles = makeStyles({
     "&:hover": {
       backgroundColor: "#ff0008",
       transform: "scale(1.03)",
+      "& $icon": {
+        transform: "TranslateX(5px)",
+      },
     },
     padding: "0.5rem 1.5rem",
     fontWeight: "bold",
@@ -19,15 +23,31 @@ const useStyles = makeStyles({
       fontSize: "1.5rem",
     },
   },
+
+  icon: {
+    transition: "0.3s ease-in-out",
+    fontSize: "2rem",
+    // visibility: 'hidden'
+  },
 });
 
-function DynamicButton({ type, text }) {
+function DynamicButton({ type = "primary", text = "", onClickHandler = "" }) {
   const classes = useStyles();
 
   return (
     <div>
-      <Button className={type === "primary" ? classes.primarybutton : null}>
+      <Button
+        onClick={onClickHandler}
+        className={
+          type === "primary" || "primarywitharrow"
+            ? classes.primarybutton
+            : null
+        }
+      >
         {text}
+        {type === "primarywitharrow" && (
+          <ArrowRightIcon className={classes.icon} />
+        )}
       </Button>
     </div>
   );
