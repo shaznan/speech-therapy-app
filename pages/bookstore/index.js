@@ -1,5 +1,6 @@
 import React from "react";
-import Navbar from "../../components/Layout/Navbar/Navbar";
+import Navbar from "../../components/Common_Layout/Navbar/Navbar";
+// import Navbar from "../../components/Layout/Navbar/Navbar";
 
 function BookStorePage() {
   return (

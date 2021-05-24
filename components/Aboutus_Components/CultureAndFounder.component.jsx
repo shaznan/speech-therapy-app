@@ -1,8 +1,9 @@
 import React from "react";
-import { useStyles } from "../../../styles/global.styles";
-import BannerImage from "../Banner/BannerImage";
+import { useStyles } from "../../styles/global.styles";
+import BannerImage from "../Common_Layout/Banner/BannerImage";
 import Grid from "@material-ui/core/Grid";
-import personFigure from "../../../assets/images/shaznan_image.png";
+import personFigure from "../../assets/images/shaznan_image.png";
+// import personFigure from "../../../assets/images/shaznan_image.png";
 import { OurCultureText } from "./AboutusText";
 import { OurFounderText } from "./AboutusText";
 

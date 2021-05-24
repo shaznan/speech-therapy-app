@@ -5,6 +5,11 @@ import Button from "@material-ui/core/Button";
 const useStyles = makeStyles({
   primarybutton: {
     backgroundColor: "#ED1C24",
+    transition: "0.3s ease-in-out",
+    "&:hover": {
+      backgroundColor: "#ff0008",
+      transform: "scale(1.03)",
+    },
     padding: "0.5rem 1.5rem",
     fontWeight: "bold",
     color: "white",

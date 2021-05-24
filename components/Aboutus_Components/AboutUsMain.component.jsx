@@ -1,9 +1,10 @@
 import React from "react";
 import AboutusMainText from "./AboutusText";
-import aboutusImage from "../../../assets/images/about_us.png";
+import aboutusImage from "../../assets/images/about_us.png";
 import Grid from "@material-ui/core/Grid";
-import { useStyles } from "../../../styles/global.styles";
-import BannerImage from "../Banner/BannerImage";
+import { useStyles } from "../../styles/global.styles";
+import BannerImage from "../../components/Common_Layout/Banner/BannerImage";
+// import BannerImage from "../Banner/BannerImage";
 
 function AboutUsMain() {
   const classes = useStyles();

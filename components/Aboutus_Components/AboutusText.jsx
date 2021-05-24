@@ -1,7 +1,7 @@
-import Heading from "../Typography/Heading";
-import Paragraph from "../Typography/Paragraph";
+import Heading from "../Common_Layout/Typography/Heading";
+import Paragraph from "../Common_Layout/Typography/Paragraph";
 import Grid from "@material-ui/core/Grid";
-import { useStyles } from "../../../styles/global.styles";
+import { useStyles } from "../../styles/global.styles";
 import React from "react";
 
 //aboutus component

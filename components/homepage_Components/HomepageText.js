@@ -1,7 +1,8 @@
 import React from "react";
 import Typography from "@material-ui/core/Typography";
-import { useStyles } from "../../../styles/global.styles";
-import Paragraph from "../Typography/Paragraph";
+import { useStyles } from "../../styles/global.styles";
+// import { useStyles } from "../../styles/global.styles";
+import Paragraph from "../Common_Layout/Typography/Paragraph";
 
 function HomepageText() {
   const classes = useStyles();

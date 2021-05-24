@@ -1,11 +1,11 @@
 import React, { Fragment } from "react";
-import Navbar from "../components/Layout/Navbar/Navbar";
+import Navbar from "../components/Common_Layout/Navbar/Navbar";
 import Grid from "@material-ui/core/Grid";
 import HomepageImage from "../assets/images/homepage_image.png";
 import { useStyles } from "../styles/global.styles";
-import HomepageText from "../components/Layout/homepage/HomepageText";
-import DynamicButton from "../components/Layout/Button/Button";
-import BannerImage from "../components/Layout/Banner/BannerImage";
+import HomepageText from "../components/homepage_Components/HomepageText";
+import DynamicButton from "../components/Common_Layout/Button/Button";
+import BannerImage from "../components/Common_Layout/Banner/BannerImage";
 
 export default function Home() {
   const classes = useStyles();
