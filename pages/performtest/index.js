@@ -9,6 +9,7 @@ import StartNowBtn from "../../components/PerformTest_components/layout/StartNow
 import { useSelector, useDispatch } from "react-redux";
 import DisplayInstructions from "../../components/PerformTest_components/layout/DisplayInstructions/DisplayInstructions";
 import { testActions } from "../../store/performTestSlice";
+import SelectCatergoryForm from "../../components/PerformTest_components/layout/SelectCatergory/SelectCatergoryForm";
 
 function index() {
   const dispatch = useDispatch();
@@ -32,6 +33,7 @@ function index() {
           <DisplayCurrentProgress />
           {showStartBtn && <StartNowBtn />}
           {showInstructions && <DisplayInstructions />}
+          <SelectCatergoryForm />
         </Grid>
       </div>
     </Fragment>

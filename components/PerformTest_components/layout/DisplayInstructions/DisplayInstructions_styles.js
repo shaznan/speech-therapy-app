@@ -26,4 +26,5 @@ export const paragraphstyle = {
   opacity: "0.9",
   marginBottom: "1rem",
   width: "36rem",
+  color: "#636363 !important",
 };

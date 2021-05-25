@@ -7,6 +7,7 @@ import { useStyles } from "./DisplayInstructions_styles";
 import { paragraphstyle } from "./DisplayInstructions_styles";
 import { testActions } from "../../../../store/performTestSlice";
 import { useDispatch } from "react-redux";
+import Card from "../../../Common_Layout/Card/Card";
 
 function DisplayInstructions() {
   const classes = useStyles();
@@ -20,11 +21,11 @@ function DisplayInstructions() {
   return (
     <Fragment>
       <Grid item lg={12} className={classes.container}>
-        <div className={classes.card}>
+        <Card>
           <Paragraph
             customstyle={paragraphstyle}
             text={[
-              <p style={{}}>Instructions:</p>,
+              <h4 style={{ color: "#636363" }}>Instructions:</h4>,
               <p>
                 Select a catergory from the next window and get prepared to
                 <strong> speak out load 📢 </strong> as much words that comes to
@@ -43,7 +44,7 @@ function DisplayInstructions() {
               text="Select your catergory"
             />
           </div>
-        </div>
+        </Card>
       </Grid>
     </Fragment>
   );

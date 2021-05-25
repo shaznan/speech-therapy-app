@@ -31,7 +31,11 @@ const useStyles = makeStyles({
   },
 });
 
-function DynamicButton({ type = "primary", text = "", onClickHandler = "" }) {
+function DynamicButton({
+  type = "primary",
+  text = "",
+  onClickHandler = () => {},
+}) {
   const classes = useStyles();
 
   return (
