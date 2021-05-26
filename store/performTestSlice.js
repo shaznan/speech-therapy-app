@@ -7,6 +7,8 @@ const performTestSlice = createSlice({
     showInstructions: false,
     isAlphabetChecked: true,
     isRandomChecked: false,
+    listOfAlphabets: "abcdefghijklmnopqrstuvwxyz",
+    selectedOptfromList: "",
   },
   reducers: {
     setShowStartBtn: (state, action) => {
@@ -21,6 +23,9 @@ const performTestSlice = createSlice({
         : action.payload === "random"
         ? (state.isRandomChecked = !state.isRandomChecked)
         : "";
+    },
+    setSelectedOptfromList: (state, action) => {
+      state.selectedOptfromList = action.payload;
     },
     // toggleIsRandomChecked: (state) => {
     //   state.isRandomChecked = !state.isRandomChecked;

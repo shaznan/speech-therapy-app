@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Fragment } from "react";
 import SubCatergoryContent from "./SubCatergoryContent.component";
 import { useSelector } from "react-redux";
@@ -10,6 +10,14 @@ function SubCatergory() {
   const isRandomChecked = useSelector(
     (state) => state.performtest.isRandomChecked
   );
+
+  const listOfAlphabets = useSelector((state) =>
+    state.performtest.listOfAlphabets.split("")
+  );
+
+  // useEffect(() => {
+  //   console.log(listOfAlphabets);
+  // }, []);
 
   const conditionallyRenderProps = (alphabetProps, randomprops) => {
     if (isAlphabetChecked) {
@@ -26,7 +34,8 @@ function SubCatergory() {
           "Select an alphabetical letter of your choice",
           "Select a topic of your choice"
         )}
-        subLabel={conditionallyRenderProps("Letters", "Topics")}
+        subLabel={conditionallyRenderProps("(A -  Z)", "Topics")}
+        optionsList={listOfAlphabets}
       />
     </Fragment>
   );

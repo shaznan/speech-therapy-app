@@ -50,7 +50,7 @@ function MainCatergorty() {
                   color="default"
                 />
               }
-              label="Alphabetical letters"
+              label="Alphabet letters"
             />
             <FormControlLabel
               control={

@@ -1,13 +1,28 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import FormLabel from "@material-ui/core/FormLabel";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import { useStyles } from "./SelectForm_Styles";
+import { useDispatch, useSelector } from "react-redux";
+import { testActions } from "../../../../store/performTestSlice";
 
-function SubCatergoryContent({ mainLabel, subLabel }) {
+function SubCatergoryContent({ mainLabel, subLabel, optionsList }) {
   const classes = useStyles();
+  const dispatch = useDispatch();
+
+  const handleChange = (e) => {
+    dispatch(testActions.setSelectedOptfromList(e.target.value));
+  };
+
+  const selectedOptfromList = useSelector(
+    (state) => state.performtest.selectedOptfromList
+  );
+
+  useEffect(() => {
+    console.log(selectedOptfromList);
+  }, [selectedOptfromList]);
 
   return (
     <Fragment>
@@ -29,10 +44,17 @@ function SubCatergoryContent({ mainLabel, subLabel }) {
             //   open={open}
             //   onClose={handleClose}
             //   onOpen={handleOpen}
-            //   value={age}
-            //   onChange={handleChange}
+            value={selectedOptfromList}
+            onChange={handleChange}
           >
-            <MenuItem value={10}>Ten</MenuItem>
+            {optionsList.map((option, i) => {
+              return (
+                <MenuItem key={i} value={option}>
+                  {option}
+                </MenuItem>
+              );
+            })}
+            ;
           </Select>
         </div>
       </FormControl>
