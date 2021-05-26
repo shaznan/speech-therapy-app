@@ -5,7 +5,7 @@ const performTestSlice = createSlice({
   initialState: {
     showStartBtn: true,
     showInstructions: false,
-    isAlphabetChecked: false,
+    isAlphabetChecked: true,
     isRandomChecked: false,
   },
   reducers: {

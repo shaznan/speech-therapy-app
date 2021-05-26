@@ -1,43 +1,33 @@
-import React, { Fragment } from "react";
-import FormLabel from "@material-ui/core/FormLabel";
-import FormGroup from "@material-ui/core/FormGroup";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import InputLabel from "@material-ui/core/InputLabel";
-import MenuItem from "@material-ui/core/MenuItem";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
-import { useStyles } from "./SelectForm_Styles";
+import React from "react";
+import { Fragment } from "react";
+import SubCatergoryContent from "./SubCatergoryContent.component";
+import { useSelector } from "react-redux";
 
 function SubCatergory() {
-  const classes = useStyles();
+  const isAlphabetChecked = useSelector(
+    (state) => state.performtest.isAlphabetChecked
+  );
+  const isRandomChecked = useSelector(
+    (state) => state.performtest.isRandomChecked
+  );
 
+  const conditionallyRenderProps = (alphabetProps, randomprops) => {
+    if (isAlphabetChecked) {
+      return alphabetProps;
+    }
+    if (isRandomChecked) {
+      return randomprops;
+    }
+  };
   return (
     <Fragment>
-      <FormControl>
-        <FormLabel className={classes.formlabelsub} component="legend">
-          Select an alphabetical letter of your choice
-        </FormLabel>
-        <div className={classes.selectcontainer}>
-          <InputLabel
-            id="demo-controlled-open-select-label"
-            className={classes.selectlabel}
-          >
-            Age
-          </InputLabel>
-          <Select
-            className={classes.options}
-            labelId="demo-controlled-open-select-label"
-            id="demo-controlled-open-select"
-            //   open={open}
-            //   onClose={handleClose}
-            //   onOpen={handleOpen}
-            //   value={age}
-            //   onChange={handleChange}
-          >
-            <MenuItem value={10}>Ten</MenuItem>
-          </Select>
-        </div>
-      </FormControl>
+      <SubCatergoryContent
+        mainLabel={conditionallyRenderProps(
+          "Select an alphabetical letter of your choice",
+          "Select a topic of your choice"
+        )}
+        subLabel={conditionallyRenderProps("Letters", "Topics")}
+      />
     </Fragment>
   );
 }

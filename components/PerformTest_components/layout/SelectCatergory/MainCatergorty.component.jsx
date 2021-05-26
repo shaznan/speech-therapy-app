@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Fragment } from "react";
 import FormLabel from "@material-ui/core/FormLabel";
 import FormControl from "@material-ui/core/FormControl";
@@ -14,13 +14,23 @@ import { testActions } from "../../../../store/performTestSlice";
 function MainCatergorty() {
   const classes = useStyles();
   const dispatch = useDispatch();
+  const isAlphabetChecked = useSelector(
+    (state) => state.performtest.isAlphabetChecked
+  );
+  const isRandomChecked = useSelector(
+    (state) => state.performtest.isRandomChecked
+  );
 
   const handleChange = (e) => {
+    //When either of the checkbox is clicked, the other should turn false
+    if (isAlphabetChecked) {
+      dispatch(testActions.toggleCheckbox("alphabet"));
+    }
+    if (isRandomChecked) {
+      dispatch(testActions.toggleCheckbox("random"));
+    }
     dispatch(testActions.toggleCheckbox(e.target.name));
   };
-
-  const isAlphabetChecked = useSelector((state) => state.isAlphabetChecked);
-  const isRandomChecked = useSelector((state) => state.isRandomChecked);
 
   return (
     <Fragment>
