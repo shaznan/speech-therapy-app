@@ -1,35 +1,8 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import ArrowRightIcon from "@material-ui/icons/ArrowRight";
-
-const useStyles = makeStyles({
-  primarybutton: {
-    backgroundColor: "#ED1C24",
-    transition: "0.3s ease-in-out",
-    "&:hover": {
-      backgroundColor: "#ff0008",
-      transform: "scale(1.03)",
-      "& $icon": {
-        transform: "TranslateX(5px)",
-      },
-    },
-    padding: "0.5rem 1.5rem",
-    fontWeight: "bold",
-    color: "white",
-    textTransform: "capitalize",
-    borderRadius: "7px",
-    ["@media (max-width:1280px)"]: {
-      fontSize: "1.5rem",
-    },
-  },
-
-  icon: {
-    transition: "0.3s ease-in-out",
-    fontSize: "2rem",
-    // visibility: 'hidden'
-  },
-});
+import ArrowLeftIcon from "@material-ui/icons/ArrowLeft";
+import { useStyles } from "./ButtonStyles";
 
 function DynamicButton({
   type = "primary",
@@ -38,20 +11,25 @@ function DynamicButton({
 }) {
   const classes = useStyles();
 
+  const conditionallyRenderClassName = (type) => {
+    if (type === "primary" || type === "next") {
+      return classes.primarybutton;
+    }
+    if (type === "back") {
+      return classes.backbutton;
+    }
+  };
+
   return (
     <div>
       <Button
         onClick={onClickHandler}
-        className={
-          type === "primary" || "primarywitharrow"
-            ? classes.primarybutton
-            : null
-        }
+        className={conditionallyRenderClassName(type)}
       >
+        {" "}
+        {type === "back" && <ArrowLeftIcon className={classes.iconback} />}
         {text}
-        {type === "primarywitharrow" && (
-          <ArrowRightIcon className={classes.icon} />
-        )}
+        {type === "next" && <ArrowRightIcon className={classes.icon} />}
       </Button>
     </div>
   );

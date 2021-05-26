@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment } from "react";
 import FormLabel from "@material-ui/core/FormLabel";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -20,10 +20,6 @@ function SubCatergoryContent({ mainLabel, subLabel, optionsList }) {
     (state) => state.performtest.selectedOptfromList
   );
 
-  useEffect(() => {
-    console.log(selectedOptfromList);
-  }, [selectedOptfromList]);
-
   return (
     <Fragment>
       <FormControl>
@@ -41,9 +37,6 @@ function SubCatergoryContent({ mainLabel, subLabel, optionsList }) {
             className={classes.options}
             labelId="demo-controlled-open-select-label"
             id="demo-controlled-open-select"
-            //   open={open}
-            //   onClose={handleClose}
-            //   onOpen={handleOpen}
             value={selectedOptfromList}
             onChange={handleChange}
           >

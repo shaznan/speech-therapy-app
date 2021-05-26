@@ -19,6 +19,10 @@ function index() {
     (state) => state.performtest.showInstructions
   );
 
+  const showCatergoryForm = useSelector(
+    (state) => state.performtest.showCatergoryForm
+  );
+
   useEffect(() => {
     !showStartBtn && dispatch(testActions.setShowInstructions(true));
   }, [showStartBtn]);
@@ -33,7 +37,7 @@ function index() {
           <DisplayCurrentProgress />
           {showStartBtn && <StartNowBtn />}
           {showInstructions && <DisplayInstructions />}
-          <SelectCatergoryForm />
+          {showCatergoryForm && <SelectCatergoryForm />}
         </Grid>
       </div>
     </Fragment>

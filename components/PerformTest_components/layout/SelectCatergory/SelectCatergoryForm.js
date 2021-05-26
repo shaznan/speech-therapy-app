@@ -5,35 +5,37 @@ import Card from "../../../Common_Layout/Card/Card";
 import MainCatergory from "./MainCatergorty.component";
 import { useStyles } from "./SelectForm_Styles";
 import SubCatergory from "./SubCatergory.component";
-import Button from "../../../Common_Layout/Button/Button";
-import { useSelector } from "react-redux";
+import PrevAndNextBtns from "./PrevAndNextBtns.component";
+import CloseWindowBtn from "../../../Common_Layout/Button/CloseWindowBtn";
+import { useDispatch } from "react-redux";
+import { testActions } from "../../../../store/performTestSlice";
 
 //FIXME:
 //if one of checkbox is clicked, set false other check box - done
 //show subcatergory only for alphabet - done
-//show random catergory only for random topics
+//show random catergory only for random topics - done
+//find way to generate alphabet from A-z using Js - done
+//generate a-z letters - done
 //create close button
 //create back button
-//find way to generate alphabet from A-z using Js
 
 function SelectCatergoryForm() {
+  const dispatch = useDispatch();
+  const onClickHandler = () => {
+    dispatch(testActions.setShowCatergoryForm(false));
+    dispatch(testActions.setShowStartBtn(true));
+  };
+
   const classes = useStyles();
-  const isAlphabetChecked = useSelector(
-    (state) => state.performtest.isAlphabetChecked
-  );
-  const isRandomChecked = useSelector(
-    (state) => state.performtest.isRandomChecked
-  );
   return (
     <Fragment>
       <Grid item lg={12} className={classes.container} style={{}}>
         <Grid container spacing={0} className={classes.cardcontainer}>
           <Card>
+            <CloseWindowBtn onClickHandler={onClickHandler} />
             <MainCatergory />
             <SubCatergory />
-            <div className={classes.button}>
-              <Button type="primarywitharrow" text="Start" />
-            </div>
+            <PrevAndNextBtns />
           </Card>
         </Grid>
       </Grid>

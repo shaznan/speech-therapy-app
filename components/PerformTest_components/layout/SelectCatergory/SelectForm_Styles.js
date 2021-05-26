@@ -6,6 +6,7 @@ const useStyles = makeStyles({
     justifyContent: "center",
     marginTop: "4rem",
     width: "35rem !important",
+    position: "relative",
   },
   container: {
     display: "flex",
@@ -15,7 +16,7 @@ const useStyles = makeStyles({
     fontSize: "1rem !important",
     color: "#636363 !important",
     marginBottom: "0.6rem",
-    paddingTop: "1.5rem",
+    paddingTop: "2rem !important",
   },
   formlabelsub: {
     fontSize: "0.9rem !important",
@@ -35,7 +36,7 @@ const useStyles = makeStyles({
   button: {
     marginTop: "1rem",
     display: "flex",
-    justifyContent: "flex-end",
+    justifyContent: "space-between",
     marginBottom: "-1rem",
   },
 });

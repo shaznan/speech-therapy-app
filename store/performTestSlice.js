@@ -5,6 +5,7 @@ const performTestSlice = createSlice({
   initialState: {
     showStartBtn: true,
     showInstructions: false,
+    showCatergoryForm: false,
     isAlphabetChecked: true,
     isRandomChecked: false,
     listOfAlphabets: "abcdefghijklmnopqrstuvwxyz",
@@ -17,6 +18,9 @@ const performTestSlice = createSlice({
     setShowInstructions: (state, action) => {
       state.showInstructions = action.payload;
     },
+    setShowCatergoryForm: (state, action) => {
+      state.showCatergoryForm = action.payload;
+    },
     toggleCheckbox: (state, action) => {
       action.payload === "alphabet"
         ? (state.isAlphabetChecked = !state.isAlphabetChecked)
@@ -27,17 +31,8 @@ const performTestSlice = createSlice({
     setSelectedOptfromList: (state, action) => {
       state.selectedOptfromList = action.payload;
     },
-    // toggleIsRandomChecked: (state) => {
-    //   state.isRandomChecked = !state.isRandomChecked;
-    // },
   },
 });
-
-// export const toggleIsAlphabetChecked = () => {
-//   return async (dispatch) => {
-//     dispatch((state.isAlphabetChecked = !state.isAlphabetChecked));
-//   };
-// };
 
 export const testActions = performTestSlice.actions;
 
