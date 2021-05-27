@@ -13,6 +13,10 @@ function PrevAndNextBtns() {
     dispatch(testActions.setShowCatergoryForm(false));
   };
 
+  const startBtnHandler = () => {
+    dispatch(testActions.setShowCatergoryForm(false));
+  };
+
   return (
     <Fragment>
       <div className={classes.buttoncontainer}>
@@ -23,7 +27,7 @@ function PrevAndNextBtns() {
             text="Back"
           />
           <DynamicButton
-            // onClickHandler={startBtnHandler}
+            onClickHandler={startBtnHandler}
             type="next"
             text="Start"
           />
@@ -32,19 +36,5 @@ function PrevAndNextBtns() {
     </Fragment>
   );
 }
-import { formatMs } from "@material-ui/core";
 
 export default PrevAndNextBtns;
-
-{
-  /* <Fragment>
-      <div className={classes.buttoncontainer}>
-        <div className={classes.backbutton}>
-          <DynamicButton type="back" text="Back" />
-        </div>
-        <div className={classes.startbutton}>
-          <DynamicButton type="next" text="Start" />
-        </div>
-      </div>
-    </Fragment> */
-}

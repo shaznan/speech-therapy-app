@@ -12,12 +12,7 @@ const performtestStyles = makeStyles({
     marginTop: "6rem",
     marginLeft: "-9rem",
   },
-  time: {
-    color: "#FFD105 !important",
-    width: "8rem !important",
-    backgroundColor: "transparent",
-    zIndex: 1,
-  },
+
   currentprogress: {
     display: "flex",
     justifyContent: "center",
@@ -38,18 +33,6 @@ const performtestStyles = makeStyles({
     fontSize: "3rem",
     fontFamily: "product-sans, sans-serif",
     fontWeight: "bold !important",
-  },
-  countdownsec: {
-    fontSize: "3rem",
-    fontFamily: "product-sans, sans-serif",
-    fontWeight: "bold !important",
-    backgroundColor: "white !important",
-    padding: "1.5rem 2rem 2.5rem 2rem",
-    borderRadius: 80,
-  },
-  countdownlabel: {
-    marginLeft: "1.8rem !important",
-    marginTop: "-3rem !important",
   },
   startnowcontainer: {
     display: "flex",

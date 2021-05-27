@@ -13,6 +13,7 @@ function StartNowBtn() {
   const onClickHandler = (e) => {
     e.preventDefault();
     dispatch(testActions.setShowStartBtn(false));
+    dispatch(testActions.setShowInstructions(true));
   };
 
   return (

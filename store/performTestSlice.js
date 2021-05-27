@@ -6,6 +6,7 @@ const performTestSlice = createSlice({
     showStartBtn: true,
     showInstructions: false,
     showCatergoryForm: false,
+    showCountdown: true, //FIXME: change to false
     isAlphabetChecked: true,
     isRandomChecked: false,
     listOfAlphabets: "abcdefghijklmnopqrstuvwxyz",

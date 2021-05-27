@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment } from "react";
 import Navbar from "../../components/Common_Layout/Navbar/Navbar";
 import Grid from "@material-ui/core/Grid";
 import { useStyles } from "../../styles/global.styles";
@@ -6,13 +6,12 @@ import { performtestStyles } from "../../components/PerformTest_components/layou
 import Title from "../../components/PerformTest_components/layout/Title/Title.component";
 import DisplayCurrentProgress from "../../components/PerformTest_components/layout/DisplayCurrentProgress/DisplayCurrentProgress";
 import StartNowBtn from "../../components/PerformTest_components/layout/StartNowBtn";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import DisplayInstructions from "../../components/PerformTest_components/layout/DisplayInstructions/DisplayInstructions";
-import { testActions } from "../../store/performTestSlice";
 import SelectCatergoryForm from "../../components/PerformTest_components/layout/SelectCatergory/SelectCatergoryForm";
+import DisplayTimerBeforeBegin from "../../components/PerformTest_components/layout/DisplayTimerBeforeBegin/DisplayTimerBeforeBegin";
 
 function index() {
-  const dispatch = useDispatch();
   const showStartBtn = useSelector((state) => state.performtest.showStartBtn);
   const classes = performtestStyles();
   const showInstructions = useSelector(
@@ -23,9 +22,7 @@ function index() {
     (state) => state.performtest.showCatergoryForm
   );
 
-  useEffect(() => {
-    !showStartBtn && dispatch(testActions.setShowInstructions(true));
-  }, [showStartBtn]);
+  const showCountdown = useSelector((state) => state.performtest.showCountdown);
 
   useStyles(); //include global styles
   return (
@@ -38,6 +35,7 @@ function index() {
           {showStartBtn && <StartNowBtn />}
           {showInstructions && <DisplayInstructions />}
           {showCatergoryForm && <SelectCatergoryForm />}
+          {showCountdown && <DisplayTimerBeforeBegin />}
         </Grid>
       </div>
     </Fragment>
