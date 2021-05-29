@@ -6,7 +6,8 @@ const performTestSlice = createSlice({
     showStartBtn: true,
     showInstructions: false,
     showCatergoryForm: false,
-    showCountdown: true, //FIXME: change to false
+    showCountdown: false,
+    showRemainingTime: true,
     isAlphabetChecked: true,
     isRandomChecked: false,
     listOfAlphabets: "abcdefghijklmnopqrstuvwxyz",
@@ -31,6 +32,12 @@ const performTestSlice = createSlice({
     },
     setSelectedOptfromList: (state, action) => {
       state.selectedOptfromList = action.payload;
+    },
+    setShowCountdown(state, action) {
+      state.showCountdown = action.payload;
+    },
+    setShowRemainingTime(state, action) {
+      state.showRemainingTime = action.payload;
     },
   },
 });

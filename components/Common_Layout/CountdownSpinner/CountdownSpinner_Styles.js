@@ -7,10 +7,10 @@ const useStyles = makeStyles({
     zIndex: 1,
   },
   yellowbar: {
-    color: "#FFD105",
+    color: "#FFD105 !important",
   },
   redbar: {
-    color: "#ff0008",
+    color: "#ff0008 !important",
   },
   threedigitcountdownsec: {
     fontSize: "3rem",
@@ -25,11 +25,11 @@ const useStyles = makeStyles({
     fontFamily: "product-sans, sans-serif",
     fontWeight: "bold !important",
     backgroundColor: "white !important",
-    padding: "1.5rem 2rem 2.5rem 2rem",
+    padding: "1.5rem 2.3rem 2.5rem 2.1rem",
     borderRadius: 80,
   },
   countdownlabel: {
-    marginLeft: "1.8rem !important",
+    marginLeft: "2.1rem !important",
     marginTop: "-3rem !important",
   },
 });

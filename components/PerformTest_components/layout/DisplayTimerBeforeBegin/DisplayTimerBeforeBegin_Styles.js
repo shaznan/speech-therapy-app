@@ -6,12 +6,12 @@ const useStyles = makeStyles({
     justifyContent: "center",
     marginTop: "7rem",
     transform: "scale(1.5)",
-    marginRight: "8rem",
+    marginRight: "10rem",
   },
   container: {
     display: "flex",
     justifyContent: "center",
-    marginTop: "2rem",
+    marginTop: "5rem",
   },
   title: {
     textAlign: "center",

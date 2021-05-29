@@ -4,14 +4,18 @@ import Grid from "@material-ui/core/Grid";
 import { performtestStyles } from "../PerformTest_Styles";
 import DisplayRemainingTime from "./DisplayRemainingTime.component";
 import DisplayWPM from "./DisplayWPM";
+import { useSelector } from "react-redux";
 
 function DisplayCurrentProgress() {
   const classes = performtestStyles();
+  const showRemainingTime = useSelector(
+    (state) => state.performtest.showRemainingTime
+  );
   return (
     <Fragment>
       <Grid item lg={12}>
         <Grid container spacing={0} className={classes.currentprogress}>
-          <DisplayRemainingTime />
+          {showRemainingTime && <DisplayRemainingTime />}
           <DisplayWPM />
         </Grid>
       </Grid>

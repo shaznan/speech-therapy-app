@@ -15,6 +15,8 @@ function PrevAndNextBtns() {
 
   const startBtnHandler = () => {
     dispatch(testActions.setShowCatergoryForm(false));
+    dispatch(testActions.setShowCountdown(true));
+    dispatch(testActions.setShowRemainingTime(false));
   };
 
   return (
