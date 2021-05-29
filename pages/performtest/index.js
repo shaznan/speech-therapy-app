@@ -9,8 +9,8 @@ import StartNowBtn from "../../components/PerformTest_components/layout/StartNow
 import { useSelector } from "react-redux";
 import DisplayInstructions from "../../components/PerformTest_components/layout/DisplayInstructions/DisplayInstructions";
 import SelectCatergoryForm from "../../components/PerformTest_components/layout/SelectCatergory/SelectCatergoryForm";
-import DisplayTimerBeforeBegin from "../../components/PerformTest_components/layout/DisplayTimerBeforeBegin/DisplayTimerBeforeBegin.js";
-import DisplaySpeechInput from "../../components/PerformTest_components/layout/DisplaySpeechInput/DisplaySpeechInput";
+import TimerBeforeBegin from "../../components/PerformTest_components/layout/TimerBeforeBegin/TimerBeforeBegin.js";
+import SpeechInput from "../../components/PerformTest_components/layout/SpeechInput/SpeechInput";
 
 //FIXME:
 //when click start btn, display countdown timer for 6 second done
@@ -50,8 +50,8 @@ function index() {
           {showStartBtn && <StartNowBtn />}
           {showInstructions && <DisplayInstructions />}
           {showCatergoryForm && <SelectCatergoryForm />}
-          {showCountdown && <DisplayTimerBeforeBegin />}
-          <DisplaySpeechInput />
+          {showCountdown && <TimerBeforeBegin />}
+          <SpeechInput />
         </Grid>
       </div>
     </Fragment>

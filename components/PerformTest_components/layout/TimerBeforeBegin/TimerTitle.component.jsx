@@ -1,7 +1,7 @@
 import React from "react";
 import { Fragment } from "react";
 import Typography from "@material-ui/core/Typography";
-import { useStyles } from "./DisplayTimerBeforeBegin_Styles";
+import { useStyles } from "./TimerBeforeBegin_Styles";
 import Grid from "@material-ui/core/Grid";
 import { useSelector } from "react-redux";
 

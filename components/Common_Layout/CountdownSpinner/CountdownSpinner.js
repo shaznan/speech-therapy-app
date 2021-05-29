@@ -23,14 +23,14 @@ function DisplayRemainingTime({
             progressBar === "red" ? classes.redbar : classes.yellowbar
           }`}
         />
-        <Box top="-2.5rem" left="4rem" position="absolute">
+        <div className={classes.circularbg} />
+        <Box top="-1rem" left="6rem" position="absolute">
           <Typography
             variant="h3"
             className={
-              //if num of seconds has to be increased to (3) digits in the future
-              Remainingtime > 99
-                ? classes.threedigitcountdownsec
-                : classes.countdownsec
+              `${classes.countdownsec} ${
+                Remainingtime > 99 && classes.threedigitcountdownsec
+              }` //if num of seconds has to be increased to (3) digits in the future
             }
           >
             {/* show '0' in front if (1) digit */}

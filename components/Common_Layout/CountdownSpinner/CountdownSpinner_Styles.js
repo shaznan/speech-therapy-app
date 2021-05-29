@@ -13,24 +13,28 @@ const useStyles = makeStyles({
     color: "#ff0008 !important",
   },
   threedigitcountdownsec: {
-    fontSize: "3rem",
-    fontFamily: "product-sans, sans-serif",
-    fontWeight: "bold !important",
-    backgroundColor: "white !important",
-    padding: "1.5rem 1.7rem 2.5rem 1.4rem",
-    borderRadius: 80,
+    marginLeft: "-0.5rem",
   },
   countdownsec: {
     fontSize: "3rem",
     fontFamily: "product-sans, sans-serif",
     fontWeight: "bold !important",
-    backgroundColor: "white !important",
-    padding: "1.5rem 2.3rem 2.5rem 2.1rem",
     borderRadius: 80,
   },
+  circularbg: {
+    position: "absolute",
+    content: "''",
+    height: 124,
+    width: 124,
+    backgroundColor: "white",
+    borderRadius: 80,
+    top: "-2.5rem",
+    right: "-2.5rem",
+  },
+
   countdownlabel: {
-    marginLeft: "2.1rem !important",
-    marginTop: "-3rem !important",
+    marginLeft: "0rem !important",
+    marginTop: "-0.4rem !important",
   },
 });
 

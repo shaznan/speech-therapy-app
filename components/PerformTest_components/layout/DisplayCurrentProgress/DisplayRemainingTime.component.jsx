@@ -9,7 +9,7 @@ function DisplayRemainingTime() {
   return (
     <Fragment>
       <Grid item lg={2} className={classes.timespinner}>
-        <CountdownSpinner value={60} Remainingtime={60} />
+        <CountdownSpinner value={100} Remainingtime={60} />
       </Grid>
     </Fragment>
   );
