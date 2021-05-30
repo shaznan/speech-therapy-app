@@ -12,6 +12,7 @@ const performTestSlice = createSlice({
     isRandomChecked: false,
     listOfAlphabets: "abcdefghijklmnopqrstuvwxyz",
     selectedOptfromList: "",
+    isListening: false,
   },
   reducers: {
     setShowStartBtn: (state, action) => {
@@ -38,6 +39,9 @@ const performTestSlice = createSlice({
     },
     setShowRemainingTime(state, action) {
       state.showRemainingTime = action.payload;
+    },
+    setIsListening(state) {
+      state.isListening = !state.isListening;
     },
   },
 });

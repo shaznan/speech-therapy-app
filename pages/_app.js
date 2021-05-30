@@ -7,6 +7,7 @@ import Head from "next/head";
 import { ThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import theme from "../theme/theme";
+import "regenerator-runtime/runtime"; //fix regenerator run time is not defined issue
 
 export default function MyApp({ Component, pageProps }) {
   useEffect(() => {

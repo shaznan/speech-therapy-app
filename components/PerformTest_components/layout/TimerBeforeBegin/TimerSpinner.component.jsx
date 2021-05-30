@@ -32,9 +32,11 @@ function TimerSpinner() {
   // clear countdwn timer and delay dispatch action for 1s before component unmounts for user to see 00 seconds
   useEffect(() => {
     setTimeout(() => {
-      remainingTime === 0 &&
-        dispatch(testActions.setShowCountdown(false)) &&
+      if (remainingTime === 0) {
+        dispatch(testActions.setShowCountdown(false));
         dispatch(testActions.setShowRemainingTime(true));
+        dispatch(testActions.setIsListening());
+      }
     }, 1000);
     remainingTime === 0 && clear();
   }, [remainingTime]);
