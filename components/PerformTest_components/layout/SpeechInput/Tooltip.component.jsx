@@ -12,6 +12,7 @@ const useStyles = makeStyles({
     top: "-2.5rem",
     left: "45rem",
     animation: "$bounce-out-down 1.5s ease infinite",
+    zIndex: 1,
     "&::after": {
       content: "''",
       width: 0,

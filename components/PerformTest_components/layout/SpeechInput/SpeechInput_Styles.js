@@ -14,6 +14,9 @@ const useStyles = makeStyles({
     marginLeft: "1.5rem",
     opacity: "0.5",
     marginBottom: "-1.5rem !important",
+    border: "none",
+    outline: "none",
+    width: "32rem",
   },
   inputcontainer: {
     display: "flex",

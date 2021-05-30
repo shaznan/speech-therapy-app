@@ -35,7 +35,7 @@ function TimerSpinner() {
       if (remainingTime === 0) {
         dispatch(testActions.setShowCountdown(false));
         dispatch(testActions.setShowRemainingTime(true));
-        dispatch(testActions.setIsListening());
+        dispatch(testActions.setIsListening(true)); //Activate speech input dialogbox
       }
     }, 1000);
     remainingTime === 0 && clear();

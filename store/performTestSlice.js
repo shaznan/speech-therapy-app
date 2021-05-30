@@ -40,8 +40,8 @@ const performTestSlice = createSlice({
     setShowRemainingTime(state, action) {
       state.showRemainingTime = action.payload;
     },
-    setIsListening(state) {
-      state.isListening = !state.isListening;
+    setIsListening(state, action) {
+      state.isListening = action.payload;
     },
   },
 });
