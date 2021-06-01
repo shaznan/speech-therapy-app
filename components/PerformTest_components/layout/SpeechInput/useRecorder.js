@@ -3,15 +3,18 @@ import { useEffect, useState } from "react";
 const useRecorder = () => {
   const [audioURL, setAudioURL] = useState("");
   const [isRecording, setIsRecording] = useState(false);
-  const [recorder, setRecorder] = useState(null);
   const [chunks, recordChunks] = useState([]);
+  const [recorder, setRecorder] = useState(null);
 
   useEffect(() => {
     //get access to browser mic
     async function requestRecorder() {
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      const stream = await navigator.mediaDevices.getUserMedia({
+        audio: true,
+      });
       return new MediaRecorder(stream);
     }
+
     // Lazily obtain recorder first time we're recording.
     if (recorder === null) {
       if (isRecording) {
@@ -32,32 +35,35 @@ const useRecorder = () => {
       console.log(e.data);
       setAudioURL(URL.createObjectURL(e.data));
       if (e.data.size > 0) {
-        recordChunks([...chunks, e.data]);
-        console.log(chunks);
+        recordChunks([e.data]);
+        // console.log(chunks);
       }
 
-      download();
-    };
-
-    const download = () => {
-      const blob = new Blob(chunks, {
-        type: "'audio/mp3'",
-      });
-
-      var reader = new FileReader();
-      reader.readAsDataURL(blob);
-      reader.onloadend = function () {
-        var base64data = reader.result;
-        console.log(base64data);
-      };
-
-      //   var url = URL.createObjectURL(blob);
-      //   console.log(`nigga: ${url}`);
+      //   download();
     };
 
     recorder.addEventListener("dataavailable", handleData);
     return () => recorder.removeEventListener("dataavailable", handleData);
   }, [recorder, isRecording]);
+
+  useEffect(() => {
+    if (chunks.length === 0) return;
+    const blob = new Blob(chunks, {
+      type: "audio/mp3",
+    });
+
+    var reader = new FileReader();
+    reader.readAsDataURL(blob);
+    reader.onloadend = function () {
+      var base64data = reader.result;
+      console.log(base64data);
+    };
+  }, [chunks]);
+
+  //   var url = URL.createObjectURL(blob);
+  //   console.log(`nigga: ${url}`);
+  //     const download = () => {
+  //   };
 
   const startRecording = () => {
     setIsRecording(true);
@@ -65,6 +71,7 @@ const useRecorder = () => {
 
   const stopRecording = () => {
     setIsRecording(false);
+    // download();
   };
 
   return [audioURL, isRecording, startRecording, stopRecording];
