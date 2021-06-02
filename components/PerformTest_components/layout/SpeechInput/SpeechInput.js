@@ -1,17 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Fragment } from "react";
-import Grid from "@material-ui/core/Grid";
-import Card from "../../../Common_Layout/Card/Card";
-import MicNoneTwoToneIcon from "@material-ui/icons/MicNoneTwoTone";
-import Tooltip from "./Tooltip.component";
-import CloseWindowBtn from "../../../Common_Layout/Button/CloseWindowBtn";
-import { useStyles } from "./SpeechInput_Styles";
-import { useSelector, useDispatch } from "react-redux";
-import { testActions } from "../../../../store/performTestSlice";
 import useRecorder from "./useRecorder";
 import dynamic from "next/dynamic";
+import { makeStyles } from "@material-ui/core/styles";
+import { Fragment } from "react";
 
-// import { ReactMic } from "react-mic";
+//dynamically import React Mic to avoid ssr, imported module includes library that only works with browser
 const ReactMic = dynamic(
   () =>
     import("react-mic").then((module) => {
@@ -22,34 +15,42 @@ const ReactMic = dynamic(
   }
 );
 
-//TODO: create option to add more languages, manage state
-//TODO: keypress functionality : change icon to keyboard, Type here and tooltip to type now
+const useStyles = makeStyles({
+  reactmic: {
+    display: "block",
+    margin: "auto",
+    width: "30rem",
+    height: "13rem",
+    marginTop: "3rem",
+    boxShadow: "0px 3px 29px rgba(0,0,0,0.05)",
+    borderRadius: "9px",
+  },
+  visualcontainer: {
+    display: "flex",
+    justifyContent: "center",
+    width: "100%",
+  },
+});
 
 function SpeechInput() {
   let [audioURL, isRecording, startRecording, stopRecording] = useRecorder();
+  const classes = useStyles();
 
   useEffect(() => {
     console.log(audioURL);
   }, [audioURL]);
 
-  const onData = (recordedBlob) => {
-    console.log("chunk of real-time data is: ", recordedBlob);
-  };
-
-  const onStop = (recordedBlob) => {
-    console.log("recordedBlob is: ", recordedBlob);
-  };
-
   return (
-    <div className="App">
-      <ReactMic
-        record={isRecording}
-        // onStop={onStop}
-        // onData={onData}
-        className="sound-wave"
-        strokeColor="black"
-        backgroundColor="white"
-      />
+    <Fragment>
+      <div className={classes.visualcontainer}>
+        <ReactMic
+          record={isRecording}
+          className={classes.reactmic}
+          visualSetting="sinewave"
+          strokeColor="grey"
+          backgroundColor="white"
+        />
+      </div>
       <audio src={audioURL} controls />
       <button onClick={startRecording} disabled={isRecording}>
         start recording
@@ -57,7 +58,7 @@ function SpeechInput() {
       <button onClick={stopRecording} disabled={!isRecording}>
         stop recording
       </button>
-    </div>
+    </Fragment>
   );
 }
 
