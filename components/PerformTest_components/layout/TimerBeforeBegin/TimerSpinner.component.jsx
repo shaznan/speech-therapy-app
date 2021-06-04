@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 import { testActions } from "../../../../store/performTestSlice";
 
 function TimerSpinner() {
-  const [remainingTime, setRemainingTime] = useState(4);
+  const [remainingTime, setRemainingTime] = useState(2);
   const [countdownPercent, setCountdownPercent] = useState(100);
   const reducingFactor = countdownPercent / remainingTime;
   const dispatch = useDispatch();
@@ -35,7 +35,7 @@ function TimerSpinner() {
       if (remainingTime === 0) {
         dispatch(testActions.setShowCountdown(false));
         dispatch(testActions.setShowRemainingTime(true));
-        dispatch(testActions.setIsListening(true)); //Activate speech input dialogbox
+        dispatch(testActions.setIsRecording());
       }
     }, 1000);
     remainingTime === 0 && clear();

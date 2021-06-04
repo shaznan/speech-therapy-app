@@ -1,9 +1,14 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useSelector, useDispatch } from "react-redux";
+import { testActions } from "../../../../store/performTestSlice";
 
 const useRecorder = () => {
-  const [audioURL, setAudioURL] = useState("");
-  const [isRecording, setIsRecording] = useState(false);
+  // const [audioURL, setAudioURL] = useState("");
+  // const [isRecording, setIsRecording] = useState(false);
+  const dispatch = useDispatch();
+  const isRecording = useSelector((state) => state.performtest.isRecording);
+
   const [chunks, setChunks] = useState([]);
   const [recorder, setRecorder] = useState(null);
 
@@ -31,10 +36,9 @@ const useRecorder = () => {
       recorder.stop();
     }
 
-    // Obtain the audio when ready.
+    // Obtain the audio blob when ready.
     const handleData = (e) => {
       console.log(e.data);
-      setAudioURL(URL.createObjectURL(e.data));
       if (e.data.size > 0) {
         setChunks([e.data]);
       }
@@ -49,7 +53,6 @@ const useRecorder = () => {
   //convert returned blob into base64data
   useEffect(() => {
     if (chunks.length === 0) return;
-    //convert blob into base 64
     const blob = new Blob(chunks, {
       type: "audio/wav",
     });
@@ -58,22 +61,12 @@ const useRecorder = () => {
     reader.readAsDataURL(blob);
     reader.onloadend = function () {
       var base64data = reader.result;
-      // console.log(reader);
-      // console.log(base64data);
-      // var decodedString = atob(base64data);
+      //remove unwanted tags from base64 data
+      const base64BinaryData = base64data.substr(base64data.indexOf(",") + 1);
 
-      // console.log(decodedString);
-
-      const convertedData = base64data.substr(base64data.indexOf(",") + 1);
-      // console.log(convertedData);
-      //   const data = "'" + convertedData + "'"; //removes non base64 characters (data type proprty)
-      //   console.log(base64data);
-      //   console.log(blob);
-
-      //POST Request to Api
-
+      //POST Request to Api folder
       axios
-        .post("api/SpeechToText", { audioBytes: convertedData })
+        .post("api/SpeechToText", { audioBytes: base64BinaryData })
         .then((res) => {
           console.log(res);
         })
@@ -81,40 +74,19 @@ const useRecorder = () => {
           console.log(err);
         });
     };
-  }, [chunks]);
+  }, [chunks, isRecording]);
 
   const startRecording = () => {
-    setIsRecording(true);
+    // setIsRecording(true);
+    dispatch(testActions.setIsRecording());
   };
 
   const stopRecording = () => {
-    setIsRecording(false);
+    // setIsRecording(false);
+    dispatch(testActions.setIsRecording());
   };
 
-  return [audioURL, isRecording, startRecording, stopRecording];
+  return [isRecording, startRecording, stopRecording];
 };
 
 export default useRecorder;
-
-// axios
-// .post("/api/SpeechToText", base64data)
-// .then((res) => {
-//   console.log(res);
-// })
-// .catch((err) => {
-//   console.log(err);
-// });
-
-// (async () => {
-//     const rawResponse = await fetch("/api/SpeechToText", {
-//       method: "POST",
-//       headers: {
-//         // 'Accept': 'application/json',
-//         "Content-Type": "application/json",
-//       },
-//       body: JSON.stringify(base64data),
-//     });
-//     const content = await rawResponse.json();
-
-//     console.log(content);
-//   })();

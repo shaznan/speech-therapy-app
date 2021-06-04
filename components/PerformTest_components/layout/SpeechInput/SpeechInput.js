@@ -1,9 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import useRecorder from "./useRecorder";
 import dynamic from "next/dynamic";
 import { makeStyles } from "@material-ui/core/styles";
 import { Fragment } from "react";
-
+import { useSelector } from "react-redux";
 //dynamically import React Mic to avoid ssr, imported module includes library that only works with browser
 const ReactMic = dynamic(
   () =>
@@ -18,12 +18,16 @@ const ReactMic = dynamic(
 const useStyles = makeStyles({
   reactmic: {
     display: "block",
+    visibility: "hidden",
     margin: "auto",
     width: "30rem",
     height: "13rem",
     marginTop: "3rem",
     boxShadow: "0px 3px 29px rgba(0,0,0,0.05)",
     borderRadius: "9px",
+  },
+  showreactmic: {
+    visibility: "visible",
   },
   visualcontainer: {
     display: "flex",
@@ -33,31 +37,28 @@ const useStyles = makeStyles({
 });
 
 function SpeechInput() {
-  let [audioURL, isRecording, startRecording, stopRecording] = useRecorder();
+  let [isRecording, startRecording, stopRecording] = useRecorder();
   const classes = useStyles();
-
-  useEffect(() => {
-    console.log(audioURL);
-  }, [audioURL]);
-
+  const isstateRecording = useSelector(
+    (state) => state.performtest.isRecording
+  );
+  console.log(`isRecording : ${isRecording}`);
+  console.log(`isstateRecording: ${isstateRecording}`);
   return (
     <Fragment>
       <div className={classes.visualcontainer}>
         <ReactMic
           record={isRecording}
-          className={classes.reactmic}
+          className={`${classes.reactmic} ${
+            isRecording && classes.showreactmic
+          }`}
           visualSetting="sinewave"
           strokeColor="grey"
           backgroundColor="white"
         />
       </div>
-      <audio src={audioURL} controls />
-      <button onClick={startRecording} disabled={isRecording}>
-        start recording
-      </button>
-      <button onClick={stopRecording} disabled={!isRecording}>
-        stop recording
-      </button>
+      {/* <button onClick={startRecording}>Start</button> 
+      <button onClick={stopRecording}>stop</button> */}
     </Fragment>
   );
 }
