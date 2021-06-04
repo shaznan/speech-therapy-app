@@ -51,29 +51,23 @@ const useRecorder = () => {
     if (chunks.length === 0) return;
     //convert blob into base 64
     const blob = new Blob(chunks, {
-      type: "audio/wav",
+      type: "audio/mp3",
     });
 
     var reader = new FileReader();
     reader.readAsDataURL(blob);
     reader.onloadend = function () {
       var base64data = reader.result;
-      // console.log(reader);
-      // console.log(base64data);
-      // var decodedString = atob(base64data);
-
-      // console.log(decodedString);
-
       const convertedData = base64data.substr(base64data.indexOf(",") + 1);
-      // console.log(convertedData);
+      console.log(convertedData);
       //   const data = "'" + convertedData + "'"; //removes non base64 characters (data type proprty)
       //   console.log(base64data);
       //   console.log(blob);
 
       //POST Request to Api
-
       axios
-        .post("api/SpeechToText", { audioBytes: convertedData })
+        // .post("api/SpeechToText", chunks)
+        .post("api/SpeechToText", blob)
         .then((res) => {
           console.log(res);
         })
