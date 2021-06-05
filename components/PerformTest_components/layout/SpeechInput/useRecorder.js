@@ -4,13 +4,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { testActions } from "../../../../store/performTestSlice";
 
 const useRecorder = () => {
-  // const [audioURL, setAudioURL] = useState("");
-  // const [isRecording, setIsRecording] = useState(false);
-  const dispatch = useDispatch();
   const isRecording = useSelector((state) => state.performtest.isRecording);
-
   const [chunks, setChunks] = useState([]);
   const [recorder, setRecorder] = useState(null);
+  const [localStream, setLocalStream] = useState(null);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     //get access to browser mic
@@ -18,8 +16,16 @@ const useRecorder = () => {
       const stream = await navigator.mediaDevices.getUserMedia({
         audio: true,
       });
+      setLocalStream(stream);
       return new MediaRecorder(stream);
     }
+    //set microphone permission access status
+    navigator.permissions
+      .query({ name: "microphone" })
+      .then(function (permissionStatus) {
+        dispatch(testActions.setMediaPermission(permissionStatus.state));
+        console.log(permissionStatus.state);
+      });
 
     // Lazily obtain recorder first time we're recording.
     if (recorder === null) {
@@ -33,6 +39,11 @@ const useRecorder = () => {
     if (isRecording) {
       recorder.start();
     } else {
+      if (recorder.state === "inactive") return;
+      //stop capturing request
+      const track = localStream.getTracks()[0];
+      track.stop();
+      //stop recording feature
       recorder.stop();
     }
 
@@ -42,8 +53,6 @@ const useRecorder = () => {
       if (e.data.size > 0) {
         setChunks([e.data]);
       }
-
-      //   download();
     };
 
     recorder.addEventListener("dataavailable", handleData);
@@ -75,18 +84,6 @@ const useRecorder = () => {
         });
     };
   }, [chunks, isRecording]);
-
-  const startRecording = () => {
-    // setIsRecording(true);
-    dispatch(testActions.setIsRecording());
-  };
-
-  const stopRecording = () => {
-    // setIsRecording(false);
-    dispatch(testActions.setIsRecording());
-  };
-
-  return [isRecording, startRecording, stopRecording];
 };
 
 export default useRecorder;

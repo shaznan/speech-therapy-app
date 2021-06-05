@@ -37,16 +37,14 @@ const useStyles = makeStyles({
 });
 
 function SpeechInput() {
-  let [isRecording, startRecording, stopRecording] = useRecorder();
+  useRecorder(); //execute mic functionality and send recorded data to backend
   const classes = useStyles();
-  const isstateRecording = useSelector(
-    (state) => state.performtest.isRecording
-  );
-  console.log(`isRecording : ${isRecording}`);
-  console.log(`isstateRecording: ${isstateRecording}`);
+  const isRecording = useSelector((state) => state.performtest.isRecording);
+
   return (
     <Fragment>
       <div className={classes.visualcontainer}>
+        {/* Show voice viuals */}
         <ReactMic
           record={isRecording}
           className={`${classes.reactmic} ${
@@ -57,10 +55,12 @@ function SpeechInput() {
           backgroundColor="white"
         />
       </div>
-      {/* <button onClick={startRecording}>Start</button> 
-      <button onClick={stopRecording}>stop</button> */}
     </Fragment>
   );
 }
 
 export default SpeechInput;
+
+//FIXME: when mic access is not granted timer still runs,
+//if no data input then dont set as chunk
+//hide the recording sign

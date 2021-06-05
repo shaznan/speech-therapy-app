@@ -13,6 +13,8 @@ const performTestSlice = createSlice({
     listOfAlphabets: "abcdefghijklmnopqrstuvwxyz",
     selectedOptfromList: "",
     isRecording: false,
+    //userecorder component
+    mediaPermisson: null,
   },
   reducers: {
     setShowStartBtn: (state, action) => {
@@ -42,6 +44,10 @@ const performTestSlice = createSlice({
     },
     setIsRecording(state) {
       state.isRecording = !state.isRecording;
+    },
+    //useRecorder component
+    setMediaPermission(state, action) {
+      state.mediaPermisson = action.payload;
     },
   },
 });
