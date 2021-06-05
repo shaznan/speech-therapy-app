@@ -40,6 +40,7 @@ function SpeechInput() {
   useRecorder(); //execute mic functionality and send recorded data to backend
   const classes = useStyles();
   const isRecording = useSelector((state) => state.performtest.isRecording);
+  const transcript = useSelector((state) => state.performtest.transcript);
 
   return (
     <Fragment>

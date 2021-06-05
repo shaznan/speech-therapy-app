@@ -5,13 +5,11 @@ import Grid from "@material-ui/core/Grid";
 import { performtestStyles } from "../PerformTest_Styles";
 import CountdownSpinner from "../../../Common_Layout/CountdownSpinner/CountdownSpinner";
 import { testActions } from "../../../../store/performTestSlice";
-import { useRecorder } from "../SpeechInput/useRecorder";
 
 function DisplayRemainingTime() {
-  const [remainingTime, setRemainingTime] = useState(4);
+  const [remainingTime, setRemainingTime] = useState(60);
   const [countdownPercent, setCountdownPercent] = useState(100);
   const reducingFactor = countdownPercent / remainingTime;
-  // const [isPermissionGranted, setIsPermissionGranted] = useState(false);
   const dispatch = useDispatch();
   const id = useRef(null);
   const clear = () => {
@@ -26,8 +24,8 @@ function DisplayRemainingTime() {
 
   useEffect(() => {
     id.current =
-      isRecording &&
-      mediaPermisson === "granted" && //start timer only during recording
+      isRecording && //start timer only during recording and when mic access is granted
+      mediaPermisson === "granted" &&
       setInterval(() => {
         setRemainingTime((remainingTime) => remainingTime - 1);
         setCountdownPercent((countdownPercent) => {
@@ -43,6 +41,7 @@ function DisplayRemainingTime() {
     setTimeout(() => {
       if (remainingTime === 0) {
         dispatch(testActions.setIsRecording());
+        dispatch(testActions.setIsTimeIsUp(true));
         // dispatch(testActions.setShowCountdown(false));
       }
     }, 1000);

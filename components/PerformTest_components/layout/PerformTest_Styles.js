@@ -1,4 +1,5 @@
 import { makeStyles } from "@material-ui/core/styles";
+import bgImage from "../../../assets/images/pf_bgimage.png";
 
 const performtestStyles = makeStyles({
   title: {
@@ -6,11 +7,19 @@ const performtestStyles = makeStyles({
     width: "100%,",
     textAlign: "center",
   },
+  performtestbgimage: {
+    backgroundImage: `url(${bgImage})`,
+    height: "83vh",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "bottom",
+    width: "100%",
+  },
   timespinner: {
     display: "flex",
     justifyContent: "center",
     marginTop: "6rem",
     marginLeft: "-9rem",
+    marginBottom: "2rem",
   },
 
   currentprogress: {
@@ -38,6 +47,7 @@ const performtestStyles = makeStyles({
     display: "flex",
     justifyContent: "center",
     marginTop: "3rem",
+    marginRight: "2rem",
   },
 });
 

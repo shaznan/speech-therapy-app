@@ -24,7 +24,7 @@ const useRecorder = () => {
       .query({ name: "microphone" })
       .then(function (permissionStatus) {
         dispatch(testActions.setMediaPermission(permissionStatus.state));
-        console.log(permissionStatus.state);
+        // console.log(permissionStatus.state);
       });
 
     // Lazily obtain recorder first time we're recording.
@@ -49,7 +49,6 @@ const useRecorder = () => {
 
     // Obtain the audio blob when ready.
     const handleData = (e) => {
-      console.log(e.data);
       if (e.data.size > 0) {
         setChunks([e.data]);
       }
@@ -77,7 +76,8 @@ const useRecorder = () => {
       axios
         .post("api/SpeechToText", { audioBytes: base64BinaryData })
         .then((res) => {
-          console.log(res);
+          // console.log(res.data);
+          dispatch(testActions.setTranscript(res.data));
         })
         .catch((err) => {
           console.log(err);

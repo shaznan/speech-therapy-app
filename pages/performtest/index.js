@@ -25,6 +25,7 @@ import SpeechInput from "../../components/PerformTest_components/layout/SpeechIn
 // create timer functionality for 6 seconds
 // when timer reaches 0 seconds hide timer, show progress time
 // create listening layout with tooltip
+import bgImage from "../../assets/images/pf_bgimage.png";
 
 function index() {
   const showStartBtn = useSelector((state) => state.performtest.showStartBtn);
@@ -42,8 +43,9 @@ function index() {
   useStyles(); //include global styles
   return (
     <Fragment>
+      <Navbar />
       <div className={classes.performtestbgimage}>
-        <Navbar />
+        {/* <img src={bgImage} height="1080px" width="1900px" /> */}
         <Grid container spacing={0}>
           <Title />
           <DisplayCurrentProgress />

@@ -11,12 +11,13 @@ function DisplayCurrentProgress() {
   const showRemainingTime = useSelector(
     (state) => state.performtest.showRemainingTime
   );
+  const isTimeIsUp = useSelector((state) => state.performtest.isTimeIsUp);
   return (
     <Fragment>
       <Grid item lg={12}>
         <Grid container spacing={0} className={classes.currentprogress}>
-          {showRemainingTime && <DisplayRemainingTime />}
-          <DisplayWPM />
+          {showRemainingTime && !isTimeIsUp && <DisplayRemainingTime />}
+          {/* <DisplayWPM />  */}
         </Grid>
       </Grid>
     </Fragment>

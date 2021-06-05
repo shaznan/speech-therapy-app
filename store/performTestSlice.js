@@ -13,8 +13,11 @@ const performTestSlice = createSlice({
     listOfAlphabets: "abcdefghijklmnopqrstuvwxyz",
     selectedOptfromList: "",
     isRecording: false,
+    //displayremainingtime component
+    isTimeIsUp: false,
     //userecorder component
     mediaPermisson: null,
+    transcript: null,
   },
   reducers: {
     setShowStartBtn: (state, action) => {
@@ -48,6 +51,12 @@ const performTestSlice = createSlice({
     //useRecorder component
     setMediaPermission(state, action) {
       state.mediaPermisson = action.payload;
+    },
+    setTranscript(state, action) {
+      state.transcript = action.payload;
+    },
+    setIsTimeIsUp(state, action) {
+      state.isTimeIsUp = action.payload;
     },
   },
 });
