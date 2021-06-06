@@ -76,8 +76,9 @@ const useRecorder = () => {
       axios
         .post("api/SpeechToText", { audioBytes: base64BinaryData })
         .then((res) => {
-          // console.log(res.data);
           dispatch(testActions.setTranscript(res.data));
+          console.log(res.data);
+          dispatch(testActions.setIsAnalyzing(false));
         })
         .catch((err) => {
           console.log(err);

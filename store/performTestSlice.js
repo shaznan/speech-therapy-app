@@ -18,6 +18,7 @@ const performTestSlice = createSlice({
     //userecorder component
     mediaPermisson: null,
     transcript: null,
+    isAnalyzing: false,
   },
   reducers: {
     setShowStartBtn: (state, action) => {
@@ -57,6 +58,9 @@ const performTestSlice = createSlice({
     },
     setIsTimeIsUp(state, action) {
       state.isTimeIsUp = action.payload;
+    },
+    setIsAnalyzing(state, action) {
+      state.isAnalyzing = action.payload;
     },
   },
 });

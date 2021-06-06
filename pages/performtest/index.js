@@ -11,21 +11,8 @@ import DisplayInstructions from "../../components/PerformTest_components/layout/
 import SelectCatergoryForm from "../../components/PerformTest_components/layout/SelectCatergory/SelectCatergoryForm";
 import TimerBeforeBegin from "../../components/PerformTest_components/layout/TimerBeforeBegin/TimerBeforeBegin.js";
 import SpeechInput from "../../components/PerformTest_components/layout/SpeechInput/SpeechInput";
-
-//FIXME:
-//when click start btn, display countdown timer for 6 second done
-//display message on top based on the catergory chosen
-//when timer ends, hide message and countdown
-//create countdown timer functionality once wait timer is done - cap it to 60 seconds
-// create ui layout for listening
-
-//!TODO:
-//when start clicked, show countdown
-//hide progress timer when showing countdown
-// create timer functionality for 6 seconds
-// when timer reaches 0 seconds hide timer, show progress time
-// create listening layout with tooltip
-import bgImage from "../../assets/images/pf_bgimage.png";
+import AnalyzingResult from "../../components/PerformTest_components/layout/AnalyzingResultLoader/AnalyzingResult";
+import useRecorder from "../../components/PerformTest_components/layout/SpeechInput/useRecorder";
 
 function index() {
   const showStartBtn = useSelector((state) => state.performtest.showStartBtn);
@@ -39,13 +26,14 @@ function index() {
   );
 
   const showCountdown = useSelector((state) => state.performtest.showCountdown);
-
+  const isTimeIsUp = useSelector((state) => state.performtest.isTimeIsUp);
+  const isAnalyzing = useSelector((state) => state.performtest.isAnalyzing);
+  useRecorder();
   useStyles(); //include global styles
   return (
     <Fragment>
       <Navbar />
       <div className={classes.performtestbgimage}>
-        {/* <img src={bgImage} height="1080px" width="1900px" /> */}
         <Grid container spacing={0}>
           <Title />
           <DisplayCurrentProgress />
@@ -53,7 +41,8 @@ function index() {
           {showInstructions && <DisplayInstructions />}
           {showCatergoryForm && <SelectCatergoryForm />}
           {showCountdown && <TimerBeforeBegin />}
-          <SpeechInput />
+          {!isTimeIsUp && <SpeechInput />}
+          {isAnalyzing && <AnalyzingResult />}
         </Grid>
       </div>
     </Fragment>

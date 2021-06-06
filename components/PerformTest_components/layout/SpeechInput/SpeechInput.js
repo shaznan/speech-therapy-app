@@ -46,7 +46,7 @@ const useStyles = makeStyles({
 });
 
 function SpeechInput() {
-  useRecorder(); //execute mic functionality and send recorded data to backend
+  // useRecorder(); //execute mic functionality and send recorded data to backend
   const classes = useStyles();
   const isRecording = useSelector((state) => state.performtest.isRecording);
 

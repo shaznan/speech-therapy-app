@@ -42,6 +42,7 @@ function DisplayRemainingTime() {
       if (remainingTime === 0) {
         dispatch(testActions.setIsRecording());
         dispatch(testActions.setIsTimeIsUp(true));
+        dispatch(testActions.setIsAnalyzing(true));
         // dispatch(testActions.setShowCountdown(false));
       }
     }, 1000);
