@@ -1,0 +1,157 @@
+.bg_lite {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background-color: #fff; */
+  position: relative;
+  margin-left: 20rem;
+}
+
+.first,
+.second,
+.third,
+.fourth {
+  position: absolute;
+  border-radius: 50%;
+  color: transparent;
+  transform-origin: center;
+  /* width: 10rem;
+  height: 10rem; */
+}
+/* 
+  $ripple-animation-length: 5s;
+$ripple-animation-delay: 150ms;
+$ripple-scale-size: 0.025; */
+
+.first {
+  width: 150px;
+  height: 150px;
+  animation: first 5s infinite ease-in-out;
+  animation-delay: 850ms;
+  background-color: rgba(255, 68, 68, 0.1);
+  /* background-color: rgba(31, 31, 31, 0.1); */
+}
+.second {
+  width: 127.5px;
+  height: 127.5px;
+  animation: second 5s infinite ease-in-out;
+  animation-delay: 700ms;
+  background-color: rgba(255, 68, 68, 0.4);
+  /* background-color: rgba(31, 31, 31, 0.4); */
+}
+.third {
+  width: 105px;
+  height: 105px;
+  animation: third 5s infinite ease-in-out;
+  animation-delay: 550ms;
+  background-color: rgba(255, 68, 68, 0.7);
+  /* background-color: rgba(31, 31, 31, 0.7); */
+}
+.fourth {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 82.5px;
+  height: 82.5px;
+  animation: fourth 5s infinite ease-in-out;
+  animation-delay: 400ms;
+  background-color: rgba(255, 68, 68, 1);
+  /* background-color: rgb(31, 31, 31); */
+}
+
+.text {
+  color: white;
+  font-weight: bolder;
+  /* color: #ff4444; */
+  /* text-align: center; */
+  /* align-items: center; */
+}
+
+/* @for $i from 4 through 1 {
+    @keyframes #{ripple+$i} {
+      0% {
+        transform: scale(1);
+      }
+      25% {
+        transform: scale(1.1 + ($ripple-scale-size * $i));
+      }
+      50% {
+        transform: scale(0.9 - (0.05 * $i));
+      }
+      75% {
+        transform: scale(1.1 + ($ripple-scale-size * $i));
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+  } */
+
+@keyframes first {
+  0% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.125);
+  }
+  50% {
+    transform: scale(0.85);
+  }
+  75% {
+    transform: scale(1.125);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes second {
+  0% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.15);
+  }
+  50% {
+    transform: scale(0.8);
+  }
+  75% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes third {
+  0% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.175);
+  }
+  50% {
+    transform: scale(0.75);
+  }
+  75% {
+    transform: scale(0.825);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes fourth {
+  0% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.2);
+  }
+  50% {
+    transform: scale(0.7);
+  }
+  75% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

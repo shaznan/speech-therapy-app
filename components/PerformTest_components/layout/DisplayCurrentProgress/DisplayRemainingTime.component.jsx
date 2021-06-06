@@ -7,7 +7,7 @@ import CountdownSpinner from "../../../Common_Layout/CountdownSpinner/CountdownS
 import { testActions } from "../../../../store/performTestSlice";
 
 function DisplayRemainingTime() {
-  const [remainingTime, setRemainingTime] = useState(60);
+  const [remainingTime, setRemainingTime] = useState(1);
   const [countdownPercent, setCountdownPercent] = useState(100);
   const reducingFactor = countdownPercent / remainingTime;
   const dispatch = useDispatch();

@@ -4,6 +4,8 @@ import dynamic from "next/dynamic";
 import { makeStyles } from "@material-ui/core/styles";
 import { Fragment } from "react";
 import { useSelector } from "react-redux";
+// import Tooltip from "./Tooltip.component";
+import CircleRipple from "./CircleRipple.component";
 //dynamically import React Mic to avoid ssr, imported module includes library that only works with browser
 const ReactMic = dynamic(
   () =>
@@ -20,8 +22,8 @@ const useStyles = makeStyles({
     display: "block",
     visibility: "hidden",
     margin: "auto",
-    width: "30rem",
-    height: "13rem",
+    width: "40rem",
+    height: "17rem",
     marginTop: "3rem",
     boxShadow: "0px 3px 29px rgba(0,0,0,0.05)",
     borderRadius: "9px",
@@ -31,8 +33,15 @@ const useStyles = makeStyles({
   },
   visualcontainer: {
     display: "flex",
+    flexDirection: "columns",
     justifyContent: "center",
     width: "100%",
+    position: "relative",
+  },
+  tooltip: {
+    position: "absolute",
+    top: 180,
+    left: 625,
   },
 });
 
@@ -40,19 +49,18 @@ function SpeechInput() {
   useRecorder(); //execute mic functionality and send recorded data to backend
   const classes = useStyles();
   const isRecording = useSelector((state) => state.performtest.isRecording);
-  const transcript = useSelector((state) => state.performtest.transcript);
 
   return (
     <Fragment>
       <div className={classes.visualcontainer}>
-        {/* Show voice viuals */}
+        <div className={classes.tooltip}>{isRecording && <CircleRipple />}</div>
         <ReactMic
           record={isRecording}
           className={`${classes.reactmic} ${
             isRecording && classes.showreactmic
           }`}
           visualSetting="sinewave"
-          strokeColor="grey"
+          strokeColor="#CCC9C9"
           backgroundColor="white"
         />
       </div>

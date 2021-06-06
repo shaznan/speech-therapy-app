@@ -28,3 +28,10 @@ a {
   font-family: "spydolls";
   src: local("spydolls"), url(../fonts/Spydolls\ demo.ttf) format("truetype");
 }
+
+.neumorphism {
+  box-shadow: inset 0 0 15px rgba(55, 84, 170, 0),
+    inset 0 0 20px rgba(255, 255, 255, 0), 7px 7px 15px rgba(55, 84, 170, 0.15),
+    -7px -7px 20px rgba(255, 255, 255, 1),
+    inset 0px 0px 4px rgba(255, 255, 255, 0.2);
+}
