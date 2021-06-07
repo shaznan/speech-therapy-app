@@ -16,8 +16,8 @@ function SubCatergoryContent({ mainLabel, subLabel, optionsList }) {
     dispatch(testActions.setSelectedOptfromList(e.target.value));
   };
 
-  const selectedOptfromList = useSelector(
-    (state) => state.performtest.selectedOptfromList
+  const selectedOptfromList = useSelector((state) =>
+    state.performtest.selectedOptfromList.toUpperCase()
   );
 
   return (

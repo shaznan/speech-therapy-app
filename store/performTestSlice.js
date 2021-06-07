@@ -19,6 +19,9 @@ const performTestSlice = createSlice({
     mediaPermisson: null,
     transcript: null,
     isAnalyzing: false,
+    //data validation: words start with letter
+    WordsCount: [],
+    responseReceived: false,
   },
   reducers: {
     setShowStartBtn: (state, action) => {
@@ -61,6 +64,12 @@ const performTestSlice = createSlice({
     },
     setIsAnalyzing(state, action) {
       state.isAnalyzing = action.payload;
+    },
+    setWordsCount(state, action) {
+      state.WordsCount = [...state.WordsCount, action.payload];
+    },
+    setResponseReceived(state, action) {
+      state.responseReceived = action.payload;
     },
   },
 });

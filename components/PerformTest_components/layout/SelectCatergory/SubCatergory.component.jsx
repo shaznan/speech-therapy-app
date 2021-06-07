@@ -12,12 +12,8 @@ function SubCatergory() {
   );
 
   const listOfAlphabets = useSelector((state) =>
-    state.performtest.listOfAlphabets.split("")
+    state.performtest.listOfAlphabets.toUpperCase().split("")
   );
-
-  // useEffect(() => {
-  //   console.log(listOfAlphabets);
-  // }, []);
 
   const conditionallyRenderProps = (alphabetProps, randomprops) => {
     if (isAlphabetChecked) {
