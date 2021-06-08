@@ -10,7 +10,6 @@ function TimerSpinner() {
   const [remainingTime, setRemainingTime] = useState(2);
   const [countdownPercent, setCountdownPercent] = useState(100);
   const reducingFactor = countdownPercent / remainingTime;
-  // const []
   const dispatch = useDispatch();
   const classes = useStyles();
   const id = useRef(null);

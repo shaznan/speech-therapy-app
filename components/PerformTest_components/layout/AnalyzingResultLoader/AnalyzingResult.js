@@ -1,7 +1,6 @@
 import React from "react";
 import CubeAnimation from "./CubeAnimation.component";
 import Message from "./Message.component";
-import Box from "@material-ui/core/Box";
 
 function AnalyzingResult() {
   return (

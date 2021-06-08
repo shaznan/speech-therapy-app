@@ -13,6 +13,8 @@ import TimerBeforeBegin from "../../components/PerformTest_components/layout/Tim
 import SpeechInput from "../../components/PerformTest_components/layout/SpeechInput/SpeechInput";
 import AnalyzingResult from "../../components/PerformTest_components/layout/AnalyzingResultLoader/AnalyzingResult";
 import useRecorder from "../../components/PerformTest_components/layout/SpeechInput/useRecorder";
+import useAlphabetValidator from "../../components/PerformTest_components/DataValidation/Alphabetical_letters/useAlphabetValidator";
+import TranscriptErrorModal from "../../components/PerformTest_components/layout/TranscriptErrorModal/TranscriptErrorModal";
 
 function index() {
   const showStartBtn = useSelector((state) => state.performtest.showStartBtn);
@@ -30,6 +32,7 @@ function index() {
   const isAnalyzing = useSelector((state) => state.performtest.isAnalyzing);
   useRecorder();
   useStyles(); //include global styles
+  useAlphabetValidator(); // execute validation function
   return (
     <Fragment>
       <Navbar />
@@ -43,6 +46,7 @@ function index() {
           {showCountdown && <TimerBeforeBegin />}
           {!isTimeIsUp && <SpeechInput />}
           {isAnalyzing && <AnalyzingResult />}
+          <TranscriptErrorModal />
         </Grid>
       </div>
     </Fragment>

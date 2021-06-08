@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { testActions } from "../../../../store/performTestSlice";
-import useAlphabetValidator from "../../DataValidation/Alphabetical_letters/useAlphabetValidator";
 
 const useRecorder = () => {
   const isRecording = useSelector((state) => state.performtest.isRecording);
@@ -10,9 +9,6 @@ const useRecorder = () => {
   const [recorder, setRecorder] = useState(null);
   const [localStream, setLocalStream] = useState(null);
   const dispatch = useDispatch();
-  const [wordsMatch, wordsUnRelated, accuracyRate] = useAlphabetValidator();
-
-  console.log(wordsMatch, wordsUnRelated, accuracyRate);
 
   useEffect(() => {
     //get access to browser mic
@@ -80,27 +76,16 @@ const useRecorder = () => {
       axios
         .post("api/SpeechToText", { audioBytes: base64BinaryData })
         .then((res) => {
-          // console.log(res.data);
           dispatch(testActions.setTranscript(res.data));
           dispatch(testActions.setIsAnalyzing(false));
-          dispatch(testActions.setResponseReceived(true));
-          //Store validated transcript after filtering data
-          //FIXME: remove logic here work with set response received
-          // call useAlphabet validaor in index.js
-          //if accuracy rate is > 0 then dispatch action
-          dispatch(
-            testActions.setWordsCount({
-              wordsMatch: wordsMatch,
-              wordsUnRelated: wordsUnRelated,
-              accuracyRate: accuracyRate,
-            })
-          );
+          dispatch(testActions.setIsTranscriptReceived(true));
         })
         .catch((err) => {
           console.log(err);
+          dispatch(testActions.setIsTranscriptError(true));
         });
     };
-  }, [chunks, isRecording, wordsUnRelated, wordsUnRelated, accuracyRate]);
+  }, [chunks, isRecording]);
 };
 
 export default useRecorder;

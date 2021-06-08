@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
+import { testActions } from "../../../../store/performTestSlice";
 
 function useAlphabetValidator() {
   const [wordsMatch, setWordsMatch] = useState(null);
@@ -14,12 +15,10 @@ function useAlphabetValidator() {
   );
   const transcript = useSelector((state) => state.performtest.transcript);
 
-  const responseReceived = useSelector(
-    (state) => state.performtest.responseReceived
+  const isTranscriptReceived = useSelector(
+    (state) => state.performtest.isTranscriptReceived
   );
-  // const transcript = "big boss";
-  console.log(transcript);
-  // console.log(transcript);
+  const dispatch = useDispatch();
 
   if (!isAlphabetChecked) return;
 
@@ -32,35 +31,39 @@ function useAlphabetValidator() {
     const wordsArray = transcript.toUpperCase().split(" ");
 
     const totalWordsCount = wordsArray.length;
-    //FIXME: using initial state for validation, make sure to use usecallback
 
     //Get initial letter of words
     const initialLetter = wordsArray.map((word) => {
       return word[0];
     });
 
-    //filter only letters matching selected option, get count and set state
-    setWordsMatch(
-      initialLetter.filter((letter) => {
-        return letter === selectedOptfromList;
-      }).length
+    //filter only letters matching selected option, get count
+    const lettersMatch = initialLetter.filter((letter) => {
+      return letter === selectedOptfromList;
+    }).length;
+
+    //filter letters not matching selected option, get count
+
+    const lettersUnmatch = initialLetter.filter((letter) => {
+      return letter !== selectedOptfromList;
+    }).length;
+    //calculate accuracy level with 0 decimal places
+    const accuracy = Math.round((wordsMatch / totalWordsCount) * 100);
+
+    setAccuracyRate(accuracy);
+    setWordsMatch(lettersMatch);
+    setWordsUnrelated(lettersUnmatch);
+  }, [isTranscriptReceived, transcript]);
+
+  isTranscriptReceived &&
+    accuracyRate > 0 &&
+    dispatch(
+      testActions.setWordsCount({
+        wordsMatch: wordsMatch,
+        wordsUnRelated: wordsUnRelated,
+        accuracyRate: accuracyRate,
+      })
     );
-
-    //filter letters not matching selected option, get count and set state
-    setWordsUnrelated(
-      initialLetter.filter((letter) => {
-        return letter !== selectedOptfromList;
-      }).length
-    );
-
-    console.log(wordsMatch);
-    console.log(wordsUnRelated);
-    console.log(accuracyRate);
-    //calculate accuracy level with 0 decimal places and set state
-    setAccuracyRate(Math.round((wordsMatch / totalWordsCount) * 100));
-  }, [responseReceived, transcript]);
-
-  return [wordsMatch, wordsUnRelated, accuracyRate];
 }
 
 export default useAlphabetValidator;
