@@ -56,7 +56,7 @@ function useAlphabetValidator() {
   }, [isTranscriptReceived, transcript]);
 
   isTranscriptReceived &&
-    accuracyRate > 0 &&
+    accuracyRate > 0 && //FIXME: Need to look into this
     dispatch(
       testActions.setWordsCount({
         wordsMatch: wordsMatch,

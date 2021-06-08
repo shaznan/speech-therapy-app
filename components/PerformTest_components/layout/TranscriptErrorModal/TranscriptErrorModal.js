@@ -7,7 +7,7 @@ import MicrophoneAnimation from "./MicrophoneAnimation.component";
 import Message from "./Message.component";
 import DynamicButton from "../../../Common_Layout/Button/Button";
 import { useDispatch } from "react-redux";
-import { testActions } from "../../../../store/performTestSlice";
+import { restartTest } from "../../../../store/actions/performTest/performtestNavigation/navigation-actions";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -39,9 +39,7 @@ export default function TranscriptErrorModal() {
   };
 
   const onClickHandler = () => {
-    dispatch(testActions.NavigateToStart());
-    dispatch(testActions.setShowStartBtn(true));
-    dispatch(testActions.setShowRemainingTime(true));
+    dispatch(restartTest());
   };
 
   return (
@@ -66,7 +64,6 @@ export default function TranscriptErrorModal() {
             <Message />
             <MicrophoneAnimation />
             <DynamicButton text="Try Again" onClickHandler={onClickHandler} />
-            <div onClick={onClickHandler}>click me</div>
           </div>
         </Fade>
       </Modal>

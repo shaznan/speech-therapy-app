@@ -15,6 +15,8 @@ const performTestSlice = createSlice({
     isRecording: false,
     //displayremainingtime component
     isTimeIsUp: false,
+    remainingTime: 2,
+    countdownPercent: 100,
     //userecorder component
     mediaPermisson: null,
     transcript: null,
@@ -74,6 +76,15 @@ const performTestSlice = createSlice({
     },
     setIsTranscriptError(state, action) {
       state.isTranscriptError = action.payload;
+    },
+    decrementRemainingTime(state) {
+      state.remainingTime = state.remainingTime - 1;
+    },
+    setRemainingTime(state, action) {
+      state.remainingTime = action.payload;
+    },
+    setCountdownPercent(state, action) {
+      state.countdownPercent = state.countdownPercent - action.payload;
     },
   },
 });

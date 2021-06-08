@@ -29,9 +29,9 @@ const useRecorder = () => {
 
     // Lazily obtain recorder first time we're recording.
     if (recorder === null) {
-      if (isRecording) {
-        requestRecorder().then(setRecorder, console.error);
-      }
+      // if (isRecording) {
+      requestRecorder().then(setRecorder, console.error);
+      // }
       return;
     }
 

@@ -4,7 +4,6 @@ import dynamic from "next/dynamic";
 import { makeStyles } from "@material-ui/core/styles";
 import { Fragment } from "react";
 import { useSelector } from "react-redux";
-// import Tooltip from "./Tooltip.component";
 import CircleRipple from "./CircleRipple.component";
 //dynamically import React Mic to avoid ssr, imported module includes library that only works with browser
 const ReactMic = dynamic(
