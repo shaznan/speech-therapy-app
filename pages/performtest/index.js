@@ -33,6 +33,7 @@ function index() {
   useRecorder();
   useStyles(); //include global styles
   useAlphabetValidator(); // execute validation function
+  console.log("yo yo ma man");
   return (
     <Fragment>
       <Navbar />

@@ -3,9 +3,9 @@ import { useState, useEffect } from "react";
 import { testActions } from "../../../../store/performTestSlice";
 
 function useAlphabetValidator() {
-  const [wordsMatch, setWordsMatch] = useState(null);
-  const [wordsUnRelated, setWordsUnrelated] = useState(null);
-  const [accuracyRate, setAccuracyRate] = useState(null);
+  // const [wordsMatch, setWordsMatch] = useState(null);
+  // const [wordsUnRelated, setWordsUnrelated] = useState(null);
+  // const [accuracyRate, setAccuracyRate] = useState(null);
 
   const isAlphabetChecked = useSelector(
     (state) => state.performtest.isAlphabetChecked
@@ -38,32 +38,27 @@ function useAlphabetValidator() {
     });
 
     //filter only letters matching selected option, get count
-    const lettersMatch = initialLetter.filter((letter) => {
+    const wordsMatch = initialLetter.filter((letter) => {
       return letter === selectedOptfromList;
     }).length;
 
     //filter letters not matching selected option, get count
 
-    const lettersUnmatch = initialLetter.filter((letter) => {
+    const wordsUnRelated = initialLetter.filter((letter) => {
       return letter !== selectedOptfromList;
     }).length;
     //calculate accuracy level with 0 decimal places
-    const accuracy = Math.round((wordsMatch / totalWordsCount) * 100);
+    const accuracy = Math.round((wordsUnRelated / totalWordsCount) * 100);
 
-    setAccuracyRate(accuracy);
-    setWordsMatch(lettersMatch);
-    setWordsUnrelated(lettersUnmatch);
+    isTranscriptReceived &&
+      dispatch(
+        testActions.setWordsCount({
+          wordsMatch: wordsMatch,
+          wordsUnRelated: wordsUnRelated,
+          accuracyRate: accuracy,
+        })
+      );
   }, [isTranscriptReceived, transcript]);
-
-  isTranscriptReceived &&
-    accuracyRate > 0 && //FIXME: Need to look into this
-    dispatch(
-      testActions.setWordsCount({
-        wordsMatch: wordsMatch,
-        wordsUnRelated: wordsUnRelated,
-        accuracyRate: accuracyRate,
-      })
-    );
 }
 
 export default useAlphabetValidator;

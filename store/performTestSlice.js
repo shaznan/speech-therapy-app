@@ -15,7 +15,7 @@ const performTestSlice = createSlice({
     isRecording: false,
     //displayremainingtime component
     isTimeIsUp: false,
-    remainingTime: 2,
+    remainingTime: 1,
     countdownPercent: 100,
     //userecorder component
     mediaPermisson: null,
@@ -43,6 +43,7 @@ const performTestSlice = createSlice({
         ? (state.isRandomChecked = !state.isRandomChecked)
         : "";
     },
+
     setSelectedOptfromList: (state, action) => {
       state.selectedOptfromList = action.payload;
     },

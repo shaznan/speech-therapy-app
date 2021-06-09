@@ -29,9 +29,9 @@ const useRecorder = () => {
 
     // Lazily obtain recorder first time we're recording.
     if (recorder === null) {
-      // if (isRecording) {
-      requestRecorder().then(setRecorder, console.error);
-      // }
+      if (isRecording) {
+        requestRecorder().then(setRecorder, console.error);
+      }
       return;
     }
 
@@ -79,13 +79,16 @@ const useRecorder = () => {
           dispatch(testActions.setTranscript(res.data));
           dispatch(testActions.setIsAnalyzing(false));
           dispatch(testActions.setIsTranscriptReceived(true));
+          setChunks([]);
+          setRecorder(null);
+          setLocalStream(null);
         })
         .catch((err) => {
           console.log(err);
           dispatch(testActions.setIsTranscriptError(true));
         });
     };
-  }, [chunks, isRecording]);
+  }, [chunks]);
 };
 
 export default useRecorder;

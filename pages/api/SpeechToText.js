@@ -32,7 +32,6 @@ export default async (req, res) => {
       }
     };
     getTranscript();
-    console.log("hi");
 
     const responseData = await getTranscript();
     const transcript = responseData.data.results[0].alternatives[0].transcript;
