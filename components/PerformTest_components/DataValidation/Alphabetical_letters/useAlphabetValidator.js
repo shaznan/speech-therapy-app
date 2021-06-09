@@ -3,10 +3,6 @@ import { useState, useEffect } from "react";
 import { testActions } from "../../../../store/performTestSlice";
 
 function useAlphabetValidator() {
-  // const [wordsMatch, setWordsMatch] = useState(null);
-  // const [wordsUnRelated, setWordsUnrelated] = useState(null);
-  // const [accuracyRate, setAccuracyRate] = useState(null);
-
   const isAlphabetChecked = useSelector(
     (state) => state.performtest.isAlphabetChecked
   );
@@ -22,32 +18,34 @@ function useAlphabetValidator() {
 
   if (!isAlphabetChecked) return;
 
-  //break down transcript into array of words
-
+  //filter transcript words into matched, unrelated, based on selected option from dropdwn, calculate accuracy lvl
   useEffect(() => {
     if (transcript === null) {
       return;
     }
-    const wordsArray = transcript.toUpperCase().split(" ");
 
-    const totalWordsCount = wordsArray.length;
+    const wordsBreakDown = transcript.toUpperCase().split(" ");
 
-    //Get initial letter of words
-    const initialLetter = wordsArray.map((word) => {
+    //if user repeated same words, remove them
+    const removeDuplicates = new Set(wordsBreakDown);
+
+    const nonDuplicateWords = [...removeDuplicates];
+
+    const totalWordsCount = nonDuplicateWords.length;
+
+    console.log(totalWordsCount);
+
+    const initialLetter = nonDuplicateWords.map((word) => {
       return word[0];
     });
 
-    //filter only letters matching selected option, get count
     const wordsMatch = initialLetter.filter((letter) => {
       return letter === selectedOptfromList;
     }).length;
 
-    //filter letters not matching selected option, get count
-
     const wordsUnRelated = initialLetter.filter((letter) => {
       return letter !== selectedOptfromList;
     }).length;
-    //calculate accuracy level with 0 decimal places
     const accuracy = Math.round((wordsUnRelated / totalWordsCount) * 100);
 
     isTranscriptReceived &&
