@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { testActions } from "../../../../store/performTestSlice";
 
 function useAlphabetValidator() {
@@ -32,8 +32,6 @@ function useAlphabetValidator() {
     const nonDuplicateWords = [...removeDuplicates];
 
     const totalWordsCount = nonDuplicateWords.length;
-
-    console.log(totalWordsCount);
 
     const initialLetter = nonDuplicateWords.map((word) => {
       return word[0];

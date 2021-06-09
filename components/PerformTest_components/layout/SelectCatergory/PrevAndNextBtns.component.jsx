@@ -4,10 +4,14 @@ import { useStyles } from "./SelectForm_Styles";
 import DynamicButton from "../../../Common_Layout/Button/Button";
 import { useDispatch } from "react-redux";
 import { testActions } from "../../../../store/performTestSlice";
+import { useSelector } from "react-redux";
 
 function PrevAndNextBtns() {
   const classes = useStyles();
   const dispatch = useDispatch();
+  const isOptionSelected = useSelector(
+    (state) => state.performtest.isOptionSelected
+  );
   const backBtnHandler = () => {
     dispatch(testActions.setShowInstructions(true));
     dispatch(testActions.setShowCatergoryForm(false));
@@ -32,6 +36,7 @@ function PrevAndNextBtns() {
             onClickHandler={startBtnHandler}
             type="next"
             text="Start"
+            disabled={isOptionSelected ? false : true}
           />
         </div>
       </div>

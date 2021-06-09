@@ -14,6 +14,7 @@ function SubCatergoryContent({ mainLabel, subLabel, optionsList }) {
 
   const handleChange = (e) => {
     dispatch(testActions.setSelectedOptfromList(e.target.value));
+    dispatch(testActions.setIsOptionSelected(true));
   };
 
   const selectedOptfromList = useSelector(

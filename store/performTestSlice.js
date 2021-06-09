@@ -8,10 +8,12 @@ const performTestSlice = createSlice({
     showCatergoryForm: false,
     showCountdown: false,
     showRemainingTime: true,
+    //select catergory form
     isAlphabetChecked: true,
     isRandomChecked: false,
     listOfAlphabets: "abcdefghijklmnopqrstuvwxyz",
     selectedOptfromList: "",
+    isOptionSelected: false,
     isRecording: false,
     //displayremainingtime component
     isTimeIsUp: false,
@@ -46,6 +48,9 @@ const performTestSlice = createSlice({
 
     setSelectedOptfromList: (state, action) => {
       state.selectedOptfromList = action.payload;
+    },
+    setIsOptionSelected: (state, action) => {
+      state.isOptionSelected = action.payload;
     },
     setShowCountdown(state, action) {
       state.showCountdown = action.payload;
