@@ -16,6 +16,7 @@ import useRecorder from "../../components/PerformTest_components/layout/SpeechIn
 import useAlphabetValidator from "../../components/PerformTest_components/DataValidation/Alphabetical_letters/useAlphabetValidator";
 import TranscriptErrorModal from "../../components/PerformTest_components/layout/TranscriptErrorModal/TranscriptErrorModal";
 import DisplayResult from "../../components/PerformTest_components/layout/DisplayResult/DisplayResult";
+import useAnalyzeResult from "../../components/PerformTest_components/layout/DisplayResult/useAnalyzeResult";
 
 function index() {
   const showStartBtn = useSelector((state) => state.performtest.showStartBtn);
@@ -34,6 +35,8 @@ function index() {
   useRecorder();
   useStyles(); //include global styles
   useAlphabetValidator(); // execute validation function
+  useAnalyzeResult();
+
   return (
     <Fragment>
       <Navbar />

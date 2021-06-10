@@ -36,6 +36,7 @@ export const useStyles = makeStyles(() => ({
   },
   alerttext: {
     marginTop: "0.6rem",
+    marginBottom: "0.8rem",
   },
   captiontext: {
     marginTop: "0.6rem",

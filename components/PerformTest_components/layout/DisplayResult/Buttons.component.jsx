@@ -6,11 +6,15 @@ import CloseWindowBtn from "../../../Common_Layout/Button/CloseWindowBtn";
 import RotateLeftIcon from "@material-ui/icons/RotateLeft";
 import DashboardIcon from "@material-ui/icons/Dashboard";
 
-function Buttons() {
+function Buttons({ tryAgainHandler }) {
   const classes = useStyles();
+
   return (
     <Fragment>
-      <Button className={`${classes.tryagainbtn} ${classes.btn}`}>
+      <Button
+        onClick={tryAgainHandler}
+        className={`${classes.tryagainbtn} ${classes.btn}`}
+      >
         <RotateLeftIcon style={{ marginRight: "0.2rem" }} /> Try Again
       </Button>
       <Button className={`${classes.dashboardbtn} ${classes.btn}`}>
@@ -22,11 +26,11 @@ function Buttons() {
 
 export default Buttons;
 
-export const CloseBtn = () => {
+export const CloseBtn = ({ onCloseHandler }) => {
   const classes = useStyles();
   return (
     <div className={classes.closebtn}>
-      <CloseWindowBtn />
+      <CloseWindowBtn onClickHandler={onCloseHandler} />
     </div>
   );
 };

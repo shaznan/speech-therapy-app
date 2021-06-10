@@ -27,6 +27,8 @@ const performTestSlice = createSlice({
     //data validation: words start with letter
     WordsCount: [],
     isTranscriptReceived: false,
+    //login
+    isLoggedIn: false,
   },
   reducers: {
     setShowStartBtn: (state, action) => {

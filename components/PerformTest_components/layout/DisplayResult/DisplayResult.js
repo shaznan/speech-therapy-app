@@ -14,22 +14,22 @@ export default function DisplayResult() {
   const dispatch = useDispatch();
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
-  const isTranscriptError = useSelector(
-    (state) => state.performtest.isTranscriptError
+  const isTranscriptReceived = useSelector(
+    (state) => state.performtest.isTranscriptReceived
   );
 
   const handleClose = () => {
     setOpen(false);
   };
 
-  // const onClickHandler = () => {
-  //   dispatch(restartTest());
-  //   setOpen(false);
-  // };
+  const tryAgain = () => {
+    dispatch(restartTest());
+    setOpen(false);
+  };
 
-  // useEffect(() => {
-  //   isTranscriptError && setOpen(true);
-  // }, [isTranscriptError]);
+  useEffect(() => {
+    isTranscriptReceived && setOpen(true);
+  }, [isTranscriptReceived]);
 
   const test = () => {
     setOpen(true);
@@ -52,13 +52,13 @@ export default function DisplayResult() {
       >
         <Fade in={open}>
           <div className={classes.paper}>
-            <CloseBtn />
+            <CloseBtn onCloseHandler={tryAgain} />
             <Typography variant="h5">
               <strong>Congratulations! You did great!</strong>
             </Typography>
             <ResultBody />
             <div>
-              <Buttons />
+              <Buttons tryAgainHandler={tryAgain} />
             </div>
           </div>
         </Fade>
