@@ -28,7 +28,7 @@ $ripple-scale-size: 0.025; */
   height: 150px;
   animation: first 5s infinite ease-in-out;
   animation-delay: 850ms;
-  background-color: rgba(255, 68, 68, 0.1);
+  background-color: rgba(68, 68, 68, 0.1);
   /* background-color: rgba(31, 31, 31, 0.1); */
 }
 .second {
@@ -36,7 +36,7 @@ $ripple-scale-size: 0.025; */
   height: 127.5px;
   animation: second 5s infinite ease-in-out;
   animation-delay: 700ms;
-  background-color: rgba(255, 68, 68, 0.4);
+  background-color: rgba(54, 54, 54, 0.4);
   /* background-color: rgba(31, 31, 31, 0.4); */
 }
 .third {
@@ -44,7 +44,7 @@ $ripple-scale-size: 0.025; */
   height: 105px;
   animation: third 5s infinite ease-in-out;
   animation-delay: 550ms;
-  background-color: rgba(255, 68, 68, 0.7);
+  background-color: rgba(41, 41, 41, 0.7);
   /* background-color: rgba(31, 31, 31, 0.7); */
 }
 .fourth {
@@ -55,7 +55,7 @@ $ripple-scale-size: 0.025; */
   height: 82.5px;
   animation: fourth 5s infinite ease-in-out;
   animation-delay: 400ms;
-  background-color: rgba(255, 68, 68, 1);
+  background-color: rgb(32, 32, 32);
   /* background-color: rgb(31, 31, 31); */
 }
 

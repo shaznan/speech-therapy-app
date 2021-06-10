@@ -15,6 +15,7 @@ import AnalyzingResult from "../../components/PerformTest_components/layout/Anal
 import useRecorder from "../../components/PerformTest_components/layout/SpeechInput/useRecorder";
 import useAlphabetValidator from "../../components/PerformTest_components/DataValidation/Alphabetical_letters/useAlphabetValidator";
 import TranscriptErrorModal from "../../components/PerformTest_components/layout/TranscriptErrorModal/TranscriptErrorModal";
+import DisplayResult from "../../components/PerformTest_components/layout/DisplayResult/DisplayResult";
 
 function index() {
   const showStartBtn = useSelector((state) => state.performtest.showStartBtn);
@@ -47,6 +48,7 @@ function index() {
           {!isTimeIsUp && <SpeechInput />}
           {isAnalyzing && <AnalyzingResult />}
           <TranscriptErrorModal />
+          <DisplayResult />
         </Grid>
       </div>
     </Fragment>
