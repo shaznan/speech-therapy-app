@@ -15,6 +15,10 @@ function SubCatergory() {
     state.performtest.listOfAlphabets.toUpperCase().split("")
   );
 
+  const topicsToChooseFrom = useSelector(
+    (state) => state.performtest.topicsToChooseFrom
+  );
+
   const conditionallyRenderProps = (alphabetProps, randomprops) => {
     if (isAlphabetChecked) {
       return alphabetProps;
@@ -31,7 +35,7 @@ function SubCatergory() {
           "Select a topic of your choice"
         )}
         subLabel={conditionallyRenderProps("(A -  Z)", "Topics")}
-        optionsList={listOfAlphabets}
+        optionsList={isAlphabetChecked ? listOfAlphabets : topicsToChooseFrom}
       />
     </Fragment>
   );

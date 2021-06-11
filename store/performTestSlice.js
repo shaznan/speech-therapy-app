@@ -12,6 +12,7 @@ const performTestSlice = createSlice({
     isAlphabetChecked: true,
     isRandomChecked: false,
     listOfAlphabets: "abcdefghijklmnopqrstuvwxyz",
+    topicsToChooseFrom: ["Animals", "Countries"],
     selectedOptfromList: "",
     isOptionSelected: false,
     isRecording: false,
@@ -42,18 +43,13 @@ const performTestSlice = createSlice({
     },
     toggleCheckbox: (state, action) => {
       action.payload === "alphabet"
-        ? (state.isAlphabetChecked = !state.isAlphabetChecked)
+        ? (state.isAlphabetChecked = !state.isAlphabetChecked) &&
+          (state.selectedOptfromList = "")
         : action.payload === "random"
-        ? (state.isRandomChecked = !state.isRandomChecked)
+        ? (state.isRandomChecked = !state.isRandomChecked) &&
+          (state.selectedOptfromList = "")
         : "";
     },
-    // setIsAlphaChecked: (state, action) => {
-    //   state.isAlphabetChecked = action.payload;
-    // },
-
-    // isIsRandomChecked: (state, action) => {
-    //   state.isRandomChecked = action.payload;
-    // },
 
     setSelectedOptfromList: (state, action) => {
       state.selectedOptfromList = action.payload;
