@@ -47,6 +47,13 @@ const performTestSlice = createSlice({
         ? (state.isRandomChecked = !state.isRandomChecked)
         : "";
     },
+    // setIsAlphaChecked: (state, action) => {
+    //   state.isAlphabetChecked = action.payload;
+    // },
+
+    // isIsRandomChecked: (state, action) => {
+    //   state.isRandomChecked = action.payload;
+    // },
 
     setSelectedOptfromList: (state, action) => {
       state.selectedOptfromList = action.payload;

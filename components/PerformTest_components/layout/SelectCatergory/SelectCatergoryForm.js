@@ -12,12 +12,12 @@ import { testActions } from "../../../../store/performTestSlice";
 
 function SelectCatergoryForm() {
   const dispatch = useDispatch();
+  const classes = useStyles();
   const onClickHandler = () => {
     dispatch(testActions.setShowCatergoryForm(false));
     dispatch(testActions.setShowStartBtn(true));
   };
 
-  const classes = useStyles();
   return (
     <Fragment>
       <Grid item lg={12} className={classes.container} style={{}}>

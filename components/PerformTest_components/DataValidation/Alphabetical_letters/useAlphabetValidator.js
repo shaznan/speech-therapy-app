@@ -16,10 +16,9 @@ function useAlphabetValidator() {
   );
   const dispatch = useDispatch();
 
-  if (!isAlphabetChecked) return;
-
   //filter transcript words into matched, unrelated, based on selected option from dropdwn, calculate accuracy lvl
   useEffect(() => {
+    if (!isAlphabetChecked) return;
     if (transcript === null) {
       return;
     }
