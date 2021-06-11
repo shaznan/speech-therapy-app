@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 import { testActions } from "../../../../store/performTestSlice";
 
 function TimerSpinner() {
-  const [remainingTime, setRemainingTime] = useState(2);
+  const [remainingTime, setRemainingTime] = useState(5);
   const [countdownPercent, setCountdownPercent] = useState(100);
   const reducingFactor = countdownPercent / remainingTime;
   const dispatch = useDispatch();

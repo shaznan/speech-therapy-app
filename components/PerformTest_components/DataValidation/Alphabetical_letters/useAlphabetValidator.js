@@ -44,7 +44,7 @@ function useAlphabetValidator() {
     const wordsUnRelated = initialLetter.filter((letter) => {
       return letter !== selectedOptfromList;
     }).length;
-    const accuracy = Math.round((wordsUnRelated / totalWordsCount) * 100);
+    const accuracy = Math.round((wordsMatch / totalWordsCount) * 100);
 
     isTranscriptReceived &&
       dispatch(

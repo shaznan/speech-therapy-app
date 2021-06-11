@@ -37,7 +37,7 @@ export default function DisplayResult() {
   //FIXME: remove button;
   return (
     <div>
-      <button onClick={test}>Open</button>
+      {/* <button onClick={test}>Open</button> */}
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -53,9 +53,6 @@ export default function DisplayResult() {
         <Fade in={open}>
           <div className={classes.paper}>
             <CloseBtn onCloseHandler={tryAgain} />
-            <Typography variant="h5">
-              <strong>Congratulations! You did great!</strong>
-            </Typography>
             <ResultBody />
             <div>
               <Buttons tryAgainHandler={tryAgain} />
