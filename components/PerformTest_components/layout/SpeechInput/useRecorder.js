@@ -86,6 +86,11 @@ const useRecorder = () => {
         .catch((err) => {
           console.log(err);
           dispatch(testActions.setIsTranscriptError(true));
+          dispatch(testActions.setIsAnalyzing(false));
+          dispatch(testActions.setIsTranscriptReceived(false));
+          setChunks([]);
+          setRecorder(null);
+          setLocalStream(null);
         });
     };
   }, [chunks]);

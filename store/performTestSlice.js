@@ -18,7 +18,7 @@ const performTestSlice = createSlice({
     isRecording: false,
     //displayremainingtime component
     isTimeIsUp: false,
-    remainingTime: 3,
+    remainingTime: 1,
     countdownPercent: 100,
     //userecorder component
     mediaPermisson: null,
