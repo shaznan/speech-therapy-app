@@ -94,6 +94,9 @@ const performTestSlice = createSlice({
     setCountdownPercent(state, action) {
       state.countdownPercent = state.countdownPercent - action.payload;
     },
+    resetCountdownPercent(state, action) {
+      state.countdownPercent = action.payload;
+    },
   },
 });
 

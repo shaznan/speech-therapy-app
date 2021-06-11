@@ -9,10 +9,11 @@ export const restartTest = () => {
     dispatch(testActions.setIsTimeIsUp(false));
     // dispatch(testActions.setIsRecording(false));
     dispatch(testActions.setSelectedOptfromList(""));
-    dispatch(testActions.setCountdownPercent(100));
+    dispatch(testActions.resetCountdownPercent(100));
     dispatch(testActions.setTranscript(null));
     dispatch(testActions.setIsTranscriptError(false));
     dispatch(testActions.setIsTranscriptReceived(false));
+    dispatch(testActions.setIsOptionSelected(false));
   };
 };
 

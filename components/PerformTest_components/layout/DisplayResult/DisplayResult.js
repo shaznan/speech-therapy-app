@@ -13,7 +13,7 @@ import { CloseBtn } from "./Buttons.component";
 export default function DisplayResult() {
   const dispatch = useDispatch();
   const classes = useStyles();
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState(false);
   const isTranscriptReceived = useSelector(
     (state) => state.performtest.isTranscriptReceived
   );
@@ -31,9 +31,9 @@ export default function DisplayResult() {
     isTranscriptReceived && setOpen(true);
   }, [isTranscriptReceived]);
 
-  const test = () => {
-    setOpen(true);
-  };
+  // const test = () => {
+  //   setOpen(true);
+  // };
   //FIXME: remove button;
   return (
     <div>
