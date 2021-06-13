@@ -16,6 +16,7 @@
     "axios": "^0.21.1",
     "blob-to-base64": "^1.0.2",
     "lodash": "^4.17.21",
+    "mongodb": "^3.6.9",
     "next": "10.2.0",
     "next-images": "^1.7.0",
     "next-redux-wrapper": "^6.0.2",

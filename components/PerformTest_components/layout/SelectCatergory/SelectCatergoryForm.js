@@ -13,6 +13,7 @@ import { testActions } from "../../../../store/performTestSlice";
 function SelectCatergoryForm() {
   const dispatch = useDispatch();
   const classes = useStyles();
+  
   const onClickHandler = () => {
     dispatch(testActions.setShowCatergoryForm(false));
     dispatch(testActions.setShowStartBtn(true));

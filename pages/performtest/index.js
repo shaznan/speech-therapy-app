@@ -16,7 +16,9 @@ import useRecorder from "../../components/PerformTest_components/layout/SpeechIn
 import useAlphabetValidator from "../../components/PerformTest_components/DataValidation/Alphabetical_letters/useAlphabetValidator";
 import TranscriptErrorModal from "../../components/PerformTest_components/layout/TranscriptErrorModal/TranscriptErrorModal";
 import DisplayResult from "../../components/PerformTest_components/layout/DisplayResult/DisplayResult";
-import useAnalyzeResult from "../../components/PerformTest_components/layout/DisplayResult/useAnalyzeResult"; //FIXME: REMOVE
+import useTopicsValidator from "../../components/PerformTest_components/DataValidation/Random_topics/useTopicsValidator";
+// import useAnalyzeResult from "../../components/PerformTest_components/layout/DisplayResult/useAnalyzeResult"; //FIXME: REMOVE
+import StoreData_MongoDb from "../../components/StoreData_MongoDB/StoreData_MongoDb"; //FIXME: Remove
 
 function index() {
   const showStartBtn = useSelector((state) => state.performtest.showStartBtn);
@@ -35,6 +37,7 @@ function index() {
   useRecorder();
   useStyles(); //include global styles
   useAlphabetValidator(); // execute validation function
+  useTopicsValidator();
 
   return (
     <Fragment>
@@ -51,6 +54,8 @@ function index() {
           {isAnalyzing && <AnalyzingResult />}
           <TranscriptErrorModal />
           <DisplayResult />
+          {/* remove FIXME: */}
+          {/* <StoreData_MongoDb /> */}
         </Grid>
       </div>
     </Fragment>
