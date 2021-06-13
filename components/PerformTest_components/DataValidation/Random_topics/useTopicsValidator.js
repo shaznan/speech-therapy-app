@@ -7,40 +7,28 @@ import axios from "axios";
 function useTopicsValidator() {
   const [catergoryItems, setCatergoryItems] = useState(null);
   const [transcriptWords, setTranscriptWords] = useState(null);
-  //   const isRandomChecked = useSelector(
-  //     (state) => state.performtest.isRandomChecked
-  //   );
+  const isRandomChecked = useSelector(
+    (state) => state.performtest.isRandomChecked
+  );
 
-  //   const selectedOptfromList = useSelector(
-  //     (state) => state.performtest.selectedOptfromList
-  //   );
+  const selectedOptfromList = useSelector(
+    (state) => state.performtest.selectedOptfromList
+  );
 
-  //   const isTranscriptReceived = useSelector(
-  //     (state) => state.performtest.isTranscriptReceived
-  //   );
+  const transcript = useSelector((state) => state.performtest.transcript);
 
-  //   const transcript = useSelector((state) => state.performtest.transcript);
+  const dispatch = useDispatch();
 
-  //   const dispatch = useDispatch();
-
-  const isRandomChecked = true;
-
-  const selectedOptfromList = "countries";
-
-  const isTranscriptReceived = true;
-
-  const transcript =
-    "finland Shaznan Acer finland cuba china canada brazil australia angola";
-
-  //compare transcript words with words that belong to a topic catergory
-  const GetWordsRelatedToTopic = (transcriptWords, catergoryItems) => {
-    var setA = new Set(transcriptWords);
-    var setB = new Set(catergoryItems);
-    var intersection = new Set([...setA].filter((x) => setB.has(x)));
-    return Array.from(intersection);
-  };
-  //     [transcriptWords, catergoryItems]
-  //   );
+  //compare transcript words with words that belong to selected topic catergory
+  const GetWordsRelatedToTopic = useCallback(
+    (transcriptWords, catergoryItems) => {
+      var setA = new Set(transcriptWords);
+      var setB = new Set(catergoryItems);
+      var intersection = new Set([...setA].filter((x) => setB.has(x)));
+      return Array.from(intersection);
+    },
+    []
+  );
 
   //get list of items in catergory
   useEffect(() => {
@@ -55,15 +43,14 @@ function useTopicsValidator() {
       })
       .then((res) => {
         console.log(res);
-        setCatergoryItems(res.data[selectedOptfromList].list);
+        console.log(selectedOptfromList);
+        setCatergoryItems(res.data[selectedOptfromList.toLowerCase()].list);
       })
       .catch((err) => console.error(err));
-  }, [isRandomChecked, transcriptWords]);
+  }, [isRandomChecked, transcript]);
 
   //dataValidation
   useEffect(() => {
-    if (!isRandomChecked) return;
-    if (transcript === null) return;
     if (catergoryItems === null) return;
 
     const wordsBreakDown = transcript.split(" ");
@@ -88,7 +75,7 @@ function useTopicsValidator() {
 
     // const wordsUnRelated = transcriptWords
     //const accuracyRate = data
-  }, [isRandomChecked, transcript, catergoryItems, transcriptWords]);
+  }, [catergoryItems, transcriptWords]);
 }
 
 export default useTopicsValidator;
