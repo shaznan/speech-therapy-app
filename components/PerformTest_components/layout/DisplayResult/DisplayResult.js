@@ -17,6 +17,9 @@ export default function DisplayResult() {
   const isTranscriptReceived = useSelector(
     (state) => state.performtest.isTranscriptReceived
   );
+  const isWordsCountReceived = useSelector(
+    (state) => state.performtest.isWordsCountReceived
+  );
 
   const handleClose = () => {
     setOpen(false);
@@ -28,8 +31,8 @@ export default function DisplayResult() {
   };
 
   useEffect(() => {
-    isTranscriptReceived && setOpen(true);
-  }, [isTranscriptReceived]);
+    isWordsCountReceived && setOpen(true);
+  }, [isWordsCountReceived]);
 
   // const test = () => {
   //   setOpen(true);

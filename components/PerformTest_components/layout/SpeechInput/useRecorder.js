@@ -77,7 +77,7 @@ const useRecorder = () => {
         .post("api/SpeechToText", { audioBytes: base64BinaryData })
         .then((res) => {
           dispatch(testActions.setTranscript(res.data));
-          dispatch(testActions.setIsAnalyzing(false));
+          // dispatch(testActions.setIsAnalyzing(false));
           dispatch(testActions.setIsTranscriptReceived(true));
           setChunks([]);
           setRecorder(null);
@@ -86,7 +86,7 @@ const useRecorder = () => {
         .catch((err) => {
           console.log(err);
           dispatch(testActions.setIsTranscriptError(true));
-          dispatch(testActions.setIsAnalyzing(false));
+          // dispatch(testActions.setIsAnalyzing(false));
           dispatch(testActions.setIsTranscriptReceived(false));
           setChunks([]);
           setRecorder(null);

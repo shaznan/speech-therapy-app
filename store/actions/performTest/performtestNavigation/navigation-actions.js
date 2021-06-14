@@ -8,6 +8,7 @@ export const restartTest = () => {
     dispatch(testActions.setRemainingTime(1));
     dispatch(testActions.setIsTimeIsUp(false));
     // dispatch(testActions.setIsRecording(false));
+    dispatch(testActions.setIsWordsCountReceived(false));
     dispatch(testActions.setSelectedOptfromList(""));
     dispatch(testActions.resetCountdownPercent(100));
     dispatch(testActions.setTranscript(null));

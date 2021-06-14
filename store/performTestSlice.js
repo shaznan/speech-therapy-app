@@ -27,6 +27,7 @@ const performTestSlice = createSlice({
     isTranscriptError: false,
     //data validation: words start with letter
     WordsCount: [],
+    isWordsCountReceived: false,
     isTranscriptReceived: false,
     //login
     isLoggedIn: false,
@@ -81,6 +82,9 @@ const performTestSlice = createSlice({
     },
     setWordsCount(state, action) {
       state.WordsCount = [...state.WordsCount, action.payload];
+    },
+    setIsWordsCountReceived(state, action) {
+      state.isWordsCountReceived = action.payload;
     },
     setIsTranscriptReceived(state, action) {
       state.isTranscriptReceived = action.payload;

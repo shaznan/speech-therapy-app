@@ -17,6 +17,10 @@ function useTopicsValidator() {
 
   const transcript = useSelector((state) => state.performtest.transcript);
 
+  const isTranscriptReceived = useSelector(
+    (state) => state.performtest.isTranscriptReceived
+  );
+
   const dispatch = useDispatch();
 
   //compare transcript words with words that belong to selected topic catergory
@@ -49,7 +53,7 @@ function useTopicsValidator() {
       .catch((err) => console.error(err));
   }, [isRandomChecked, transcript]);
 
-  //dataValidation
+  //return wordsMatch, wordsUnmated, accuracyrate
   useEffect(() => {
     if (catergoryItems === null) return;
 
@@ -62,20 +66,37 @@ function useTopicsValidator() {
     //if user repeated same words, remove them
     const removeDuplicates = new Set(wordsFirstLetterCaps);
 
-    const nonDuplicateWords = [...removeDuplicates];
-    // setTranscriptWords(nonDuplicateWords);
+    const totalWordsCount = [...removeDuplicates];
+    // setTranscriptWords(totalWordsCount);
 
     // Performs intersection operation
     const wordsMatch = GetWordsRelatedToTopic(
-      nonDuplicateWords,
+      totalWordsCount,
       catergoryItems
-    );
+    ).length;
 
-    console.log(wordsMatch);
+    const wordsUnRelated = totalWordsCount.length - wordsMatch;
 
-    // const wordsUnRelated = transcriptWords
-    //const accuracyRate = data
+    const accuracy = Math.round((wordsMatch / totalWordsCount.length) * 100);
+
+    if (isTranscriptReceived) {
+      dispatch(
+        testActions.setWordsCount({
+          wordsMatch: wordsMatch,
+          wordsUnRelated: wordsUnRelated,
+          accuracyRate: accuracy,
+        })
+      );
+      dispatch(testActions.setIsWordsCountReceived(true));
+      dispatch(testActions.setIsAnalyzing(false));
+    }
   }, [catergoryItems, transcriptWords]);
 }
 
 export default useTopicsValidator;
+
+//FIXME: change wordmatch to lenght, create, wordsunrelated, accuracy rate
+//states to redux store
+//push to wordsCount
+//create more catergories - or else you will regret later
+//show data in displayresults modal

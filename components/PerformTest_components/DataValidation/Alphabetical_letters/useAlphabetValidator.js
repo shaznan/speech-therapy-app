@@ -45,7 +45,7 @@ function useAlphabetValidator() {
     }).length;
     const accuracy = Math.round((wordsMatch / totalWordsCount) * 100);
 
-    isTranscriptReceived &&
+    if (isTranscriptReceived) {
       dispatch(
         testActions.setWordsCount({
           wordsMatch: wordsMatch,
@@ -53,6 +53,9 @@ function useAlphabetValidator() {
           accuracyRate: accuracy,
         })
       );
+      dispatch(testActions.setIsWordsCountReceived(true));
+      dispatch(testActions.setIsAnalyzing(false));
+    }
   }, [isTranscriptReceived, transcript]);
 }
 
