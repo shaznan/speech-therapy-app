@@ -6,7 +6,6 @@ import axios from "axios";
 
 function useTopicsValidator() {
   const [catergoryItems, setCatergoryItems] = useState(null);
-  const [transcriptWords, setTranscriptWords] = useState(null);
   const isRandomChecked = useSelector(
     (state) => state.performtest.isRandomChecked
   );
@@ -17,14 +16,15 @@ function useTopicsValidator() {
 
   const transcript = useSelector((state) => state.performtest.transcript);
 
-  const isTranscriptReceived = useSelector(
-    (state) => state.performtest.isTranscriptReceived
-  );
-
   const dispatch = useDispatch();
 
+  //TODO:REMOVE
+  const isWordsCountReceived = useSelector(
+    (state) => state.performtest.isWordsCountReceived
+  );
+
   //compare transcript words with words that belong to selected topic catergory
-  const GetWordsRelatedToTopic = useCallback(
+  const CompareWordsRelatedToTopic = useCallback(
     (transcriptWords, catergoryItems) => {
       var setA = new Set(transcriptWords);
       var setB = new Set(catergoryItems);
@@ -48,55 +48,64 @@ function useTopicsValidator() {
       .then((res) => {
         console.log(res);
         console.log(selectedOptfromList);
-        setCatergoryItems(res.data[selectedOptfromList.toLowerCase()].list);
+        setCatergoryItems(
+          res.data[selectedOptfromList.toLowerCase()].list.map((word) => {
+            return word.toLowerCase();
+          })
+        );
       })
       .catch((err) => console.error(err));
   }, [isRandomChecked, transcript]);
 
-  //return wordsMatch, wordsUnmated, accuracyrate
+  //create wordsMatch, wordsUnmated, accuracyrate
   useEffect(() => {
     if (catergoryItems === null) return;
 
     const wordsBreakDown = transcript.split(" ");
 
-    const wordsFirstLetterCaps = wordsBreakDown.map((word) => {
-      return word[0].toUpperCase() + word.slice(1);
-    });
+    //need to convert to compare, because words coming from db is first letter caps
+    // const wordsFirstLetterCaps = wordsBreakDown.map((word) => {
+    //   return word[0].toUpperCase() + word.slice(1);
+    // });
 
     //if user repeated same words, remove them
-    const removeDuplicates = new Set(wordsFirstLetterCaps);
+    const removeDuplicates = new Set(wordsBreakDown);
 
-    const totalWordsCount = [...removeDuplicates];
-    // setTranscriptWords(totalWordsCount);
+    const totalWords = [...removeDuplicates];
 
+    console.log(totalWords);
     // Performs intersection operation
-    const wordsMatch = GetWordsRelatedToTopic(
-      totalWordsCount,
+    const wordsMatch = CompareWordsRelatedToTopic(
+      totalWords,
       catergoryItems
     ).length;
 
-    const wordsUnRelated = totalWordsCount.length - wordsMatch;
+    const wordsUnRelated = totalWords.length - wordsMatch;
 
-    const accuracy = Math.round((wordsMatch / totalWordsCount.length) * 100);
+    const accuracy = Math.round((wordsMatch / totalWords.length) * 100);
 
-    if (isTranscriptReceived) {
-      dispatch(
-        testActions.setWordsCount({
-          wordsMatch: wordsMatch,
-          wordsUnRelated: wordsUnRelated,
-          accuracyRate: accuracy,
-        })
-      );
-      dispatch(testActions.setIsWordsCountReceived(true));
-      dispatch(testActions.setIsAnalyzing(false));
-    }
-  }, [catergoryItems, transcriptWords]);
+    dispatch(
+      testActions.setWordsCount({
+        wordsMatch: wordsMatch,
+        wordsUnRelated: wordsUnRelated,
+        accuracyRate: accuracy,
+      })
+    );
+    dispatch(testActions.setIsWordsCountReceived(true));
+    dispatch(testActions.setIsAnalyzing(false));
+  }, [catergoryItems]);
+
+  useEffect(() => {
+    if (!isWordsCountReceived) return;
+    console.log(catergoryItems);
+  }, [isWordsCountReceived]);
 }
 
 export default useTopicsValidator;
 
-//FIXME: change wordmatch to lenght, create, wordsunrelated, accuracy rate
-//states to redux store
-//push to wordsCount
-//create more catergories - or else you will regret later
-//show data in displayresults modal
+//FIXME: change wordmatch to lenght, create, wordsunrelated, accuracy rate - done
+//states to redux store //TODO:
+//push to wordsCount - done
+//create more catergories - or else you will regret later //TODO:
+//show data in displayresults modal - done
+// Display result modal check and see if any problem coz when running alphabatical option the modal doesnt show - done

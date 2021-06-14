@@ -5,7 +5,10 @@ export default async (req, res) => {
   if (req.method === "POST") {
     const listOfItems = req.body;
 
-    const data = { animals: listOfItems }; //TODO: //this is the object that comes in from the front end post http request
+    const data = {
+      itemName: "carmanufacturers",
+      list: listOfItems,
+    }; //TODO: //this is the object that comes in from the front end post http request
     console.log(data);
 
     const client = await MongoClient.connect(

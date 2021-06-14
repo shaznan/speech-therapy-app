@@ -5,6 +5,7 @@ import { MongoClient } from "mongodb";
 export default async (req, res) => {
   if (req.method === "GET") {
     const topic = req.query.topic;
+    // console.log(topic);
     const client = await MongoClient.connect(
       "mongodb+srv://shaznan:j77hFjvqaRPiva-@speech-therapy-app.mb1pc.mongodb.net/TopicsDataSet?retryWrites=true&w=majority"
     );

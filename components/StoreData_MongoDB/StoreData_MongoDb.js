@@ -6,42 +6,28 @@ function StoreData_MongoDb() {
   const [gistData, setGistData] = useState(null);
 
   useEffect(() => {
-    // if (!isButtonChecked) return;
-
-    //get list of countries from gist
-    // axios
-    //   .get(
-    //     "https://gist.githubusercontent.com/kalinchernev/486393efcca01623b18d/raw/daa24c9fea66afb7d68f8d69f0c4b8eeb9406e83/countries"
-    //   )
-    //   .then((res) => {
-    //     setGistData(res.data.split("\n"));
-    //     // console.log(gistData);
-    //     // console.log(res);
-    //   })
-    //   .catch((err) => console.error(err));
-
-    // get list of animals from gist
     axios
       .get(
-        "https://gist.githubusercontent.com/atduskgreg/3cf8ef48cb0d29cf151bedad81553a54/raw/82f142562cf50b0f6fb8010f890b2f934093553e/animals.txt" //enter gist url //TODO:
+        "https://gist.githubusercontent.com/pcgeek86/78f4cad29dd16961ceeeee654127a0db/raw/b9a19ee5c6fb283eaf2f863a18ba9176359abd47/Car%2520Manufacturers.json" //enter gist url //TODO:
       )
       .then((res) => {
-        setGistData(res.data.split("\n"));
+        console.log(res);
+        setGistData(res.data);
+        // split("\n")
+        console.log(res);
         // console.log(res);
       })
       .catch((err) => console.error(err));
 
     //
   }, []);
-  //   const { countries, animals } = gistData;
-
-  //   console.log(gistData);
 
   useEffect(() => {
     if (!isButtonChecked) return;
     if (gistData === null) return;
+    console.log("reached post point");
     axios
-      .post("/api/StoreTopicsData", { "list of animals": gistData }) //TODO:
+      .post("/api/StoreTopicsData", { carmanufacturers: gistData }) //TODO:
       .then((res) => {
         console.log(res);
         console.log(gistData);
