@@ -5,13 +5,15 @@ import ArrowLeftIcon from "@material-ui/icons/ArrowLeft";
 import { useStyles } from "./ButtonStyles";
 import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
+import Link from "next/link";
 
-function DynamicButton({
+const DynamicButton = ({
   type = "primary",
   text = "",
   onClickHandler = () => {},
   disabled = false,
-}) {
+  href = "",
+}) => {
   const classes = useStyles();
 
   const conditionallyRenderClassName = (type) => {
@@ -36,19 +38,22 @@ function DynamicButton({
   return (
     <div>
       <ThemeProvider theme={theme}>
-        <Button
-          onClick={onClickHandler}
-          disabled={disabled}
-          className={conditionallyRenderClassName(type)}
-        >
-          {" "}
-          {type === "back" && <ArrowLeftIcon className={classes.iconback} />}
-          {text}
-          {type === "next" && <ArrowRightIcon className={classes.icon} />}
-        </Button>
+        <Link href={href}>
+          <Button
+            onClick={onClickHandler}
+            disabled={disabled}
+            className={conditionallyRenderClassName(type)}
+            href={href}
+          >
+            {" "}
+            {type === "back" && <ArrowLeftIcon className={classes.iconback} />}
+            {text}
+            {type === "next" && <ArrowRightIcon className={classes.icon} />}
+          </Button>
+        </Link>
       </ThemeProvider>
     </div>
   );
-}
+};
 
 export default DynamicButton;

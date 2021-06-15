@@ -44,7 +44,7 @@ function index() {
       <Navbar />
       <div className={classes.performtestbgimage}>
         <Grid container spacing={0}>
-          <Title />
+          <Title /> {/* TODO: Move to performtesthome page */}
           <DisplayCurrentProgress />
           {showStartBtn && <StartNowBtn />}
           {showInstructions && <DisplayInstructions />}

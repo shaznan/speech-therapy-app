@@ -5,7 +5,7 @@ export const restartTest = () => {
     dispatch(testActions.setShowStartBtn(true));
     dispatch(testActions.setShowRemainingTime(true));
     dispatch(testActions.setIsAnalyzing(false));
-    dispatch(testActions.setRemainingTime(1));
+    dispatch(testActions.setRemainingTime(2));
     dispatch(testActions.setIsTimeIsUp(false));
     // dispatch(testActions.setIsRecording(false));
     dispatch(testActions.setIsWordsCountReceived(false));

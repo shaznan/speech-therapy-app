@@ -14,6 +14,7 @@ function useAnalyzeResult() {
     ArticleLink: null,
   });
 
+  //select current test object
   useEffect(() => {
     if (WordsCount.length === 0) return;
     setCurrentWordCount(WordsCount[WordsCount.length - 1]);

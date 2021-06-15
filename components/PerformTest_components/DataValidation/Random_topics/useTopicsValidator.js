@@ -50,6 +50,7 @@ function useTopicsValidator() {
         console.log(selectedOptfromList);
         setCatergoryItems(
           res.data[selectedOptfromList.toLowerCase()].list.map((word) => {
+            //TODO: convert to function
             return word.toLowerCase();
           })
         );
@@ -61,12 +62,9 @@ function useTopicsValidator() {
   useEffect(() => {
     if (catergoryItems === null) return;
 
-    const wordsBreakDown = transcript.split(" ");
-
-    //need to convert to compare, because words coming from db is first letter caps
-    // const wordsFirstLetterCaps = wordsBreakDown.map((word) => {
-    //   return word[0].toUpperCase() + word.slice(1);
-    // });
+    const wordsBreakDown = transcript.split(" ").map((word) => {
+      return word.toLowerCase();
+    });
 
     //if user repeated same words, remove them
     const removeDuplicates = new Set(wordsBreakDown);

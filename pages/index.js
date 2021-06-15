@@ -6,6 +6,7 @@ import { useStyles } from "../styles/global.styles";
 import HomepageText from "../components/homepage_Components/HomepageText";
 import DynamicButton from "../components/Common_Layout/Button/Button";
 import BannerImage from "../components/Common_Layout/Banner/BannerImage";
+import Link from "next/link";
 
 export default function Home() {
   const classes = useStyles();
@@ -18,7 +19,13 @@ export default function Home() {
           <Grid item lg={6} xs={12} className={classes.textcontainer}>
             <div>
               <HomepageText />
-              <DynamicButton type="primary" text="Perform Test" />
+              {/* <Link href="/performtest"> */}
+              <DynamicButton
+                type="primary"
+                text="Perform Test"
+                href="/performtest"
+              />
+              {/* </Link> */}
             </div>
           </Grid>
           <Grid item lg={6} xs={12} className={classes.imagecontainer}>
