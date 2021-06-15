@@ -2,7 +2,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
   primarybutton: {
-    backgroundColor: "#ED1C24",
+    backgroundColor: "#FF4444",
     transition: "0.3s ease-in-out",
     "&:hover": {
       backgroundColor: "#ff0008",
@@ -33,6 +33,20 @@ const useStyles = makeStyles({
     color: "#636363",
     ["@media (max-width:1280px)"]: {
       fontSize: "1.5rem",
+    },
+  },
+  primaryoutline: {
+    backgroundColor: "white",
+    border: "1px solid rgba(255,68,68,0.7)",
+    color: "#FF4444",
+    padding: "0.25rem 1.5rem",
+    transition: "0.1s ease-in",
+    "&:hover": {
+      backgroundColor: "white",
+      color: "#ff0008",
+      // "& $icon": {
+      //   transform: "TranslateX(5px)",
+      // },
     },
   },
 

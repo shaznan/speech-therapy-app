@@ -24,6 +24,9 @@ const DynamicButton = ({
     if (type === "back") {
       return classes.backbutton;
     }
+    if (type === "primaryOutline") {
+      return `${classes.primarybutton} ${classes.primaryoutline} `;
+    }
   };
 
   const theme = createMuiTheme({

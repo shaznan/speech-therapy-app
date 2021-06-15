@@ -1,9 +1,12 @@
 import React from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form } from "formik";
 import TextInputFeild from "./TextFeild.component";
 import * as Yup from "yup";
+import { useStyles } from "../loginStyles";
+import FormButtons from "./FormButtons.component";
 
 function Signup_Form() {
+  const classes = useStyles();
   const validate = Yup.object({
     nickName: Yup.string()
       .max(15, "Must be 15 characters or less")
@@ -30,9 +33,8 @@ function Signup_Form() {
       }}
     >
       {(formik) => (
-        <div>
-          <h1>Create Account</h1>
-          {/* {console.log(formik.values)} */}
+        <div className={classes.formcontainer}>
+          <h1 className={classes.formheader}>Create Account</h1>
           <Form>
             <TextInputFeild label="Nick Name" name="nickName" type="text" />
             <TextInputFeild label="Email" name="email" type="email" />
@@ -42,8 +44,7 @@ function Signup_Form() {
               name="confirmPassword"
               type="password"
             />
-            <button type="submit">Register</button>
-            <button type="button">Reset</button>
+            <FormButtons />
           </Form>
         </div>
       )}
