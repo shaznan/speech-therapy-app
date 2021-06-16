@@ -4,25 +4,23 @@ import Button from "../../Common_Layout/Button/Button";
 import Grid from "@material-ui/core/Grid";
 import { useStyles } from "../loginStyles";
 import GoogleSignInBtn from "./GoogleSignInBtn.component";
+import { useSelector, useDispatch } from "react-redux";
+import { login_signup_Actions } from "../../../store/login_signupSlice";
 
 function FormButtons() {
   const classes = useStyles();
-  const [signInActive, setSignInActive] = useState(false);
-  const [signUpActive, setSignUpActive] = useState(true);
-
-  const toggleActiveStatus = () => {
-    setSignInActive(!signInActive);
-    setSignUpActive(!signUpActive);
-  };
+  const dispatch = useDispatch();
+  const signInActive = useSelector((state) => state.login_signup.signInActive);
+  const signUpActive = useSelector((state) => state.login_signup.signUpActive);
 
   const toggleSignIn = () => {
     if (signInActive) return;
-    toggleActiveStatus();
+    dispatch(login_signup_Actions.toggleBtnActiveStatus());
   };
 
   const toggleSignUp = () => {
     if (signUpActive) return;
-    toggleActiveStatus();
+    dispatch(login_signup_Actions.toggleBtnActiveStatus());
   };
 
   return (
@@ -53,5 +51,3 @@ function FormButtons() {
 }
 
 export default FormButtons;
-
-//FIXME: when u click submit state switches as well

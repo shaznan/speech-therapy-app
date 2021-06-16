@@ -43,6 +43,9 @@ const useStyles = makeStyles({
       },
     },
   },
+  headercontainer: {
+    marginBottom: "-7rem",
+  },
   formcontainer: {
     backgroundColor: "white",
     padding: "1rem 4rem 3rem 3rem",
@@ -65,8 +68,21 @@ const useStyles = makeStyles({
   signupbtn: {
     textAlign: "end",
     paddingRight: "0.5rem",
-    // transform: "scale(1.2)",
   },
+  loginLogoImage: {
+    width: "12rem",
+    marginLeft: "15vw",
+    marginBottom: "-7rem",
+    transition: "0.3s ease-in-out",
+  },
+
+  //   @media only screen and (max-width: 1280px) {
+  //     .loginLogoImage {
+  //       width: 9rem;
+  //       margin-left: 24%;
+  //     }
+  //   }
+
   signinbtn: {
     paddingLeft: "0.5rem",
     // transform: "scale(1.2)",

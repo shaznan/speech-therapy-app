@@ -9,7 +9,7 @@ function Header() {
   const classes = useStyles();
   return (
     <Fragment>
-      <Grid container spacing={0}>
+      <Grid container spacing={0} className={classes.headercontainer}>
         <Grid item md={6} className={classes.backcontainer}>
           <Button type="back" text="back" href="/performtest" />
         </Grid>

@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import Grid from "@material-ui/core/Grid";
 import Link from "next/link";
 import classes from "./NavbarLogo.module.css";
-import logoImage from "../images/logo.png";
+import logoImage from "../../../../assets/images/Logo.png";
 
 function NavbarLogo() {
   return (
