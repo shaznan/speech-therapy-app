@@ -71,6 +71,25 @@ const useStyles = makeStyles({
     paddingLeft: "0.5rem",
     // transform: "scale(1.2)",
   },
+  signup_in_container: {
+    height: "3vh",
+  },
+  loginwithgoogle_btn: {
+    "&:hover": {
+      backgroundColor: "#0069d9",
+      borderColor: "black",
+      boxShadow: "none",
+    },
+  },
+  googleicon: {
+    width: "1.5rem",
+    marginLeft: "0.4rem",
+  },
+  loginwithgoogle_cont: {
+    marginTop: "1.5rem",
+    display: "flex",
+    justifyContent: "center",
+  },
 });
 
 export { useStyles };

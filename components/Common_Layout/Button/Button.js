@@ -12,6 +12,7 @@ const DynamicButton = ({
   text = "",
   onClickHandler = () => {},
   disabled = false,
+  variant = "",
   href = "",
 }) => {
   const classes = useStyles();
@@ -46,6 +47,7 @@ const DynamicButton = ({
             onClick={onClickHandler}
             disabled={disabled}
             className={conditionallyRenderClassName(type)}
+            variant={variant}
             href={href}
           >
             {" "}

@@ -39,7 +39,7 @@ const useStyles = makeStyles({
     backgroundColor: "white",
     border: "1px solid rgba(255,68,68,0.7)",
     color: "#FF4444",
-    padding: "0.25rem 1.5rem",
+    padding: "0.2rem 1.5rem",
     transition: "0.1s ease-in",
     "&:hover": {
       backgroundColor: "white",
