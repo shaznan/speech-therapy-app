@@ -5,40 +5,41 @@ import Grid from "@material-ui/core/Grid";
 import { useStyles } from "../loginStyles";
 
 function FormButtons() {
-  const [signUpActive, setSignUpActive] = useState(true);
   const classes = useStyles();
+  const [signInActive, setSignInActive] = useState(false);
+  const [signUpActive, setSignUpActive] = useState(true);
+
   const toggleActiveStatus = () => {
+    setSignInActive(!signInActive);
     setSignUpActive(!signUpActive);
+  };
+
+  const toggleSignIn = () => {
+    if (signInActive) return;
+    toggleActiveStatus();
+  };
+
+  const toggleSignUp = () => {
+    if (signUpActive) return;
+    toggleActiveStatus();
   };
 
   return (
     <Fragment>
       <div className={classes.formbuttons_container}>
         <Grid container spacing={0}>
-          <Grid
-            item
-            xl={6}
-            className={classes.signupbtn}
-            // onMouseEnter={toggleActiveStatus}
-            // onMouseLeave={toggleActiveStatus}
-          >
+          <Grid item xl={6} className={classes.signupbtn}>
             <Button
               type={signUpActive ? "primary" : "primaryOutline"}
               text="Sign up"
-              onClickHandler={toggleActiveStatus}
+              onClickHandler={toggleSignUp}
             />
           </Grid>
-          <Grid
-            item
-            xl={6}
-            className={classes.signinbtn}
-            // onMouseEnter={toggleActiveStatus}
-            // onMouseLeave={toggleActiveStatus}
-          >
+          <Grid item xl={6} className={classes.signinbtn}>
             <Button
-              type={!signUpActive ? "primary" : "primaryOutline"}
+              type={signInActive ? "primary" : "primaryOutline"}
               text="Sign In"
-              onClickHandler={toggleActiveStatus}
+              onClickHandler={toggleSignIn}
             />
           </Grid>
         </Grid>
@@ -53,3 +54,5 @@ function FormButtons() {
 }
 
 export default FormButtons;
+
+//FIXME: when u click submit state switches as well
