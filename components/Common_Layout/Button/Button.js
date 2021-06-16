@@ -12,7 +12,7 @@ const DynamicButton = ({
   text = "",
   onClickHandler = () => {},
   disabled = false,
-  variant = "",
+  variant = null,
   href = "",
 }) => {
   const classes = useStyles();
@@ -27,7 +27,7 @@ const DynamicButton = ({
     }
     if (type === "primaryOutline") {
       return `${classes.primarybutton} ${classes.primaryoutline} `;
-    }
+    } //TODO: Remove if not used
   };
 
   const theme = createMuiTheme({

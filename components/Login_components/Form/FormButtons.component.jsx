@@ -23,6 +23,10 @@ function FormButtons() {
     dispatch(login_signup_Actions.toggleBtnActiveStatus());
   };
 
+  const onSubmitHandler = () => {
+    console.log("hi");
+  };
+
   return (
     <Fragment>
       <div className={classes.formbuttons_container}>
@@ -33,6 +37,7 @@ function FormButtons() {
               text="Sign up"
               onClickHandler={toggleSignUp}
               variant="contained"
+              onSubmitHandler={onSubmitHandler}
             />
           </Grid>
           <Grid item xl={6} className={classes.signinbtn}>
@@ -44,7 +49,6 @@ function FormButtons() {
             />
           </Grid>
         </Grid>
-        <GoogleSignInBtn />
       </div>
     </Fragment>
   );
