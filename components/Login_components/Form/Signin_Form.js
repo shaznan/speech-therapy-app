@@ -3,11 +3,15 @@ import { Formik, Form } from "formik";
 import TextInputFeild from "./TextFeild.component";
 import * as Yup from "yup";
 import { useStyles } from "../loginStyles";
-import { useSelector } from "react-redux";
 import FormBtn from "./FormBtn.component";
+import useAuth from "./useAuth";
 
 function Signin_Form() {
+  //TODO: Refactor with signup form
   const classes = useStyles();
+  const { fireBaseAuth } = useAuth(
+    "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyA5BBFvXMN08rnAvoSmQz1LZmh5wD3H0mA"
+  );
   const validate = Yup.object({
     email: Yup.string().email("Email is invalid").required("Email is Required"),
     password: Yup.string()
@@ -24,6 +28,7 @@ function Signin_Form() {
       validationSchema={validate}
       onSubmit={(values) => {
         console.log(values);
+        fireBaseAuth(values.email, values.password);
       }}
     >
       {(formik) => (

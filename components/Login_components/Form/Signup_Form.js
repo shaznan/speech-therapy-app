@@ -3,15 +3,14 @@ import { Formik, Form } from "formik";
 import TextInputFeild from "./TextFeild.component";
 import * as Yup from "yup";
 import { useStyles } from "../loginStyles";
-import { useSelector, useDispatch } from "react-redux";
 import FormBtn from "./FormBtn.component";
-import { login_signup_Actions } from "../../../store/login_signupSlice";
-import useHandleSignup from "./useHandleSignup";
+import useAuth from "./useAuth";
 
 function Signup_Form() {
   const classes = useStyles();
-  const dispatch = useDispatch();
-  const { handleSignup } = useHandleSignup();
+  const { fireBaseAuth } = useAuth(
+    "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyA5BBFvXMN08rnAvoSmQz1LZmh5wD3H0mA"
+  );
   const validate = Yup.object({
     nickName: Yup.string()
       .max(15, "Must be 15 characters or less")
@@ -36,7 +35,7 @@ function Signup_Form() {
       validationSchema={validate}
       onSubmit={(values) => {
         console.log(values);
-        handleSignup(values.email, values.password);
+        fireBaseAuth(values.email, values.password);
       }}
     >
       {(formik) => (

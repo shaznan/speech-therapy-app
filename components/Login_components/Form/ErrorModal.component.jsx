@@ -48,7 +48,7 @@ const ErrorModal = () => {
             <h2 id="transition-modal-title">
               <ErrorOutlineIcon className={classes.erroricon} />
               Error:
-              {emailErrorMsg === "EMAIL_EXISTS" && "Email already exists!"}
+              {emailErrorMsg}
             </h2>
             <p id="transition-modal-description">
               If you are already an existing user, please{" "}
