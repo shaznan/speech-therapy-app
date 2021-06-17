@@ -129,34 +129,23 @@ const useStyles = makeStyles({
       fontSize: "1.5rem",
     },
   },
-  errormodal: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  errormodalpaper: {
-    backgroundColor: "white",
-    textAlign: "center",
-    width: "25rem",
-    boxShadow: "0px 3px 29px rgba(0,0,0,0.1)",
-    padding: "2rem",
-  },
   erroricon: {
-    color: "red ",
-    marginBottom: "-0.5rem !important",
+    color: "#FF4444",
+    // #23b19f - green
+    marginBottom: "-0.4rem !important",
     marginRight: "0.5rem",
-    fontSize: "2rem !important",
-    // width: "5rem",
   },
-  navtosignin: {
-    fontWeight: "bold",
-    textDecoration: "underline",
-
-    "&:hover": {
-      color: "#FF4444",
-      cursor: "pointer",
-      textDecoration: "underline",
-    },
+  errorcontainer: {
+    textAlign: "center",
+    marginBottom: "1rem",
+  },
+  errortext: {
+    display: "inline-block",
+    backgroundColor: "#1c242c",
+    padding: "0.5rem 1rem",
+    borderRadius: "20rem",
+    color: "white",
+    boxShadow: "0px 3px 29px rgba(0,0,0,0.1)",
   },
 });
 

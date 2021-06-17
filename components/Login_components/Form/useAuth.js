@@ -16,6 +16,7 @@ function useAuth(url) {
         if (res.ok) {
           console.log(res);
         }
+        dispatch(login_signup_Actions.setIsEmailError(false));
         console.log(res);
       })
       .catch((error) => {

@@ -10,6 +10,7 @@ function Footer() {
   const dispatch = useDispatch();
   const toggleActiveStatus = () => {
     dispatch(login_signup_Actions.toggleBtnActiveStatus());
+    dispatch(login_signup_Actions.setIsEmailError(false));
   };
   const signInActive = useSelector((state) => state.login_signup.signInActive);
   const signUpActive = useSelector((state) => state.login_signup.signUpActive);

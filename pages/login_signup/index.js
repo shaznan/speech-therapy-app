@@ -16,8 +16,7 @@ function login() {
   const classes = useStyles();
   const signInActive = useSelector((state) => state.login_signup.signInActive);
   const signUpActive = useSelector((state) => state.login_signup.signUpActive);
-  // const email = useSelector((state) => state.login_signup.email);
-  // const password = useSelector((state) => state.login_signup.password);
+  const isEmailError = useSelector((state) => state.login_signup.isEmailError);
   return (
     <Fragment>
       <div className={classes.bgimage}>
@@ -27,8 +26,8 @@ function login() {
           <div className={classes.formcontainer}>
             {signUpActive && <Signup_Form />}
             {signInActive && <Signin_Form />}
+            {/* {isEmailError && <ErrorModal />} */}
             <Footer />
-            <ErrorModal />
           </div>
         </Grid>
       </div>

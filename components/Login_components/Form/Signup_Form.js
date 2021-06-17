@@ -5,9 +5,12 @@ import * as Yup from "yup";
 import { useStyles } from "../loginStyles";
 import FormBtn from "./FormBtn.component";
 import useAuth from "./useAuth";
+import ErrorModal from "./ErrorModal.component";
+import { useSelector } from "react-redux";
 
 function Signup_Form() {
   const classes = useStyles();
+  const isEmailError = useSelector((state) => state.login_signup.isEmailError);
   const { fireBaseAuth } = useAuth(
     "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyA5BBFvXMN08rnAvoSmQz1LZmh5wD3H0mA"
   );
@@ -41,6 +44,7 @@ function Signup_Form() {
       {(formik) => (
         <div>
           <h1 className={classes.formheader}>Create Account</h1>
+          {isEmailError && <ErrorModal />}
           <Form id="signupform">
             <TextInputFeild label="Nick Name" name="nickName" type="text" />
             <TextInputFeild label="Email" name="email" type="email" />
