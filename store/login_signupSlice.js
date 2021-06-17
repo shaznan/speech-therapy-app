@@ -9,6 +9,8 @@ const login_signupSlice = createSlice({
     email: "",
     password: "",
     hasAccount: false,
+    emailErrorMsg: "",
+    isEmailError: false,
   },
   reducers: {
     setSignInActive(state, action) {
@@ -29,6 +31,12 @@ const login_signupSlice = createSlice({
     },
     setPassword(state, action) {
       state.password = action.payload;
+    },
+    setEmailErrorMsg(state, action) {
+      state.emailErrorMsg = action.payload;
+    },
+    setIsEmailError(state, action) {
+      state.isEmailError = action.payload;
     },
   },
 });

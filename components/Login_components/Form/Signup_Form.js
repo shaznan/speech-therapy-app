@@ -6,17 +6,17 @@ import { useStyles } from "../loginStyles";
 import { useSelector, useDispatch } from "react-redux";
 import FormBtn from "./FormBtn.component";
 import { login_signup_Actions } from "../../../store/login_signupSlice";
+import useHandleSignup from "./useHandleSignup";
 
-function Signup_Form({ handleSignUp, emailError }) {
+function Signup_Form() {
   const classes = useStyles();
   const dispatch = useDispatch();
+  const { handleSignup } = useHandleSignup();
   const validate = Yup.object({
     nickName: Yup.string()
       .max(15, "Must be 15 characters or less")
       .required("Required"),
-    email: Yup.string()
-      .email(emailError === "" ? "Email is invalid" : emailError)
-      .required("Email is Required"),
+    email: Yup.string().email("Email is Invalid").required("Email is Required"),
     password: Yup.string()
       .min(6, "Password must be atleast 6 characters")
       .required("Password is Required"),
@@ -36,7 +36,7 @@ function Signup_Form({ handleSignUp, emailError }) {
       validationSchema={validate}
       onSubmit={(values) => {
         console.log(values);
-        handleSignUp(values.email, values.password);
+        handleSignup(values.email, values.password);
       }}
     >
       {(formik) => (

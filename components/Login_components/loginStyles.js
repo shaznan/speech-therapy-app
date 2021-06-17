@@ -129,6 +129,35 @@ const useStyles = makeStyles({
       fontSize: "1.5rem",
     },
   },
+  errormodal: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  errormodalpaper: {
+    backgroundColor: "white",
+    textAlign: "center",
+    width: "25rem",
+    boxShadow: "0px 3px 29px rgba(0,0,0,0.1)",
+    padding: "2rem",
+  },
+  erroricon: {
+    color: "red ",
+    marginBottom: "-0.5rem !important",
+    marginRight: "0.5rem",
+    fontSize: "2rem !important",
+    // width: "5rem",
+  },
+  navtosignin: {
+    fontWeight: "bold",
+    textDecoration: "underline",
+
+    "&:hover": {
+      color: "#FF4444",
+      cursor: "pointer",
+      textDecoration: "underline",
+    },
+  },
 });
 
 export { useStyles };
