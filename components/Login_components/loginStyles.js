@@ -51,7 +51,7 @@ const useStyles = makeStyles({
     padding: "1rem 4rem 3rem 3rem",
     width: "30rem",
     height: "40rem",
-    marginLeft: "11vw",
+    marginLeft: "9vw",
     borderRadius: "9px",
     boxShadow: "0px 3px 29px rgba(0,0,0,0.1)",
   },
@@ -71,8 +71,8 @@ const useStyles = makeStyles({
   },
   loginLogoImage: {
     width: "9rem",
-    marginLeft: "20vw",
-    marginBottom: "-4rem",
+    marginLeft: "17vw",
+    marginBottom: "-6rem",
     transition: "0.3s ease-in-out",
   },
 

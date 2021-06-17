@@ -3,18 +3,20 @@ import { Formik, Form } from "formik";
 import TextInputFeild from "./TextFeild.component";
 import * as Yup from "yup";
 import { useStyles } from "../loginStyles";
-import FormButtons from "./FormButtons.component";
-import { useSelector } from "react-redux";
-import Button from "@material-ui/core/Button";
+import { useSelector, useDispatch } from "react-redux";
 import FormBtn from "./FormBtn.component";
+import { login_signup_Actions } from "../../../store/login_signupSlice";
 
-function Signup_Form() {
+function Signup_Form({ handleSignUp, emailError }) {
   const classes = useStyles();
+  const dispatch = useDispatch();
   const validate = Yup.object({
     nickName: Yup.string()
       .max(15, "Must be 15 characters or less")
       .required("Required"),
-    email: Yup.string().email("Email is invalid").required("Email is Required"),
+    email: Yup.string()
+      .email(emailError === "" ? "Email is invalid" : emailError)
+      .required("Email is Required"),
     password: Yup.string()
       .min(6, "Password must be atleast 6 characters")
       .required("Password is Required"),
@@ -34,6 +36,7 @@ function Signup_Form() {
       validationSchema={validate}
       onSubmit={(values) => {
         console.log(values);
+        handleSignUp(values.email, values.password);
       }}
     >
       {(formik) => (

@@ -5,6 +5,10 @@ const login_signupSlice = createSlice({
   initialState: {
     signInActive: false,
     signUpActive: true,
+    user: "",
+    email: "",
+    password: "",
+    hasAccount: false,
   },
   reducers: {
     setSignInActive(state, action) {
@@ -16,6 +20,15 @@ const login_signupSlice = createSlice({
     toggleBtnActiveStatus(state) {
       state.signInActive = !state.signInActive;
       state.signUpActive = !state.signUpActive;
+    },
+    setUser(state, action) {
+      state.user = action.payload;
+    },
+    setEmail(state, action) {
+      state.email = action.payload;
+    },
+    setPassword(state, action) {
+      state.password = action.payload;
     },
   },
 });
