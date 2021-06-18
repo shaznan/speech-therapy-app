@@ -141,11 +141,12 @@ const useStyles = makeStyles({
   },
   errortext: {
     display: "inline-block",
-    backgroundColor: "#1c242c",
+    backgroundColor: "white",
     padding: "0.5rem 1rem",
     borderRadius: "20rem",
-    color: "white",
+    color: "#1c242c",
     boxShadow: "0px 3px 29px rgba(0,0,0,0.1)",
+    marginTop: "-2rem",
   },
 });
 

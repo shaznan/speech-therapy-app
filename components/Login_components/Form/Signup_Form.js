@@ -14,6 +14,10 @@ function Signup_Form() {
   const { fireBaseAuth } = useAuth(
     "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyA5BBFvXMN08rnAvoSmQz1LZmh5wD3H0mA"
   );
+  // const { updateUserName } = useAuth(
+  //   "https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyA5BBFvXMN08rnAvoSmQz1LZmh5wD3H0mA"
+  // );
+
   const validate = Yup.object({
     nickName: Yup.string()
       .max(15, "Must be 15 characters or less")
@@ -39,6 +43,7 @@ function Signup_Form() {
       onSubmit={(values) => {
         console.log(values);
         fireBaseAuth(values.email, values.password);
+        // updateUserName(values.nickName);
       }}
     >
       {(formik) => (
