@@ -6,10 +6,12 @@ import { useStyles } from "../loginStyles";
 import FormBtn from "./FormBtn.component";
 import useAuth from "./useAuth";
 import ErrorModal from "./ErrorModal.component";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { login_signup_Actions } from "../../../store/login_signupSlice";
 
 function Signup_Form() {
   const classes = useStyles();
+  const dispatch = useDispatch();
   const isEmailError = useSelector((state) => state.login_signup.isEmailError);
   const { fireBaseAuth } = useAuth(
     "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyA5BBFvXMN08rnAvoSmQz1LZmh5wD3H0mA"
@@ -43,6 +45,7 @@ function Signup_Form() {
       onSubmit={(values) => {
         console.log(values);
         fireBaseAuth(values.email, values.password);
+        dispatch(login_signup_Actions.setNickName(values.nickName));
         // updateUserName(values.nickName);
       }}
     >
