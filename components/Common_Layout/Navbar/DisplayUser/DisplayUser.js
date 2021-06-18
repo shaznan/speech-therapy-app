@@ -1,10 +1,11 @@
 import React, { Fragment } from "react";
 import Grid from "@material-ui/core/Grid";
-import classes from "./Navbar.module.css";
+import classes from "../Navbar.module.css";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import DisplayUserDropdown from "./DisplayUserDropdown.conponent";
+import DisplayUserDropdown from "./Dropdown.conponent";
+import DisplayUser_WelcomTxt from "./WelcomTxt.component";
 
 function DisplayUser() {
   const nickName = useSelector((state) => state.login_signup.nickName);
@@ -15,7 +16,7 @@ function DisplayUser() {
   useEffect(() => {
     axios
       .get(
-        `https://avatars.dicebear.com/api/initials/${"nigga"}.svg?backgroundColors=cyan`
+        `https://avatars.dicebear.com/api/initials/${nickName}.svg?backgroundColors=cyan`
         // `https://avatars.dicebear.com/api/bottts/${nickName}.svg?textureChance=100`
       )
       .then((res) => {
@@ -33,12 +34,7 @@ function DisplayUser() {
     <Fragment>
       <Grid item lg={3} xs={4}>
         <div onClick={toggleDropdown} className={classes.userdetailcontainer}>
-          <div className={classes.avatarcontainer}>
-            <img src={avatar} className={classes.avatar} />
-          </div>
-          <span className={classes.userdetail}>
-            Welcome, <span className={classes.placeholder}>{nickName}</span>{" "}
-          </span>
+          <DisplayUser_WelcomTxt avatar={avatar} nickName={nickName} />
           <DisplayUserDropdown
             avatar={avatar}
             nickName={nickName}

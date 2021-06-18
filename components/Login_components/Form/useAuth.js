@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { login_signup_Actions } from "../../../store/login_signupSlice";
+import Router from "next/router";
 
 //authenticate both signIn and SignUp
 function useAuth(url) {
@@ -20,6 +21,7 @@ function useAuth(url) {
         if (res.data.displayName) {
           dispatch(login_signup_Actions.setNickName(res.data.displayName));
         }
+        Router.push("/performtest");
         console.log(res.data);
         dispatch(login_signup_Actions.loginHandler(res.data.idToken));
         dispatch(login_signup_Actions.setIsLoggedIn(true));

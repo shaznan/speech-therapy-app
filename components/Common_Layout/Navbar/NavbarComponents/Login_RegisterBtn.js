@@ -8,6 +8,7 @@ function LoginRegisterbtn() {
   const router = useRouter();
   const [isPerformTestPage, setIsPerformTestPage] = useState(false);
 
+  //render button only in perform test page for now 
   useEffect(() => {
     router.pathname === "/performtest"
       ? setIsPerformTestPage(true)

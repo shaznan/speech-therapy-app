@@ -149,6 +149,10 @@
   cursor: pointer;
 }
 
+.userdetail:hover {
+  text-decoration: underline;
+}
+
 .avatar {
   width: 3rem;
   border-radius: 30rem !important;
@@ -173,7 +177,6 @@
   position: absolute;
   top: 5rem;
   right: -2rem;
-
   justify-content: center;
   flex-direction: column;
   background-color: white;

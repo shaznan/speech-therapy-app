@@ -39,6 +39,7 @@ const login_signupSlice = createSlice({
     },
     logoutHandler(state) {
       state.token = "";
+      state.isLoggedIn = false;
     },
     setNickName(state, action) {
       state.nickName = action.payload;
