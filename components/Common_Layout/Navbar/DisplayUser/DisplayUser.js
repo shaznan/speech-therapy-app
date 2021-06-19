@@ -20,7 +20,6 @@ function DisplayUser() {
         // `https://avatars.dicebear.com/api/bottts/${nickName}.svg?textureChance=100`
       )
       .then((res) => {
-        console.log(res);
         setAvatar(res.config.url);
       })
       .catch((err) => console.log(err));

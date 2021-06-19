@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { login_signup_Actions } from "../../../store/login_signupSlice";
 import Router from "next/router";
@@ -9,6 +9,8 @@ function useAuth(url) {
   const dispatch = useDispatch();
   const token = useSelector((state) => state.login_signup.token);
   const nickName = useSelector((state) => state.login_signup.nickName);
+  const [email, setEmail] = useState(null);
+  const [localId, setLocalId] = useState(null);
   const fireBaseAuth = (enteredEmail, enteredPassword) => {
     axios
       .post(url, {
@@ -23,6 +25,8 @@ function useAuth(url) {
         }
         Router.push("/performtest");
         console.log(res.data);
+        setEmail(res.data.email);
+        setLocalId(res.data.localId);
         dispatch(login_signup_Actions.loginHandler(res.data.idToken));
         dispatch(login_signup_Actions.setIsLoggedIn(true));
         dispatch(login_signup_Actions.setIsEmailError(false));
@@ -38,23 +42,43 @@ function useAuth(url) {
       });
   };
 
-  //update username after email is registered with firebase
+  //send emial, localID from response and nickName from signup input to backend
   useEffect(() => {
     if (nickName !== "" && token !== "") {
       axios
-        .post(
-          "https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyA5BBFvXMN08rnAvoSmQz1LZmh5wD3H0mA",
-          {
-            idToken: token,
-            displayName: nickName,
-          }
-        )
+        .post("/api/UserData/UserAuthData", {
+          email: email,
+          localId: localId,
+          nickName: nickName,
+        })
         .then((res) => {
           console.log(res);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          console.log(err);
+        });
     }
   }, [nickName, token]);
+
+  // .post("/api/StoreTopicsData", { carmanufacturers: gistData }) //TODO:
+
+  //update username after email is registered with firebase
+  // useEffect(() => {
+  //   if (nickName !== "" && token !== "") {
+  //     axios
+  //       .post(
+  //         "https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyA5BBFvXMN08rnAvoSmQz1LZmh5wD3H0mA",
+  //         {
+  //           idToken: token,
+  //           displayName: nickName,
+  //         }
+  //       )
+  //       .then((res) => {
+  //         console.log(res);
+  //       })
+  //       .catch((err) => console.log(err));
+  //   }
+  // }, [nickName, token]);
 
   return {
     fireBaseAuth,
