@@ -21,3 +21,7 @@ export const restartTest = () => {
 // dispatch(testActions.setShowInstructions(false));
 // dispatch(testActions.setShowCatergoryForm(false));
 // dispatch(testActions.setShowCountdown(false));
+
+//FIXME: All these are completely wrong, you can wrtite deifferent create slice for these and just update the initial state as you do in the reducer functions by using extraReducers
+
+//check documentation

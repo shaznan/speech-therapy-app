@@ -71,7 +71,6 @@ function useTopicsValidator() {
 
     const totalWords = [...removeDuplicates];
 
-    console.log(totalWords);
     // Performs intersection operation
     const wordsMatch = CompareWordsRelatedToTopic(
       totalWords,
@@ -91,6 +90,10 @@ function useTopicsValidator() {
     );
     dispatch(testActions.setIsWordsCountReceived(true));
     dispatch(testActions.setIsAnalyzing(false));
+    dispatch(testActions.setAverageScore());
+    dispatch(testActions.setScoreAvgeCriteria());
+    dispatch(testActions.setHighScore()); //FIXME: same code in useAlphabet validator (need to refactor)
+    dispatch(testActions.setChangeOverPrevScore());
   }, [catergoryItems]);
 
   useEffect(() => {
@@ -100,10 +103,3 @@ function useTopicsValidator() {
 }
 
 export default useTopicsValidator;
-
-//FIXME: change wordmatch to lenght, create, wordsunrelated, accuracy rate - done
-//states to redux store //TODO:
-//push to wordsCount - done
-//create more catergories - or else you will regret later //TODO:
-//show data in displayresults modal - done
-// Display result modal check and see if any problem coz when running alphabatical option the modal doesnt show - done

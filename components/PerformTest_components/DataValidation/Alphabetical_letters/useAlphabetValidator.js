@@ -55,6 +55,10 @@ function useAlphabetValidator() {
       );
       dispatch(testActions.setIsWordsCountReceived(true));
       dispatch(testActions.setIsAnalyzing(false));
+      dispatch(testActions.setAverageScore());
+      dispatch(testActions.setScoreAvgeCriteria());
+      dispatch(testActions.setHighScore());
+      dispatch(testActions.setChangeOverPrevScore());
     }
   }, [isTranscriptReceived, transcript]);
 }
