@@ -1,4 +1,18 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
+
+//update UserData
+export const updateUserData = createAsyncThunk(
+  "user/updateUserData",
+  async () => {
+    return axios
+      .post("/api/UserData/updateUserData", {
+        place: "userSlice",
+        status: "works!",
+      })
+      .then((res) => res.json());
+  }
+);
 
 const userSlice = createSlice({
   name: "user",
@@ -40,29 +54,21 @@ const userSlice = createSlice({
       ).toFixed(2);
     },
     setScoreAvgeCriteria(state) {
-      if (state.entities[0].averageScore <= 10) {
-        state.entities[0].scoreAvgeCriteria = "Poor";
+      let entities = state.entities[0];
+      if (entities.averageScore <= 10) {
+        entities.scoreAvgeCriteria = "Poor";
       }
-      if (
-        state.entities[0].averageScore > 10 &&
-        state.entities[0].averageScore <= 15
-      ) {
-        state.entities[0].scoreAvgeCriteria = " Fair";
+      if (entities.averageScore > 10 && entities.averageScore <= 15) {
+        entities.scoreAvgeCriteria = " Fair";
       }
-      if (
-        state.entities[0].averageScore > 15 &&
-        state.entities[0].averageScore <= 20
-      ) {
-        state.entities[0].scoreAvgeCriteria = "Good";
+      if (entities.averageScore > 15 && entities.averageScore <= 20) {
+        entities.scoreAvgeCriteria = "Good";
       }
-      if (
-        state.entities[0].averageScore > 20 &&
-        state.entities[0].averageScore <= 30
-      ) {
-        state.entities[0].scoreAvgeCriteria = "Very Good";
+      if (entities.averageScore > 20 && entities.averageScore <= 30) {
+        entities.scoreAvgeCriteria = "Very Good";
       }
-      if (state.entities[0].averageScore > 30) {
-        state.entities[0].scoreAvgeCriteria = "Excellent";
+      if (entities.averageScore > 30) {
+        entities.scoreAvgeCriteria = "Excellent";
       }
     },
     setHighScore(state) {
@@ -87,6 +93,14 @@ const userSlice = createSlice({
         state.entities[0].changeOverPrevScore =
           ((currentTestScore - prevTestScore) / prevTestScore) * 100;
       }
+    },
+  },
+  extraReducers: {
+    [updateUserData.fulfilled]: (state) => {
+      state.loading = "success";
+    },
+    [updateUserData.rejected]: (state) => {
+      state.loading = "failed";
     },
   },
 });

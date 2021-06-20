@@ -9,6 +9,7 @@ import ResultBody from "./ResultBody.component";
 import Buttons from "./Buttons.component";
 import { CloseBtn } from "./Buttons.component";
 import axios from "axios";
+import { updateUserData } from "../../../../store/userSlice";
 
 export default function DisplayResult() {
   const dispatch = useDispatch();
@@ -32,16 +33,10 @@ export default function DisplayResult() {
   }, [isWordsCountReceived]);
 
   //Send results to backend
-
-  // useEffect(() => {
-  //   if (!isWordsCountReceived) return;
-  //   axios
-  //     .post("/api/UserData/updateUserData", {
-
-  //     })
-  //     .then((res) => console.log(res))
-  //     .catch((err) => console.log(err));
-  // }, [isWordsCountReceived]); //FIXME: code was not working
+  useEffect(() => {
+    // isWordsCountReceived && dispatch(updateUserData());
+    dispatch(updateUserData());
+  }, [isWordsCountReceived]);
 
   // const test = () => {
   //   setOpen(true);
