@@ -46,7 +46,7 @@ function useAuth(url) {
   useEffect(() => {
     if (nickName !== "" && token !== "") {
       axios
-        .post("/api/UserData/UserAuthData", {
+        .post("/api/UserData/createNewUser", {
           email: email,
           localId: localId,
           nickName: nickName,

@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 
 //generate props to conditionally render in display result component based on scores
 function useAnalyzeResult() {
-  const WordsCount = useSelector((state) => state.user.WordsCount);
+  const WordsCount = useSelector((state) => state.user.entities[0].WordsCount);
 
   const [currentWordCount, setCurrentWordCount] = useState(null);
 

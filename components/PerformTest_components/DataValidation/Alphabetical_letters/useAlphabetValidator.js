@@ -54,12 +54,12 @@ function useAlphabetValidator() {
           accuracyRate: accuracy,
         })
       );
-      dispatch(testActions.setIsWordsCountReceived(true));
       dispatch(testActions.setIsAnalyzing(false));
       dispatch(userSlice_Actions.setAverageScore());
       dispatch(userSlice_Actions.setScoreAvgeCriteria());
       dispatch(userSlice_Actions.setHighScore());
       dispatch(userSlice_Actions.setChangeOverPrevScore());
+      dispatch(testActions.setIsWordsCountReceived(true));
     }
   }, [isTranscriptReceived, transcript]);
 }

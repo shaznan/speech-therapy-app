@@ -5,18 +5,15 @@ import Fade from "@material-ui/core/Fade";
 import { useSelector, useDispatch } from "react-redux";
 import { restartTest } from "../../../../store/actions/performTest/performtestNavigation/navigation-actions";
 import { useStyles } from "./displayResult_styles";
-import Typography from "@material-ui/core/Typography";
 import ResultBody from "./ResultBody.component";
 import Buttons from "./Buttons.component";
 import { CloseBtn } from "./Buttons.component";
+import axios from "axios";
 
 export default function DisplayResult() {
   const dispatch = useDispatch();
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
-  const isTranscriptReceived = useSelector(
-    (state) => state.performtest.isTranscriptReceived
-  );
   const isWordsCountReceived = useSelector(
     (state) => state.performtest.isWordsCountReceived
   );
@@ -33,6 +30,18 @@ export default function DisplayResult() {
   useEffect(() => {
     isWordsCountReceived && setOpen(true);
   }, [isWordsCountReceived]);
+
+  //Send results to backend
+
+  // useEffect(() => {
+  //   if (!isWordsCountReceived) return;
+  //   axios
+  //     .post("/api/UserData/updateUserData", {
+
+  //     })
+  //     .then((res) => console.log(res))
+  //     .catch((err) => console.log(err));
+  // }, [isWordsCountReceived]); //FIXME: code was not working
 
   // const test = () => {
   //   setOpen(true);

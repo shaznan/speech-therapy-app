@@ -3,67 +3,88 @@ import { createSlice } from "@reduxjs/toolkit";
 const userSlice = createSlice({
   name: "user",
   initialState: {
-    token: "",
-    nickName: "",
-    WordsCount: [],
-    averageScore: null,
-    scoreAvgeCriteria: null,
-    highScore: null,
-    changeOverPrevScore: null,
+    entities: [
+      {
+        token: "",
+        nickName: "",
+        WordsCount: [],
+        averageScore: null,
+        scoreAvgeCriteria: null,
+        highScore: null,
+        changeOverPrevScore: null,
+      },
+    ],
+    loading: "idle",
   },
   reducers: {
     setNickName(state, action) {
-      state.nickName = action.payload;
+      state.entities[0].nickName = action.payload;
     },
     setNickName(state, action) {
-      state.nickName = action.payload;
+      state.entities[0].nickName = action.payload;
     },
     setWordsCount(state, action) {
-      state.WordsCount = [...state.WordsCount, action.payload];
+      state.entities[0].WordsCount = [
+        ...state.entities[0].WordsCount,
+        action.payload,
+      ];
     },
     setAverageScore(state) {
-      if (state.WordsCount.length === 0) return;
+      if (state.entities[0].WordsCount.length === 0) return;
       let total = 0;
-      state.WordsCount.map((score) => {
+      state.entities[0].WordsCount.map((score) => {
         total += score.wordsMatch;
       });
-      state.averageScore = (total / state.WordsCount.length).toFixed(2);
+      state.entities[0].averageScore = (
+        total / state.entities[0].WordsCount.length
+      ).toFixed(2);
     },
     setScoreAvgeCriteria(state) {
-      if (state.averageScore <= 10) {
-        state.scoreAvgeCriteria = "Poor";
+      if (state.entities[0].averageScore <= 10) {
+        state.entities[0].scoreAvgeCriteria = "Poor";
       }
-      if (state.averageScore > 10 && state.averageScore <= 15) {
-        state.scoreAvgeCriteria = " Fair";
+      if (
+        state.entities[0].averageScore > 10 &&
+        state.entities[0].averageScore <= 15
+      ) {
+        state.entities[0].scoreAvgeCriteria = " Fair";
       }
-      if (state.averageScore > 15 && state.averageScore <= 20) {
-        state.scoreAvgeCriteria = "Good";
+      if (
+        state.entities[0].averageScore > 15 &&
+        state.entities[0].averageScore <= 20
+      ) {
+        state.entities[0].scoreAvgeCriteria = "Good";
       }
-      if (state.averageScore > 20 && state.averageScore <= 30) {
-        state.scoreAvgeCriteria = "Very Good";
+      if (
+        state.entities[0].averageScore > 20 &&
+        state.entities[0].averageScore <= 30
+      ) {
+        state.entities[0].scoreAvgeCriteria = "Very Good";
       }
-      if (state.averageScore > 30) {
-        state.scoreAvgeCriteria = "Excellent";
+      if (state.entities[0].averageScore > 30) {
+        state.entities[0].scoreAvgeCriteria = "Excellent";
       }
     },
     setHighScore(state) {
       let highScore = 0;
-      state.WordsCount.map((score) => {
+      state.entities[0].WordsCount.map((score) => {
         if (score.wordsMatch > highScore) {
           return (highScore = score.wordsMatch);
         }
       });
-      state.highScore = highScore;
+      state.entities[0].highScore = highScore;
     },
 
     setChangeOverPrevScore(state) {
-      if (state.WordsCount.length < 2) return;
+      if (state.entities[0].WordsCount.length < 2) return;
       const currentTestScore =
-        state.WordsCount[state.WordsCount.length - 1].wordsMatch;
+        state.entities[0].WordsCount[state.entities[0].WordsCount.length - 1]
+          .wordsMatch;
       const prevTestScore =
-        state.WordsCount[state.WordsCount.length - 2].wordsMatch;
+        state.entities[0].WordsCount[state.entities[0].WordsCount.length - 2]
+          .wordsMatch;
       if (prevTestScore !== 0) {
-        state.changeOverPrevScore =
+        state.entities[0].changeOverPrevScore =
           ((currentTestScore - prevTestScore) / prevTestScore) * 100;
       }
     },
