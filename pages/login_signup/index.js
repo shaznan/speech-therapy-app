@@ -17,11 +17,20 @@ function login() {
   const signInActive = useSelector((state) => state.login_signup.signInActive);
   const signUpActive = useSelector((state) => state.login_signup.signUpActive);
   const isEmailError = useSelector((state) => state.login_signup.isEmailError);
+
+  const getRequestHandler = () => {
+    axios
+      .get("/api/UserData/RetreiveUserData")
+      .then((res) => console.log(res))
+      .catch((err) => console.error(err));
+  };
+
   return (
     <Fragment>
       <div className={classes.bgimage}>
         <Grid container spacing={0} className={classes.container}>
           <Header />
+          <button onClick={getRequestHandler}>Get data test</button>
           <LogoImage />
           <div className={classes.formcontainer}>
             {signUpActive && <Signup_Form />}

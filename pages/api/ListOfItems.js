@@ -1,4 +1,3 @@
-const axios = require("axios");
 import { MongoClient } from "mongodb";
 
 //get topic list based on req query, from database
