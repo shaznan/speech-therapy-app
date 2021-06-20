@@ -7,17 +7,8 @@ import Router from "next/router";
 //authenticate both signIn and SignUp
 function useAuth(url) {
   const dispatch = useDispatch();
-  const token = useSelector((state) => state.login_signup.token);
-  const nickName = useSelector((state) => state.login_signup.nickName);
-  const averageScore = useSelector((state) => state.performtest.averageScore);
-  const scoreAvgeCriteria = useSelector(
-    (state) => state.performtest.scoreAvgeCriteria
-  );
-  const highScore = useSelector((state) => state.performtest.highScore);
-  const changeOverPrevScore = useSelector(
-    (state) => state.performtest.changeOverPrevScore
-  );
-  const state = useSelector((state) => state.state);
+  const token = useSelector((state) => state.user.token);
+  const nickName = useSelector((state) => state.user.nickName);
   const [email, setEmail] = useState(null);
   const [localId, setLocalId] = useState(null);
   const fireBaseAuth = (enteredEmail, enteredPassword) => {
@@ -30,7 +21,7 @@ function useAuth(url) {
       .then((res) => {
         //setstate only when login, when signup, local state will be used as display name coz res will not have displayName initially
         if (res.data.displayName) {
-          dispatch(login_signup_Actions.setNickName(res.data.displayName));
+          // dispatch(login_signup_Actions.setNickName(res.data.displayName));
         }
         Router.push("/performtest");
         console.log(res.data);
@@ -51,7 +42,7 @@ function useAuth(url) {
       });
   };
 
-  //create new user account in db with current progress
+  //create new user account in mongodb with current progress when sign up
   useEffect(() => {
     if (nickName !== "" && token !== "") {
       axios
@@ -59,10 +50,11 @@ function useAuth(url) {
           email: email,
           localId: localId,
           nickName: nickName,
-          averageScore: averageScore,
-          scoreAvgeCriteria: scoreAvgeCriteria,
-          highScore: highScore,
-          changeOverPrevScore: changeOverPrevScore,
+          WordsCount: [],
+          averageScore: null,
+          scoreAvgeCriteria: null,
+          highScore: null,
+          changeOverPrevScore: null,
         })
         .then((res) => {
           console.log(res);
@@ -72,26 +64,6 @@ function useAuth(url) {
         });
     }
   }, [nickName, token]);
-
-  // .post("/api/StoreTopicsData", { carmanufacturers: gistData }) //TODO:
-
-  //update username after email is registered with firebase
-  // useEffect(() => {
-  //   if (nickName !== "" && token !== "") {
-  //     axios
-  //       .post(
-  //         "https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyA5BBFvXMN08rnAvoSmQz1LZmh5wD3H0mA",
-  //         {
-  //           idToken: token,
-  //           displayName: nickName,
-  //         }
-  //       )
-  //       .then((res) => {
-  //         console.log(res);
-  //       })
-  //       .catch((err) => console.log(err));
-  //   }
-  // }, [nickName, token]);
 
   return {
     fireBaseAuth,

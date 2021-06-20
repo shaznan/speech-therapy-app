@@ -7,8 +7,6 @@ const login_signupSlice = createSlice({
     signUpActive: true,
     emailErrorMsg: "",
     isEmailError: false,
-    token: "",
-    nickName: "",
     isLoggedIn: false,
   },
   reducers: {
@@ -28,9 +26,6 @@ const login_signupSlice = createSlice({
     setIsEmailError(state, action) {
       state.isEmailError = action.payload;
     },
-    setNickName(state, action) {
-      state.nickName = action.payload;
-    },
     setIsLoggedIn(state, action) {
       state.isLoggedIn = action.payload;
     },
@@ -40,9 +35,6 @@ const login_signupSlice = createSlice({
     logoutHandler(state) {
       state.token = "";
       state.isLoggedIn = false;
-    },
-    setNickName(state, action) {
-      state.nickName = action.payload;
     },
   },
 });

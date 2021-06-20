@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { testActions } from "../../../../store/performTestSlice";
+import { userSlice_Actions } from "../../../../store/userSlice";
 
 function useAlphabetValidator() {
   const isAlphabetChecked = useSelector(
@@ -47,7 +48,7 @@ function useAlphabetValidator() {
 
     if (isTranscriptReceived) {
       dispatch(
-        testActions.setWordsCount({
+        userSlice_Actions.setWordsCount({
           wordsMatch: wordsMatch,
           wordsUnRelated: wordsUnRelated,
           accuracyRate: accuracy,
@@ -55,10 +56,10 @@ function useAlphabetValidator() {
       );
       dispatch(testActions.setIsWordsCountReceived(true));
       dispatch(testActions.setIsAnalyzing(false));
-      dispatch(testActions.setAverageScore());
-      dispatch(testActions.setScoreAvgeCriteria());
-      dispatch(testActions.setHighScore());
-      dispatch(testActions.setChangeOverPrevScore());
+      dispatch(userSlice_Actions.setAverageScore());
+      dispatch(userSlice_Actions.setScoreAvgeCriteria());
+      dispatch(userSlice_Actions.setHighScore());
+      dispatch(userSlice_Actions.setChangeOverPrevScore());
     }
   }, [isTranscriptReceived, transcript]);
 }

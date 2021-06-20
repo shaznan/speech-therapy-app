@@ -8,6 +8,7 @@ import useAuth from "./useAuth";
 import ErrorModal from "./ErrorModal.component";
 import { useSelector, useDispatch } from "react-redux";
 import { login_signup_Actions } from "../../../store/login_signupSlice";
+import { userSlice_Actions } from "../../../store/userSlice";
 
 function Signup_Form() {
   const classes = useStyles();
@@ -16,7 +17,6 @@ function Signup_Form() {
   const { fireBaseAuth } = useAuth(
     "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyA5BBFvXMN08rnAvoSmQz1LZmh5wD3H0mA"
   );
-
 
   const validate = Yup.object({
     nickName: Yup.string()
@@ -43,7 +43,7 @@ function Signup_Form() {
       onSubmit={(values) => {
         console.log(values);
         fireBaseAuth(values.email, values.password);
-        dispatch(login_signup_Actions.setNickName(values.nickName));
+        dispatch(userSlice_Actions.setNickName(values.nickName));
       }}
     >
       {(formik) => (

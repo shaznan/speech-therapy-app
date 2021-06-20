@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { testActions } from "../../../../store/performTestSlice";
 import { useEffect } from "react";
 import axios from "axios";
+import { userSlice_Actions } from "../../../../store/userSlice";
 
 function useTopicsValidator() {
   const [catergoryItems, setCatergoryItems] = useState(null);
@@ -82,7 +83,7 @@ function useTopicsValidator() {
     const accuracy = Math.round((wordsMatch / totalWords.length) * 100);
 
     dispatch(
-      testActions.setWordsCount({
+      userSlice_Actions.setWordsCount({
         wordsMatch: wordsMatch,
         wordsUnRelated: wordsUnRelated,
         accuracyRate: accuracy,
@@ -90,10 +91,10 @@ function useTopicsValidator() {
     );
     dispatch(testActions.setIsWordsCountReceived(true));
     dispatch(testActions.setIsAnalyzing(false));
-    dispatch(testActions.setAverageScore());
-    dispatch(testActions.setScoreAvgeCriteria());
-    dispatch(testActions.setHighScore()); //FIXME: same code in useAlphabet validator (need to refactor)
-    dispatch(testActions.setChangeOverPrevScore());
+    dispatch(userSlice_Actions.setAverageScore());
+    dispatch(userSlice_Actions.setScoreAvgeCriteria());
+    dispatch(userSlice_Actions.setHighScore()); //FIXME: same code in useAlphabet validator (need to refactor)
+    dispatch(userSlice_Actions.setChangeOverPrevScore());
   }, [catergoryItems]);
 
   useEffect(() => {

@@ -34,11 +34,7 @@ const performTestSlice = createSlice({
     isAnalyzing: false,
     isTranscriptError: false,
     //data validation: words start with letter
-    WordsCount: [],
-    averageScore: null,
-    scoreAvgeCriteria: null,
-    highScore: null,
-    changeOverPrevScore: null,
+
     isWordsCountReceived: false,
     isTranscriptReceived: false,
     //login
@@ -91,55 +87,6 @@ const performTestSlice = createSlice({
     },
     setIsAnalyzing(state, action) {
       state.isAnalyzing = action.payload;
-    },
-    setWordsCount(state, action) {
-      state.WordsCount = [...state.WordsCount, action.payload];
-    },
-    setAverageScore(state) {
-      if (state.WordsCount.length === 0) return;
-      let total = 0;
-      state.WordsCount.map((score) => {
-        total += score.wordsMatch;
-      });
-      state.averageScore = (total / state.WordsCount.length).toFixed(2);
-    },
-    setScoreAvgeCriteria(state) {
-      if (state.averageScore <= 10) {
-        state.scoreAvgeCriteria = "Poor";
-      }
-      if (state.averageScore > 10 && state.averageScore <= 15) {
-        state.scoreAvgeCriteria = " Fair";
-      }
-      if (state.averageScore > 15 && state.averageScore <= 20) {
-        state.scoreAvgeCriteria = "Good";
-      }
-      if (state.averageScore > 20 && state.averageScore <= 30) {
-        state.scoreAvgeCriteria = "Very Good";
-      }
-      if (state.averageScore > 30) {
-        state.scoreAvgeCriteria = "Excellent";
-      }
-    },
-    setHighScore(state) {
-      let highScore = 0;
-      state.WordsCount.map((score) => {
-        if (score.wordsMatch > highScore) {
-          return (highScore = score.wordsMatch);
-        }
-      });
-      state.highScore = highScore;
-    },
-
-    setChangeOverPrevScore(state) {
-      if (state.WordsCount.length < 2) return;
-      const currentTestScore =
-        state.WordsCount[state.WordsCount.length - 1].wordsMatch;
-      const prevTestScore =
-        state.WordsCount[state.WordsCount.length - 2].wordsMatch;
-      if (prevTestScore !== 0) {
-        state.changeOverPrevScore =
-          ((currentTestScore - prevTestScore) / prevTestScore) * 100;
-      }
     },
 
     setIsWordsCountReceived(state, action) {

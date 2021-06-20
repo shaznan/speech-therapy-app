@@ -30,7 +30,6 @@ function Signin_Form() {
       }}
       validationSchema={validate}
       onSubmit={(values) => {
-        console.log(values);
         fireBaseAuth(values.email, values.password);
       }}
     >

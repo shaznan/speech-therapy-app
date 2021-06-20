@@ -8,7 +8,7 @@ import DisplayUserDropdown from "./Dropdown.conponent";
 import DisplayUser_WelcomTxt from "./WelcomTxt.component";
 
 function DisplayUser() {
-  const nickName = useSelector((state) => state.login_signup.nickName);
+  const nickName = useSelector((state) => state.user.nickName);
   const [avatar, setAvatar] = useState(null);
   const [showDropdown, setShowDropdown] = useState(false);
 
