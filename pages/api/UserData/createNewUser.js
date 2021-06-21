@@ -5,7 +5,6 @@ import { v4 as uuidv4 } from "uuid";
 export default async (req, res) => {
   if (req.method === "POST") {
     const data = req.body;
-    console.log(data);
     const client = await MongoClient.connect(
       "mongodb+srv://shaznanfairoze:qmpGwieO89Yy1QNM@speech-therapy-app.mb1pc.mongodb.net/UserData?retryWrites=true&w=majority"
     );
@@ -23,11 +22,17 @@ export default async (req, res) => {
     });
 
     const performTestState = db.collection("performTestState");
-    const { averageScore, scoreAvgeCriteria, highScorem, changeOverPrevScore } =
-      data;
+    const {
+      averageScore,
+      scoreAvgeCriteria,
+      highScorem,
+      changeOverPrevScore,
+      WordsCount,
+    } = data;
     const testResult = await performTestState.insertOne({
       uuid: relationShipId,
       averageScore,
+      WordsCount,
       scoreAvgeCriteria,
       highScorem,
       changeOverPrevScore,

@@ -1,14 +1,19 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import {
+  createSlice,
+  createAsyncThunk,
+  createEntityAdapter,
+} from "@reduxjs/toolkit";
 import axios from "axios";
+// import { useSelector } from "react-redux";
 
 //update UserData
+
 export const updateUserData = createAsyncThunk(
   "user/updateUserData",
-  async () => {
+  async (user) => {
     return axios
       .post("/api/UserData/updateUserData", {
-        place: "userSlice",
-        status: "works!",
+        user,
       })
       .then((res) => res.json());
   }
@@ -19,7 +24,8 @@ const userSlice = createSlice({
   initialState: {
     entities: [
       {
-        token: "",
+        email: "",
+        localId: "",
         nickName: "",
         WordsCount: [],
         averageScore: null,
@@ -29,13 +35,17 @@ const userSlice = createSlice({
       },
     ],
     loading: "idle",
+    token: "",
   },
   reducers: {
     setNickName(state, action) {
       state.entities[0].nickName = action.payload;
     },
-    setNickName(state, action) {
-      state.entities[0].nickName = action.payload;
+    setEmail(state, action) {
+      state.entities[0].email = action.payload;
+    },
+    setLocalId(state, action) {
+      state.entities[0].localId = action.payload;
     },
     setWordsCount(state, action) {
       state.entities[0].WordsCount = [

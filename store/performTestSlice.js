@@ -38,7 +38,7 @@ const performTestSlice = createSlice({
     isWordsCountReceived: false,
     isTranscriptReceived: false,
     //login
-    isLoggedIn: false,
+    // isLoggedIn: false,
   },
   reducers: {
     setShowStartBtn: (state, action) => {

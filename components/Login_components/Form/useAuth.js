@@ -3,14 +3,17 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { login_signup_Actions } from "../../../store/login_signupSlice";
 import Router from "next/router";
+import { userSlice_Actions } from "../../../store/userSlice";
 
 //authenticate both signIn and SignUp
 function useAuth(url) {
   const dispatch = useDispatch();
-  const token = useSelector((state) => state.user.token);
-  const nickName = useSelector((state) => state.user.nickName);
-  const [email, setEmail] = useState(null);
-  const [localId, setLocalId] = useState(null);
+  const token = useSelector((state) => state.login_signup.token);
+  const email = useSelector((state) => state.user.entities[0].email);
+  const localId = useSelector((state) => state.user.entities[0].localId);
+  const nickName = useSelector((state) => state.user.entities[0].nickName);
+  // const [email, setEmail] = useState(null);
+  // const [localId, setLocalId] = useState(null);
   const fireBaseAuth = (enteredEmail, enteredPassword) => {
     axios
       .post(url, {
@@ -20,38 +23,42 @@ function useAuth(url) {
       })
       .then((res) => {
         //setstate only when login, when signup, local state will be used as display name coz res will not have displayName initially
-        if (res.data.displayName) {
-          // dispatch(login_signup_Actions.setNickName(res.data.displayName));
-        }
+        // if (res.data.displayName) {
+        //   // dispatch(login_signup_Actions.setNickName(res.data.displayName));
+        // }
         Router.push("/performtest");
         console.log(res.data);
-        setEmail(res.data.email);
-        setLocalId(res.data.localId);
+        // setEmail(res.data.email);
+        // setLocalId(res.data.localId);
         dispatch(login_signup_Actions.loginHandler(res.data.idToken));
         dispatch(login_signup_Actions.setIsLoggedIn(true));
         dispatch(login_signup_Actions.setIsEmailError(false));
+        dispatch(userSlice_Actions.setEmail(res.data.email));
+        dispatch(userSlice_Actions.setLocalId(res.data.localId));
       })
       .catch((error) => {
         console.log(error);
-        dispatch(
-          login_signup_Actions.setEmailErrorMsg(
-            error.response.data.error.message
-          )
-        );
-        dispatch(login_signup_Actions.setIsEmailError(true));
+        if (error.response) {
+          dispatch(
+            login_signup_Actions.setEmailErrorMsg(
+              error.response.data.error.message
+            )
+          );
+          dispatch(login_signup_Actions.setIsEmailError(true));
+        }
       });
   };
 
   //create new user account in mongodb with current progress when sign up
   useEffect(() => {
-    if (nickName !== "" && token !== "") {
+    if (nickName !== "" && token !== "" && email !== "" && localId !== "") {
       axios
         .post("/api/UserData/createNewUser", {
-          email: email,
           localId: localId,
           nickName: nickName,
           WordsCount: [],
           averageScore: null,
+          email: email,
           scoreAvgeCriteria: null,
           highScore: null,
           changeOverPrevScore: null,
@@ -63,7 +70,7 @@ function useAuth(url) {
           console.log(err);
         });
     }
-  }, [nickName, token]);
+  }, [nickName, token, email, localId]);
 
   return {
     fireBaseAuth,

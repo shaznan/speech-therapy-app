@@ -18,6 +18,7 @@ export default function DisplayResult() {
   const isWordsCountReceived = useSelector(
     (state) => state.performtest.isWordsCountReceived
   );
+  const entities = useSelector((state) => state.user.entities[0]);
 
   const handleClose = () => {
     setOpen(false);
@@ -34,8 +35,7 @@ export default function DisplayResult() {
 
   //Send results to backend
   useEffect(() => {
-    // isWordsCountReceived && dispatch(updateUserData());
-    dispatch(updateUserData());
+    isWordsCountReceived && dispatch(updateUserData(entities));
   }, [isWordsCountReceived]);
 
   // const test = () => {

@@ -8,6 +8,7 @@ const login_signupSlice = createSlice({
     emailErrorMsg: "",
     isEmailError: false,
     isLoggedIn: false,
+    token: "",
   },
   reducers: {
     setSignInActive(state, action) {
