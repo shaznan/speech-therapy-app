@@ -32,10 +32,12 @@ const userSlice = createSlice({
         scoreAvgeCriteria: null,
         highScore: null,
         changeOverPrevScore: null,
+        isLoggedIn: false,
       },
     ],
     loading: "idle",
     token: "",
+    isLoggedIn: false,
   },
   reducers: {
     setNickName(state, action) {
@@ -103,6 +105,24 @@ const userSlice = createSlice({
         state.entities[0].changeOverPrevScore =
           ((currentTestScore - prevTestScore) / prevTestScore) * 100;
       }
+    },
+    setIsLoggedIn(state, action) {
+      state.isLoggedIn = action.payload;
+    },
+    loginHandler(state, action) {
+      state.token = action.payload;
+    },
+    logoutHandler(state) {
+      state.token = "";
+      state.entities[0].email = "";
+      state.entities[0].localId = "";
+      state.entities[0].nickName = "";
+      state.entities[0].WordsCount = [];
+      state.entities[0].averageScore = null;
+      state.entities[0].scoreAvgeCriteria = null;
+      state.entities[0].highScore = null;
+      state.entities[0].changeOverPrevScore = null;
+      state.isLoggedIn = false;
     },
   },
   extraReducers: {

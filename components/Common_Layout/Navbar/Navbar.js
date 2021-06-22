@@ -19,7 +19,7 @@ function Navbar() {
     return state.navigation.menuItems;
   });
 
-  const isLoggedIn = useSelector((state) => state.login_signup.isLoggedIn);
+  const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
 
   const onClickHandler = (e) => {
     e.preventDefault();

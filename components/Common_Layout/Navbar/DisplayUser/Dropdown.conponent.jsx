@@ -3,7 +3,7 @@ import CloseWindowBtn from "../../Button/CloseWindowBtn";
 import classes from "../Navbar.module.css";
 import Fade from "@material-ui/core/Fade";
 import { useDispatch } from "react-redux";
-import { login_signup_Actions } from "../../../../store/login_signupSlice";
+import { userSlice_Actions } from "../../../../store/userSlice";
 
 function DisplayUserDropdown({
   avatar,
@@ -26,7 +26,7 @@ function DisplayUserDropdown({
             <div className={classes.dropdownplaceholder}>{nickName}</div>
             <div
               className={classes.logouttext}
-              onClick={() => dispatch(login_signup_Actions.logoutHandler())}
+              onClick={() => dispatch(userSlice_Actions.logoutHandler())}
             >
               Logout
             </div>

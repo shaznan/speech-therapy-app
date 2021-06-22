@@ -8,7 +8,7 @@ import { userSlice_Actions } from "../../../store/userSlice";
 //authenticate both signIn and SignUp
 function useAuth(url) {
   const dispatch = useDispatch();
-  const token = useSelector((state) => state.login_signup.token);
+  const token = useSelector((state) => state.user.token);
   const email = useSelector((state) => state.user.entities[0].email);
   const localId = useSelector((state) => state.user.entities[0].localId);
   const nickName = useSelector((state) => state.user.entities[0].nickName);
@@ -30,8 +30,8 @@ function useAuth(url) {
         console.log(res.data);
         // setEmail(res.data.email);
         // setLocalId(res.data.localId);
-        dispatch(login_signup_Actions.loginHandler(res.data.idToken));
-        dispatch(login_signup_Actions.setIsLoggedIn(true));
+        dispatch(userSlice_Actions.loginHandler(res.data.idToken));
+        dispatch(userSlice_Actions.setIsLoggedIn(true));
         dispatch(login_signup_Actions.setIsEmailError(false));
         dispatch(userSlice_Actions.setEmail(res.data.email));
         dispatch(userSlice_Actions.setLocalId(res.data.localId));
@@ -59,7 +59,7 @@ function useAuth(url) {
           WordsCount: [],
           averageScore: null,
           email: email,
-          scoreAvgeCriteria: null,
+          scoreAvgCriteria: null,
           highScore: null,
           changeOverPrevScore: null,
         })
