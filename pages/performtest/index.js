@@ -17,6 +17,7 @@ import useAlphabetValidator from "../../components/PerformTest_components/DataVa
 import TranscriptErrorModal from "../../components/PerformTest_components/layout/TranscriptErrorModal/TranscriptErrorModal";
 import DisplayResult from "../../components/PerformTest_components/layout/DisplayResult/DisplayResult";
 import useTopicsValidator from "../../components/PerformTest_components/DataValidation/Random_topics/useTopicsValidator";
+import LoadSpinner from "../../components/Common_Layout/loadspinner/loadSpinner";
 // import useAnalyzeResult from "../../components/PerformTest_components/layout/DisplayResult/useAnalyzeResult"; //FIXME: REMOVE
 import StoreData_MongoDb from "../../components/StoreData_MongoDB/StoreData_MongoDb"; //FIXME: Remove
 
@@ -45,6 +46,7 @@ function index() {
       <div className={classes.performtestbgimage}>
         <Grid container spacing={0}>
           <Title /> {/* TODO: Move to performtesthome page */}
+          <LoadSpinner />
           <DisplayCurrentProgress />
           {showStartBtn && <StartNowBtn />}
           {showInstructions && <DisplayInstructions />}
@@ -54,8 +56,6 @@ function index() {
           {isAnalyzing && <AnalyzingResult />}
           <TranscriptErrorModal />
           <DisplayResult />
-          {/* remove FIXME: */}
-          {/* <StoreData_MongoDb /> */}
         </Grid>
       </div>
     </Fragment>

@@ -23,7 +23,7 @@ function DisplayUser() {
         setAvatar(res.config.url);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [nickName]);
 
   const toggleDropdown = () => {
     setShowDropdown(!showDropdown);

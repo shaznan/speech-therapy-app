@@ -147,22 +147,24 @@ const userSlice = createSlice({
       };
   },
   extraReducers: {
+    [fetchUserById.pending]: (state) => {
+      state.loading = "loading";
+    },
     [fetchUserById.fulfilled]: (state, action) => {
+      state.loading = "success";
       state.entities[0] = action.payload;
       // console.log(action.payload);
     },
   },
-  // {
-  //   [updateUserData.fulfilled]: (state) => {
-  //     state.loading = "success";
-  //   },
-  //   [updateUserData.rejected]: (state) => {
-  //     state.loading = "failed";
-  //   },
-  //   // [fetchUserById.fulfilled]: (state)=>{
+  [updateUserData.fulfilled]: (state) => {
+    state.loading = "success";
+  },
+  [updateUserData.rejected]: (state) => {
+    state.loading = "failed";
+  },
+  // [fetchUserById.fulfilled]: (state)=>{
 
-  //   // }
-  // },
+  // }
 });
 
 export const userSlice_Actions = userSlice.actions;
