@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { login_signup_Actions } from "../../../store/login_signupSlice";
 import Router from "next/router";
 import { userSlice_Actions } from "../../../store/userSlice";
+import { fetchUserById } from "../../../store/userSlice";
 
 //authenticate both signIn and SignUp
 function useAuth(url) {
@@ -12,6 +13,7 @@ function useAuth(url) {
   const email = useSelector((state) => state.user.entities[0].email);
   const localId = useSelector((state) => state.user.entities[0].localId);
   const nickName = useSelector((state) => state.user.entities[0].nickName);
+  const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
   // const [email, setEmail] = useState(null);
   // const [localId, setLocalId] = useState(null);
   const fireBaseAuth = (enteredEmail, enteredPassword) => {
@@ -71,6 +73,14 @@ function useAuth(url) {
         });
     }
   }, [nickName, token, email, localId]);
+
+  //if signed in, update state with user specific state
+  useEffect(() => {
+    if (nickName === "" && isLoggedIn && localId !== "") {
+      console.log(localId);
+      dispatch(fetchUserById(localId));
+    }
+  }, [nickName, isLoggedIn, localId]);
 
   return {
     fireBaseAuth,

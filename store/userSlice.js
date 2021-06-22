@@ -1,3 +1,4 @@
+import { BuildRounded } from "@material-ui/icons";
 import {
   createSlice,
   createAsyncThunk,
@@ -7,6 +8,20 @@ import axios from "axios";
 // import { useSelector } from "react-redux";
 
 //update UserData
+export const fetchUserById = createAsyncThunk(
+  "user/fetchUserById",
+  async (userId) => {
+    return axios
+      .get("/api/UserData/RetreiveUserData", {
+        params: {
+          userId: userId,
+        },
+      })
+      .then((res) => {
+        return res.data;
+      });
+  }
+);
 
 export const updateUserData = createAsyncThunk(
   "user/updateUserData",
@@ -125,14 +140,29 @@ const userSlice = createSlice({
       state.isLoggedIn = false;
     },
   },
+  extraReducers: (builder) => {
+    builder.addCase(fetchUserById.fulfilled),
+      (state, action) => {
+        state.entities[0] = action.payload;
+      };
+  },
   extraReducers: {
-    [updateUserData.fulfilled]: (state) => {
-      state.loading = "success";
-    },
-    [updateUserData.rejected]: (state) => {
-      state.loading = "failed";
+    [fetchUserById.fulfilled]: (state, action) => {
+      state.entities[0] = action.payload;
+      // console.log(action.payload);
     },
   },
+  // {
+  //   [updateUserData.fulfilled]: (state) => {
+  //     state.loading = "success";
+  //   },
+  //   [updateUserData.rejected]: (state) => {
+  //     state.loading = "failed";
+  //   },
+  //   // [fetchUserById.fulfilled]: (state)=>{
+
+  //   // }
+  // },
 });
 
 export const userSlice_Actions = userSlice.actions;
