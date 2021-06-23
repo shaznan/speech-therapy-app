@@ -14,11 +14,16 @@ const useStyles = makeStyles({
     backgroundSize: "120rem ",
     height: "92vh",
     width: "90vw",
+    position: "relative",
     zIndex: "999",
     borderRadius: "39px",
     margin: "auto",
     padding: "3rem 10em",
     boxShadow: "0px 9px 40px rgba(0,0,0,0.08)",
+    overflowY: "scroll",
+    "&::-webkit-scrollbar": {
+      width: "1em",
+    },
   },
   benchmark_cont: {
     backgroundColor: "white",
@@ -51,7 +56,7 @@ const useStyles = makeStyles({
     borderRadius: "39px",
     background: "rgba(255,255,255,0.4)",
     border: "1px solid rgba(255,255,255,0.2)",
-    backdropFilter: "blur(5px)",
+    // backdropFilter: "blur(1px)",
   },
   subheading: {
     fontWeight: "bold",
@@ -123,6 +128,24 @@ const useStyles = makeStyles({
     marginBottom: "1rem",
     boxShadow: "0px 9px 40px rgba(0,0,0,0.1)",
     borderRadius: "0 0 10px 10px",
+  },
+  graph_cont: {
+    background: "rgba(255,255,255,0.4)",
+    border: "1px solid rgba(255,255,255,0.2)",
+    // backdropFilter: "blur(5px)",
+    paddingBottom: "2rem",
+    display: "flex",
+    borderRadius: "39px",
+    marginTop: "-20rem",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  graph: {
+    width: "40rem",
+    borderRadius: "10px",
+    // height: "rem !important",
+    backgroundColor: "white",
   },
 });
 

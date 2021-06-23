@@ -6,6 +6,7 @@ import ScoreBenchmark from "./ScoreBenchmark/ScoreBenchmark";
 import Grid from "@material-ui/core/Grid";
 import ScoreSummary from "./ScoreSummary/ScoreSummary";
 import OverviewGraph from "./OverviewGraph/OverviewGraph";
+import Button from "../../../Common_Layout/Button/Button";
 
 function Dashboard() {
   const classes = useStyles();
@@ -13,7 +14,10 @@ function Dashboard() {
     <Fragment>
       <div className={classes.container}>
         <Grid container spacing={0} className={classes.dashboard_cont}>
-          <Grid style={{ marginBottom: "1rem" }} item md={12}>
+          <Grid item md={12} style={{ marginBottom: "2rem" }}>
+            <div style={{ marginBottom: "1rem" }}>
+              <Button type="back" text="back" />
+            </div>
             <Heading text="Dashboard" fontsize="4rem" />
           </Grid>
           <Grid item md={9} className={classes.scorebenchmark_cont}>
