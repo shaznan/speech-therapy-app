@@ -43,7 +43,7 @@ function index() {
     <Fragment>
       <div className={classes.container}>
         {/* //TODO: ENABLE */}
-        {/* <Navbar /> */}
+        <Navbar />
         <div className={classes.performtestbgimage}>
           <Grid container spacing={0}>
             <Title /> {/* TODO: Move to performtesthome page */}

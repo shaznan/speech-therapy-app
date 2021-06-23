@@ -2,37 +2,42 @@ import React from "react";
 import { Line } from "react-chartjs-2";
 import { useStyles } from "../Dashboard_Styles";
 
-const data = {
-  labels: ["1", "2", "3", "4", "5", "6"],
-  datasets: [
-    {
-      label: "# of Votes",
-      data: [12, 19, 3, 5, 2, 3],
-      fill: false,
-      backgroundColor: "rgb(255, 99, 132)",
-      borderColor: "rgba(255, 99, 132, 0.2)",
-    },
-  ],
-};
-
-const options = {
-  responsive: true,
-  scales: {
-    x: {
-      grid: {
-        display: false,
-      },
-    },
-    y: {
-      grid: {
-        display: false,
-      },
-    },
-  },
-};
-
-function OverviewGraph() {
+function OverviewGraph({ scoreHistoryData }) {
   const classes = useStyles();
+  const attempts = scoreHistoryData.map((item) => {
+    return item.Attempt_no;
+  });
+  const score = scoreHistoryData.map((item) => {
+    return item.score;
+  });
+  const data = {
+    labels: attempts,
+    datasets: [
+      {
+        label: "scores",
+        data: score,
+        fill: false,
+        backgroundColor: "rgb(255, 99, 132)",
+        borderColor: "rgba(255, 99, 132, 0.2)",
+      },
+    ],
+  };
+
+  const options = {
+    responsive: true,
+    scales: {
+      x: {
+        grid: {
+          display: false,
+        },
+      },
+      y: {
+        grid: {
+          display: false,
+        },
+      },
+    },
+  };
   return (
     <div>
       <div className={classes.graph_cont}>

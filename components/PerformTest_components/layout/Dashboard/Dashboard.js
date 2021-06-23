@@ -7,9 +7,14 @@ import Grid from "@material-ui/core/Grid";
 import ScoreSummary from "./ScoreSummary/ScoreSummary";
 import OverviewGraph from "./OverviewGraph/OverviewGraph";
 import Button from "../../../Common_Layout/Button/Button";
+import { useSelector } from "react-redux";
 
 function Dashboard() {
   const classes = useStyles();
+  const WordsCount = useSelector((state) => state.user.entities[0].WordsCount);
+  const scoreHistoryData = WordsCount.map((item, i) => {
+    return { Attempt_no: i + 1, score: item.wordsMatch };
+  });
   return (
     <Fragment>
       <div className={classes.container}>
@@ -40,15 +45,7 @@ function Dashboard() {
               heading="Score History"
               subheadingOne="Attempt No."
               subheadingTwo="Score"
-              data={[
-                { Attempt_no: "one", score: 12 },
-                { Attempt_no: "two", score: 23 },
-                { Attempt_no: "three", score: 12 },
-                { Attempt_no: "four", score: 15 },
-                { Attempt_no: "five", score: 20 },
-                { Attempt_no: "six", score: 17 },
-                { Attempt_no: "seven", score: 22 },
-              ]}
+              data={scoreHistoryData}
             />
           </Grid>
           <Grid
@@ -59,7 +56,7 @@ function Dashboard() {
             <ScoreSummary />
           </Grid>
           <Grid item md={9}>
-            <OverviewGraph />
+            <OverviewGraph scoreHistoryData={scoreHistoryData} />
           </Grid>
         </Grid>
       </div>
