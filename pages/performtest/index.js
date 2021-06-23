@@ -18,8 +18,7 @@ import TranscriptErrorModal from "../../components/PerformTest_components/layout
 import DisplayResult from "../../components/PerformTest_components/layout/DisplayResult/DisplayResult";
 import useTopicsValidator from "../../components/PerformTest_components/DataValidation/Random_topics/useTopicsValidator";
 import LoadSpinner from "../../components/Common_Layout/loadspinner/loadSpinner";
-// import useAnalyzeResult from "../../components/PerformTest_components/layout/DisplayResult/useAnalyzeResult"; //FIXME: REMOVE
-import StoreData_MongoDb from "../../components/StoreData_MongoDB/StoreData_MongoDb"; //FIXME: Remove
+import Dashboard from "../../components/PerformTest_components/layout/Dashboard/Dashboard";
 
 function index() {
   const showStartBtn = useSelector((state) => state.performtest.showStartBtn);
@@ -42,22 +41,26 @@ function index() {
 
   return (
     <Fragment>
-      <Navbar />
-      <div className={classes.performtestbgimage}>
-        <Grid container spacing={0}>
-          <Title /> {/* TODO: Move to performtesthome page */}
-          <LoadSpinner />
-          <DisplayCurrentProgress />
-          {showStartBtn && <StartNowBtn />}
-          {showInstructions && <DisplayInstructions />}
-          {showCatergoryForm && <SelectCatergoryForm />}
-          {showCountdown && <TimerBeforeBegin />}
-          {!isTimeIsUp && <SpeechInput />}
-          {isAnalyzing && <AnalyzingResult />}
-          <TranscriptErrorModal />
-          <DisplayResult />
-        </Grid>
+      <div className={classes.container}>
+        {/* //TODO: ENABLE */}
+        {/* <Navbar /> */}
+        <div className={classes.performtestbgimage}>
+          <Grid container spacing={0}>
+            <Title /> {/* TODO: Move to performtesthome page */}
+            <LoadSpinner />
+            <DisplayCurrentProgress />
+            {showStartBtn && <StartNowBtn />}
+            {showInstructions && <DisplayInstructions />}
+            {showCatergoryForm && <SelectCatergoryForm />}
+            {showCountdown && <TimerBeforeBegin />}
+            {!isTimeIsUp && <SpeechInput />}
+            {isAnalyzing && <AnalyzingResult />}
+            <TranscriptErrorModal />
+            <DisplayResult />
+          </Grid>
+        </div>
       </div>
+      <Dashboard />
     </Fragment>
   );
 }

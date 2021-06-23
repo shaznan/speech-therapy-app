@@ -14,6 +14,11 @@ const performtestStyles = makeStyles({
     backgroundPosition: "bottom",
     width: "100%",
   },
+  container: {
+    height: "100vh",
+    width: "100vw",
+    // overflow: "hidden", //TODO: Enable this!!!
+  },
   timespinner: {
     display: "flex",
     justifyContent: "center",
