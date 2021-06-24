@@ -14,6 +14,9 @@ function Dashboard() {
   const classes = useStyles();
   const WordsCount = useSelector((state) => state.user.entities[0].WordsCount);
   const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
+  const isWordsCountReceived = useSelector(
+    (state) => state.performtest.isWordsCountReceived
+  );
   const scoreHistoryData = WordsCount.map((item, i) => {
     return { Attempt_no: i + 1, score: item.wordsMatch };
   });
@@ -21,7 +24,8 @@ function Dashboard() {
   const [isError, setIsError] = useState(false);
 
   useEffect(() => {
-    // if (!isLoggedIn) return;
+    if (!isLoggedIn) return;
+    // if (!isWordsCountReceived) return;
     axios
       .get("/api/UserData/Leadership_scores", {
         params: {
@@ -36,7 +40,7 @@ function Dashboard() {
         )
       )
       .catch((err) => setIsError(true));
-  }, [isLoggedIn]);
+  }, [isLoggedIn, isWordsCountReceived]);
 
   return (
     <Fragment>
@@ -54,12 +58,14 @@ function Dashboard() {
               subheadingOne="User"
               subheadingTwo="HighScore"
               data={leaderboardData}
+              isError={isError}
             />
             <ScoreBenchmark
               heading="Score History"
               subheadingOne="Attempt No."
               subheadingTwo="Score"
               data={scoreHistoryData}
+              isError={isError}
             />
           </Grid>
           <Grid

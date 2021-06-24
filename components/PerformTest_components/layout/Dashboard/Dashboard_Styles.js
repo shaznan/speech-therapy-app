@@ -147,6 +147,18 @@ const useStyles = makeStyles({
     // height: "rem !important",
     backgroundColor: "white",
   },
+  errorMessage: {
+    textAlign: "center",
+    fontWeight: "bold",
+    fontSize: "1.2rem",
+    marginLeft: "auto",
+    marginTop: "2rem",
+  },
+  errorimage: {
+    width: "7rem",
+    opacity: "0.5",
+    marginTop: "1rem",
+  },
 });
 
 export { useStyles };
