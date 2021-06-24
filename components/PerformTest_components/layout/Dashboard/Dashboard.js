@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Fragment } from "react";
 import { useStyles } from "./Dashboard_Styles";
 import Heading from "../../../Common_Layout/Typography/Heading";
@@ -8,13 +8,24 @@ import ScoreSummary from "./ScoreSummary/ScoreSummary";
 import OverviewGraph from "./OverviewGraph/OverviewGraph";
 import Button from "../../../Common_Layout/Button/Button";
 import { useSelector } from "react-redux";
+import axios from "axios";
 
 function Dashboard() {
   const classes = useStyles();
   const WordsCount = useSelector((state) => state.user.entities[0].WordsCount);
+  const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
   const scoreHistoryData = WordsCount.map((item, i) => {
     return { Attempt_no: i + 1, score: item.wordsMatch };
   });
+
+  useEffect(() => {
+    // if (!isLoggedIn) return;
+    axios
+      .get("/api/UserData/Leadership_scores")
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  }, [isLoggedIn]);
+
   return (
     <Fragment>
       <div className={classes.container}>
