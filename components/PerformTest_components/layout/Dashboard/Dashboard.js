@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Fragment } from "react";
 import { useStyles } from "./Dashboard_Styles";
 import Heading from "../../../Common_Layout/Typography/Heading";
@@ -17,13 +17,25 @@ function Dashboard() {
   const scoreHistoryData = WordsCount.map((item, i) => {
     return { Attempt_no: i + 1, score: item.wordsMatch };
   });
+  const [leaderboardData, setLeaderBoardData] = useState([]);
+  const [isError, setIsError] = useState(false);
 
   useEffect(() => {
     // if (!isLoggedIn) return;
     axios
-      .get("/api/UserData/Leadership_scores")
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+      .get("/api/UserData/Leadership_scores", {
+        params: {
+          limit: 7,
+        },
+      })
+      .then((res) =>
+        setLeaderBoardData(
+          res.data.leaderBoard.map((item) => {
+            return { name: item.nickName, score: item.highScore };
+          })
+        )
+      )
+      .catch((err) => setIsError(true));
   }, [isLoggedIn]);
 
   return (
@@ -41,16 +53,7 @@ function Dashboard() {
               heading="Social Ranking"
               subheadingOne="User"
               subheadingTwo="HighScore"
-              data={[
-                { name: "shaznan", score: 23 },
-                { name: "abdullah", score: 22 },
-                { name: "shazmeer", score: 21 },
-                { name: "esa", score: 24 },
-                { name: "sharaf", score: 25 },
-                { name: "jarrod", score: 26 },
-                { name: "husni", score: 18 },
-                { name: "makee", score: 15 },
-              ]}
+              data={leaderboardData}
             />
             <ScoreBenchmark
               heading="Score History"

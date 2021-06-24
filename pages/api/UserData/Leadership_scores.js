@@ -1,23 +1,41 @@
 import { MongoClient } from "mongodb";
 
-//get topic list based on req query, from database
+//get users with highest scores from db
 export default async (req, res) => {
   if (req.method === "GET") {
-    // const userId = req.query.userId;
+    const dataLimit = +req.query.limit;
     const client = await MongoClient.connect(
       "mongodb+srv://shaznanfairoze:qmpGwieO89Yy1QNM@speech-therapy-app.mb1pc.mongodb.net/UserData?retryWrites=true&w=majority"
     );
     const db = client.db();
-    const userCollection = db.collection("performTestState");
-    const users = await userCollection
+    const scoreCollection = db.collection("performTestState");
+    const scores = await scoreCollection
       .find()
       .sort({ highScore: -1 })
-      .limit(5)
+      .limit(dataLimit)
       .toArray();
-    console.log("new");
-    console.log(users);
+
+    const scoresUuid = scores.map((item) => {
+      return item.uuid;
+    });
+
+    const userCollection = db.collection("userCollection");
+    const user = await userCollection
+      .find({ uuid: { $in: scoresUuid } })
+      .toArray();
+
+    const combinetestStateWithUser = (user, scores) =>
+      user.map((itm) => ({
+        ...scores.find((item) => item.uuid === itm.uuid && item),
+        ...itm,
+      }));
+
+    const combinedData = combinetestStateWithUser(user, scores);
+    const sortCombinedData = combinedData.sort((a, b) => {
+      return b.highScore - a.highScore;
+    });
+
     client.close();
-    res.status(200).json({ message: "ok!" });
+    res.status(200).json({ leaderBoard: sortCombinedData });
   }
 };
-//FIXME: GENERATE UUID
