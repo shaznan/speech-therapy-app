@@ -76,6 +76,12 @@ const useStyles = makeStyles({
     margin: "0.4rem 0rem",
   },
 
+  highlightitem: {
+    backgroundColor: "#fff1b3",
+    margin: "0.4rem 0rem",
+    padding: "0.6rem",
+  },
+
   scoreitems_one: {
     borderRadius: "11px 0 0 11px",
     marginLeft: "1rem",

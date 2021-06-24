@@ -2,9 +2,11 @@ import React from "react";
 import { Fragment } from "react";
 import { useStyles } from "../Dashboard_Styles";
 import acheivementImg from "../../../../../assets/images/acheivement.png";
+import { useSelector } from "react-redux";
 
 function ColumnOne({ subheadingOne, data }) {
   const classes = useStyles();
+  const nickName = useSelector((state) => state.user.entities[0].nickName);
   return (
     <Fragment>
       <div className={classes.subheading}>{subheadingOne}</div>
@@ -12,7 +14,11 @@ function ColumnOne({ subheadingOne, data }) {
         return (
           <div
             key={i}
-            className={`${classes.scoreitems} ${classes.scoreitems_one}`}
+            className={`${
+              item.name === nickName
+                ? classes.highlightitem
+                : classes.scoreitems
+            } ${classes.scoreitems_one}`}
           >
             {item.name && i < 4 ? (
               <img className={classes.acheivement_img} src={acheivementImg} />
