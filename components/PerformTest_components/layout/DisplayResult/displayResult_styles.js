@@ -15,12 +15,20 @@ export const useStyles = makeStyles(() => ({
     width: "40rem",
     position: "relative",
   },
+  link: {
+    color: "black",
+    "&:hover": {
+      fontWeight: "bold",
+      textDecoration: "underline",
+    },
+  },
   body: {
     marginTop: "1.3rem",
   },
   typography: {
     // lineHeight: "2.5rem",
     color: "rgba(0,0,0,0.6)",
+    marginBottom: "1rem",
   },
   maintext: {
     fontSize: "1.1rem",

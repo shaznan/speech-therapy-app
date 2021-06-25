@@ -31,7 +31,6 @@ function index() {
   const showCatergoryForm = useSelector(
     (state) => state.performtest.showCatergoryForm
   );
-  const showDashboard = useSelector((state) => state.dashboard.showDashboard);
 
   const showCountdown = useSelector((state) => state.performtest.showCountdown);
   const isTimeIsUp = useSelector((state) => state.performtest.isTimeIsUp);

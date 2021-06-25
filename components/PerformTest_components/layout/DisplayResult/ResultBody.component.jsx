@@ -5,10 +5,11 @@ import Typography from "@material-ui/core/Typography";
 import { useStyles } from "./displayResult_styles";
 import infoIcon from "../../../../assets/images/warning_icon.png";
 import useAnalyzeResult from "./useAnalyzeResult";
+import Link from "next/link";
 
 function ResultBody() {
   const classes = useStyles();
-  const isLoggedIn = useSelector((state) => state.performtest.isLoggedIn);
+  const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
   const [currentWordCount, textOptions] = useAnalyzeResult();
   const [wordsMatch, setWordsMatch] = useState(null);
   const [accuracyRate, setAccuracyRate] = useState(null);
@@ -56,7 +57,10 @@ function ResultBody() {
             height="20px"
             className={classes.icon}
           />{" "}
-          Login to save progress and get access to your history dashboard
+          <span className={classes.link}>
+            <Link href="/login_signup">Login</Link>
+          </span>{" "}
+          to save progress and get access to your history dashboard
         </Typography>
       )}
       {/* <Typography className={`${classes.typography} ${classes.captiontext}`}>

@@ -38,13 +38,8 @@ export default function DisplayResult() {
     isWordsCountReceived && dispatch(updateUserData(entities));
   }, [isWordsCountReceived]);
 
-  // const test = () => {
-  //   setOpen(true);
-  // };
-  //FIXME: remove button;
   return (
     <div>
-      {/* <button onClick={test}>Open</button> */}
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
