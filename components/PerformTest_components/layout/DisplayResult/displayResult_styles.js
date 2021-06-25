@@ -55,7 +55,6 @@ export const useStyles = makeStyles(() => ({
   },
   tryagainbtn: {
     backgroundColor: "#FF4444",
-    borderRadius: "7px 0px 0px 7px ",
     "&:hover": {
       backgroundColor: "#ff0008",
       "& $icon": {
@@ -63,16 +62,7 @@ export const useStyles = makeStyles(() => ({
       },
     },
   },
-  dashboardbtn: {
-    backgroundColor: "rgb(20,146,230)",
-    borderRadius: "0px 7px 7px 0px",
-    "&:hover": {
-      backgroundColor: "rgb(7,130,212)",
-      "& $icon": {
-        transform: "TranslateX(5px)",
-      },
-    },
-  },
+
   closebtn: {
     position: "absolute",
     right: "10%",

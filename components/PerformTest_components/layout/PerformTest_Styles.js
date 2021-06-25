@@ -17,7 +17,7 @@ const performtestStyles = makeStyles({
   container: {
     height: "100vh",
     width: "100vw",
-    // overflow: "hidden", //TODO: Enable this!!!
+    overflow: "hidden", //TODO: Enable this!!!
   },
   timespinner: {
     display: "flex",
@@ -25,6 +25,11 @@ const performtestStyles = makeStyles({
     marginTop: "6rem",
     marginLeft: "-9rem",
     marginBottom: "2rem",
+  },
+  performtesthome_btncont: {
+    display: "flex",
+    marginTop: "4rem",
+    marginRight: "2.4rem",
   },
 
   currentprogress: {

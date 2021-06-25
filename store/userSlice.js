@@ -112,8 +112,10 @@ const userSlice = createSlice({
         state.entities[0].WordsCount[state.entities[0].WordsCount.length - 2]
           .wordsMatch;
       if (prevTestScore !== 0) {
-        state.entities[0].changeOverPrevScore =
-          ((currentTestScore - prevTestScore) / prevTestScore) * 100;
+        state.entities[0].changeOverPrevScore = (
+          ((currentTestScore - prevTestScore) / prevTestScore) *
+          100
+        ).toFixed(2);
       }
     },
     setIsLoggedIn(state, action) {

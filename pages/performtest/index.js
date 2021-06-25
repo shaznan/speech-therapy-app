@@ -19,6 +19,7 @@ import DisplayResult from "../../components/PerformTest_components/layout/Displa
 import useTopicsValidator from "../../components/PerformTest_components/DataValidation/Random_topics/useTopicsValidator";
 import LoadSpinner from "../../components/Common_Layout/loadspinner/loadSpinner";
 import Dashboard from "../../components/PerformTest_components/layout/Dashboard/Dashboard";
+import PerformTestHome_Btn from "../../components/PerformTest_components/layout/PerformTestHome_btn";
 
 function index() {
   const showStartBtn = useSelector((state) => state.performtest.showStartBtn);
@@ -30,6 +31,7 @@ function index() {
   const showCatergoryForm = useSelector(
     (state) => state.performtest.showCatergoryForm
   );
+  const showDashboard = useSelector((state) => state.dashboard.showDashboard);
 
   const showCountdown = useSelector((state) => state.performtest.showCountdown);
   const isTimeIsUp = useSelector((state) => state.performtest.isTimeIsUp);
@@ -49,7 +51,7 @@ function index() {
             <Title /> {/* TODO: Move to performtesthome page */}
             <LoadSpinner />
             <DisplayCurrentProgress />
-            {showStartBtn && <StartNowBtn />}
+            {showStartBtn && <PerformTestHome_Btn />}
             {showInstructions && <DisplayInstructions />}
             {showCatergoryForm && <SelectCatergoryForm />}
             {showCountdown && <TimerBeforeBegin />}
@@ -57,10 +59,10 @@ function index() {
             {isAnalyzing && <AnalyzingResult />}
             <TranscriptErrorModal />
             <DisplayResult />
+            {<Dashboard />}
           </Grid>
         </div>
       </div>
-      <Dashboard />
     </Fragment>
   );
 }

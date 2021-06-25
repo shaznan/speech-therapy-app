@@ -5,6 +5,19 @@ const useStyles = makeStyles({
   container: {
     width: "100vw",
     height: "100vh",
+    backgroundColor: "rgba(0,0,0,0.0)",
+    zIndex: "550",
+    transform: "translateY(100vh)",
+    opacity: "0",
+    transition: "0.4s ease-in-out",
+  },
+
+  showcontainer: {
+    position: "absolute",
+    transform: "translateY(-13vh)",
+    opacity: "1",
+    transition: "0.7s ease-in-out",
+    backgroundColor: "rgba(0,0,0,0.5)",
   },
 
   dashboard_cont: {
@@ -14,8 +27,9 @@ const useStyles = makeStyles({
     backgroundSize: "120rem ",
     height: "92vh",
     width: "90vw",
-    position: "relative",
-    zIndex: "999",
+    marginTop: "2rem",
+    transform: "translateX(-1%)",
+    zIndex: "550",
     borderRadius: "39px",
     margin: "auto",
     padding: "3rem 10em",
@@ -25,11 +39,12 @@ const useStyles = makeStyles({
       width: "1em",
     },
   },
+
   benchmark_cont: {
     backgroundColor: "white",
     boxShadow: "0px 3px 29px rgba(0,0,0,0.05)",
     borderRadius: "10px",
-    width: "28rem",
+    width: "22vw",
     marginRight: "3rem",
     height: "17.5rem",
     paddingRight: "1rem",

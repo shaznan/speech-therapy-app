@@ -18,15 +18,15 @@ function StartNowBtn() {
 
   return (
     <Fragment>
-      <Grid item lg={12}>
-        <div className={classes.startnowcontainer}>
-          <DynamicButton
-            onClickHandler={onClickHandler}
-            type="primary"
-            text="Start Now!"
-          />
-        </div>
-      </Grid>
+      {/* <Grid item lg={12}> */}
+      <div style={{ display: "flex", justifyContent: "flex-end" }}>
+        <DynamicButton
+          onClickHandler={onClickHandler}
+          type="primary"
+          text="Start Now!"
+        />
+      </div>
+      {/* </Grid> */}
     </Fragment>
   );
 }

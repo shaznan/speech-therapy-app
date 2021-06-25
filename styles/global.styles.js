@@ -14,6 +14,13 @@ const useStyles = makeStyles({
       flexDirection: "column-reverse",
     },
   },
+  "@global": {
+    "*::-webkit-scrollbar": {
+      width: "0.2em",
+      height: "0.2em",
+    },
+  },
+
   textcontainer: {
     height: "87vh",
     display: "flex",

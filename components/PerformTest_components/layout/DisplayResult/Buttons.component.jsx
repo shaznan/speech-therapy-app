@@ -4,22 +4,23 @@ import Button from "@material-ui/core/Button";
 import { useStyles } from "./displayResult_styles";
 import CloseWindowBtn from "../../../Common_Layout/Button/CloseWindowBtn";
 import RotateLeftIcon from "@material-ui/icons/RotateLeft";
-import DashboardIcon from "@material-ui/icons/Dashboard";
+import DashboardBtn from "../DashboardBtn";
+import { useSelector } from "react-redux";
 
 function Buttons({ tryAgainHandler }) {
   const classes = useStyles();
+  const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
 
   return (
     <Fragment>
       <Button
         onClick={tryAgainHandler}
         className={`${classes.tryagainbtn} ${classes.btn}`}
+        style={{ borderRadius: isLoggedIn ? "7px 0px 0px 7px" : "7px" }}
       >
         <RotateLeftIcon style={{ marginRight: "0.2rem" }} /> Try Again
       </Button>
-      <Button className={`${classes.dashboardbtn} ${classes.btn}`}>
-        <DashboardIcon style={{ marginRight: "0.2rem" }} /> Dashboard
-      </Button>
+      {isLoggedIn && <DashboardBtn tryAgainHandler={tryAgainHandler} />}
     </Fragment>
   );
 }
