@@ -4,8 +4,9 @@ import { useStyles } from "../Articles_styles";
 import Heading from "../../Common_Layout/Typography/Heading";
 import TopicOptions from "./TopicOptions.component";
 
-function SelectTopic() {
+function SelectTopic({ articles, handleClick, idRef }) {
   const classes = useStyles();
+
   return (
     <Fragment>
       <Grid item md={5} className={classes.selecttopic_cont}>
@@ -13,36 +14,19 @@ function SelectTopic() {
           <div className={classes.heading}>
             <Heading text="Select your topic" fontsize="4rem" />
           </div>
-          <TopicOptions
-            title="What is brain fog?"
-            author="shaznan"
-            imageUrl="https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-          />
-          <TopicOptions
-            title="What is brain fog?"
-            author="shaznan"
-            // imageUrl="https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-          />
-          <TopicOptions
-            title="What is brain fog?"
-            author="shaznan"
-            // imageUrl="https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-          />
-          <TopicOptions
-            title="What is brain fog?"
-            author="shaznan"
-            // imageUrl="https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-          />
-          <TopicOptions
-            title="What is brain fog?"
-            author="shaznan"
-            // imageUrl="https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-          />
-          <TopicOptions
-            title="What is brain fog?"
-            author="shaznan"
-            // imageUrl="https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-          />
+          <div className={classes.topicoptions_cont}>
+            {articles.map((item) => {
+              return (
+                <TopicOptions
+                  key={item.id}
+                  id={item.id}
+                  title={item.title}
+                  author={item.author}
+                  profileUrl={item.profileUrl}
+                />
+              );
+            })}
+          </div>
         </div>
       </Grid>
     </Fragment>
