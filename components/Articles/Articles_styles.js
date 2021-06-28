@@ -128,6 +128,11 @@ const useStyles = makeStyles({
     paddingTop: "0.8rem",
     fontFamily: "Poppins,sans-serif",
   },
+  checkbox: {
+    display: "flex",
+    justifyContent: "center",
+    backgroundColor: "rgba(255,255,255,0.7)",
+  },
 });
 
 export { useStyles };

@@ -12,6 +12,7 @@ function ArticlesPage() {
   const articles = [
     {
       id: 1234,
+      isVerified: true,
       title: "what is brain fog",
       author: "shaznan",
       profileUrl:
@@ -25,8 +26,23 @@ function ArticlesPage() {
     },
     {
       id: 5678,
+      isVerified: false,
       title: "How to avoid Brain fog",
       author: "Abdullah",
+      profileUrl:
+        "https://images.pexels.com/photos/1704488/pexels-photo-1704488.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+      content: {
+        coverImgUrl:
+          "https://images.unsplash.com/photo-1624695174414-8256d37de927?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1189&q=80",
+        textbody:
+          "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
+      },
+    },
+    {
+      id: 2698,
+      isVerified: false,
+      title: "How will brain fog affect you",
+      author: "Esa",
       profileUrl:
         "https://images.pexels.com/photos/1704488/pexels-photo-1704488.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
       content: {
