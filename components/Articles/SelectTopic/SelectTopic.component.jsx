@@ -5,6 +5,7 @@ import Heading from "../../Common_Layout/Typography/Heading";
 import TopicOptions from "./TopicOptions.component";
 import ArticleTypeCheckbox from "./ArticleTypeCheckbox.component";
 import { useSelector } from "react-redux";
+import WriteArticle from "./WriteArticle.component";
 
 function SelectTopic({ articles }) {
   const classes = useStyles();
@@ -29,6 +30,7 @@ function SelectTopic({ articles }) {
             <Heading text="Select your topic" fontsize="4rem" />
           </div>
           <ArticleTypeCheckbox />
+          <WriteArticle />
           <div className={classes.topicoptions_cont}>
             {filteredArticles.map((item) => {
               return (

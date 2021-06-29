@@ -53,7 +53,7 @@ const useStyles = makeStyles({
     height: "60vh",
     overflowY: "scroll",
     "&::-webkit-scrollbar": {
-      width: "0.5em",
+      width: "0em",
     },
   },
   topic_options: {
@@ -133,6 +133,91 @@ const useStyles = makeStyles({
     justifyContent: "center",
     backgroundColor: "rgba(255,255,255,0.7)",
   },
+  writearticle_cont: {
+    display: "flex",
+    justifyContent: "center",
+    backgroundColor: "rgba(255,255,255,0.7)",
+    paddingTop: "0.8rem",
+    paddingBottom: "0.8rem",
+  },
+  writearticle_btn: {
+    backgroundColor: "white",
+    padding: "0.3rem 0.8rem",
+    color: "rgba(0,0,0,0.7)",
+    boxShadow: "0px 9px 40px rgba(0,0,0,0.13)",
+    borderRadius: "30rem",
+    transition: "0.2s ease-in-out",
+    "&:hover": {
+      backgroundColor: "#FF4444",
+      color: "white",
+      cursor: "pointer",
+    },
+  },
+  writearticle_icon: {
+    fontSize: "large",
+    marginRight: "0.3rem",
+    // marginBottom: "-0.2rem",
+  },
+  form: {
+    display: "flex",
+    justifyContent: "center",
+    marginTop: "5vh",
+    // alignItems: "center",
+  },
+  form_container: {
+    backgroundColor: "rgba(255,255,255,0.8)",
+    width: "80vw",
+    height: "90%",
+    padding: "3rem 10em",
+    boxShadow: "0px 9px 40px rgba(0,0,0,0.08)",
+    borderRadius: "39px",
+  },
+  textfeild: {
+    backgroundColor: "white",
+    marginBottom: "2rem",
+    width: "50%",
+    border: "none",
+    "& label.Mui-focused": {
+      color: "black",
+    },
+    "& .MuiOutlinedInput-root": {
+      "& fieldset": {
+        borderRadius: "13px",
+      },
+      "&.Mui-focused fieldset": {
+        borderColor: "black",
+      },
+    },
+  },
+  textfeild_content: {
+    width: "100%",
+    height: "30vh",
+    borderRadius: "13px",
+    "& .MuiOutlinedInput-root": {
+      "& fieldset": {
+        borderRadius: "13px",
+        height: "30vh",
+      },
+    },
+  },
+  formbtn: {
+    backgroundColor: "#FF4444",
+    transition: "0.3s ease-in-out",
+    "&:hover": {
+      backgroundColor: "#ff0008",
+    },
+    padding: "0.3rem 1.5rem",
+    fontWeight: "bold",
+    color: "white",
+    textTransform: "capitalize",
+    borderRadius: "7px",
+    ["@media (max-width:1280px)"]: {
+      fontSize: "1.5rem",
+    },
+  },
+  // helpertext: {
+  //   backgroundColor: "yellow",
+  // },
 });
 
 export { useStyles };

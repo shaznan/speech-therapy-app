@@ -5,10 +5,13 @@ import { Fragment } from "react";
 import Grid from "@material-ui/core/Grid";
 import SelectTopic from "../../components/Articles/SelectTopic/SelectTopic.component";
 import DisplayArea from "../../components/Articles/DisplayArea/DisplayArea.component";
+import { useSelector } from "react-redux";
+import ArticleForm from "../../components/Articles/ArticleForm/ArticleForm";
 // import { v4 as uuidv4 } from "uuid";
 
 function ArticlesPage() {
   const classes = useStyles();
+  const showArticleForm = useSelector((state) => state.article.showArticleForm);
   const articles = [
     {
       id: 1234,
@@ -59,8 +62,9 @@ function ArticlesPage() {
       <div className={classes.container}>
         <Navbar />
         <Grid container className={classes.body}>
-          <SelectTopic articles={articles} />
-          <DisplayArea articles={articles} />
+          {!showArticleForm && <SelectTopic articles={articles} />}
+          {!showArticleForm && <DisplayArea articles={articles} />}
+          {showArticleForm && <ArticleForm />}
         </Grid>
       </div>
     </Fragment>

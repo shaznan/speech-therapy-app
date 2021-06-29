@@ -6,6 +6,7 @@ const articleSlice = createSlice({
     topicIdSelected: null,
     isVerifiedChecked: true,
     isCommunityChecked: false,
+    showArticleForm: true,
   },
   reducers: {
     setTopicIdSelected(state, action) {
@@ -17,6 +18,9 @@ const articleSlice = createSlice({
         : action.payload === "community"
         ? (state.isCommunityChecked = !state.isCommunityChecked)
         : "";
+    },
+    toggleShowArticleForm: (state) => {
+      state.showArticleForm = !state.showArticleForm;
     },
   },
 });
