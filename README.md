@@ -5,3 +5,4 @@
 - Refactor code in useRecorder (similar code in res and error)
 - Disable next btn when user clicks close btn or back btn 
 - Backend Error Handling 
+- Sign In, signup form, and articles form have same code must refactor 
