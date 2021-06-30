@@ -167,15 +167,21 @@ const useStyles = makeStyles({
   form_container: {
     backgroundColor: "rgba(255,255,255,0.8)",
     width: "80vw",
-    height: "90%",
+    height: "80vh",
     padding: "3rem 10em",
     boxShadow: "0px 9px 40px rgba(0,0,0,0.08)",
     borderRadius: "39px",
+    overflow: "scroll",
+    "&::-webkit-scrollbar": {
+      width: "0em",
+    },
   },
   textfeild: {
     backgroundColor: "white",
     marginBottom: "2rem",
     width: "50%",
+    // height: "20px",
+    borderRadius: "13px",
     border: "none",
     "& label.Mui-focused": {
       color: "black",
@@ -183,20 +189,11 @@ const useStyles = makeStyles({
     "& .MuiOutlinedInput-root": {
       "& fieldset": {
         borderRadius: "13px",
+        borderColor: "white",
+        boxShadow: "0px 9px 40px rgba(0,0,0,0.08)",
       },
       "&.Mui-focused fieldset": {
         borderColor: "black",
-      },
-    },
-  },
-  textfeild_content: {
-    width: "100%",
-    height: "30vh",
-    borderRadius: "13px",
-    "& .MuiOutlinedInput-root": {
-      "& fieldset": {
-        borderRadius: "13px",
-        height: "30vh",
       },
     },
   },
@@ -215,6 +212,7 @@ const useStyles = makeStyles({
       fontSize: "1.5rem",
     },
   },
+
   // helpertext: {
   //   backgroundColor: "yellow",
   // },

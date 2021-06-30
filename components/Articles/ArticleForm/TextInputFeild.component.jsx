@@ -3,19 +3,19 @@ import { useField, ErrorMessage } from "formik";
 import TextField from "@material-ui/core/TextField";
 import { useStyles } from "../Articles_styles";
 
-function TextInputFeild({ label, isSubmit, ...props }) {
+function TextInputFeild({ label, issubmit, ...props }) {
   const [field, meta] = useField(props);
   const [inputError, setInputError] = useState(false);
   const classes = useStyles();
 
   useEffect(() => {
-    if (!isSubmit) return;
-    if (meta.error && isSubmit) {
+    if (!issubmit) return;
+    if (issubmit && meta.error) {
       setInputError(true);
     } else {
       setInputError(false);
     }
-  }, [isSubmit, meta]);
+  }, [meta]);
 
   return (
     <div>

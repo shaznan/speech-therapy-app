@@ -6,6 +6,7 @@ import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import Button from "@material-ui/core/Button";
 import TextInputFeild from "./TextInputFeild.component";
+import ArticleContnt from "./ArticleContnt.component";
 
 function ArticleForm() {
   const classes = useStyles();
@@ -18,16 +19,15 @@ function ArticleForm() {
       .max(70, "Must be short and to the point")
       .required("Required"),
     coverimage: Yup.string().required("Required"),
-    content: Yup.string()
-      .min(200, "must have atleast 200 characters")
-      .required("Required"),
+    // content: Yup.string()
+    //   .min(200, "must have atleast 200 characters")
+    //   .required("Required"),
   });
 
   return (
     <Formik
       initialValues={{
         title: "",
-        tags: "",
         coverimage: "",
         content: "",
       }}
@@ -46,20 +46,22 @@ function ArticleForm() {
                   label="Title"
                   name="title"
                   type="text"
-                  isSubmit={isSubmit}
+                  issubmit={isSubmit}
                 />
                 <TextInputFeild
                   label="Cover Image"
                   name="coverimage"
                   type="text"
-                  isSubmit={isSubmit}
+                  issubmit={isSubmit}
                 />
-                <TextInputFeild
+                {/* <TextInputFeild
                   label="Content"
                   name="content"
                   type="text"
-                  isSubmit={isSubmit}
-                />
+                  issubmit={isSubmit}
+                /> */}
+                <ArticleContnt />
+
                 <Button
                   type="submit"
                   form="articleform"
