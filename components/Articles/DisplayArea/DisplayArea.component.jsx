@@ -2,21 +2,10 @@ import React, { Fragment, useState, useEffect } from "react";
 import Grid from "@material-ui/core/Grid";
 import { useStyles } from "../Articles_styles";
 import { useSelector } from "react-redux";
+import draftToHtml from "draftjs-to-html";
 
 function DisplayArea({ articles }) {
-  const [selectedTopic, setSelectedTopic] = useState({
-    id: 5678,
-    title: "what is brain fog",
-    author: "shaznan",
-    profileUrl:
-      "https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-    content: {
-      coverImgUrl:
-        "https://images.unsplash.com/photo-1624470807069-496787340a7b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80",
-      textbody:
-        "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
-    },
-  });
+  const [selectedTopic, setSelectedTopic] = useState(articles[0]);
   const classes = useStyles();
   const topicIdSelected = useSelector((state) => state.article.topicIdSelected);
 
@@ -24,10 +13,12 @@ function DisplayArea({ articles }) {
     if (topicIdSelected === null) return;
     setSelectedTopic(
       articles.find((item) => {
-        return item.id === +topicIdSelected;
+        return item._id === topicIdSelected;
       })
     );
   }, [topicIdSelected]);
+
+  console.log(selectedTopic);
 
   return (
     <Fragment>
@@ -35,15 +26,20 @@ function DisplayArea({ articles }) {
         <div className={classes.displayarea}>
           <img
             className={classes.coverimage}
-            src={selectedTopic.content.coverImgUrl}
+            src={selectedTopic.article.coverImg}
           />
           <div className={classes.displayarea_body}>
             <h1 className={classes.displayarea_heading}>
-              {selectedTopic.title}
+              {selectedTopic.article.title}
             </h1>
             <div className={classes.linedivider}></div>
             <p className={classes.displayarea_paragraph}>
-              {selectedTopic.content.textbody}
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: draftToHtml(selectedTopic.article.body),
+                }}
+              ></div>
+              {/* {selectedTopic.article.body} */}
             </p>
             <footer>
               <div className={classes.footerlinedivider}></div>
@@ -58,7 +54,7 @@ function DisplayArea({ articles }) {
                 >
                   <img
                     className={`${classes.authorimage} ${classes.footer_authorimg}`}
-                    src={selectedTopic.profileUrl}
+                    src={selectedTopic.authorUrl}
                   />
                 </Grid>
                 <Grid item md={2} className={classes.footertext}>

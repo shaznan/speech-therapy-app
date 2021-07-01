@@ -16,6 +16,7 @@ function TopicOptions({
 
   const handleClick = () => {
     dispatch(articleSlice_Actions.setTopicIdSelected(idRef.current.id));
+
     // console.log(idRef.current.id);
   };
 

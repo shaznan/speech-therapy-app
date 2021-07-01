@@ -18,7 +18,8 @@ function DisplayUser() {
   useEffect(() => {
     axios
       .get(
-        `https://avatars.dicebear.com/api/initials/${nickName}.svg?backgroundColors=cyan`
+        `https://avatars.dicebear.com/api/initials/${nickName}.svg?`
+        // `https://avatars.dicebear.com/api/initials/${nickName}.svg?backgroundColors=cyan`
         // `https://avatars.dicebear.com/api/bottts/${nickName}.svg?textureChance=100`
       )
       .then((res) => {

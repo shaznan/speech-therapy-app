@@ -21,6 +21,7 @@ function SelectTopic({ articles }) {
       return item.isVerified === false;
     }
   });
+  console.log(filteredArticles);
 
   return (
     <Fragment>
@@ -35,11 +36,11 @@ function SelectTopic({ articles }) {
             {filteredArticles.map((item) => {
               return (
                 <TopicOptions
-                  key={item.id}
-                  id={item.id}
-                  title={item.title}
+                  key={item._id}
+                  id={item._id}
+                  title={item.article.title}
                   author={item.author}
-                  profileUrl={item.profileUrl}
+                  profileUrl={item.authorUrl}
                 />
               );
             })}

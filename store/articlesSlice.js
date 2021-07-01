@@ -6,10 +6,10 @@ const articleSlice = createSlice({
     topicIdSelected: null,
     isVerifiedChecked: true,
     isCommunityChecked: false,
-    showArticleForm: true,
+    showArticleForm: false,
     isFormSubmit: false,
     articleForm: {
-      isVerified: "true",
+      isVerified: false,
       formTitle: null,
       formCoverImg: null,
       contentBody: {

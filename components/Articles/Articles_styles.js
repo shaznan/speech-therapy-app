@@ -19,6 +19,7 @@ const useStyles = makeStyles({
   authorimage: {
     width: "20px",
     height: "20px",
+    marginBottom: "-0.2rem",
     borderRadius: "50%",
     objectFit: "cover",
     objectPosition: "center right",
