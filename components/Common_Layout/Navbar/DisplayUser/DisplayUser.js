@@ -1,17 +1,19 @@
 import React, { Fragment } from "react";
 import Grid from "@material-ui/core/Grid";
 import classes from "../Navbar.module.css";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import DisplayUserDropdown from "./Dropdown.conponent";
 import DisplayUser_WelcomTxt from "./WelcomTxt.component";
+import { userSlice_Actions } from "../../../../store/userSlice";
 
 function DisplayUser() {
   const nickName = useSelector((state) => state.user.entities[0].nickName);
-  const [avatar, setAvatar] = useState(null);
+  // const [avatar, setAvatar] = useState(null);
+  const dispatch = useDispatch();
   const [showDropdown, setShowDropdown] = useState(false);
-
+  const avatar = useSelector((state) => state.user.entities[0].avatarUrl);
   //Get user Avatar
   useEffect(() => {
     axios
@@ -20,7 +22,8 @@ function DisplayUser() {
         // `https://avatars.dicebear.com/api/bottts/${nickName}.svg?textureChance=100`
       )
       .then((res) => {
-        setAvatar(res.config.url);
+        dispatch(userSlice_Actions.setAvatarUrl(res.config.url));
+        // setAvatar(res.config.url);
       })
       .catch((err) => console.log(err));
   }, [nickName]);

@@ -7,6 +7,26 @@ const articleSlice = createSlice({
     isVerifiedChecked: true,
     isCommunityChecked: false,
     showArticleForm: true,
+    isFormSubmit: false,
+    articleForm: {
+      isVerified: "true",
+      formTitle: null,
+      formCoverImg: null,
+      contentBody: {
+        entityMap: {},
+        blocks: [
+          {
+            key: "637gr",
+            text: "",
+            type: "unstyled",
+            depth: 0,
+            inlineStyleRanges: [],
+            entityRanges: [],
+            data: {},
+          },
+        ],
+      },
+    },
   },
   reducers: {
     setTopicIdSelected(state, action) {
@@ -21,6 +41,18 @@ const articleSlice = createSlice({
     },
     toggleShowArticleForm: (state) => {
       state.showArticleForm = !state.showArticleForm;
+    },
+    setIsFormSubmit: (state, action) => {
+      state.isFormSubmit = action.payload;
+    },
+    setArticleContentBody: (state, action) => {
+      state.articleForm.contentBody = action.payload;
+    },
+    setArticleFormTitle: (state, action) => {
+      state.articleForm.formTitle = action.payload;
+    },
+    setArticleFormCoverImg: (state, action) => {
+      state.articleForm.formCoverImg = action.payload;
     },
   },
 });

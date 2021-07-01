@@ -7,9 +7,16 @@ import * as Yup from "yup";
 import Button from "@material-ui/core/Button";
 import TextInputFeild from "./TextInputFeild.component";
 import ArticleContnt from "./ArticleContnt.component";
+import { articleSlice_Actions } from "../../../store/articlesSlice";
+import { useDispatch } from "react-redux";
+import useStoreArticleFormData from "./useStoreArticleFormData";
 
 function ArticleForm() {
   const classes = useStyles();
+  const dispatch = useDispatch();
+  //store form data to backend
+  useStoreArticleFormData();
+  //   const storeData = useStoreArticleFormData();
   const [isSubmit, setIsSubmit] = useState(false);
   const submitHandler = () => {
     setIsSubmit(true);
@@ -18,22 +25,22 @@ function ArticleForm() {
     title: Yup.string()
       .max(70, "Must be short and to the point")
       .required("Required"),
-    coverimage: Yup.string().required("Required"),
-    // content: Yup.string()
-    //   .min(200, "must have atleast 200 characters")
-    //   .required("Required"),
+    coverimageurl: Yup.string().required("Required"),
   });
 
   return (
     <Formik
       initialValues={{
         title: "",
-        coverimage: "",
-        content: "",
+        coverimageurl: "",
       }}
       validationSchema={validate}
       onSubmit={(values) => {
-        console.log(values);
+        dispatch(articleSlice_Actions.setArticleFormTitle(values.title));
+        dispatch(
+          articleSlice_Actions.setArticleFormCoverImg(values.coverimageurl)
+        );
+        dispatch(articleSlice_Actions.setIsFormSubmit(true));
       }}
     >
       {() => (
@@ -49,19 +56,12 @@ function ArticleForm() {
                   issubmit={isSubmit}
                 />
                 <TextInputFeild
-                  label="Cover Image"
-                  name="coverimage"
+                  label="Cover Image URL"
+                  name="coverimageurl"
                   type="text"
                   issubmit={isSubmit}
                 />
-                {/* <TextInputFeild
-                  label="Content"
-                  name="content"
-                  type="text"
-                  issubmit={isSubmit}
-                /> */}
                 <ArticleContnt />
-
                 <Button
                   type="submit"
                   form="articleform"

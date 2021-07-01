@@ -6,19 +6,19 @@ import Link from "next/link";
 
 function LoginRegisterbtn() {
   const router = useRouter();
-  const [isPerformTestPage, setIsPerformTestPage] = useState(false);
+  const [showLoginRedisterBtn, setShowLoginRedisterBtn] = useState(true);
 
-  //render button only in perform test page for now 
-  useEffect(() => {
-    router.pathname === "/performtest"
-      ? setIsPerformTestPage(true)
-      : setIsPerformTestPage(false);
-  }, [router.pathname]);
+  //render button only in perform test page for now
+  // useEffect(() => {
+  //   router.pathname === "/performtest" || router.pathname === "/articles"
+  //     ? setShowLoginRedisterBtn(true)
+  //     : setShowLoginRedisterBtn(false);
+  // }, [router.pathname]);
 
   return (
     <Fragment>
       <Grid item lg={3} xs={4}>
-        {isPerformTestPage && (
+        {showLoginRedisterBtn && (
           <Link href="/login_signup">
             <div className={classes.login_register}>
               <span className={classes.login_registertext}>Login/Register</span>

@@ -37,6 +37,7 @@ const userSlice = createSlice({
         email: "",
         localId: "",
         nickName: "",
+        avatarUrl: "",
         WordsCount: [],
         averageScore: null,
         scoreAvgeCriteria: null,
@@ -64,6 +65,9 @@ const userSlice = createSlice({
         ...state.entities[0].WordsCount,
         action.payload,
       ];
+    },
+    setAvatarUrl: (state, action) => {
+      state.entities[0].avatarUrl = action.payload;
     },
     setAverageScore(state) {
       if (state.entities[0].WordsCount.length === 0) return;

@@ -1,12 +1,8 @@
-// // import { EditorState } from "draft-js";
 import dynamic from "next/dynamic";
 import { useStyles } from "./ArticleForm_styles";
-import { convertFromRaw, convertToRaw } from "draft-js";
-import { EditorState } from "draft-js";
-// import { stateToHTML } from "draft-js-export-html";
 import draftToHtml from "draftjs-to-html";
-
-import { useRef } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { articleSlice_Actions } from "../../../store/articlesSlice";
 
 // //Render import only on client side
 const Editor = dynamic(
@@ -18,56 +14,31 @@ const Editor = dynamic(
 
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
-import React, { useState } from "react";
+import React from "react";
 
 function ArticleContnt() {
   const classes = useStyles();
-  const content = {
-    entityMap: {},
-    blocks: [
-      {
-        key: "637gr",
-        text: "Initialized from content state.",
-        type: "unstyled",
-        depth: 0,
-        inlineStyleRanges: [],
-        entityRanges: [],
-        data: {},
-      },
-    ],
-  };
-  const [contentState, setContentState] = useState(content);
-  //   const [rawState, setRawState] = useState(EditorState.createEmpty());
+  const articleContentBody = useSelector(
+    (state) => state.article.articleForm.contentBody
+  );
+  const dispatch = useDispatch();
 
   const onContentStateChange = (contentState) => {
-    console.log(contentState.blocks);
-    setContentState(contentState);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // console.log(stateToHTML(contentState));
-    // setRawState(convertFromRaw(contentState));
+    dispatch(articleSlice_Actions.setArticleContentBody(contentState));
   };
 
   return (
     <div>
       <Editor
-        // EditorState={contentState}
         onContentStateChange={onContentStateChange}
-        // onChange={onChange}
         toolbarClassName={classes.toolbarClass}
         wrapperClassName={classes.wrapperClass}
         editorClassName={classes.editorClass}
         className={classes.editor_container}
-        // onEditorStateChange={onContentStateChange}
       />
       <div
-        dangerouslySetInnerHTML={{ __html: draftToHtml(contentState) }}
+        dangerouslySetInnerHTML={{ __html: draftToHtml(articleContentBody) }}
       ></div>
-      <button type="submit" onClick={handleSubmit}>
-        submit
-      </button>
     </div>
   );
 }
