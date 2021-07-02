@@ -10,16 +10,20 @@ import ArticleContnt from "./ArticleContnt.component";
 import { articleSlice_Actions } from "../../../store/articlesSlice";
 import { useDispatch } from "react-redux";
 import useStoreArticleFormData from "./useStoreArticleFormData";
+import CloseWindowBtn from "../../Common_Layout/Button/CloseWindowBtn";
 
 function ArticleForm() {
   const classes = useStyles();
   const dispatch = useDispatch();
   //store form data to backend
   useStoreArticleFormData();
-  //   const storeData = useStoreArticleFormData();
   const [isSubmit, setIsSubmit] = useState(false);
   const submitHandler = () => {
     setIsSubmit(true);
+  };
+  const closeHandler = () => {
+    dispatch(articleSlice_Actions.toggleShowArticleForm());
+    dispatch(articleSlice_Actions.setIsFormSubmit(false));
   };
   const validate = Yup.object({
     title: Yup.string()
@@ -48,6 +52,9 @@ function ArticleForm() {
           <Grid container className={classes.form}>
             <div className={classes.form_container}>
               <Heading text="Create your article" />
+              <div className={classes.closwindowbtn}>
+                <CloseWindowBtn onClickHandler={closeHandler} />
+              </div>
               <Form id="articleform" style={{ marginTop: "2rem" }}>
                 <TextInputFeild
                   label="Title"

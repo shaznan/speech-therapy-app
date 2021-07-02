@@ -21,7 +21,6 @@ function SelectTopic({ articles }) {
       return item.isVerified === false;
     }
   });
-  console.log(filteredArticles);
 
   return (
     <Fragment>

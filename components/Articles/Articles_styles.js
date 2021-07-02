@@ -50,6 +50,15 @@ const useStyles = makeStyles({
     fontSize: "1.2rem",
     fontWeight: "bold",
   },
+  deletebutton: {
+    position: "absolute",
+    left: "22vw",
+    marginTop: "-0.7rem",
+    transition: "0.2s ease-in-out",
+    "&:hover": {
+      color: "#FF4444",
+    },
+  },
   topicoptions_cont: {
     height: "60vh",
     overflowY: "scroll",
@@ -60,6 +69,7 @@ const useStyles = makeStyles({
   topic_options: {
     backgroundColor: "white",
     padding: "1rem",
+
     paddingLeft: "2rem",
     "&:hover": {
       backgroundColor: "rgba(240,240,240,1)",
@@ -119,9 +129,16 @@ const useStyles = makeStyles({
     fontFamily: "Poppins,sans-serif",
     opacity: "0.8",
   },
+  coverimgcontainer: {
+    width: "100%",
+    height: "35vh",
+    position: "relative",
+  },
+
   coverimage: {
     width: "100%",
-    marginTop: "-23rem",
+    position: "absolute",
+    bottom: 0,
   },
   footertext: {
     fontSize: "1rem",
@@ -169,6 +186,7 @@ const useStyles = makeStyles({
     backgroundColor: "rgba(255,255,255,0.8)",
     width: "80vw",
     height: "80vh",
+    position: "relative",
     padding: "3rem 10em",
     boxShadow: "0px 9px 40px rgba(0,0,0,0.08)",
     borderRadius: "39px",
@@ -176,6 +194,11 @@ const useStyles = makeStyles({
     "&::-webkit-scrollbar": {
       width: "0em",
     },
+  },
+  closwindowbtn: {
+    position: "absolute",
+    left: "75vw",
+    top: "3vh",
   },
   textfeild: {
     backgroundColor: "white",

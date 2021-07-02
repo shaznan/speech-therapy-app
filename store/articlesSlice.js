@@ -1,15 +1,27 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
+
+export const deleteArticleItem = createAsyncThunk(
+  "article/deleteArticleItem",
+  async (id) => {
+    axios.post("/api/Article/DeleteArticle", {
+      id,
+    });
+  }
+);
 
 const articleSlice = createSlice({
   name: "article",
   initialState: {
     topicIdSelected: null,
+    deleteItemId: null,
+    isDeleteClicked: false,
     isVerifiedChecked: true,
     isCommunityChecked: false,
     showArticleForm: false,
     isFormSubmit: false,
     articleForm: {
-      isVerified: false,
+      isVerified: true,
       formTitle: null,
       formCoverImg: null,
       contentBody: {
@@ -31,6 +43,12 @@ const articleSlice = createSlice({
   reducers: {
     setTopicIdSelected(state, action) {
       state.topicIdSelected = action.payload;
+    },
+    setDeleteItem: (state, action) => {
+      state.deleteItemId = action.payload;
+    },
+    toggleIsDeleteClicked: (state) => {
+      state.isDeleteClicked = !state.isDeleteClicked;
     },
     toggleCheckbox: (state, action) => {
       action.payload === "verified"

@@ -18,29 +18,27 @@ function DisplayArea({ articles }) {
     );
   }, [topicIdSelected]);
 
-  console.log(selectedTopic);
-
   return (
     <Fragment>
       <Grid className={classes.displayarea_cont} item md={7}>
         <div className={classes.displayarea}>
-          <img
-            className={classes.coverimage}
-            src={selectedTopic.article.coverImg}
-          />
+          <div className={classes.coverimgcontainer}>
+            <img
+              className={classes.coverimage}
+              src={selectedTopic.article.coverImg}
+            />
+          </div>
           <div className={classes.displayarea_body}>
             <h1 className={classes.displayarea_heading}>
               {selectedTopic.article.title}
             </h1>
             <div className={classes.linedivider}></div>
-            <p className={classes.displayarea_paragraph}>
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: draftToHtml(selectedTopic.article.body),
-                }}
-              ></div>
-              {/* {selectedTopic.article.body} */}
-            </p>
+            <div
+              className={classes.displayarea_paragraph}
+              dangerouslySetInnerHTML={{
+                __html: draftToHtml(selectedTopic.article.body),
+              }}
+            ></div>
             <footer>
               <div className={classes.footerlinedivider}></div>
               <Grid container>
