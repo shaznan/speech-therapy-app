@@ -3,9 +3,10 @@ import axios from "axios";
 import Client from "shopify-buy";
 
 const client = Client.buildClient({
-  domain: process.env.REACT_APP_SHOPIFY_DOMAIN,
-  storefrontAccessToken: process.env.REACT_APP_SHOPIFY_API,
+  domain: process.env.SHOPIFY_DOMAIN,
+  storefrontAccessToken: process.env.SHOPIFY_API,
 });
+
 
 export const createCheckout = createAsyncThunk(
   "user/createCheckout",
@@ -26,51 +27,51 @@ export const fetchCheckout = createAsyncThunk(
   }
 );
 
-export const addItemToCheckout = createAsyncThunk(
-  "user/addItemToCheckout",
-  async (userId) => {
-    return axios
-      .get("/api//", {
-        params: {
-          userId: userId,
-        },
-      })
-      .then((res) => {
-        return res.data;
-      });
-  }
-);
+// export const addItemToCheckout = createAsyncThunk(
+//   "user/addItemToCheckout",
+//   async (userId) => {
+//     return axios
+//       .get("/api//", {
+//         params: {
+//           userId: userId,
+//         },
+//       })
+//       .then((res) => {
+//         return res.data;
+//       });
+//   }
+// );
 
-export const removeLineItem = createAsyncThunk(
-  "user/removeLineItem",
-  async (lineItemId) => {
-    return axios
-      .get("/api//", {
-        params: {
-          userId: userId,
-        },
-      })
-      .then((res) => {
-        return res.data;
-      });
-  }
-);
+// export const removeLineItem = createAsyncThunk(
+//   "user/removeLineItem",
+//   async (lineItemId) => {
+//     return axios
+//       .get("/api//", {
+//         params: {
+//           userId: userId,
+//         },
+//       })
+//       .then((res) => {
+//         return res.data;
+//       });
+//   }
+// );
 
 export const fetchAllProducts = createAsyncThunk(
   "user/fetchAllProducts",
   async () => {
-    client.product.fetchAll().then((products) => {
-      return products;
-    });
+    // client.product.fetchAll().then((products) => {
+      // return products;
+    // });
   }
 );
 
 export const fetchProductWithHandle = createAsyncThunk(
   "user/fetchProductWithHandle",
   async (handle) => {
-    client.product.fetchByHandle(handle).then((product) => {
-      return product;
-    });
+    // client.product.fetchByHandle(handle).then((product) => {
+      // return product;
+    // });
   }
 );
 

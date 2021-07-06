@@ -4,6 +4,7 @@ import Navbar from "../../components/Common_Layout/Navbar/Navbar";
 import { useDispatch } from "react-redux";
 import { createCheckout } from "../../store/bookstoreSlice";
 import { fetchCheckout } from "../../store/bookstoreSlice";
+import Client from "shopify-buy";
 
 function BookStorePage() {
   const dispatch = useDispatch();
@@ -14,7 +15,9 @@ function BookStorePage() {
     } else {
       dispatch(createCheckout());
     }
-  }, [localStorage]);
+  }, []);
+  console.log(process.env.SHOPIFY_DOMAIN)
+
 
   return (
     <div>
