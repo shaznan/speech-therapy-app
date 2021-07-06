@@ -1,13 +1,14 @@
 import React, { useEffect } from "react";
 import Navbar from "../../components/Common_Layout/Navbar/Navbar";
-// Initializing a client to return content in the store's primary language
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { createCheckout } from "../../store/bookstoreSlice";
 import { fetchCheckout } from "../../store/bookstoreSlice";
+import {fetchAllProducts} from "../../store/bookstoreSlice"
 import Client from "shopify-buy";
 
 function BookStorePage() {
   const dispatch = useDispatch();
+  const products = useSelector(state => state.bookstore.products)
 
   useEffect(() => {
     if (localStorage.checkout_id) {
@@ -16,13 +17,24 @@ function BookStorePage() {
       dispatch(createCheckout());
     }
   }, []);
+
+  useEffect(() => {
+    dispatch(fetchAllProducts())
+  }, [fetchAllProducts])
+
   console.log(process.env.SHOPIFY_DOMAIN)
 
+  // if(!products) return <div>loading..</div> //FIXME add loading modal
 
   return (
     <div>
       <Navbar />
       <h1>Bookstore</h1>
+      <div>
+        {products.map((product)=>(
+           <div>{product.title }</div>
+        ))}
+      </div>
     </div>
   );
 }

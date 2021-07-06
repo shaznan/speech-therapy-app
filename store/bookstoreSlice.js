@@ -2,6 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import Client from "shopify-buy";
 
+
 const client = Client.buildClient({
   domain: process.env.SHOPIFY_DOMAIN,
   storefrontAccessToken: process.env.SHOPIFY_API,
@@ -11,9 +12,10 @@ const client = Client.buildClient({
 export const createCheckout = createAsyncThunk(
   "user/createCheckout",
   async () => {
-    client.checkout.create().then((checkout) => {
+    return client.checkout.create().then((checkout) => {
       localStorage.setItem("checkout_id", checkout.id);
-      return checkout;
+      return checkout.serialize()
+      // return {checkout: JSON.stringify(checkout)}
     });
   }
 );
@@ -21,11 +23,14 @@ export const createCheckout = createAsyncThunk(
 export const fetchCheckout = createAsyncThunk(
   "user/fetchCheckout",
   async (checkoutId) => {
-    client.checkout.fetch(checkoutId).then((checkout) => {
-      return checkout;
+   return client.checkout.fetch(checkoutId).then((checkout) => {
+      return checkout.serialize()
+      // return {checkout: JSON.stringify(checkout) };
     });
   }
 );
+
+
 
 // export const addItemToCheckout = createAsyncThunk(
 //   "user/addItemToCheckout",
@@ -60,9 +65,9 @@ export const fetchCheckout = createAsyncThunk(
 export const fetchAllProducts = createAsyncThunk(
   "user/fetchAllProducts",
   async () => {
-    // client.product.fetchAll().then((products) => {
-      // return products;
-    // });
+    return client.product.fetchAll().then((products) => {
+      return products;
+    });
   }
 );
 
@@ -99,6 +104,7 @@ const bookstoreSlice = createSlice({
     [fetchAllProducts.fulfilled]: (state, action) => {
       state.loading = "success";
       state.products = action.payload;
+      console.log(action.payload)
     },
     [fetchAllProducts.rejected]: (state) => {
       state.loading = "failed";
@@ -121,6 +127,7 @@ const bookstoreSlice = createSlice({
     [createCheckout.fulfilled]: (state, action) => {
       state.loading = "success";
       state.checkout = action.payload;
+      console.log(action.payload)
     },
     [createCheckout.rejected]: (state) => {
       state.loading = "failed";
@@ -132,6 +139,7 @@ const bookstoreSlice = createSlice({
     [fetchCheckout.fulfilled]: (state, action) => {
       state.loading = "success";
       state.checkout = action.payload;
+      console.log(action.payload)
     },
     [fetchCheckout.rejected]: (state) => {
       state.loading = "failed";

@@ -141,12 +141,12 @@ const userSlice = createSlice({
       state.isLoggedIn = false;
     },
   },
-  extraReducers: (builder) => {
-    builder.addCase(fetchUserById.fulfilled),
-      (state, action) => {
-        state.entities[0] = action.payload;
-      };
-  },
+  // extraReducers: (builder) => {
+  //   builder.addCase(fetchUserById.fulfilled),
+  //     (state, action) => {
+  //       state.entities[0] = action.payload;
+  //     };
+  // },
   extraReducers: {
     [fetchUserById.pending]: (state) => {
       state.loading = "loading";
@@ -154,7 +154,7 @@ const userSlice = createSlice({
     [fetchUserById.fulfilled]: (state, action) => {
       state.loading = "success";
       state.entities[0] = action.payload;
-      // console.log(action.payload);
+      console.log(action.payload);
     },
   },
   [updateUserData.fulfilled]: (state) => {
