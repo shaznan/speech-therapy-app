@@ -154,7 +154,7 @@ const userSlice = createSlice({
     [fetchUserById.fulfilled]: (state, action) => {
       state.loading = "success";
       state.entities[0] = action.payload;
-      console.log(action.payload);
+      // console.log(action.payload);
     },
   },
   [updateUserData.fulfilled]: (state) => {

@@ -19,9 +19,6 @@ export default function MyApp({ Component, pageProps }) {
     }
   }, []);
 
-
-
-
   return (
     <Fragment>
       <Head>

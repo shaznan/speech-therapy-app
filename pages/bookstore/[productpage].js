@@ -8,7 +8,6 @@ function productpage() {
     const dispatch = useDispatch()
     const router = useRouter()
     const product = useSelector(state => state.bookstore.product)
-    // const handle = router.pathname
     const handle = router.query.productpage
 
     useEffect(() => {
