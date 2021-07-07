@@ -14,8 +14,7 @@ export const createCheckout = createAsyncThunk(
   async () => {
     return client.checkout.create().then((checkout) => {
       localStorage.setItem("checkout_id", checkout.id);
-      return checkout.serialize()
-      // return {checkout: JSON.stringify(checkout)}
+      return checkout
     });
   }
 );
@@ -24,11 +23,29 @@ export const fetchCheckout = createAsyncThunk(
   "user/fetchCheckout",
   async (checkoutId) => {
    return client.checkout.fetch(checkoutId).then((checkout) => {
-      return checkout.serialize()
-      // return {checkout: JSON.stringify(checkout) };
+      return checkout
     });
   }
 );
+
+export const fetchAllProducts = createAsyncThunk(
+  "user/fetchAllProducts",
+  async () => {
+    return client.product.fetchAll().then((products) => {
+      return products;
+    });
+  }
+);
+
+export const fetchProductWithHandle = createAsyncThunk(
+  "user/fetchProductWithHandle",
+  async (handle) => {
+    return client.product.fetchByHandle(handle).then((product) => {
+      return product;
+    });
+  }
+);
+
 
 
 
@@ -61,24 +78,6 @@ export const fetchCheckout = createAsyncThunk(
 //       });
 //   }
 // );
-
-export const fetchAllProducts = createAsyncThunk(
-  "user/fetchAllProducts",
-  async () => {
-    return client.product.fetchAll().then((products) => {
-      return products;
-    });
-  }
-);
-
-export const fetchProductWithHandle = createAsyncThunk(
-  "user/fetchProductWithHandle",
-  async (handle) => {
-    // client.product.fetchByHandle(handle).then((product) => {
-      // return product;
-    // });
-  }
-);
 
 const bookstoreSlice = createSlice({
   name: "bookstore",
