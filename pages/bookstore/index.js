@@ -1,17 +1,24 @@
 import React, { useEffect, Fragment } from "react";
 import Navbar from "../../components/Common_Layout/Navbar/Navbar";
-import { useDispatch, useSelector } from "react-redux";
-import { createCheckout } from "../../store/bookstoreSlice";
-import { fetchCheckout } from "../../store/bookstoreSlice";
-import { fetchAllProducts } from "../../store/bookstoreSlice";
-import Client from "shopify-buy";
-import Link from "next/link";
-import { useStyles } from "../../components/BookStore/bookstore_styles";
 import Collections from "../../components/BookStore/Collections/Collections";
 import SearchPanel from "../../components/BookStore/SearchPanel/SearchPanel";
+import Client from "shopify-buy";
+import { bookstoreSlice_Actions } from "../../store/bookstoreSlice";
+import { useDispatch } from "react-redux";
 
-function BookStorePage() {
-  const classes = useStyles();
+const client = Client.buildClient({
+  domain: process.env.SHOPIFY_DOMAIN,
+  storefrontAccessToken: process.env.SHOPIFY_API,
+});
+
+function BookStorePage(props) {
+  const dispatch = useDispatch();
+
+  //hydrate store with book collection on initial render
+  useEffect(() => {
+    dispatch(bookstoreSlice_Actions.setInitialProducts(props.products));
+  }, []);
+
   return (
     <Fragment>
       <div>
@@ -21,6 +28,22 @@ function BookStorePage() {
       </div>
     </Fragment>
   );
+}
+
+export async function getStaticProps() {
+  const products = await client.product.fetchAll(20);
+  return {
+    props: {
+      products: products.map((product) => {
+        return {
+          id: product.id,
+          images: [{ src: product.images[0].src }],
+          variants: [{ price: product.variants[0].price }],
+          title: product.title,
+        };
+      }),
+    },
+  };
 }
 
 export default BookStorePage;

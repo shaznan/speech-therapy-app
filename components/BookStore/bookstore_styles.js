@@ -81,7 +81,7 @@ const useStyles = makeStyles({
   catergory: {
     display: "flex",
     justifyContent: "center",
-    // marginTop: "5vh",
+    marginTop: "4vh",
   },
   caterory_item: {
     opacity: "0.5",
@@ -111,9 +111,10 @@ const useStyles = makeStyles({
     "&::-webkit-scrollbar": {
       width: "0em",
     },
-    width: "80vw",
-    height: "70vh",
+    width: "95vw",
+    height: "75vh",
     display: "flex",
+    marginTop: "2rem",
     justifyContent: "center",
   },
   bookcard: {
@@ -138,18 +139,22 @@ const useStyles = makeStyles({
     borderRadius: "13px 13px 0 0",
     width: "100%",
     position: "absolute",
-    top: 0,
+    bottom: 0,
   },
   book_title: {
     fontFamily: "product-sans",
     textAlign: "center",
-    padding: "0.5rem 1rem",
+    padding: "0.1rem 1rem",
   },
   book_price: {
     fontFamily: "product-sans",
     textAlign: "center",
     fontWeight: "bold",
     padding: "0.5rem 1rem",
+  },
+  more_btn: {
+    display: "flex",
+    justifyContent: "center",
   },
 });
 

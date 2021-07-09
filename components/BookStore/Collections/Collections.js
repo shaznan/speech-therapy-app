@@ -4,18 +4,17 @@ import { useStyles } from "../bookstore_styles";
 import Catergories from "./Catergories.component";
 import DisplayBooks from "./DisplayBooks.component";
 
-function Collections() {
+function Collections(props) {
   const classes = useStyles();
-  const [activeIndex, setActiveIndex] = useState();
   const catergoryItems = [
-    "BrainFog",
-    "Mind",
-    "Psycology",
-    "Think Smart",
-    "Productivity",
+    { itemName: "All", id: "All" },
+    { itemName: "BrainFog", id: "brainfog" },
+    { itemName: "Speak Better", id: "Speakbetter" },
+    { itemName: "Mind", id: "Mind" },
+    { itemName: "Psychology", id: "Psychology" },
+    { itemName: "Think Smart", id: "Thinksmart" },
   ];
 
-  console.log(activeIndex);
   return (
     <div>
       <Grid container className={classes.collection_cont}>

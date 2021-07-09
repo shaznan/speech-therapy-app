@@ -1,102 +1,31 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import Grid from "@material-ui/core/Grid";
 import { useStyles } from "../bookstore_styles";
+import {
+  fetchCheckout,
+  fetchAllProducts,
+  createCheckout,
+} from "../../../store/bookstoreSlice";
+import { useSelector, useDispatch } from "react-redux";
+import LoadMoreButton from "./LoadMoreButton.componrnt";
 
 function DisplayBooks() {
   const classes = useStyles();
-  const products = [
-    {
-      id: "A0098",
-      title: "How to become better at brain fog?",
-      price: "$24.99",
-      imgsrc:
-        "https://images-na.ssl-images-amazon.com/images/I/51AHIHam17L._SX329_BO1,204,203,200_.jpg",
-    },
-    {
-      id: "A0096",
-      title: "Nigga bout ya?",
-      price: "$24.99",
-      imgsrc:
-        "https://images-na.ssl-images-amazon.com/images/I/51AHIHam17L._SX329_BO1,204,203,200_.jpg",
-    },
-    {
-      id: "A0094",
-      title: "Whats yp ma brither?",
-      price: "$24.99",
-      imgsrc:
-        "https://images-na.ssl-images-amazon.com/images/I/51AHIHam17L._SX329_BO1,204,203,200_.jpg",
-    },
-    {
-      id: "A00981",
-      title: "Hey bou, you good, thats what am talking about kid, thats what!?",
-      price: "$24.99",
-      imgsrc:
-        "https://images-na.ssl-images-amazon.com/images/I/51AHIHam17L._SX329_BO1,204,203,200_.jpg",
-    },
-    {
-      id: "A00981",
-      title: "Hey bou, you good, thats what am talking about kid, thats what!?",
-      price: "$24.99",
-      imgsrc:
-        "https://images-na.ssl-images-amazon.com/images/I/51AHIHam17L._SX329_BO1,204,203,200_.jpg",
-    },
-    {
-      id: "A00981",
-      title: "Hey bou, you good, thats what am talking about kid, thats what!?",
-      price: "$24.99",
-      imgsrc:
-        "https://images-na.ssl-images-amazon.com/images/I/51AHIHam17L._SX329_BO1,204,203,200_.jpg",
-    },
-    {
-      id: "A00981",
-      title: "Hey bou, you good, thats what am talking about kid, thats what!?",
-      price: "$24.99",
-      imgsrc:
-        "https://images-na.ssl-images-amazon.com/images/I/51AHIHam17L._SX329_BO1,204,203,200_.jpg",
-    },
-    {
-      id: "A00981",
-      title: "Hey bou, you good, thats what am talking about kid, thats what!?",
-      price: "$24.99",
-      imgsrc:
-        "https://images-na.ssl-images-amazon.com/images/I/51AHIHam17L._SX329_BO1,204,203,200_.jpg",
-    },
-    {
-      id: "A00981",
-      title: "Hey bou, you good, thats what am talking about kid, thats what!?",
-      price: "$24.99",
-      imgsrc:
-        "https://images-na.ssl-images-amazon.com/images/I/51AHIHam17L._SX329_BO1,204,203,200_.jpg",
-    },
-    {
-      id: "A00981",
-      title: "Hey bou, you good, thats what am talking about kid, thats what!?",
-      price: "$24.99",
-      imgsrc:
-        "https://images-na.ssl-images-amazon.com/images/I/51AHIHam17L._SX329_BO1,204,203,200_.jpg",
-    },
-    {
-      id: "A00981",
-      title: "Hey bou, you good, thats what am talking about kid, thats what!?",
-      price: "$24.99",
-      imgsrc:
-        "https://images-na.ssl-images-amazon.com/images/I/51AHIHam17L._SX329_BO1,204,203,200_.jpg",
-    },
-    {
-      id: "A00981",
-      title: "Hey bou, you good, thats what am talking about kid, thats what!?",
-      price: "$24.99",
-      imgsrc:
-        "https://images-na.ssl-images-amazon.com/images/I/51AHIHam17L._SX329_BO1,204,203,200_.jpg",
-    },
-    {
-      id: "A00981",
-      title: "Hey bou, you good, thats what am talking about kid, thats what!?",
-      price: "$24.99",
-      imgsrc:
-        "https://images-na.ssl-images-amazon.com/images/I/51AHIHam17L._SX329_BO1,204,203,200_.jpg",
-    },
-  ];
+  const dispatch = useDispatch();
+  const products = useSelector((state) => state.bookstore.products);
+
+  useEffect(() => {
+    if (localStorage.checkout_id) {
+      dispatch(fetchCheckout(localStorage.checkout_id));
+    } else {
+      dispatch(createCheckout());
+    }
+  }, []);
+
+  console.log(process.env.SHOPIFY_DOMAIN);
+
+  //   if(!products) return <div>loading..</div> //FIXME add loading modal
+
   return (
     <Fragment>
       <Grid container spacing={0}>
@@ -110,12 +39,18 @@ function DisplayBooks() {
                 xs={6}
                 className={classes.bookcard}>
                 <div className={classes.book_imgcont}>
-                  <img className={classes.book_img} src={product.imgsrc} />
+                  <img
+                    className={classes.book_img}
+                    src={product.images[0].src}
+                  />
+                </div>
+                <div className={classes.book_price}>
+                  {`USD ${product.variants[0].price}`}
                 </div>
                 <div className={classes.book_title}>{product.title}</div>
-                <div className={classes.book_price}>{product.price}</div>
               </Grid>
             ))}
+            <LoadMoreButton />
           </Grid>
         </Grid>
       </Grid>
@@ -124,25 +59,6 @@ function DisplayBooks() {
 }
 
 export default DisplayBooks;
-
-// const dispatch = useDispatch();
-// const products = useSelector(state => state.bookstore.products)
-
-// useEffect(() => {
-//   if (localStorage.checkout_id) {
-//     dispatch(fetchCheckout(localStorage.checkout_id));
-//   } else {
-//     dispatch(createCheckout());
-//   }
-// }, []);
-
-// useEffect(() => {
-//   dispatch(fetchAllProducts())
-// }, [fetchAllProducts])
-
-// console.log(process.env.SHOPIFY_DOMAIN)
-
-// if(!products) return <div>loading..</div> //FIXME add loading modal
 
 // return (
 //   <div>
