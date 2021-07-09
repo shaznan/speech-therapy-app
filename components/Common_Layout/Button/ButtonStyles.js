@@ -59,6 +59,10 @@ const useStyles = makeStyles({
     fontSize: "2rem",
     marginLeft: "-1rem",
   },
+  carticon: {
+    fontSize: "medium",
+    marginLeft: "0.6rem",
+  },
 });
 
 export { useStyles };

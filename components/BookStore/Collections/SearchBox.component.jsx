@@ -18,24 +18,26 @@ function SearchBox() {
 
   return (
     <Fragment>
-      <div className={classes.searchbox_label}>
-        What book are you looking for ?
+      <div className={classes.searcbox_main_cont}>
+        {/* <div className={classes.searchbox_label}>
+          What book are you looking for ?
+        </div> */}
+        <Grid item={12} className={classes.searchcontainer}>
+          <TextField
+            id="outlined-basic"
+            onChange={onChangeHandler}
+            variant="outlined"
+            className={classes.searchbox}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <SearchIcon />
+                </InputAdornment>
+              ),
+            }}
+          />
+        </Grid>
       </div>
-      <Grid item={12} className={classes.searchcontainer}>
-        <TextField
-          id="outlined-basic"
-          onChange={onChangeHandler}
-          variant="outlined"
-          className={classes.searchbox}
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <SearchIcon />
-              </InputAdornment>
-            ),
-          }}
-        />
-      </Grid>
     </Fragment>
   );
 }

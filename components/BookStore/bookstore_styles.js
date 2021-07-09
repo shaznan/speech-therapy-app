@@ -9,9 +9,9 @@ const useStyles = makeStyles({
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     backgroundSize: "120rem",
-    backgroundPositionY: "-10rem",
+    backgroundPositionY: "-20rem",
     // backgroundPositionX: "-15rem",
-    height: "50vh",
+    height: "35vh",
   },
   mainheading: {
     display: "flex",
@@ -19,24 +19,28 @@ const useStyles = makeStyles({
     marginTop: "7vh",
     opacity: 0.8,
   },
-  searchbox_label: {
-    width: "100vw",
-    display: "flex",
-    marginTop: "5rem",
-    justifyContent: "center",
-    fontFamily: "product-sans",
-    fontSize: "1.4em",
-  },
+  // searchbox_label: {
+  //   width: "100vw",
+  //   display: "flex",
+  //   marginTop: "3rem",
+  //   justifyContent: "center",
+  //   fontFamily: "product-sans",
+  //   fontSize: "2em",
+  // },
   searchcontainer: {
     display: "flex",
-    marginTop: "1rem",
+    marginTop: "2rem",
+    // width: "100%",
     justifyContent: "center",
   },
+  searcbox_main_cont: {
+    backgroundColor: "#F6F6F7",
+  },
   searchbox: {
-    backgroundColor: "rgba(255,255,255,0.3)",
-    marginBottom: "2rem",
-    width: "25%",
-    // height: "20px",
+    backgroundColor: "rgba(255,255,255,1)",
+    // marginBottom: "2rem",
+    marginTop: "-12%",
+    width: "25vw",
     borderRadius: "13px",
     border: "none",
     "& label.Mui-focused": {
@@ -52,6 +56,7 @@ const useStyles = makeStyles({
       "&.Mui-focused fieldset": {
         opacity: 1,
         borderColor: "rgba(255,255,255,0.0)",
+        boxShadow: "0px 9px 40px rgba(0,0,0,0.1)",
         color: "rgba(0,0,0,1)",
         backgroundColor: "rgba(255,255,255,0.5)",
       },
@@ -68,7 +73,7 @@ const useStyles = makeStyles({
     textAlign: "center",
     fontWeight: "5rem",
     fontSize: "3rem",
-    marginTop: "5rem",
+    marginTop: "4rem",
     fontFamily: "product-sans",
     // height: "4vh",
   },
@@ -111,7 +116,7 @@ const useStyles = makeStyles({
     "&::-webkit-scrollbar": {
       width: "0em",
     },
-    width: "95vw",
+    width: "85vw",
     height: "75vh",
     display: "flex",
     marginTop: "2rem",
@@ -134,6 +139,42 @@ const useStyles = makeStyles({
     width: "100%",
     height: "33vh",
     position: "relative",
+    overflow: "hidden",
+
+    "&:hover $img_overlay": {
+      opacity: "1",
+      transition: "0.5s ease-in-out",
+    },
+    "&:hover $addtocart_btn": {
+      opacity: 1,
+      transition: "0.5s ease-in-out",
+      top: "50%",
+    },
+    "&:hover $book_img": {
+      transform: "scale(1.1)",
+      transition: "0.5s ease-in-out",
+    },
+  },
+
+  img_overlay: {
+    position: "relative",
+    content: '""',
+    display: "block",
+    position: "absolute",
+    top: 0,
+    left: 0,
+    opacity: 0,
+    height: "100%",
+    width: "100%",
+    background:
+      "linear-gradient(to bottom, rgba(0,0,0,0.3) 0%,rgba(50,50,50,0.8) 100%)",
+    // },
+  },
+  addtocart_btn: {
+    position: "absolute",
+    top: "30%",
+    opacity: 0,
+    left: "18%",
   },
   book_img: {
     borderRadius: "13px 13px 0 0",

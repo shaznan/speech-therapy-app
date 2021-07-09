@@ -9,6 +9,7 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 import LoadMoreButton from "./LoadMoreButton.componrnt";
 import { useState } from "react";
+import DisplayBooksProductImg from "./DisplayBooksProductImg.component";
 
 function DisplayBooks() {
   const classes = useStyles();
@@ -55,12 +56,7 @@ function DisplayBooks() {
                 md={2}
                 xs={6}
                 className={classes.bookcard}>
-                <div className={classes.book_imgcont}>
-                  <img
-                    className={classes.book_img}
-                    src={product.images[0].src}
-                  />
-                </div>
+                <DisplayBooksProductImg product={product} />
                 <div className={classes.book_price}>
                   {`USD ${product.variants[0].price}`}
                 </div>

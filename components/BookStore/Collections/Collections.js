@@ -3,6 +3,7 @@ import Grid from "@material-ui/core/Grid";
 import { useStyles } from "../bookstore_styles";
 import Catergories from "./Catergories.component";
 import DisplayBooks from "./DisplayBooks.component";
+import SearchBox from "./SearchBox.component";
 
 function Collections(props) {
   const classes = useStyles();
@@ -18,6 +19,7 @@ function Collections(props) {
   return (
     <div>
       <Grid container className={classes.collection_cont}>
+        <SearchBox />
         <Grid item md={12}>
           <h1 className={classes.collection_heading}>Collections</h1>
         </Grid>

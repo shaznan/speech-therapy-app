@@ -1,7 +1,7 @@
 import React, { useEffect, Fragment } from "react";
 import Navbar from "../../components/Common_Layout/Navbar/Navbar";
 import Collections from "../../components/BookStore/Collections/Collections";
-import SearchPanel from "../../components/BookStore/SearchPanel/SearchPanel";
+import Header from "../../components/BookStore/Header/Header";
 import Client from "shopify-buy";
 import { bookstoreSlice_Actions } from "../../store/bookstoreSlice";
 import { useDispatch } from "react-redux";
@@ -23,7 +23,7 @@ function BookStorePage(props) {
     <Fragment>
       <div>
         <Navbar />
-        <SearchPanel />
+        <Header />
         <Collections />
       </div>
     </Fragment>
