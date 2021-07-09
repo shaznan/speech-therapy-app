@@ -100,6 +100,7 @@ const bookstoreSlice = createSlice({
     product: {},
     selectedCatergory: null,
     bookCollections: null,
+    searchboxQuery: "",
     products: [],
     checkout: {},
     isCartOpen: false,
@@ -109,6 +110,9 @@ const bookstoreSlice = createSlice({
   reducers: {
     setSelectedCatergory: (state, action) => {
       state.selectedCatergory = action.payload;
+    },
+    setSearchboxQuery: (state, action) => {
+      state.searchboxQuery = action.payload;
     },
     setInitialProducts: (state, action) => {
       state.products = action.payload;
@@ -174,7 +178,6 @@ const bookstoreSlice = createSlice({
     },
     [fetchProductWithHandle.fulfilled]: (state, action) => {
       state.loading = "success";
-      console.log(action.payload);
       state.product = action.payload;
     },
     [fetchProductWithHandle.rejected]: (state) => {

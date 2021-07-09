@@ -8,11 +8,14 @@ import {
 } from "../../../store/bookstoreSlice";
 import { useSelector, useDispatch } from "react-redux";
 import LoadMoreButton from "./LoadMoreButton.componrnt";
+import { useState } from "react";
 
 function DisplayBooks() {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const products = useSelector((state) => state.bookstore.products);
+  const initialProducts = useSelector((state) => state.bookstore.products);
+  const searchboxQuery = useSelector((state) => state.bookstore.searchboxQuery);
+  const [products, setProducts] = useState(initialProducts);
 
   useEffect(() => {
     if (localStorage.checkout_id) {
@@ -23,6 +26,20 @@ function DisplayBooks() {
   }, []);
 
   console.log(process.env.SHOPIFY_DOMAIN);
+
+  //Filter product items based on search query from search box
+  useEffect(() => {
+    if (searchboxQuery.length === 0) {
+      setProducts(initialProducts);
+    } else {
+      const filteredProducts = initialProducts.filter((product) => {
+        return product.title
+          .toLowerCase()
+          .includes(searchboxQuery.toLowerCase());
+      });
+      setProducts(filteredProducts);
+    }
+  }, [searchboxQuery]);
 
   //   if(!products) return <div>loading..</div> //FIXME add loading modal
 
