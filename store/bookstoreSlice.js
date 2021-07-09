@@ -114,7 +114,7 @@ const bookstoreSlice = createSlice({
     setSearchboxQuery: (state, action) => {
       state.searchboxQuery = action.payload;
     },
-    setInitialProducts: (state, action) => {
+    setProducts: (state, action) => {
       state.products = action.payload;
     },
     closeCart: (state, action) => {},

@@ -29,7 +29,7 @@ function DisplayBooks() {
 
   //Filter product items based on search query from search box
   useEffect(() => {
-    if (searchboxQuery.length === 0) {
+    if (!searchboxQuery.length) {
       setProducts(initialProducts);
     } else {
       const filteredProducts = initialProducts.filter((product) => {
@@ -39,7 +39,7 @@ function DisplayBooks() {
       });
       setProducts(filteredProducts);
     }
-  }, [searchboxQuery]);
+  }, [searchboxQuery, initialProducts]);
 
   //   if(!products) return <div>loading..</div> //FIXME add loading modal
 

@@ -16,7 +16,7 @@ function BookStorePage(props) {
 
   //hydrate store with book collection on initial render
   useEffect(() => {
-    dispatch(bookstoreSlice_Actions.setInitialProducts(props.products));
+    dispatch(bookstoreSlice_Actions.setProducts(props.products));
   }, []);
 
   return (
