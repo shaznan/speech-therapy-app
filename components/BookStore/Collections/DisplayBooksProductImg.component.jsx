@@ -6,6 +6,7 @@ import Router from "next/router";
 
 function DisplayBooksProductImg({ product }) {
   const classes = useStyles();
+  //Render next dynamic page based on product handle
   const goToProductPageHandler = (event, productHandle) => {
     event.preventDefault();
     Router.push(`/bookstore/${productHandle}`);
