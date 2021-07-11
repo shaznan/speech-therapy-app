@@ -4,7 +4,9 @@ import Collections from "../../components/BookStore/Collections/Collections";
 import Header from "../../components/BookStore/Header/Header";
 import Client from "shopify-buy";
 import { bookstoreSlice_Actions } from "../../store/bookstoreSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import CartBtn from "../../components/BookStore/CartBtn.component";
+import Cart from "../../components/BookStore/Cart/Cart";
 
 const client = Client.buildClient({
   domain: process.env.SHOPIFY_DOMAIN,
@@ -13,6 +15,7 @@ const client = Client.buildClient({
 
 function BookStorePage(props) {
   const dispatch = useDispatch();
+  const isCartOpen = useSelector((state) => state.bookstore.isCartOpen);
 
   //hydrate store with book collection on initial render
   useEffect(() => {
@@ -23,6 +26,8 @@ function BookStorePage(props) {
     <Fragment>
       <div>
         <Navbar />
+        <CartBtn />
+        {isCartOpen && <Cart />}
         <Header />
         <Collections />
       </div>
@@ -40,6 +45,7 @@ export async function getStaticProps() {
           images: [{ src: product.images[0].src }],
           variants: [{ price: product.variants[0].price }],
           title: product.title,
+          handle: product.handle,
         };
       }),
     },

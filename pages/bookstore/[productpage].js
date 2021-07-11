@@ -12,16 +12,18 @@ function productpage() {
   const router = useRouter();
   const product = useSelector((state) => state.bookstore.product);
   const handle = router.query.productpage;
+  // const handle = router.pathname;
+  console.log(handle);
 
-  // useEffect(() => {
-  //     dispatch(fetchProductWithHandle(handle))
-  // }, [fetchProductWithHandle, handle])
+  useEffect(() => {
+    dispatch(fetchProductWithHandle(handle));
+  }, [fetchProductWithHandle, handle]);
 
-  if (!product) return <div>loading...</div>; //FIXME: create loading modal
+  // if (!product) return <div>loading...</div>; //FIXME: create loading modal
 
   return (
     <div>
-      <h1>{product.title}</h1>
+      <h1> product page </h1>
     </div>
   );
 }

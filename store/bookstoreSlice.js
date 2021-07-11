@@ -117,8 +117,9 @@ const bookstoreSlice = createSlice({
     setProducts: (state, action) => {
       state.products = action.payload;
     },
-    closeCart: (state, action) => {},
-    openCart: (state, action) => {},
+    toggleOpenCart: (state) => {
+      state.isCartOpen = !state.isCartOpen;
+    },
     closeMenu: (state, action) => {},
     openMenue: (state, action) => {},
   },
@@ -136,6 +137,7 @@ const bookstoreSlice = createSlice({
           images: [{ src: product.images[0].src }],
           variants: [{ price: product.variants[0].price }],
           title: product.title,
+          handle: product.handle,
         };
       });
       // console.log(action.payload);
@@ -175,13 +177,16 @@ const bookstoreSlice = createSlice({
     //fetchProductsWithHandle
     [fetchProductWithHandle.pending]: (state) => {
       state.loading = "loading";
+      console.log("loading");
     },
     [fetchProductWithHandle.fulfilled]: (state, action) => {
       state.loading = "success";
+      console.log(action.payload);
       state.product = action.payload;
     },
     [fetchProductWithHandle.rejected]: (state) => {
       state.loading = "failed";
+      console.log("failed");
     },
     //createCheckout
     [createCheckout.pending]: (state) => {
