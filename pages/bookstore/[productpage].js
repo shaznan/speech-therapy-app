@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
-import {
-  fetchAllProducts,
-  fetchProductWithHandle,
-} from "../../store/bookstoreSlice";
+// import {
+//   fetchProductWithHandle,
+// } from "../../store/bookstoreSlice";
 import { addItemToCheckout } from "../../store/bookstoreSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from "next/router";
@@ -11,6 +10,10 @@ import { Fragment } from "react";
 import { useStyles } from "../../components/BookStore/bookstore_styles";
 import Navbar from "../../components/Common_Layout/Navbar/Navbar";
 import Client from "shopify-buy";
+import { bookstoreSlice_Actions } from "../../store/bookstoreSlice";
+// import { useDispatch } from "react-redux";
+import ProductPage from "../../components/BookStore/ProductPageComponents/ProductPage";
+import Cart from "../../components/BookStore/Cart/Cart";
 
 const client = Client.buildClient({
   domain: process.env.SHOPIFY_DOMAIN,
@@ -18,29 +21,24 @@ const client = Client.buildClient({
 });
 
 function productpage(props) {
-  console.log(props);
   const dispatch = useDispatch();
   const classes = useStyles();
   const router = useRouter();
-  const product = useSelector((state) => state.bookstore.product);
-  const handle = router.query.productpage;
 
+  // console.log(props);
+  const isCartOpen = useSelector((state) => state.bookstore.isCartOpen);
   useEffect(() => {
-    dispatch(fetchProductWithHandle(handle));
-  }, [fetchProductWithHandle, handle]);
+    dispatch(bookstoreSlice_Actions.setProduct(props));
+  }, []);
 
   // if (!product) return <div>loading...</div>; //FIXME: create loading modal
 
   return (
-    <Fragment>
+    <div>
       <Navbar />
-      <Grid container className={classes.productpage_cont}>
-        <Grid item md={6}>
-          {/* {product.images[0].src} */}
-        </Grid>
-        <Grid item md={6}></Grid>
-      </Grid>
-    </Fragment>
+      {isCartOpen && <Cart />}
+      <ProductPage props={props} />
+    </div>
   );
 }
 
@@ -50,8 +48,6 @@ export async function getStaticPaths() {
     params: { productpage: product.handle },
   }));
 
-  // console.log(handle);
-
   return {
     fallback: "blocking",
     paths: handle,
@@ -60,7 +56,6 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(context) {
   const productHandle = context.params.productpage;
-  console.log(productHandle);
 
   const selectedProduct = await client.product.fetchByHandle(productHandle);
 
@@ -71,6 +66,8 @@ export async function getStaticProps(context) {
       variants: [{ price: selectedProduct.variants[0].price }],
       title: selectedProduct.title,
       handle: selectedProduct.handle,
+      description: selectedProduct.description,
+      productType: selectedProduct.productType,
     },
   };
 }

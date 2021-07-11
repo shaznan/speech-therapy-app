@@ -6,7 +6,7 @@ import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
 import { useDispatch } from "react-redux";
 import { bookstoreSlice_Actions } from "../../store/bookstoreSlice";
 
-const CartBtn = () => {
+const CartBtn = ({ type = "default", style }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
 
@@ -16,7 +16,10 @@ const CartBtn = () => {
 
   return (
     <Fragment>
-      <div className={classes.viewcart_container}>
+      <div
+        className={
+          type === "default" ? classes.viewcart_container : classes.customstyle
+        }>
         <Button
           onClick={onClickHandler}
           variant="outlined"

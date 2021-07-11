@@ -55,14 +55,14 @@ export const fetchProductsByType = createAsyncThunk(
   },
 );
 
-export const fetchProductWithHandle = createAsyncThunk(
-  "bookstore/fetchProductWithHandle",
-  async (handle) => {
-    return client.product.fetchByHandle(handle).then((product) => {
-      return product;
-    });
-  },
-);
+// export const fetchProductWithHandle = createAsyncThunk(
+//   "bookstore/fetchProductWithHandle",
+//   async (handle) => {
+//     return client.product.fetchByHandle(handle).then((product) => {
+//       return product;
+//     });
+//   },
+// );
 
 // export const addItemToCheckout = createAsyncThunk(
 //   "user/addItemToCheckout",
@@ -113,6 +113,9 @@ const bookstoreSlice = createSlice({
     },
     setSearchboxQuery: (state, action) => {
       state.searchboxQuery = action.payload;
+    },
+    setProduct: (state, action) => {
+      state.product = action.payload;
     },
     setProducts: (state, action) => {
       state.products = action.payload;
@@ -175,19 +178,19 @@ const bookstoreSlice = createSlice({
     },
 
     //fetchProductsWithHandle
-    [fetchProductWithHandle.pending]: (state) => {
-      state.loading = "loading";
-      console.log("loading");
-    },
-    [fetchProductWithHandle.fulfilled]: (state, action) => {
-      state.loading = "success";
-      console.log(action.payload);
-      state.product = action.payload;
-    },
-    [fetchProductWithHandle.rejected]: (state) => {
-      state.loading = "failed";
-      console.log("failed");
-    },
+    // [fetchProductWithHandle.pending]: (state) => {
+    //   state.loading = "loading";
+    //   console.log("loading");
+    // },
+    // [fetchProductWithHandle.fulfilled]: (state, action) => {
+    //   state.loading = "success";
+    //   console.log(action.payload);
+    //   state.product = action.payload;
+    // },
+    // [fetchProductWithHandle.rejected]: (state) => {
+    //   state.loading = "failed";
+    //   console.log("failed");
+    // },
     //createCheckout
     [createCheckout.pending]: (state) => {
       state.loading = "loading";

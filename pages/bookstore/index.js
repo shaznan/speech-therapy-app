@@ -2,11 +2,11 @@ import React, { useEffect, Fragment } from "react";
 import Navbar from "../../components/Common_Layout/Navbar/Navbar";
 import Collections from "../../components/BookStore/Collections/Collections";
 import Header from "../../components/BookStore/Header/Header";
-import Client from "shopify-buy";
 import { bookstoreSlice_Actions } from "../../store/bookstoreSlice";
 import { useDispatch, useSelector } from "react-redux";
 import CartBtn from "../../components/BookStore/CartBtn.component";
 import Cart from "../../components/BookStore/Cart/Cart";
+import Client from "shopify-buy";
 
 const client = Client.buildClient({
   domain: process.env.SHOPIFY_DOMAIN,
@@ -26,6 +26,7 @@ function BookStorePage(props) {
     <Fragment>
       <div>
         <Navbar />
+        <Cart />
         <CartBtn />
         {isCartOpen && <Cart />}
         <Header />

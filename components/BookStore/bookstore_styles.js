@@ -34,7 +34,7 @@ const useStyles = makeStyles({
     },
     "&:hover $header_viewcartIcon": {
       transition: "0.4s ease-in-out",
-      color: "#FF4444",
+      color: "black",
     },
   },
   header_viewcartIcon: {
