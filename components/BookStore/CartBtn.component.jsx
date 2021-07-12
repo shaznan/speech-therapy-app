@@ -3,8 +3,9 @@ import Grid from "@material-ui/core/Grid";
 import { useStyles } from "./bookstore_styles";
 import Button from "@material-ui/core/Button";
 import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { bookstoreSlice_Actions } from "../../store/bookstoreSlice";
+import Badge from "@material-ui/core/Badge";
 
 const CartBtn = ({ type = "default", style }) => {
   const classes = useStyles();
@@ -12,6 +13,12 @@ const CartBtn = ({ type = "default", style }) => {
 
   const onClickHandler = () => {
     dispatch(bookstoreSlice_Actions.toggleOpenCart());
+  };
+  const checkout = useSelector((state) => state.bookstore.checkout);
+
+  const badgeCounter = () => {
+    if (!checkout.lineItems) return;
+    return checkout.lineItems.length;
   };
 
   return (
@@ -24,8 +31,11 @@ const CartBtn = ({ type = "default", style }) => {
           onClick={onClickHandler}
           variant="outlined"
           className={classes.header_viewcartbtn}>
-          <ShoppingBasketIcon className={classes.header_viewcartIcon} />
-          View Cart
+          {/* <Badge badgeContent={badgeCount} color="secondary"> */}
+          <Badge badgeContent={badgeCounter()} color="secondary">
+            <ShoppingBasketIcon className={classes.header_viewcartIcon} />
+          </Badge>
+          <span style={{ marginLeft: "0.5rem" }}>View Cart</span>
         </Button>
       </div>
     </Fragment>

@@ -23,6 +23,7 @@ function Cart_Items() {
               <LineItem
                 key={item.id}
                 itemId={item.id}
+                qty={item.quantity}
                 img={item.variant.image.src}
                 title={item.title}
                 price={item.variant.price}

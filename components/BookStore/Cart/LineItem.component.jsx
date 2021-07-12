@@ -7,7 +7,7 @@ import useRemoveItem from "./useRemoveItem";
 import { useDispatch } from "react-redux";
 import { bookstoreSlice_Actions } from "../../../store/bookstoreSlice";
 
-function LineItem({ itemId, img, title, price }) {
+function LineItem({ itemId, img, title, price, qty }) {
   const classes = useStyles();
   const dispatch = useDispatch();
   const [isError, removeItemCheckout, removeItemFromCart] = useRemoveItem();
@@ -28,6 +28,9 @@ function LineItem({ itemId, img, title, price }) {
               <Button onClick={removeItemHandler}>
                 <HighlightOffIcon className={classes.cartitem_closeBtn} />
               </Button>
+            </Grid>
+            <Grid item md={1} className={classes.itemQty}>
+              <strong>{`x${qty}`}</strong>
             </Grid>
             <Grid item md={2} className={classes.cartitem_img_cont}>
               <img src={img} className={classes.cartitem_img} />

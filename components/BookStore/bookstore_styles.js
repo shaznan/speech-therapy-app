@@ -38,7 +38,7 @@ const useStyles = makeStyles({
     },
   },
   header_viewcartIcon: {
-    marginRight: "0.7rem",
+    // marginRight: "0.7rem",
   },
   cart_cont: {
     position: "fixed",
@@ -101,6 +101,11 @@ const useStyles = makeStyles({
   },
   // cartitem_title: {},
   cartitem_price: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  itemQty: {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
