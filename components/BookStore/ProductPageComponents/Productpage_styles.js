@@ -13,7 +13,7 @@ const useStyles = makeStyles({
     justifyContent: "center",
     alignItems: "center",
     padding: "5rem 6rem 5rem 6rem",
-
+    position: "relative",
     backgroundColor: "white",
     height: "80vh",
     width: "80vw",
@@ -34,6 +34,11 @@ const useStyles = makeStyles({
     alignItems: "center",
     justifyContent: "center",
   },
+  back_btn: {
+    position: "absolute",
+    left: "4%",
+    top: "7%",
+  },
   product_desc: {
     // width: "85%",
     textAlign: "justify",
@@ -52,6 +57,10 @@ const useStyles = makeStyles({
     "&::-webkit-scrollbar": {
       width: "1em",
     },
+  },
+  price: {
+    textAlign: "center",
+    // fontWeight: "bold",
   },
   //   buttons_cont: {
   //   },
@@ -82,7 +91,7 @@ const useStyles = makeStyles({
   error_message: {
     // color: "red",
     position: "absolute",
-    right: "15%",
+    right: "12%",
     padding: "0.7rem 1rem",
     fontWeight: "bold",
     backgroundColor: "white",

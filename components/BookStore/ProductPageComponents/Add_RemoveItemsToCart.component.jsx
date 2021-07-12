@@ -6,24 +6,26 @@ import RemoveCircleOutlineIcon from "@material-ui/icons/RemoveCircleOutline";
 import Button from "@material-ui/core/Button";
 import { useState } from "react";
 import ErrorOutlineIcon from "@material-ui/icons/ErrorOutline";
+import { useSelector, useDispatch } from "react-redux";
+import { bookstoreSlice_Actions } from "../../../store/bookstoreSlice";
 
 function Add_RemoveItemsToCart() {
   const classes = useStyles();
-  const [isErrorMessage, setIsErrorMessage] = useState(false);
-  const [itemCounter, setItemCounter] = useState(1);
-  const addHandler = () => {
-    if (itemCounter > 4) {
-      setIsErrorMessage(true);
-    } else {
-      setIsErrorMessage(false);
-      setItemCounter((prev) => prev + 1);
-    }
+  const dispatch = useDispatch();
+  const selectedProductQty = useSelector(
+    (state) => state.bookstore.selectedProductQty,
+  );
+
+  const isCounterExceed = useSelector(
+    (state) => state.bookstore.isCounterExceed,
+  );
+
+  const incrementHandler = () => {
+    dispatch(bookstoreSlice_Actions.incrementSelectedProductQty());
   };
 
-  const RemoveHandler = () => {
-    if (itemCounter < 1) return;
-    setItemCounter((prev) => prev - 1);
-    setIsErrorMessage(false);
+  const decrementHandler = () => {
+    dispatch(bookstoreSlice_Actions.decrementSelectedProductQty());
   };
 
   return (
@@ -31,14 +33,14 @@ function Add_RemoveItemsToCart() {
       <Grid item md={12}>
         <Grid container className={classes.additems_cont}>
           <Grid item md={12} className={classes.additems_cont}>
-            <Button onClick={RemoveHandler}>
+            <Button onClick={decrementHandler}>
               <RemoveCircleOutlineIcon />
             </Button>
-            <span className={classes.counter}>{itemCounter}</span>
-            <Button onClick={addHandler}>
+            <span className={classes.counter}>{selectedProductQty}</span>
+            <Button onClick={incrementHandler}>
               <AddCircleOutlineIcon />
             </Button>
-            {isErrorMessage && (
+            {isCounterExceed && (
               <span className={classes.error_message}>
                 <ErrorOutlineIcon
                   style={{ marginRight: "0.5rem", color: "red" }}

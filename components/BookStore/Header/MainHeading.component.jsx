@@ -11,7 +11,7 @@ function MainHeading() {
   return (
     <Fragment>
       {/* <CartBtn /> */}
-      <Grid item={12} className={classes.mainheading}>
+      <Grid item md={12} className={classes.mainheading}>
         <Heading text="- The more you read, the more you grow -" />
       </Grid>
     </Fragment>

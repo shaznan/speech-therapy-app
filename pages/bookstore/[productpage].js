@@ -58,6 +58,7 @@ export async function getStaticProps(context) {
   const productHandle = context.params.productpage;
 
   const selectedProduct = await client.product.fetchByHandle(productHandle);
+  console.log(selectedProduct.variants[0].id);
 
   return {
     props: {
@@ -68,6 +69,7 @@ export async function getStaticProps(context) {
       handle: selectedProduct.handle,
       description: selectedProduct.description,
       productType: selectedProduct.productType,
+      variantId: selectedProduct.variants[0].id,
     },
   };
 }

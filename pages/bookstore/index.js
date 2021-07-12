@@ -26,7 +26,6 @@ function BookStorePage(props) {
     <Fragment>
       <div>
         <Navbar />
-        <Cart />
         <CartBtn />
         {isCartOpen && <Cart />}
         <Header />
@@ -47,6 +46,7 @@ export async function getStaticProps() {
           variants: [{ price: product.variants[0].price }],
           title: product.title,
           handle: product.handle,
+          // variantId: [{ variantId: product.variants[0].id }],
         };
       }),
     },

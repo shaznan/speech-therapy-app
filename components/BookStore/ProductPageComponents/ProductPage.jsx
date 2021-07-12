@@ -4,6 +4,8 @@ import { useStyles } from "./Productpage_styles";
 import Typography from "@material-ui/core/Typography";
 import Add_RemoveItemsToCart from "./Add_RemoveItemsToCart.component";
 import AddToCart_ViewCart_Btn from "./AddToCart_ViewCart_Btn.component";
+import BackBtn from "./BackBtn.component";
+import ItemPrice from "./ItemPrice.component";
 
 function ProductPage({ props }) {
   const classes = useStyles();
@@ -11,6 +13,7 @@ function ProductPage({ props }) {
     <Fragment>
       <div className={classes.productpage_maincont}>
         <Grid container className={classes.productpage_cont}>
+          <BackBtn />
           <Grid item md={5} className={classes.img_cont}>
             <div>
               <img src={props.images[0].src} />
@@ -24,7 +27,7 @@ function ProductPage({ props }) {
               <Grid item md={12} className={classes.description_txt}>
                 {props.description}
               </Grid>
-              {/* <Grid item md={12}></Grid> */}
+              <ItemPrice props={props} />
             </Grid>
             <Add_RemoveItemsToCart />
             <AddToCart_ViewCart_Btn />

@@ -22,7 +22,7 @@ function SearchBox() {
         {/* <div className={classes.searchbox_label}>
           What book are you looking for ?
         </div> */}
-        <Grid item={12} className={classes.searchcontainer}>
+        <Grid item md={12} className={classes.searchcontainer}>
           <TextField
             id="outlined-basic"
             onChange={onChangeHandler}

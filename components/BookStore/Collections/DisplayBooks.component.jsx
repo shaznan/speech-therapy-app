@@ -26,8 +26,6 @@ function DisplayBooks() {
     }
   }, []);
 
-  console.log(process.env.SHOPIFY_DOMAIN);
-
   //Filter product items based on search query from search box
   useEffect(() => {
     if (!searchboxQuery.length) {

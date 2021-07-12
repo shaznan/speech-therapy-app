@@ -64,21 +64,6 @@ export const fetchProductsByType = createAsyncThunk(
 //   },
 // );
 
-// export const addItemToCheckout = createAsyncThunk(
-//   "user/addItemToCheckout",
-//   async (userId) => {
-//     return axios
-//       .get("/api//", {
-//         params: {
-//           userId: userId,
-//         },
-//       })
-//       .then((res) => {
-//         return res.data;
-//       });
-//   }
-// );
-
 // export const removeLineItem = createAsyncThunk(
 //   "user/removeLineItem",
 //   async (lineItemId) => {
@@ -103,6 +88,8 @@ const bookstoreSlice = createSlice({
     searchboxQuery: "",
     products: [],
     checkout: {},
+    selectedProductQty: 1,
+    isCounterExceed: false,
     isCartOpen: false,
     isMenuOpen: false,
     loading: "idle",
@@ -116,6 +103,25 @@ const bookstoreSlice = createSlice({
     },
     setProduct: (state, action) => {
       state.product = action.payload;
+    },
+    setCheckOut: (state, action) => {
+      state.checkout = action.payload;
+    },
+    incrementSelectedProductQty: (state) => {
+      if (state.selectedProductQty > 4) {
+        state.isCounterExceed = true;
+      } else {
+        state.isCounterExceed = false;
+        state.selectedProductQty = state.selectedProductQty + 1;
+      }
+    },
+    decrementSelectedProductQty: (state) => {
+      if (state.selectedProductQty < 1) return;
+      state.selectedProductQty = state.selectedProductQty - 1;
+      state.isCounterExceed = false;
+    },
+    setIsCounterExceed: (state, action) => {
+      state.isCounterExceed = action.payload;
     },
     setProducts: (state, action) => {
       state.products = action.payload;
@@ -141,6 +147,7 @@ const bookstoreSlice = createSlice({
           variants: [{ price: product.variants[0].price }],
           title: product.title,
           handle: product.handle,
+          variantId: product.variants[0].id,
         };
       });
       // console.log(action.payload);
@@ -164,7 +171,7 @@ const bookstoreSlice = createSlice({
     },
     [fetchAllCollections.fulfilled]: (state, action) => {
       state.loading = "success";
-      console.log(action.payload.products);
+      // console.log(action.payload.products);
       state.bookCollections = action.payload.map((collection) => {
         return {
           id: collection.id,
@@ -177,20 +184,6 @@ const bookstoreSlice = createSlice({
       state.loading = "failed";
     },
 
-    //fetchProductsWithHandle
-    // [fetchProductWithHandle.pending]: (state) => {
-    //   state.loading = "loading";
-    //   console.log("loading");
-    // },
-    // [fetchProductWithHandle.fulfilled]: (state, action) => {
-    //   state.loading = "success";
-    //   console.log(action.payload);
-    //   state.product = action.payload;
-    // },
-    // [fetchProductWithHandle.rejected]: (state) => {
-    //   state.loading = "failed";
-    //   console.log("failed");
-    // },
     //createCheckout
     [createCheckout.pending]: (state) => {
       state.loading = "loading";
@@ -207,6 +200,7 @@ const bookstoreSlice = createSlice({
       state.loading = "loading";
     },
     [fetchCheckout.fulfilled]: (state, action) => {
+      console.log(action.payload);
       state.loading = "success";
       state.checkout = action.payload;
     },
