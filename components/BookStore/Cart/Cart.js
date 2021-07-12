@@ -8,6 +8,7 @@ import CloseWindowBtn from "../../Common_Layout/Button/CloseWindowBtn";
 import { useDispatch } from "react-redux";
 import { bookstoreSlice_Actions } from "../../../store/bookstoreSlice";
 import Cart_Items from "./Cart_Items.component";
+import Checkout_Button from "./Checkout_Button.component";
 
 function Cart() {
   const classes = useStyles();
@@ -26,11 +27,7 @@ function Cart() {
           <Heading text="Shopping Cart" fontsize="3.5rem" />
         </Grid>
         <Cart_Items />
-        <Grid item md={12} className={classes.checkout_btn_cont}>
-          <Button className={classes.checkout_btn}>
-            <PaymentIcon style={{ marginRight: "0.5rem" }} /> Checkout
-          </Button>
-        </Grid>
+        <Checkout_Button />
       </Grid>
     </Fragment>
   );

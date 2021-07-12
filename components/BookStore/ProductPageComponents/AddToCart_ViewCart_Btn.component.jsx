@@ -27,6 +27,7 @@ function AddToCart_ViewCart_Btn() {
     if (newCheckout !== null) {
       dispatch(bookstoreSlice_Actions.setCheckOut(newCheckout));
     }
+    dispatch(bookstoreSlice_Actions.toggleOpenCart());
   };
 
   return (

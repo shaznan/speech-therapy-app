@@ -31,8 +31,8 @@ function Add_RemoveItemsToCart() {
   return (
     <Fragment>
       <Grid item md={12}>
-        <Grid container className={classes.additems_cont}>
-          <Grid item md={12} className={classes.additems_cont}>
+        <Grid container className={classes.additems_cont_main}>
+          <Grid item md={3} className={classes.additems_cont}>
             <Button onClick={decrementHandler}>
               <RemoveCircleOutlineIcon />
             </Button>
@@ -40,15 +40,15 @@ function Add_RemoveItemsToCart() {
             <Button onClick={incrementHandler}>
               <AddCircleOutlineIcon />
             </Button>
-            {isCounterExceed && (
-              <span className={classes.error_message}>
-                <ErrorOutlineIcon
-                  style={{ marginRight: "0.5rem", color: "red" }}
-                />
-                Only 5 items allowed!
-              </span>
-            )}
           </Grid>
+          {isCounterExceed && (
+            <span className={classes.error_message}>
+              <ErrorOutlineIcon
+                style={{ marginRight: "0.5rem", color: "red" }}
+              />
+              Only 5 items allowed!
+            </span>
+          )}
         </Grid>
       </Grid>
     </Fragment>

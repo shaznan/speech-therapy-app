@@ -3,6 +3,7 @@ import { useStyles } from "../bookstore_styles";
 import Grid from "@material-ui/core/Grid";
 import Paragraph from "../../Common_Layout/Typography/Paragraph";
 import { useSelector, useDispatch } from "react-redux";
+import LineItem from "./LineItem.component";
 
 function Cart_Items() {
   const classes = useStyles();
@@ -11,7 +12,7 @@ function Cart_Items() {
   return (
     <Fragment>
       <Grid item md={12} className={classes.cart_items}>
-        <Grid container className={classes.cart_items_cont}>
+        <div className={classes.cart_items_cont}>
           {!checkout.lineItems && (
             <div className={classes.emptymessage_cont}>
               <Paragraph text="Your Cart is empty!" />
@@ -19,13 +20,15 @@ function Cart_Items() {
           )}
           {checkout.lineItems &&
             checkout.lineItems.map((item) => (
-              <div>
-                <image src={item.variant.image.src} />
-                <span>{item.title}</span>
-                <span> {item.variant.price}</span>
-              </div>
+              <LineItem
+                key={item.id}
+                itemId={item.id}
+                img={item.variant.image.src}
+                title={item.title}
+                price={item.variant.price}
+              />
             ))}
-        </Grid>
+        </div>
       </Grid>
     </Fragment>
   );

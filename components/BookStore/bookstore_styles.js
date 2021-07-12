@@ -43,7 +43,7 @@ const useStyles = makeStyles({
   cart_cont: {
     position: "fixed",
     backgroundColor: "rgba(255,255,255,0.8)",
-    height: "100%",
+    height: "87vh",
     width: "20vw",
     right: 0,
     zIndex: "30",
@@ -67,12 +67,50 @@ const useStyles = makeStyles({
     width: "100%",
     height: "65vh",
     marginBottom: 0,
+    marginTop: "2rem",
+    overflowY: "scroll",
+    "&::-webkit-scrollbar": {
+      width: "0em",
+    },
   },
   cart_items_cont: {
     width: "18vw",
     borderRadius: "9px",
     boxShadow: "0px 9px 40px rgba(0,0,0,0.08)",
     backgroundColor: "white",
+  },
+  cartitem_img: {
+    width: "2.5vw",
+  },
+  closeBtn_cont: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  cartitem_closeBtn: {
+    opacity: 0.7,
+    "&:hover": {
+      cursor: "pointer",
+    },
+  },
+  cartitem_title_cont: {
+    padding: "0.5rem",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  // cartitem_title: {},
+  cartitem_price: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  cartItem_main_cont: {
+    backgroundColor: "white",
+    padding: "1rem 0.5rem",
+    // marginBottom: "1rem",
+    boxShadow: "0px 9px 40px rgba(0,0,0,0.05)",
+    height: "11vh",
   },
   emptymessage_cont: {
     display: "flex",
@@ -83,7 +121,8 @@ const useStyles = makeStyles({
   },
   emptymessage: {},
   checkout_btn_cont: {
-    marginBottom: "14vh",
+    marginBottom: "1rem",
+    // marginTop: "1rem",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
@@ -271,6 +310,10 @@ const useStyles = makeStyles({
     display: "flex",
     justifyContent: "center",
   },
+
+  // cartItem_cont: {
+  //   height: "20%",
+  // },
 });
 
 export { useStyles };
