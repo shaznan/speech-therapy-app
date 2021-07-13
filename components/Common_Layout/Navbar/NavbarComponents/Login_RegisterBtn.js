@@ -3,29 +3,30 @@ import Grid from "@material-ui/core/Grid";
 import classes from "../Navbar.module.css";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import { useDispatch } from "react-redux";
+import { login_signup_Actions } from "../../../../store/login_signupSlice";
 
 function LoginRegisterbtn() {
   const router = useRouter();
-  const [showLoginRedisterBtn, setShowLoginRedisterBtn] = useState(true);
+  const dispatch = useDispatch();
+  // const [showLoginRedisterBtn, setShowLoginRedisterBtn] = useState(true);
 
-  //render button only in perform test page for now
-  // useEffect(() => {
-  //   router.pathname === "/performtest" || router.pathname === "/articles"
-  //     ? setShowLoginRedisterBtn(true)
-  //     : setShowLoginRedisterBtn(false);
-  // }, [router.pathname]);
+  const urlHandler = () => {
+    dispatch(login_signup_Actions.setPreviousRoute(router.pathname));
+  };
 
   return (
     <Fragment>
       <Grid item lg={3} xs={4}>
-        {showLoginRedisterBtn && (
-          <Link href="/login_signup">
-            <div className={classes.login_register}>
-              <span className={classes.login_registertext}>Login/Register</span>
-            </div>
-          </Link>
-        )}
-        {/*render login/signup btn only in perform test page  */}
+        {/* {showLoginRedisterBtn && ( */}
+        <div className={classes.login_register}>
+          <span className={classes.login_registertext}>
+            <Link href="/login_signup">
+              <span onClick={urlHandler}>Login/Register</span>
+            </Link>
+          </span>
+        </div>
+        {/* )} */}
       </Grid>
     </Fragment>
   );

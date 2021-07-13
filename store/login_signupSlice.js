@@ -4,12 +4,16 @@ import { createSlice } from "@reduxjs/toolkit";
 const login_signupSlice = createSlice({
   name: "login_signup",
   initialState: {
+    previousRoute: null,
     signInActive: false,
     signUpActive: true,
     emailErrorMsg: "",
     isEmailError: false,
   },
   reducers: {
+    setPreviousRoute(state, action) {
+      state.previousRoute = action.payload;
+    },
     setSignInActive(state, action) {
       state.signInActive = action.payload;
     },

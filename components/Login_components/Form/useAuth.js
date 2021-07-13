@@ -2,18 +2,22 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { login_signup_Actions } from "../../../store/login_signupSlice";
-import Router from "next/router";
+import { useRouter } from "next/router";
 import { userSlice_Actions } from "../../../store/userSlice";
 import { fetchUserById } from "../../../store/userSlice";
 
 //authenticate both signIn and SignUp
 function useAuth(url) {
+  const router = useRouter();
   const dispatch = useDispatch();
   const token = useSelector((state) => state.user.token);
   const email = useSelector((state) => state.user.entities[0].email);
   const localId = useSelector((state) => state.user.entities[0].localId);
   const nickName = useSelector((state) => state.user.entities[0].nickName);
   const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
+  const previousRoute = useSelector(
+    (state) => state.login_signup.previousRoute,
+  );
 
   const fireBaseAuth = (enteredEmail, enteredPassword) => {
     axios
@@ -24,13 +28,7 @@ function useAuth(url) {
       })
       .then((res) => {
         //setstate only when login, when signup, local state will be used as display name coz res will not have displayName initially
-        // if (res.data.displayName) {
-        //   // dispatch(login_signup_Actions.setNickName(res.data.displayName));
-        // }
-        Router.push("/performtest");
-        console.log(res.data);
-        // setEmail(res.data.email);
-        // setLocalId(res.data.localId);
+        router.push(previousRoute, null, { shallow: true });
         dispatch(userSlice_Actions.loginHandler(res.data.idToken));
         dispatch(userSlice_Actions.setIsLoggedIn(true));
         dispatch(login_signup_Actions.setIsEmailError(false));
@@ -66,10 +64,10 @@ function useAuth(url) {
           changeOverPrevScore: null,
         })
         .then((res) => {
-          console.log(res);
+          // console.log(res);
         })
         .catch((err) => {
-          console.log(err);
+          // console.log(err);
         });
     }
   }, [nickName, token, email, localId]);
