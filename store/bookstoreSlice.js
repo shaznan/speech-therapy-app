@@ -60,30 +60,6 @@ export const fetchProductsByType = createAsyncThunk(
   },
 );
 
-// export const fetchProductWithHandle = createAsyncThunk(
-//   "bookstore/fetchProductWithHandle",
-//   async (handle) => {
-//     return client.product.fetchByHandle(handle).then((product) => {
-//       return product;
-//     });
-//   },
-// );
-
-// export const removeLineItem = createAsyncThunk(
-//   "user/removeLineItem",
-//   async (lineItemId) => {
-//     return axios
-//       .get("/api//", {
-//         params: {
-//           userId: userId,
-//         },
-//       })
-//       .then((res) => {
-//         return res.data;
-//       });
-//   }
-// );
-
 const bookstoreSlice = createSlice({
   name: "bookstore",
   initialState: {
@@ -134,8 +110,19 @@ const bookstoreSlice = createSlice({
     toggleOpenCart: (state) => {
       state.isCartOpen = !state.isCartOpen;
     },
-    closeMenu: (state, action) => {},
-    openMenue: (state, action) => {},
+    resetState: (state) => {
+      state.product = {};
+      state.selectedCatergory = null;
+      state.bookCollections = null;
+      state.searchboxQuery = "";
+      state.products = [];
+      state.checkout = {};
+      state.selectedProductQty = 1;
+      state.isCounterExceed = false;
+      state.isCartOpen = false;
+      state.isMenuOpen = false;
+      state.loading = "idle";
+    },
   },
   extraReducers: {
     // fetchAllproducts

@@ -12,13 +12,6 @@ function AddToCart_ViewCart_Btn() {
   const classes = useStyles();
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    if (localStorage.checkout_id) {
-      console.log(localStorage.checkout_id);
-      dispatch(fetchCheckout(localStorage.checkout_id));
-    }
-  }, []);
-
   const [isError, newCheckout, addSelectedItem] = useAddItemToCheckout();
 
   const addItemsHandler = (e) => {

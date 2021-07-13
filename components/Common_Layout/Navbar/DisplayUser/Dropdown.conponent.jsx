@@ -4,6 +4,7 @@ import classes from "../Navbar.module.css";
 import Fade from "@material-ui/core/Fade";
 import { useDispatch } from "react-redux";
 import { userSlice_Actions } from "../../../../store/userSlice";
+import { bookstoreSlice_Actions } from "../../../../store/bookstoreSlice";
 
 function DisplayUserDropdown({
   avatar,
@@ -26,8 +27,10 @@ function DisplayUserDropdown({
             <div className={classes.dropdownplaceholder}>{nickName}</div>
             <div
               className={classes.logouttext}
-              onClick={() => dispatch(userSlice_Actions.logoutHandler())}
-            >
+              onClick={() => {
+                dispatch(userSlice_Actions.logoutHandler());
+                dispatch(bookstoreSlice_Actions.resetState());
+              }}>
               Logout
             </div>
           </div>
