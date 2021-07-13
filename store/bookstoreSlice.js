@@ -1,17 +1,22 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import Client from "shopify-buy";
+import userSlice from "./userSlice";
 
 const client = Client.buildClient({
   domain: process.env.SHOPIFY_DOMAIN,
   storefrontAccessToken: process.env.SHOPIFY_API,
 });
 
+//create checkout id and add to user document in db
 export const createCheckout = createAsyncThunk(
   "bookstore/createCheckout",
-  async () => {
+  async (userLocalId) => {
     return client.checkout.create().then((checkout) => {
-      localStorage.setItem("checkout_id", checkout.id);
+      axios.post("/api/UserData/insertShopifyCheckoutId", {
+        userLocalId: userLocalId,
+        checkoutId: checkout.id,
+      });
       return checkout;
     });
   },
@@ -190,14 +195,18 @@ const bookstoreSlice = createSlice({
     },
     [createCheckout.fulfilled]: (state, action) => {
       state.loading = "success";
+      console.log(action.payload);
       state.checkout = action.payload;
     },
     [createCheckout.rejected]: (state) => {
       state.loading = "failed";
     },
-    //fetchcheckout
+    //Add checkout_id to userState when loggedin/signup
+    // [userSlice.actions.setCheckoutId.type]: (state) => {},
+    // fetchcheckout
     [fetchCheckout.pending]: (state) => {
       state.loading = "loading";
+      console.log("loadimg");
     },
     [fetchCheckout.fulfilled]: (state, action) => {
       console.log(action.payload);
@@ -206,6 +215,7 @@ const bookstoreSlice = createSlice({
     },
     [fetchCheckout.rejected]: (state) => {
       state.loading = "failed";
+      console.log("failed");
     },
   },
 });

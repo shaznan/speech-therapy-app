@@ -14,8 +14,7 @@ function useAuth(url) {
   const localId = useSelector((state) => state.user.entities[0].localId);
   const nickName = useSelector((state) => state.user.entities[0].nickName);
   const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
-  // const [email, setEmail] = useState(null);
-  // const [localId, setLocalId] = useState(null);
+
   const fireBaseAuth = (enteredEmail, enteredPassword) => {
     axios
       .post(url, {
@@ -43,21 +42,22 @@ function useAuth(url) {
         if (error.response) {
           dispatch(
             login_signup_Actions.setEmailErrorMsg(
-              error.response.data.error.message
-            )
+              error.response.data.error.message,
+            ),
           );
           dispatch(login_signup_Actions.setIsEmailError(true));
         }
       });
   };
 
-  //create new user account in mongodb with current progress when sign up
+  //create new user account in mongodb  when sign up
   useEffect(() => {
     if (nickName !== "" && token !== "" && email !== "" && localId !== "") {
       axios
         .post("/api/UserData/createNewUser", {
           localId: localId,
           nickName: nickName,
+          checkout_id: null,
           WordsCount: [],
           averageScore: null,
           email: email,

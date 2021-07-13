@@ -10,6 +10,8 @@ import { useSelector, useDispatch } from "react-redux";
 import LoadMoreButton from "./LoadMoreButton.componrnt";
 import { useState } from "react";
 import DisplayBooksProductImg from "./DisplayBooksProductImg.component";
+import axios from "axios";
+import { userSlice_Actions } from "../../../store/userSlice";
 
 function DisplayBooks() {
   const classes = useStyles();
@@ -17,14 +19,29 @@ function DisplayBooks() {
   const initialProducts = useSelector((state) => state.bookstore.products);
   const searchboxQuery = useSelector((state) => state.bookstore.searchboxQuery);
   const [products, setProducts] = useState(initialProducts);
+  const localId = useSelector((state) => state.user.entities[0].localId);
+  const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
+  const checkout_id = useSelector(
+    (state) => state.user.entities[0].checkout_id,
+  );
 
+  const checkout = useSelector((state) => state.bookstore.checkout);
+
+  console.log(`check out id: ${checkout_id}`);
   useEffect(() => {
-    if (localStorage.checkout_id) {
-      dispatch(fetchCheckout(localStorage.checkout_id));
+    if (!isLoggedIn) return;
+    //when sign in, fetch existing checkout
+    if (checkout_id !== null) {
+      console.log(checkout_id);
+      dispatch(fetchCheckout(checkout_id));
     } else {
-      dispatch(createCheckout());
+      //when signup create checkout
+      dispatch(createCheckout(localId));
+      if (Object.keys(checkout).length !== 0) {
+        dispatch(userSlice_Actions.setCheckoutId(checkout.id));
+      }
     }
-  }, []);
+  }, [isLoggedIn, checkout_id]);
 
   //Filter product items based on search query from search box
   useEffect(() => {
@@ -70,20 +87,3 @@ function DisplayBooks() {
 }
 
 export default DisplayBooks;
-
-// return (
-//   <div>
-//     <Navbar />
-//     <h1>Bookstore</h1>
-//     <box>
-//       {products.map((product)=>(
-//         <Link href={`/bookstore/${product.handle}`} key={product.id}>
-//           <div>
-//             <div>{product.title}</div>
-//             <div>{product.variants[0].price}</div>
-//         <img src= {product.images[0].src} /></div>
-//         </Link>
-//       ))}
-//     </box>
-//   </div>
-// );

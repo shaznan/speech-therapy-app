@@ -6,19 +6,20 @@ export default async (req, res) => {
   if (req.method === "POST") {
     const data = req.body;
     const client = await MongoClient.connect(
-      "mongodb+srv://shaznanfairoze:qmpGwieO89Yy1QNM@speech-therapy-app.mb1pc.mongodb.net/UserData?retryWrites=true&w=majority"
+      "mongodb+srv://shaznanfairoze:qmpGwieO89Yy1QNM@speech-therapy-app.mb1pc.mongodb.net/UserData?retryWrites=true&w=majority",
     );
 
     const relationShipId = uuidv4();
 
     const db = client.db();
     const userCollection = db.collection("userCollection");
-    const { email, localId, nickName } = data;
+    const { email, localId, nickName, checkout_id } = data;
     const userResult = await userCollection.insertOne({
       email,
       localId,
       nickName,
       uuid: relationShipId,
+      checkout_id,
     });
 
     const performTestState = db.collection("performTestState");

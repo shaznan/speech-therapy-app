@@ -15,7 +15,7 @@ export const fetchUserById = createAsyncThunk(
       .then((res) => {
         return res.data;
       });
-  }
+  },
 );
 
 export const updateUserData = createAsyncThunk(
@@ -26,7 +26,7 @@ export const updateUserData = createAsyncThunk(
         user,
       })
       .then((res) => res.json());
-  }
+  },
 );
 
 const userSlice = createSlice({
@@ -44,6 +44,7 @@ const userSlice = createSlice({
         highScore: null,
         changeOverPrevScore: null,
         isLoggedIn: false,
+        checkout_id: null,
       },
     ],
     loading: "idle",
@@ -139,6 +140,9 @@ const userSlice = createSlice({
       state.entities[0].highScore = null;
       state.entities[0].changeOverPrevScore = null;
       state.isLoggedIn = false;
+    },
+    setCheckoutId(state, action) {
+      state.entities[0].checkout_id = action.payload;
     },
   },
   // extraReducers: (builder) => {
