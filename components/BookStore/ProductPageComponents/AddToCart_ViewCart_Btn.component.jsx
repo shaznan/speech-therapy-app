@@ -11,17 +11,21 @@ import { bookstoreSlice_Actions } from "../../../store/bookstoreSlice";
 function AddToCart_ViewCart_Btn() {
   const classes = useStyles();
   const dispatch = useDispatch();
-
+  const checkout = useSelector((state) => state.bookstore.checkout);
   const [isError, newCheckout, addSelectedItem] = useAddItemToCheckout();
 
   const addItemsHandler = (e) => {
     e.preventDefault();
     addSelectedItem();
+    // dispatch(bookstoreSlice_Actions.toggleOpenCart());
+  };
+
+  useEffect(() => {
     if (newCheckout !== null) {
       dispatch(bookstoreSlice_Actions.setCheckOut(newCheckout));
     }
-    dispatch(bookstoreSlice_Actions.toggleOpenCart());
-  };
+    dispatch(fetchCheckout(checkout.id));
+  }, [newCheckout]);
 
   return (
     <Fragment>

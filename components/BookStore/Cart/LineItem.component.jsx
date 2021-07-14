@@ -4,20 +4,29 @@ import Grid from "@material-ui/core/Grid";
 import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 import Button from "@material-ui/core/Button";
 import useRemoveItem from "./useRemoveItem";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { bookstoreSlice_Actions } from "../../../store/bookstoreSlice";
+import { fetchCheckout } from "../../../store/bookstoreSlice";
+import { useEffect } from "react";
 
 function LineItem({ itemId, img, title, price, qty }) {
   const classes = useStyles();
   const dispatch = useDispatch();
   const [isError, removeItemCheckout, removeItemFromCart] = useRemoveItem();
+  const checkout = useSelector((state) => state.bookstore.checkout);
 
   const removeItemHandler = (e) => {
     e.preventDefault();
     removeItemFromCart(itemId);
-    removeItemCheckout &&
-      dispatch(bookstoreSlice_Actions.setCheckOut(removeItemCheckout));
+    // dispatch(fetchCheckout(checkout.id));
   };
+
+  useEffect(() => {
+    if (removeItemCheckout !== null) {
+      console.log("remove item ");
+      dispatch(bookstoreSlice_Actions.setCheckOut(removeItemCheckout));
+    }
+  }, [removeItemCheckout]);
 
   return (
     <Fragment>
