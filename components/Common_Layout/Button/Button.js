@@ -2,6 +2,7 @@ import React from "react";
 import Button from "@material-ui/core/Button";
 import ArrowRightIcon from "@material-ui/icons/ArrowRight";
 import ArrowLeftIcon from "@material-ui/icons/ArrowLeft";
+import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 import { useStyles } from "./ButtonStyles";
 import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
@@ -19,7 +20,7 @@ const DynamicButton = ({
 
   const conditionallyRenderClassName = (type) => {
     if (disabled === true) return;
-    if (type === "primary" || type === "next") {
+    if (type === "primary" || type === "next" || type === "cart") {
       return classes.primarybutton;
     }
     if (type === "back") {
@@ -48,12 +49,14 @@ const DynamicButton = ({
             disabled={disabled}
             className={conditionallyRenderClassName(type)}
             variant={variant}
-            href={href}
-          >
+            href={href}>
             {" "}
             {type === "back" && <ArrowLeftIcon className={classes.iconback} />}
             {text}
             {type === "next" && <ArrowRightIcon className={classes.icon} />}
+            {type === "cart" && (
+              <AddShoppingCartIcon className={classes.carticon} />
+            )}
           </Button>
         </Link>
       </ThemeProvider>

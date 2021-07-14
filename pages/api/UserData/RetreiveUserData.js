@@ -5,7 +5,7 @@ export default async (req, res) => {
   if (req.method === "GET") {
     const userId = req.query.userId;
     const client = await MongoClient.connect(
-      "mongodb+srv://shaznanfairoze:qmpGwieO89Yy1QNM@speech-therapy-app.mb1pc.mongodb.net/UserData?retryWrites=true&w=majority"
+      "mongodb+srv://shaznanfairoze:qmpGwieO89Yy1QNM@speech-therapy-app.mb1pc.mongodb.net/UserData?retryWrites=true&w=majority",
     );
     const db = client.db();
     const userCollection = db.collection("userCollection");
@@ -17,7 +17,7 @@ export default async (req, res) => {
     const testState = await performTestState.find({ uuid: uuid }).toArray();
 
     client.close();
-    const { email, localId, nickName } = users[0];
+    const { email, localId, nickName, checkout_id } = users[0];
     const {
       WordsCount,
       averageScore,
@@ -30,6 +30,7 @@ export default async (req, res) => {
       email,
       localId,
       nickName,
+      checkout_id,
       WordsCount,
       averageScore,
       scoreAvgeCriteria,

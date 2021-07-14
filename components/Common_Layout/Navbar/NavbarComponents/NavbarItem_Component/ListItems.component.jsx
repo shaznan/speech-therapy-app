@@ -4,6 +4,7 @@ import classes from "../../Navbar.module.css";
 import Grid from "@material-ui/core/Grid";
 import Link from "next/link";
 import React from "react";
+import Button from "@material-ui/core/Button";
 
 function RenderListItems({ menuItems, emptyPathname }) {
   const router = useRouter();
@@ -14,6 +15,15 @@ function RenderListItems({ menuItems, emptyPathname }) {
     let removeSpacing = toLowerCase.replace(/\s+/g, "");
     return removeSpacing;
   };
+
+  const redirectHandler = (item) => {
+    console.log(item);
+    router.push(item == "Home" ? "/" : "/" + formatItem(item), null, {
+      shallow: true,
+    });
+  };
+
+  //FIXME: WORK ON THE THROTTLING ISSUE
 
   return (
     <Fragment>
@@ -26,11 +36,14 @@ function RenderListItems({ menuItems, emptyPathname }) {
                 : router.pathname === "/" + formatItem(item) //format in order to match exact route names
                 ? classes.active
                 : ""
-            }
-          >
-            <Link href={item == "Home" ? "/" : "/" + formatItem(item)}>
+            }>
+            <span
+              className={classes.navMenuItems}
+              onClick={() => {
+                redirectHandler(item);
+              }}>
               {item}
-            </Link>
+            </span>
           </li>
         </Grid>
       ))}

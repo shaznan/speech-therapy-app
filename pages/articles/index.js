@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "../../components/Common_Layout/Navbar/Navbar";
 import { useStyles } from "../../components/Articles/Articles_styles";
 import { Fragment } from "react";
@@ -9,6 +9,7 @@ import { useSelector } from "react-redux";
 import ArticleForm from "../../components/Articles/ArticleForm/ArticleForm";
 import { MongoClient } from "mongodb";
 import DeleteItemModal from "../../components/Articles/DeleteItemModal/DeleteItemModal";
+import useHydrateState from "../../components/useHydrateState";
 
 function ArticlesPage(props) {
   // const articleData = JSON.parse(props.articleData);
@@ -16,6 +17,10 @@ function ArticlesPage(props) {
   console.log(articleData);
   const classes = useStyles();
   const showArticleForm = useSelector((state) => state.article.showArticleForm);
+  const [hydrateWithLocalStorage] = useHydrateState();
+  useEffect(() => {
+    hydrateWithLocalStorage();
+  }, []);
 
   return (
     <Fragment>
@@ -35,7 +40,7 @@ function ArticlesPage(props) {
 export async function getStaticProps() {
   const client = await MongoClient.connect(
     "mongodb+srv://shaznan:j77hFjvqaRPiva-@speech-therapy-app.mb1pc.mongodb.net/Article?retryWrites=true&w=majority",
-    { useUnifiedTopology: true, useNewUrlParser: true }
+    { useUnifiedTopology: true, useNewUrlParser: true },
   );
   const db = client.db();
   const ArticlesCollection = db.collection("Articles");

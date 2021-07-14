@@ -8,7 +8,6 @@ import { useStyles } from "./displayResult_styles";
 import ResultBody from "./ResultBody.component";
 import Buttons from "./Buttons.component";
 import { CloseBtn } from "./Buttons.component";
-import axios from "axios";
 import { updateUserData } from "../../../../store/userSlice";
 
 export default function DisplayResult() {
@@ -16,7 +15,7 @@ export default function DisplayResult() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const isWordsCountReceived = useSelector(
-    (state) => state.performtest.isWordsCountReceived
+    (state) => state.performtest.isWordsCountReceived,
   );
   const entities = useSelector((state) => state.user.entities[0]);
 
@@ -35,7 +34,10 @@ export default function DisplayResult() {
 
   //Send results to backend
   useEffect(() => {
-    isWordsCountReceived && dispatch(updateUserData(entities));
+    if (isWordsCountReceived) {
+      dispatch(updateUserData(entities));
+      localStorage.setItem("state", JSON.stringify(entities));
+    }
   }, [isWordsCountReceived]);
 
   return (
@@ -50,8 +52,7 @@ export default function DisplayResult() {
         BackdropComponent={Backdrop}
         BackdropProps={{
           timeout: 500,
-        }}
-      >
+        }}>
         <Fade in={open}>
           <div className={classes.paper}>
             <CloseBtn onCloseHandler={tryAgain} />

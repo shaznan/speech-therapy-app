@@ -5,6 +5,7 @@ const useStyles = makeStyles({
   "@global": {
     body: {
       backgroundColor: "#f6f6f7",
+      fontFamily: "product-sans",
     },
   },
 
