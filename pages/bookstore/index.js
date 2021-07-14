@@ -62,6 +62,7 @@ export async function getStaticProps() {
         };
       }),
     },
+    revalidate: 1,
   };
 }
 

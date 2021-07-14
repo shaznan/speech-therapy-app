@@ -16,6 +16,7 @@ function DisplayUserDropdown({
 
   const logoutHandler = () => {
     dispatch(userSlice_Actions.logoutHandler());
+
     dispatch(bookstoreSlice_Actions.resetState());
     localStorage.removeItem("state");
   };

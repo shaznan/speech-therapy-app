@@ -70,7 +70,7 @@ export async function getStaticProps(context) {
       productType: selectedProduct.productType,
       variantId: selectedProduct.variants[0].id,
     },
-    revalidate: 10,
+    revalidate: 1,
   };
 }
 

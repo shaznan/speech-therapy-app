@@ -197,8 +197,6 @@ const bookstoreSlice = createSlice({
     [createCheckout.rejected]: (state) => {
       state.loading = "failed";
     },
-    //Add checkout_id to userState when loggedin/signup
-    // [userSlice.actions.setCheckoutId.type]: (state) => {},
     // fetchcheckout
     [fetchCheckout.pending]: (state) => {
       state.loading = "loading";
