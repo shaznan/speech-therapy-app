@@ -1,4 +1,3 @@
-import { flexbox } from "@chakra-ui/react";
 import { makeStyles } from "@material-ui/core/styles";
 import backgroundCoverImage from "../../assets/images/bookstore_bgimage.jpg";
 
