@@ -1,16 +1,10 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import Grid from "@material-ui/core/Grid";
 import { useStyles } from "../bookstore_styles";
-import {
-  fetchCheckout,
-  fetchAllProducts,
-  createCheckout,
-} from "../../../store/bookstoreSlice";
+import { fetchCheckout, createCheckout } from "../../../store/bookstoreSlice";
 import { useSelector, useDispatch } from "react-redux";
 import LoadMoreButton from "./LoadMoreButton.componrnt";
-import { useState } from "react";
 import DisplayBooksProductImg from "./DisplayBooksProductImg.component";
-import axios from "axios";
 import { userSlice_Actions } from "../../../store/userSlice";
 
 function DisplayBooks() {
@@ -25,23 +19,34 @@ function DisplayBooks() {
     (state) => state.user.entities[0].checkout_id,
   );
 
+  const isCheckoutAvailable = useSelector(
+    (state) => state.bookstore.isCheckoutAvailable,
+  );
+
   const checkout = useSelector((state) => state.bookstore.checkout);
 
-  console.log(`check out id: ${checkout_id}`);
+  // when sign in, fetch existing checkout & when signup create checkout
   useEffect(() => {
     if (!isLoggedIn) return;
-    //when sign in, fetch existing checkout
     if (checkout_id !== null) {
-      console.log(checkout_id);
       dispatch(fetchCheckout(checkout_id));
     } else {
-      //when signup create checkout
       dispatch(createCheckout(localId));
-      if (Object.keys(checkout).length !== 0) {
-        dispatch(userSlice_Actions.setCheckoutId(checkout.id));
-      }
     }
   }, [isLoggedIn, checkout_id]);
+
+  //if checkout is available, update local state with check out ID
+  useEffect(() => {
+    if (isCheckoutAvailable) {
+      dispatch(userSlice_Actions.setCheckoutId(checkout.id));
+    }
+    const existingLocalState = JSON.parse(localStorage.getItem("state"));
+    const LocalstateWithCheckoutId = Object.assign({}, existingLocalState, {
+      checkout_id: checkout.id,
+    });
+
+    localStorage.setItem("state", JSON.stringify(LocalstateWithCheckoutId));
+  }, [isCheckoutAvailable]);
 
   //Filter product items based on search query from search box
   useEffect(() => {
@@ -56,8 +61,6 @@ function DisplayBooks() {
       setProducts(filteredProducts);
     }
   }, [searchboxQuery, initialProducts]);
-
-  //   if(!products) return <div>loading..</div> //FIXME add loading modal
 
   return (
     <Fragment>

@@ -37,14 +37,13 @@ function RenderListItems({ menuItems, emptyPathname }) {
                 ? classes.active
                 : ""
             }>
-            {/* <Link href={item == "Home" ? "/" : "/" + formatItem(item)}> */}
             <span
+              className={classes.navMenuItems}
               onClick={() => {
                 redirectHandler(item);
               }}>
               {item}
             </span>
-            {/* </Link> */}
           </li>
         </Grid>
       ))}

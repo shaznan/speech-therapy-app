@@ -19,6 +19,20 @@ function useAuth(url) {
     (state) => state.login_signup.previousRoute,
   );
 
+  const redirectHandler = () => {
+    previousRoute
+      ? router.push(previousRoute, null, { shallow: true })
+      : router.push("/", null, { shallow: true });
+  };
+
+  const responseHandler = (res) => {
+    dispatch(userSlice_Actions.loginHandler(res.data.idToken));
+    dispatch(userSlice_Actions.setIsLoggedIn(true));
+    dispatch(login_signup_Actions.setIsEmailError(false));
+    dispatch(userSlice_Actions.setEmail(res.data.email));
+    dispatch(userSlice_Actions.setLocalId(res.data.localId));
+  };
+
   const fireBaseAuth = (enteredEmail, enteredPassword) => {
     axios
       .post(url, {
@@ -28,12 +42,8 @@ function useAuth(url) {
       })
       .then((res) => {
         //setstate only when login, when signup, local state will be used as display name coz res will not have displayName initially
-        router.push(previousRoute, null, { shallow: true });
-        dispatch(userSlice_Actions.loginHandler(res.data.idToken));
-        dispatch(userSlice_Actions.setIsLoggedIn(true));
-        dispatch(login_signup_Actions.setIsEmailError(false));
-        dispatch(userSlice_Actions.setEmail(res.data.email));
-        dispatch(userSlice_Actions.setLocalId(res.data.localId));
+        responseHandler(res);
+        redirectHandler();
       })
       .catch((error) => {
         console.log(error);
@@ -48,26 +58,31 @@ function useAuth(url) {
       });
   };
 
+  const signUpInitialState = {
+    localId: localId,
+    nickName: nickName,
+    checkout_id: null,
+    WordsCount: [],
+    averageScore: null,
+    email: email,
+    scoreAvgCriteria: null,
+    highScore: null,
+    changeOverPrevScore: null,
+  };
+
   //create new user account in mongodb  when sign up
   useEffect(() => {
     if (nickName !== "" && token !== "" && email !== "" && localId !== "") {
+      //setLocal storage
+      localStorage.setItem("state", JSON.stringify(signUpInitialState));
+      //store data in db
       axios
-        .post("/api/UserData/createNewUser", {
-          localId: localId,
-          nickName: nickName,
-          checkout_id: null,
-          WordsCount: [],
-          averageScore: null,
-          email: email,
-          scoreAvgCriteria: null,
-          highScore: null,
-          changeOverPrevScore: null,
-        })
+        .post("/api/UserData/createNewUser", signUpInitialState)
         .then((res) => {
-          // console.log(res);
+          console.log("User account created");
         })
         .catch((err) => {
-          // console.log(err);
+          console.log(err);
         });
     }
   }, [nickName, token, email, localId]);

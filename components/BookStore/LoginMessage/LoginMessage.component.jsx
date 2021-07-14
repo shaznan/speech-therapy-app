@@ -20,6 +20,7 @@ function LoginMessage() {
     router.push("/login_signup", null, { shallow: true });
     dispatch(login_signup_Actions.setPreviousRoute(router.pathname));
   };
+  
   return (
     <Fragment>
       <Grid container spacing={0} className={classes.maincont}>

@@ -8,7 +8,7 @@ import { ThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import theme from "../theme/theme";
 import "regenerator-runtime/runtime"; //fix regenerator run time is not defined issue
-import {ChakraProvider} from '@chakra-ui/react'
+import { ChakraProvider } from "@chakra-ui/react";
 
 export default function MyApp({ Component, pageProps }) {
   useEffect(() => {
@@ -32,11 +32,11 @@ export default function MyApp({ Component, pageProps }) {
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
         <ChakraProvider>
-        <Provider store={store}>
-          {" "}
-          {/*Passing in redux store props*/}
-          <Component {...pageProps} />
-        </Provider>
+          <Provider store={store}>
+            {" "}
+            {/*Passing in redux store props*/}
+            <Component {...pageProps} />
+          </Provider>
         </ChakraProvider>
       </ThemeProvider>
     </Fragment>

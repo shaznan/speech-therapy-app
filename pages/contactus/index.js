@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "../../components/Common_Layout/Navbar/Navbar";
+import useHydrateState from "../../components/useHydrateState";
 
 function ContactUsPage() {
+  const [hydrateWithLocalStorage] = useHydrateState();
+  useEffect(() => {
+    hydrateWithLocalStorage();
+  }, []);
+
   return (
     <div>
       <Navbar />

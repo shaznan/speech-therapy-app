@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import Navbar from "../../components/Common_Layout/Navbar/Navbar";
 import Grid from "@material-ui/core/Grid";
 import { useStyles } from "../../styles/global.styles";
@@ -20,25 +20,34 @@ import useTopicsValidator from "../../components/PerformTest_components/DataVali
 import LoadSpinner from "../../components/Common_Layout/loadspinner/loadSpinner";
 import Dashboard from "../../components/PerformTest_components/layout/Dashboard/Dashboard";
 import PerformTestHome_Btn from "../../components/PerformTest_components/layout/PerformTestHome_btn";
+import useHydrateState from "../../components/useHydrateState";
 
 function index() {
   const showStartBtn = useSelector((state) => state.performtest.showStartBtn);
   const classes = performtestStyles();
+  const [hydrateWithLocalStorage] = useHydrateState();
   const showInstructions = useSelector(
-    (state) => state.performtest.showInstructions
+    (state) => state.performtest.showInstructions,
   );
 
   const showCatergoryForm = useSelector(
-    (state) => state.performtest.showCatergoryForm
+    (state) => state.performtest.showCatergoryForm,
   );
 
   const showCountdown = useSelector((state) => state.performtest.showCountdown);
   const isTimeIsUp = useSelector((state) => state.performtest.isTimeIsUp);
   const isAnalyzing = useSelector((state) => state.performtest.isAnalyzing);
+  //FIXME: NEED TO REFACTOR CUSTOM HOOKS PROPERLY
   useRecorder();
   useStyles(); //include global styles
   useAlphabetValidator(); // execute validation function
   useTopicsValidator();
+  ////////////
+
+  //avoid losing state on page refresh
+  useEffect(() => {
+    hydrateWithLocalStorage();
+  }, []);
 
   return (
     <Fragment>

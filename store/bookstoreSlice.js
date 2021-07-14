@@ -69,6 +69,7 @@ const bookstoreSlice = createSlice({
     searchboxQuery: "",
     products: [],
     checkout: {},
+    isCheckoutAvailable: false,
     selectedProductQty: 1,
     isCounterExceed: false,
     isCartOpen: false,
@@ -88,6 +89,13 @@ const bookstoreSlice = createSlice({
     setCheckOut: (state, action) => {
       state.checkout = action.payload;
     },
+    // setIsCheckoutAvailable: (state) => {
+    //   if (state.checkout.hasOwnProperty(id)) {
+    //     state.isCheckoutAvailable = true;
+    //   } else {
+    //     state.isCheckoutAvailable = false;
+    //   }
+    // },
     incrementSelectedProductQty: (state) => {
       if (state.selectedProductQty > 4) {
         state.isCounterExceed = true;
@@ -184,6 +192,7 @@ const bookstoreSlice = createSlice({
       state.loading = "success";
       console.log(action.payload);
       state.checkout = action.payload;
+      state.isCheckoutAvailable = true;
     },
     [createCheckout.rejected]: (state) => {
       state.loading = "failed";
@@ -199,6 +208,7 @@ const bookstoreSlice = createSlice({
       console.log(action.payload);
       state.loading = "success";
       state.checkout = action.payload;
+      state.isCheckoutAvailable = true;
     },
     [fetchCheckout.rejected]: (state) => {
       state.loading = "failed";

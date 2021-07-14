@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 // import { useSelector } from "react-redux";
 
-//update UserData
+//populate store with existing user data from db
 export const fetchUserById = createAsyncThunk(
   "user/fetchUserById",
   async (userId) => {
@@ -66,6 +66,9 @@ const userSlice = createSlice({
         ...state.entities[0].WordsCount,
         action.payload,
       ];
+    },
+    setState(state, action) {
+      state.entities[0] = action.payload;
     },
     setAvatarUrl: (state, action) => {
       state.entities[0].avatarUrl = action.payload;
@@ -139,18 +142,14 @@ const userSlice = createSlice({
       state.entities[0].scoreAvgeCriteria = null;
       state.entities[0].highScore = null;
       state.entities[0].changeOverPrevScore = null;
+      state.entities[0].checkout_id = null;
       state.isLoggedIn = false;
     },
     setCheckoutId(state, action) {
       state.entities[0].checkout_id = action.payload;
+      localStorage.setItem("state", JSON.stringify(state.entities[0]));
     },
   },
-  // extraReducers: (builder) => {
-  //   builder.addCase(fetchUserById.fulfilled),
-  //     (state, action) => {
-  //       state.entities[0] = action.payload;
-  //     };
-  // },
   extraReducers: {
     [fetchUserById.pending]: (state) => {
       state.loading = "loading";
@@ -158,6 +157,8 @@ const userSlice = createSlice({
     [fetchUserById.fulfilled]: (state, action) => {
       state.loading = "success";
       state.entities[0] = action.payload;
+      localStorage.setItem("state", JSON.stringify(action.payload));
+
       // console.log(action.payload);
     },
   },
@@ -167,9 +168,6 @@ const userSlice = createSlice({
   [updateUserData.rejected]: (state) => {
     state.loading = "failed";
   },
-  // [fetchUserById.fulfilled]: (state)=>{
-
-  // }
 });
 
 export const userSlice_Actions = userSlice.actions;

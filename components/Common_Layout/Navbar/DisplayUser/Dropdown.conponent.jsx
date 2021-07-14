@@ -13,6 +13,13 @@ function DisplayUserDropdown({
   toggleDropdown,
 }) {
   const dispatch = useDispatch();
+
+  const logoutHandler = () => {
+    dispatch(userSlice_Actions.logoutHandler());
+    dispatch(bookstoreSlice_Actions.resetState());
+    localStorage.removeItem("state");
+  };
+
   return (
     <Fragment>
       {showDropdown && (
@@ -25,12 +32,7 @@ function DisplayUserDropdown({
               <img src={avatar} className={classes.dropdownavatar} />
             </div>
             <div className={classes.dropdownplaceholder}>{nickName}</div>
-            <div
-              className={classes.logouttext}
-              onClick={() => {
-                dispatch(userSlice_Actions.logoutHandler());
-                dispatch(bookstoreSlice_Actions.resetState());
-              }}>
+            <div className={classes.logouttext} onClick={logoutHandler}>
               Logout
             </div>
           </div>

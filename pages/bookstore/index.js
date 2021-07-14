@@ -8,6 +8,8 @@ import CartBtn from "../../components/BookStore/CartBtn.component";
 import LoginMessage from "../../components/BookStore/LoginMessage/LoginMessage.component";
 import Cart from "../../components/BookStore/Cart/Cart";
 import Client from "shopify-buy";
+import useHydrateState from "../../components/useHydrateState";
+import LoadSpinner from "../../components/Common_Layout/loadspinner/loadSpinner";
 
 const client = Client.buildClient({
   domain: process.env.SHOPIFY_DOMAIN,
@@ -16,18 +18,21 @@ const client = Client.buildClient({
 
 function BookStorePage(props) {
   const dispatch = useDispatch();
+  const [hydrateWithLocalStorage] = useHydrateState();
   const isCartOpen = useSelector((state) => state.bookstore.isCartOpen);
 
   const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
   //hydrate store with book collection on initial render
   useEffect(() => {
     dispatch(bookstoreSlice_Actions.setProducts(props.products));
+    hydrateWithLocalStorage();
   }, []);
 
   return (
     <Fragment>
       <div>
         <Navbar />
+        <LoadSpinner />
         {isLoggedIn && (
           <div>
             <CartBtn />

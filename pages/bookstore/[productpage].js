@@ -1,19 +1,13 @@
 import React, { useEffect } from "react";
-// import {
-//   fetchProductWithHandle,
-// } from "../../store/bookstoreSlice";
-import { addItemToCheckout } from "../../store/bookstoreSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from "next/router";
-import Grid from "@material-ui/core/Grid";
-import { Fragment } from "react";
 import { useStyles } from "../../components/BookStore/bookstore_styles";
 import Navbar from "../../components/Common_Layout/Navbar/Navbar";
 import Client from "shopify-buy";
 import { bookstoreSlice_Actions } from "../../store/bookstoreSlice";
-// import { useDispatch } from "react-redux";
 import ProductPage from "../../components/BookStore/ProductPageComponents/ProductPage";
 import Cart from "../../components/BookStore/Cart/Cart";
+import useHydrateState from "../../components/useHydrateState";
 
 const client = Client.buildClient({
   domain: process.env.SHOPIFY_DOMAIN,
@@ -22,16 +16,21 @@ const client = Client.buildClient({
 
 function productpage(props) {
   const dispatch = useDispatch();
-  const classes = useStyles();
   const router = useRouter();
-
-  // console.log(props);
+  const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
+  const [hydrateWithLocalStorage] = useHydrateState();
   const isCartOpen = useSelector((state) => state.bookstore.isCartOpen);
   useEffect(() => {
+    hydrateWithLocalStorage();
     dispatch(bookstoreSlice_Actions.setProduct(props));
   }, []);
 
-  // if (!product) return <div>loading...</div>; //FIXME: create loading modal
+  //if user logs out, redirect to bookstore main page
+  useEffect(() => {
+    if (!isLoggedIn) {
+      router.push("/bookstore", null, { shallow: true });
+    }
+  }, [isLoggedIn]);
 
   return (
     <div>
@@ -71,6 +70,7 @@ export async function getStaticProps(context) {
       productType: selectedProduct.productType,
       variantId: selectedProduct.variants[0].id,
     },
+    revalidate: 10,
   };
 }
 
