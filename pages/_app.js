@@ -30,13 +30,11 @@ export default function MyApp({ Component, pageProps }) {
       <ThemeProvider theme={theme}>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
-        <ChakraProvider>
-          <Provider store={store}>
-            {" "}
-            {/*Passing in redux store props*/}
-            <Component {...pageProps} />
-          </Provider>
-        </ChakraProvider>
+        <Provider store={store}>
+          {" "}
+          {/*Passing in redux store props*/}
+          <Component {...pageProps} />
+        </Provider>
       </ThemeProvider>
     </Fragment>
   );

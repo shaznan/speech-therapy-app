@@ -19,6 +19,7 @@
     "chart.js": "^3.3.2",
     "dompurify": "^2.2.9",
     "draft-convert": "^2.1.11",
+    "draft-js": "^0.11.7",
     "draft-js-export-html": "^1.4.1",
     "draftjs-to-html": "^0.9.1",
     "draftjs-utils": "^0.10.2",
@@ -48,12 +49,6 @@
     "shopify-buy": "^2.11.0",
     "uuid": "^8.3.2",
     "yup": "^0.32.9"
-  },
-  "peerDependencies": {
-    "draft-js": "^0.11.7",
-    "immutable": "3.x.x || 4.x.x",
-    "react": "0.13.x || 0.14.x || ^15.0.0-0 || 15.x.x || ^16.0.0-0 || ^16.x.x || ^17.x.x",
-    "react-dom": "0.13.x || 0.14.x || ^15.0.0-0 || 15.x.x || ^16.0.0-0 || ^16.x.x || ^17.x.x"
   },
   "devDependencies": {
     "redux-devtools-extension": "^2.13.9"
