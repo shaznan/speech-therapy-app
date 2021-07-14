@@ -3,6 +3,7 @@ import { useStyles } from "../Articles_styles";
 import { articleSlice_Actions } from "../../../store/articlesSlice";
 import { useDispatch } from "react-redux";
 import DeleteIcon from "@material-ui/icons/Delete";
+import { fetchArticleData } from "../../../store/articlesSlice";
 
 function TopicOptions({
   id,
@@ -18,6 +19,7 @@ function TopicOptions({
     e.preventDefault();
     dispatch(articleSlice_Actions.setDeleteItem(idRef.current.id));
     dispatch(articleSlice_Actions.toggleIsDeleteClicked());
+    dispatch(fetchArticleData());
   };
 
   const handleClick = () => {
@@ -32,8 +34,7 @@ function TopicOptions({
           <div
             type="submit"
             onClick={deleteHandler}
-            className={classes.deletebutton}
-          >
+            className={classes.deletebutton}>
             <DeleteIcon />
           </div>
           <div>

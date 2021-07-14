@@ -12,7 +12,7 @@ import { useEffect } from "react";
 function LineItem({ itemId, img, title, price, qty }) {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const [isError, removeItemCheckout, removeItemFromCart] = useRemoveItem();
+  const [isError, newCheckoutState, removeItemFromCart] = useRemoveItem();
   const checkout = useSelector((state) => state.bookstore.checkout);
 
   const removeItemHandler = (e) => {
@@ -22,11 +22,11 @@ function LineItem({ itemId, img, title, price, qty }) {
   };
 
   useEffect(() => {
-    if (removeItemCheckout !== null) {
+    if (newCheckoutState !== null) {
       console.log("remove item ");
-      dispatch(bookstoreSlice_Actions.setCheckOut(removeItemCheckout));
+      dispatch(bookstoreSlice_Actions.setCheckOut(newCheckoutState));
     }
-  }, [removeItemCheckout]);
+  }, [newCheckoutState]);
 
   return (
     <Fragment>

@@ -20,6 +20,7 @@ function ArticleForm() {
   const [isSubmit, setIsSubmit] = useState(false);
   const submitHandler = () => {
     setIsSubmit(true);
+    console.log("submitting");
   };
   const closeHandler = () => {
     dispatch(articleSlice_Actions.toggleShowArticleForm());
@@ -42,11 +43,10 @@ function ArticleForm() {
       onSubmit={(values) => {
         dispatch(articleSlice_Actions.setArticleFormTitle(values.title));
         dispatch(
-          articleSlice_Actions.setArticleFormCoverImg(values.coverimageurl)
+          articleSlice_Actions.setArticleFormCoverImg(values.coverimageurl),
         );
         dispatch(articleSlice_Actions.setIsFormSubmit(true));
-      }}
-    >
+      }}>
       {() => (
         <Fragment>
           <Grid container className={classes.form}>
@@ -73,8 +73,7 @@ function ArticleForm() {
                   type="submit"
                   form="articleform"
                   className={classes.formbtn}
-                  onClick={submitHandler}
-                >
+                  onClick={submitHandler}>
                   submit
                 </Button>
               </Form>

@@ -4,15 +4,29 @@ import axios from "axios";
 export const deleteArticleItem = createAsyncThunk(
   "article/deleteArticleItem",
   async (id) => {
-    axios.post("/api/Article/DeleteArticle", {
-      id,
+    return axios
+      .post("/api/Article/DeleteArticle", {
+        id,
+      })
+      .then((res) => {
+        return res.data;
+      });
+  },
+);
+
+export const fetchArticleData = createAsyncThunk(
+  "article/fetchArticleData",
+  async () => {
+    return axios.get("/api/Article/FetchArticleData").then((res) => {
+      return res.data;
     });
-  }
+  },
 );
 
 const articleSlice = createSlice({
   name: "article",
   initialState: {
+    articlesData: "null",
     topicIdSelected: null,
     deleteItemId: null,
     isDeleteClicked: false,
@@ -41,6 +55,9 @@ const articleSlice = createSlice({
     },
   },
   reducers: {
+    setArticles(state, action) {
+      state.articlesData = action.payload;
+    },
     setTopicIdSelected(state, action) {
       state.topicIdSelected = action.payload;
     },
@@ -71,6 +88,30 @@ const articleSlice = createSlice({
     },
     setArticleFormCoverImg: (state, action) => {
       state.articleForm.formCoverImg = action.payload;
+    },
+  },
+  extraReducers: {
+    // fetchAllproducts
+    [deleteArticleItem.pending]: (state) => {
+      state.loading = "loading";
+    },
+    [deleteArticleItem.fulfilled]: (state, action) => {
+      state.loading = "success";
+      console.log(action.payload);
+      state.isDeleteClicked = false;
+    },
+    [deleteArticleItem.rejected]: (state) => {
+      state.loading = "failed";
+    },
+    [fetchArticleData.pending]: (state) => {
+      state.loading = "loading";
+    },
+    [fetchArticleData.fulfilled]: (state, action) => {
+      state.loading = "success";
+      state.articlesData = action.payload;
+    },
+    [fetchArticleData.rejected]: (state) => {
+      state.loading = "failed";
     },
   },
 });

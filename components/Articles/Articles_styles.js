@@ -90,11 +90,9 @@ const useStyles = makeStyles({
   },
   displayarea: {
     backgroundColor: "white",
-    marginTop: "3rem",
-    height: "45rem",
+    height: "87vh",
     width: "55vw",
-    borderRadius: "13px",
-    // padding: "2rem 7rem",
+    borderRadius: "5px",
     position: "relative",
     boxShadow: "0px 9px 40px rgba(0,0,0,0.08)",
     overflowY: "scroll",
@@ -131,7 +129,7 @@ const useStyles = makeStyles({
   },
   coverimgcontainer: {
     width: "100%",
-    height: "35vh",
+    height: "25vh",
     position: "relative",
   },
 

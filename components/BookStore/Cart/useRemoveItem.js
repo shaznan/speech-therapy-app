@@ -9,7 +9,7 @@ const client = Client.buildClient({
 
 function useRemoveItem() {
   const checkout = useSelector((state) => state.bookstore.checkout);
-  const [removeItemCheckout, setRemoveItemCheckout] = useState(null);
+  const [newCheckoutState, setnewCheckoutState] = useState(null);
   const [isError, setIsError] = useState(false);
 
   const removeItemFromCart = (lineItemIdToRemove) => {
@@ -17,14 +17,14 @@ function useRemoveItem() {
     client.checkout
       .removeLineItems(checkout.id, lineItemIdToRemove)
       .then((checkout) => {
-        setRemoveItemCheckout(checkout);
+        setnewCheckoutState(checkout);
       })
       .catch((err) => {
         setIsError(true);
       });
   };
 
-  return [isError, removeItemCheckout, removeItemFromCart];
+  return [isError, newCheckoutState, removeItemFromCart];
 }
 
 export default useRemoveItem;
