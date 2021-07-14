@@ -2,8 +2,6 @@ import React, { Fragment } from "react";
 import { useStyles } from "../bookstore_styles";
 import Grid from "@material-ui/core/Grid";
 import Heading from "../../Common_Layout/Typography/Heading";
-import Button from "@material-ui/core/Button";
-import PaymentIcon from "@material-ui/icons/Payment";
 import CloseWindowBtn from "../../Common_Layout/Button/CloseWindowBtn";
 import { useDispatch } from "react-redux";
 import { bookstoreSlice_Actions } from "../../../store/bookstoreSlice";

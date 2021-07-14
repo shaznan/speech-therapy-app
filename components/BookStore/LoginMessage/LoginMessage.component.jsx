@@ -8,13 +8,17 @@ import Button from "../../Common_Layout/Button/Button";
 import Card from "../../Common_Layout/Card/Card";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useDispatch } from "react-redux";
+import { login_signup_Actions } from "../../../store/login_signupSlice";
 
 function LoginMessage() {
   const classes = useStyles();
+  const dispatch = useDispatch();
   const router = useRouter();
   const goToLoginHandler = (e) => {
     e.preventDefault();
-    router.push("/login_signup");
+    router.push("/login_signup", null, { shallow: true });
+    dispatch(login_signup_Actions.setPreviousRoute(router.pathname));
   };
   return (
     <Fragment>

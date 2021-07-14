@@ -4,12 +4,17 @@ import Grid from "@material-ui/core/Grid";
 import HomepageImage from "../assets/images/homepage_image.png";
 import { useStyles } from "../styles/global.styles";
 import HomepageText from "../components/homepage_Components/HomepageText";
-import DynamicButton from "../components/Common_Layout/Button/Button";
+import Button from "../components/Common_Layout/Button/Button";
 import BannerImage from "../components/Common_Layout/Banner/BannerImage";
-import Link from "next/link";
+import { useRouter } from "next/router";
 
 export default function Home() {
   const classes = useStyles();
+  const router = useRouter();
+
+  const redirectHandler = () => {
+    router.push("/performtest", null, { shallow: true });
+  };
 
   return (
     <Fragment>
@@ -19,13 +24,11 @@ export default function Home() {
           <Grid item lg={6} xs={12} className={classes.textcontainer}>
             <div>
               <HomepageText />
-              {/* <Link href="/performtest"> */}
-              <DynamicButton
+              <Button
                 type="primary"
                 text="Perform Test"
-                href="/performtest"
+                onClickHandler={redirectHandler}
               />
-              {/* </Link> */}
             </div>
           </Grid>
           <Grid item lg={6} xs={12} className={classes.imagecontainer}>
