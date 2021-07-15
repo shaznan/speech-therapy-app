@@ -29,6 +29,7 @@ function index() {
   const showInstructions = useSelector(
     (state) => state.performtest.showInstructions,
   );
+  const loading = useSelector((state) => state.user.loading);
 
   const showCatergoryForm = useSelector(
     (state) => state.performtest.showCatergoryForm,
@@ -57,7 +58,7 @@ function index() {
         <div className={classes.performtestbgimage}>
           <Grid container spacing={0}>
             <Title /> {/* TODO: Move to performtesthome page */}
-            <LoadSpinner />
+            <LoadSpinner loading={loading} />
             <DisplayCurrentProgress />
             {showStartBtn && <PerformTestHome_Btn />}
             {showInstructions && <DisplayInstructions />}

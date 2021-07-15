@@ -8,6 +8,7 @@ import { bookstoreSlice_Actions } from "../../store/bookstoreSlice";
 import ProductPage from "../../components/BookStore/ProductPageComponents/ProductPage";
 import Cart from "../../components/BookStore/Cart/Cart";
 import useHydrateState from "../../components/useHydrateState";
+import LoadSpinner from "../../components/Common_Layout/loadspinner/loadSpinner";
 
 const client = Client.buildClient({
   domain: process.env.SHOPIFY_DOMAIN,
@@ -20,6 +21,7 @@ function productpage(props) {
   const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
   const [hydrateWithLocalStorage] = useHydrateState();
   const isCartOpen = useSelector((state) => state.bookstore.isCartOpen);
+  const loading = useSelector((state) => state.bookstore.loading);
   useEffect(() => {
     hydrateWithLocalStorage();
     dispatch(bookstoreSlice_Actions.setProduct(props));
@@ -35,6 +37,7 @@ function productpage(props) {
   return (
     <div>
       <Navbar />
+      <LoadSpinner loading={loading} />
       {isCartOpen && <Cart />}
       <ProductPage props={props} />
     </div>

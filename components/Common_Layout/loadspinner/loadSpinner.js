@@ -26,10 +26,9 @@ const useStyles = makeStyles({
   },
 });
 
-export default function LoadSpinner() {
+export default function LoadSpinner({ loading }) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
-  const loading = useSelector((state) => state.user.loading);
 
   useEffect(() => {
     loading === "loading" && setOpen(true);
@@ -42,8 +41,7 @@ export default function LoadSpinner() {
         className={classes.modal}
         open={open}
         closeAfterTransition
-        BackdropComponent={Backdrop}
-      >
+        BackdropComponent={Backdrop}>
         <Fade in={open}>
           <div className={classes.background}>
             <h2>Loading..</h2>
@@ -53,8 +51,7 @@ export default function LoadSpinner() {
                 loop={true}
                 controls={false}
                 src="https://assets8.lottiefiles.com/private_files/lf30_x8dH5W.json"
-                style={{ height: "150px", width: "150x" }}
-              ></Player>
+                style={{ height: "150px", width: "150x" }}></Player>
             </div>
           </div>
         </Fade>

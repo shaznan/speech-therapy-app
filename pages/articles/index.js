@@ -11,30 +11,28 @@ import { MongoClient } from "mongodb";
 import DeleteItemModal from "../../components/Articles/DeleteItemModal/DeleteItemModal";
 import useHydrateState from "../../components/useHydrateState";
 import { articleSlice_Actions } from "../../store/articlesSlice";
-import { fetchArticleData } from "../../store/articlesSlice";
+import LoadSpinner from "../../components/Common_Layout/loadspinner/loadSpinner";
 
 function ArticlesPage(props) {
   const dispatch = useDispatch();
-  const articleData = props.articles;
-  dispatch(articleSlice_Actions.setArticles(props.articles));
-  console.log(articleData);
   const classes = useStyles();
   const showArticleForm = useSelector((state) => state.article.showArticleForm);
-  const isFormSubmit = useSelector((state) => state.article.isFormSubmit);
+  const loading = useSelector((state) => state.article.loading);
   const [hydrateWithLocalStorage] = useHydrateState();
+
   useEffect(() => {
     hydrateWithLocalStorage();
   }, []);
 
-  //if user submits writearticle form, fetch updated article data
   useEffect(() => {
-    isFormSubmit && dispatch(fetchArticleData());
-  }, [isFormSubmit]);
+    dispatch(articleSlice_Actions.setArticles(props.articles));
+  }, []);
 
   return (
     <Fragment>
       <div className={classes.container}>
         <Navbar />
+        <LoadSpinner loading={loading} />
         <Grid container className={classes.body}>
           {!showArticleForm && <SelectTopic />}
           {!showArticleForm && <DisplayArea />}
@@ -54,13 +52,14 @@ export async function getStaticProps() {
   const db = client.db();
   const ArticlesCollection = db.collection("Articles");
   const Articles = await ArticlesCollection.find({}).toArray();
+  console.log(Articles);
   client.close();
   return {
-    // props: { articleData: JSON.stringify(Articles) },
     props: {
       articles: Articles.map((article) => ({
         article: article.article,
         author: article.author,
+        authorEmail: article.authorEmail,
         authorUrl: article.authorUrl,
         isVerified: article.isVerified,
         _id: article._id.toString(),

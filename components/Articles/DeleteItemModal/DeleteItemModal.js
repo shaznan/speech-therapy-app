@@ -16,7 +16,11 @@ export default function DeleteItemModal() {
   const [open, setOpen] = React.useState(false);
   const isDeleteClicked = useSelector((state) => state.article.isDeleteClicked);
   const deleteItemId = useSelector((state) => state.article.deleteItemId);
+  const isArticleDeleted = useSelector(
+    (state) => state.article.isArticleDeleted,
+  );
 
+  //open delete modal window when delete btn clicked
   useEffect(() => {
     isDeleteClicked ? setOpen(true) : setOpen(false);
   }, [isDeleteClicked]);
@@ -34,8 +38,12 @@ export default function DeleteItemModal() {
   const handleDeleteArticle = () => {
     dispatch(deleteArticleItem(deleteItemId));
     setOpen(false);
-    dispatch(fetchArticleData());
   };
+
+  //populate store with updated article data once item is deleted
+  useEffect(() => {
+    isArticleDeleted && dispatch(fetchArticleData());
+  }, [isArticleDeleted]);
 
   return (
     <div>

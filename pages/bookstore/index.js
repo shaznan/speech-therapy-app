@@ -20,7 +20,7 @@ function BookStorePage(props) {
   const dispatch = useDispatch();
   const [hydrateWithLocalStorage] = useHydrateState();
   const isCartOpen = useSelector((state) => state.bookstore.isCartOpen);
-
+  const loading = useSelector((state) => state.bookstore.loading);
   const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
   //hydrate store with book collection on initial render
   useEffect(() => {
@@ -32,7 +32,7 @@ function BookStorePage(props) {
     <Fragment>
       <div>
         <Navbar />
-        <LoadSpinner />
+        <LoadSpinner loading={loading} />
         {isLoggedIn && (
           <div>
             <CartBtn />
