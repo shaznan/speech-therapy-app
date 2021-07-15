@@ -26,14 +26,16 @@ export const fetchArticleData = createAsyncThunk(
 const articleSlice = createSlice({
   name: "article",
   initialState: {
-    articlesData: "null",
+    articlesData: null,
     topicIdSelected: null,
     deleteItemId: null,
     isDeleteClicked: false,
+    isArticleDeleted: false,
     isVerifiedChecked: true,
     isCommunityChecked: false,
     showArticleForm: false,
     isFormSubmit: false,
+    loading: "idle",
     articleForm: {
       isVerified: true,
       formTitle: null,
@@ -97,7 +99,7 @@ const articleSlice = createSlice({
     },
     [deleteArticleItem.fulfilled]: (state, action) => {
       state.loading = "success";
-      console.log(action.payload);
+      state.isArticleDeleted = true;
       state.isDeleteClicked = false;
     },
     [deleteArticleItem.rejected]: (state) => {
@@ -108,6 +110,8 @@ const articleSlice = createSlice({
     },
     [fetchArticleData.fulfilled]: (state, action) => {
       state.loading = "success";
+      state.isArticleDeleted = false;
+      console.log(action.payload);
       state.articlesData = action.payload;
     },
     [fetchArticleData.rejected]: (state) => {

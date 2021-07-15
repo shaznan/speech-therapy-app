@@ -5,7 +5,7 @@ export default async (req, res) => {
     const data = req.body;
     const client = await MongoClient.connect(
       "mongodb+srv://shaznan:j77hFjvqaRPiva-@speech-therapy-app.mb1pc.mongodb.net/Article?retryWrites=true&w=majority",
-      { useUnifiedTopology: true, useNewUrlParser: true }
+      { useUnifiedTopology: true, useNewUrlParser: true },
     );
     const db = client.db();
     const ArticleCollection = db.collection("Articles");

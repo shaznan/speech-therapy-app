@@ -9,7 +9,7 @@ const Editor = dynamic(
   () => {
     return import("react-draft-wysiwyg").then((mod) => mod.Editor);
   },
-  { ssr: false }
+  { ssr: false },
 );
 
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
@@ -19,7 +19,7 @@ import React from "react";
 function ArticleContnt() {
   const classes = useStyles();
   const articleContentBody = useSelector(
-    (state) => state.article.articleForm.contentBody
+    (state) => state.article.articleForm.contentBody,
   );
   const dispatch = useDispatch();
 
@@ -37,8 +37,9 @@ function ArticleContnt() {
         className={classes.editor_container}
       />
       <div
-        dangerouslySetInnerHTML={{ __html: draftToHtml(articleContentBody) }}
-      ></div>
+        dangerouslySetInnerHTML={{
+          __html: draftToHtml(articleContentBody),
+        }}></div>
     </div>
   );
 }
