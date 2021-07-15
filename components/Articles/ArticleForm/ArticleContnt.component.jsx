@@ -36,10 +36,6 @@ function ArticleContnt() {
         editorClassName={classes.editorClass}
         className={classes.editor_container}
       />
-      <div
-        dangerouslySetInnerHTML={{
-          __html: draftToHtml(articleContentBody),
-        }}></div>
     </div>
   );
 }

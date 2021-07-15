@@ -20,7 +20,6 @@ function ArticleForm() {
   const [isSubmit, setIsSubmit] = useState(false);
   const submitHandler = () => {
     setIsSubmit(true);
-    console.log("submitting");
   };
   const closeHandler = () => {
     dispatch(articleSlice_Actions.toggleShowArticleForm());
