@@ -13,13 +13,14 @@ export default async (req, res) => {
 
     const db = client.db();
     const userCollection = db.collection("userCollection");
-    const { email, localId, nickName, checkout_id } = data;
+    const { email, localId, nickName, checkout_id, userRole } = data;
     const userResult = await userCollection.insertOne({
       email,
       localId,
       nickName,
       uuid: relationShipId,
       checkout_id,
+      userRole,
     });
 
     const performTestState = db.collection("performTestState");

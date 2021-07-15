@@ -111,7 +111,6 @@ const articleSlice = createSlice({
     [fetchArticleData.fulfilled]: (state, action) => {
       state.loading = "success";
       state.isArticleDeleted = false;
-      console.log(action.payload);
       state.articlesData = action.payload;
     },
     [fetchArticleData.rejected]: (state) => {

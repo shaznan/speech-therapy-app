@@ -68,6 +68,7 @@ function useAuth(url) {
     scoreAvgCriteria: null,
     highScore: null,
     changeOverPrevScore: null,
+    userRole: "User",
   };
 
   //create new user account in mongodb  when sign up
