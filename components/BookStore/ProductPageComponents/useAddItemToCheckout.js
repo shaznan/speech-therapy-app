@@ -14,7 +14,7 @@ function useAddItemToCheckout() {
     (state) => state.bookstore.selectedProductQty,
   );
 
-  const [newCheckout, setNewCheckout] = useState(null);
+  const [newCheckoutState, setNewCheckoutState] = useState(null);
   const [isError, setIsError] = useState(false);
   const lineItemsToAdd = [
     {
@@ -27,14 +27,14 @@ function useAddItemToCheckout() {
       .addLineItems(checkout.id, lineItemsToAdd)
       .then((checkout) => {
         console.log(checkout);
-        setNewCheckout(checkout);
+        setNewCheckoutState(checkout);
       })
       .catch((err) => {
         setIsError(true);
       });
   };
 
-  return [isError, newCheckout, addSelectedItem];
+  return [isError, newCheckoutState, addSelectedItem];
 }
 
 export default useAddItemToCheckout;

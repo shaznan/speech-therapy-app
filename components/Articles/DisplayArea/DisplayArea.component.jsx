@@ -4,7 +4,8 @@ import { useStyles } from "../Articles_styles";
 import { useSelector } from "react-redux";
 import draftToHtml from "draftjs-to-html";
 
-function DisplayArea({ articles }) {
+function DisplayArea() {
+  const articles = useSelector((state) => state.article.articlesData);
   const [selectedTopic, setSelectedTopic] = useState(articles[0]);
   const classes = useStyles();
   const topicIdSelected = useSelector((state) => state.article.topicIdSelected);
@@ -14,7 +15,7 @@ function DisplayArea({ articles }) {
     setSelectedTopic(
       articles.find((item) => {
         return item._id === topicIdSelected;
-      })
+      }),
     );
   }, [topicIdSelected]);
 
@@ -37,8 +38,7 @@ function DisplayArea({ articles }) {
               className={classes.displayarea_paragraph}
               dangerouslySetInnerHTML={{
                 __html: draftToHtml(selectedTopic.article.body),
-              }}
-            ></div>
+              }}></div>
             <footer>
               <div className={classes.footerlinedivider}></div>
               <Grid container>
@@ -48,8 +48,7 @@ function DisplayArea({ articles }) {
                   style={{
                     display: "flex",
                     justifyContent: "flex-end",
-                  }}
-                >
+                  }}>
                   <img
                     className={`${classes.authorimage} ${classes.footer_authorimg}`}
                     src={selectedTopic.authorUrl}

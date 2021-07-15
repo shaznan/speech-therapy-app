@@ -12,7 +12,7 @@ function AddToCart_ViewCart_Btn() {
   const classes = useStyles();
   const dispatch = useDispatch();
   const checkout = useSelector((state) => state.bookstore.checkout);
-  const [isError, newCheckout, addSelectedItem] = useAddItemToCheckout();
+  const [isError, newCheckoutState, addSelectedItem] = useAddItemToCheckout();
 
   const addItemsHandler = (e) => {
     e.preventDefault();
@@ -21,11 +21,11 @@ function AddToCart_ViewCart_Btn() {
   };
 
   useEffect(() => {
-    if (newCheckout !== null) {
-      dispatch(bookstoreSlice_Actions.setCheckOut(newCheckout));
+    if (newCheckoutState !== null) {
+      dispatch(bookstoreSlice_Actions.setCheckOut(newCheckoutState));
     }
     dispatch(fetchCheckout(checkout.id));
-  }, [newCheckout]);
+  }, [newCheckoutState]);
 
   return (
     <Fragment>

@@ -7,12 +7,13 @@ import ArticleTypeCheckbox from "./ArticleTypeCheckbox.component";
 import { useSelector } from "react-redux";
 import WriteArticle from "./WriteArticle.component";
 
-function SelectTopic({ articles }) {
+function SelectTopic() {
   const classes = useStyles();
   const isVerifiedChecked = useSelector(
-    (state) => state.article.isVerifiedChecked
+    (state) => state.article.isVerifiedChecked,
   );
-
+  const articles = useSelector((state) => state.article.articlesData);
+  console.log(articles);
   const filteredArticles = articles.filter((item) => {
     if (isVerifiedChecked) {
       return item.isVerified === true;

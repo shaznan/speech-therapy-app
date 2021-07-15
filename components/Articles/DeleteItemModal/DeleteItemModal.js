@@ -8,6 +8,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { articleSlice_Actions } from "../../../store/articlesSlice";
 import { deleteArticleItem } from "../../../store/articlesSlice";
 import axios from "axios";
+import { fetchArticleData } from "../../../store/articlesSlice";
 
 export default function DeleteItemModal() {
   const classes = useStyles();
@@ -33,6 +34,7 @@ export default function DeleteItemModal() {
   const handleDeleteArticle = () => {
     dispatch(deleteArticleItem(deleteItemId));
     setOpen(false);
+    dispatch(fetchArticleData());
   };
 
   return (
@@ -45,8 +47,7 @@ export default function DeleteItemModal() {
         BackdropComponent={Backdrop}
         BackdropProps={{
           timeout: 500,
-        }}
-      >
+        }}>
         <Fade in={open}>
           <div className={classes.background}>
             <h2 id="transition-modal-title">
