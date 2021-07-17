@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import { articleSlice_Actions } from "../../../store/articlesSlice";
@@ -9,18 +9,25 @@ function useStoreArticleFormData() {
   const formCoverImg = useSelector(
     (state) => state.article.articleForm.formCoverImg,
   );
+  const [isVerified, setIsVerified] = useState(false);
   const dispatch = useDispatch();
   const contentBody = useSelector(
     (state) => state.article.articleForm.contentBody,
   );
   const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
+  const userRole = useSelector((state) => state.user.entities[0].userRole);
   const isFormSubmit = useSelector((state) => state.article.isFormSubmit);
   const nickName = useSelector((state) => state.user.entities[0].nickName);
   const avatar = useSelector((state) => state.user.entities[0].avatarUrl);
-  const isVerified = useSelector(
-    (state) => state.article.articleForm.isVerified,
-  );
   const email = useSelector((state) => state.user.entities[0].email);
+
+  useEffect(() => {
+    if (userRole === "Admin") {
+      setIsVerified(true);
+    } else {
+      setIsVerified(false);
+    }
+  }, [userRole]);
 
   useEffect(() => {
     if (isLoggedIn && isFormSubmit) {

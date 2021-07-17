@@ -37,7 +37,6 @@ const articleSlice = createSlice({
     isFormSubmit: false,
     loading: "idle",
     articleForm: {
-      isVerified: true,
       formTitle: null,
       formCoverImg: null,
       contentBody: {
