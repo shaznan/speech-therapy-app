@@ -1,4 +1,14 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
+
+export const retrieveTopicNames = createAsyncThunk(
+  "performtest/retrieveTopicNames",
+  async () => {
+    return axios.get("/api/getTopicNames").then((res) => {
+      return res.data;
+    });
+  },
+);
 
 const performTestSlice = createSlice({
   name: "performtest",
@@ -12,15 +22,7 @@ const performTestSlice = createSlice({
     isAlphabetChecked: true,
     isRandomChecked: false,
     listOfAlphabets: "abcdefghijklmnopqrstuvwxyz",
-    topicsToChooseFrom: [
-      "Animals",
-      "Countries",
-      "Fruits",
-      "Sports",
-      "occupation",
-      "carmanufacturers",
-      "colour",
-    ],
+    topicsToChooseFrom: null,
     selectedOptfromList: "",
     isOptionSelected: false,
     isRecording: false,
@@ -109,6 +111,18 @@ const performTestSlice = createSlice({
     },
     resetCountdownPercent(state, action) {
       state.countdownPercent = action.payload;
+    },
+  },
+  extraReducers: {
+    [retrieveTopicNames.pending]: (state) => {
+      state.loading = "loading";
+    },
+    [retrieveTopicNames.fulfilled]: (state, action) => {
+      state.loading = "success";
+      state.topicsToChooseFrom = action.payload;
+    },
+    [retrieveTopicNames.rejected]: (state) => {
+      state.loading = "failed";
     },
   },
 });

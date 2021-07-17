@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import { articleSlice_Actions } from "../../../store/articlesSlice";
 import { fetchArticleData } from "../../../store/articlesSlice";
+import { v4 as uuidv4 } from "uuid";
 
 function useStoreArticleFormData() {
   const formTitle = useSelector((state) => state.article.articleForm.formTitle);
@@ -30,6 +31,7 @@ function useStoreArticleFormData() {
           author: nickName,
           authorEmail: email,
           authorUrl: avatar,
+          articleId: uuidv4(),
           article: {
             title: formTitle,
             coverImg: formCoverImg,
