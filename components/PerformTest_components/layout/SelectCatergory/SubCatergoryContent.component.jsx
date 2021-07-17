@@ -21,6 +21,20 @@ function SubCatergoryContent({ mainLabel, subLabel, optionsList }) {
     (state) => state.performtest.selectedOptfromList,
   );
 
+  const renderMenuItem = (optionlist) => {
+    if (!optionsList) {
+      return <MenuItem>loading..</MenuItem>;
+    } else {
+      return optionsList.map((option, i) => {
+        return (
+          <MenuItem key={i} value={option}>
+            {option}
+          </MenuItem>
+        );
+      });
+    }
+  };
+
   return (
     <Fragment>
       <FormControl>
@@ -39,15 +53,7 @@ function SubCatergoryContent({ mainLabel, subLabel, optionsList }) {
             id="demo-controlled-open-select"
             value={selectedOptfromList}
             onChange={handleChange}>
-            {optionsList &&
-              optionsList.map((option, i) => {
-                return (
-                  <MenuItem key={i} value={option}>
-                    {option}
-                  </MenuItem>
-                );
-              })}
-            ;
+            {renderMenuItem(optionsList)}
           </Select>
         </div>
       </FormControl>
