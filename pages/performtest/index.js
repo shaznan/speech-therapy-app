@@ -5,7 +5,7 @@ import { useStyles } from "../../styles/global.styles";
 import { performtestStyles } from "../../components/PerformTest_components/layout/PerformTest_Styles";
 import Title from "../../components/PerformTest_components/layout/Title/Title.component";
 import DisplayCurrentProgress from "../../components/PerformTest_components/layout/DisplayCurrentProgress/DisplayCurrentProgress";
-import StartNowBtn from "../../components/PerformTest_components/layout/StartNowBtn";
+// import StartNowBtn from "../../components/PerformTest_components/layout/StartNowBtn";
 import { useSelector, useDispatch } from "react-redux";
 import DisplayInstructions from "../../components/PerformTest_components/layout/DisplayInstructions/DisplayInstructions";
 import SelectCatergoryForm from "../../components/PerformTest_components/layout/SelectCatergory/SelectCatergoryForm";
