@@ -8,11 +8,11 @@ import { userSlice_Actions } from "../../../../store/userSlice";
 function useTopicsValidator() {
   const [catergoryItems, setCatergoryItems] = useState(null);
   const isRandomChecked = useSelector(
-    (state) => state.performtest.isRandomChecked
+    (state) => state.performtest.isRandomChecked,
   );
 
   const selectedOptfromList = useSelector(
-    (state) => state.performtest.selectedOptfromList
+    (state) => state.performtest.selectedOptfromList,
   );
 
   const transcript = useSelector((state) => state.performtest.transcript);
@@ -21,7 +21,7 @@ function useTopicsValidator() {
 
   //TODO:REMOVE
   const isWordsCountReceived = useSelector(
-    (state) => state.performtest.isWordsCountReceived
+    (state) => state.performtest.isWordsCountReceived,
   );
 
   //compare transcript words with words that belong to selected topic catergory
@@ -32,7 +32,7 @@ function useTopicsValidator() {
       var intersection = new Set([...setA].filter((x) => setB.has(x)));
       return Array.from(intersection);
     },
-    []
+    [],
   );
 
   //get list of items in catergory
@@ -53,7 +53,7 @@ function useTopicsValidator() {
           res.data[selectedOptfromList.toLowerCase()].list.map((word) => {
             //TODO: convert to function
             return word.toLowerCase();
-          })
+          }),
         );
       })
       .catch((err) => console.error(err));
@@ -75,7 +75,7 @@ function useTopicsValidator() {
     // Performs intersection operation
     const wordsMatch = CompareWordsRelatedToTopic(
       totalWords,
-      catergoryItems
+      catergoryItems,
     ).length;
 
     const wordsUnRelated = totalWords.length - wordsMatch;
@@ -87,7 +87,7 @@ function useTopicsValidator() {
         wordsMatch: wordsMatch,
         wordsUnRelated: wordsUnRelated,
         accuracyRate: accuracy,
-      })
+      }),
     );
     dispatch(testActions.setIsWordsCountReceived(true));
     dispatch(testActions.setIsAnalyzing(false));

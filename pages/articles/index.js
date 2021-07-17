@@ -12,6 +12,7 @@ import DeleteItemModal from "../../components/Articles/DeleteItemModal/DeleteIte
 import useHydrateState from "../../components/useHydrateState";
 import { articleSlice_Actions } from "../../store/articlesSlice";
 import LoadSpinner from "../../components/Common_Layout/loadspinner/loadSpinner";
+import AdminToolbar from "../../components/Common_Layout/AdminToolbar/AdminToolbar";
 
 function ArticlesPage(props) {
   const dispatch = useDispatch();
@@ -32,6 +33,7 @@ function ArticlesPage(props) {
     <Fragment>
       <div className={classes.container}>
         <Navbar />
+        <AdminToolbar />
         <LoadSpinner loading={loading} />
         <Grid container className={classes.body}>
           {!showArticleForm && <SelectTopic />}

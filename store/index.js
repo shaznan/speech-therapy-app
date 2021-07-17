@@ -6,6 +6,7 @@ import userSlice from "./userSlice";
 import dashBoardSlice from "./dashBoardSlice";
 import articleSlice from "./articlesSlice";
 import bookstoreSlice from "./bookstoreSlice";
+import adminSlice from "./adminSlice";
 
 const store = configureStore({
   //My reference: redux- toolkit will automatically combine reducers, we also don't need to specify middleware //REMOVE
@@ -17,6 +18,7 @@ const store = configureStore({
     dashboard: dashBoardSlice.reducer,
     article: articleSlice.reducer,
     bookstore: bookstoreSlice.reducer,
+    adminDashboard: adminSlice.reducer,
     //Need to disable devtools if ENV is !== "production"
   },
 });
