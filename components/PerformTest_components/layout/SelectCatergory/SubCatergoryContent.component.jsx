@@ -18,8 +18,22 @@ function SubCatergoryContent({ mainLabel, subLabel, optionsList }) {
   };
 
   const selectedOptfromList = useSelector(
-    (state) => state.performtest.selectedOptfromList
+    (state) => state.performtest.selectedOptfromList,
   );
+
+  const renderMenuItem = (optionlist) => {
+    if (!optionsList) {
+      return <MenuItem>loading..</MenuItem>;
+    } else {
+      return optionsList.map((option, i) => {
+        return (
+          <MenuItem key={i} value={option}>
+            {option}
+          </MenuItem>
+        );
+      });
+    }
+  };
 
   return (
     <Fragment>
@@ -30,8 +44,7 @@ function SubCatergoryContent({ mainLabel, subLabel, optionsList }) {
         <div className={classes.selectcontainer}>
           <InputLabel
             id="demo-controlled-open-select-label"
-            className={classes.selectlabel}
-          >
+            className={classes.selectlabel}>
             {subLabel}
           </InputLabel>
           <Select
@@ -39,16 +52,8 @@ function SubCatergoryContent({ mainLabel, subLabel, optionsList }) {
             labelId="demo-controlled-open-select-label"
             id="demo-controlled-open-select"
             value={selectedOptfromList}
-            onChange={handleChange}
-          >
-            {optionsList.map((option, i) => {
-              return (
-                <MenuItem key={i} value={option}>
-                  {option}
-                </MenuItem>
-              );
-            })}
-            ;
+            onChange={handleChange}>
+            {renderMenuItem(optionsList)}
           </Select>
         </div>
       </FormControl>

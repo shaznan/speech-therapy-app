@@ -7,17 +7,19 @@ import HomepageText from "../components/homepage_Components/HomepageText";
 import Button from "../components/Common_Layout/Button/Button";
 import BannerImage from "../components/Common_Layout/Banner/BannerImage";
 import { useRouter } from "next/router";
-import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import useHydrateState from "../components/useHydrateState";
+import AdminToolbar from "../components/Common_Layout/AdminToolbar/AdminToolbar";
+import LoadSpinner from "../components/Common_Layout/loadspinner/loadSpinner";
 
 export default function Home() {
   const classes = useStyles();
   const router = useRouter();
-  const dispatch = useDispatch();
   const redirectHandler = () => {
     router.push("/performtest", null, { shallow: true });
   };
   const [hydrateWithLocalStorage] = useHydrateState();
+  const loading = useSelector((state) => state.user.loading);
 
   //avoid loosing user state on page refresh
   useEffect(() => {
@@ -26,7 +28,9 @@ export default function Home() {
 
   return (
     <Fragment>
+      <AdminToolbar />
       <Navbar />
+      <LoadSpinner loading={loading} />
       <div>
         <Grid container spacing={0} className={classes.maincontainer}>
           <Grid item lg={6} xs={12} className={classes.textcontainer}>

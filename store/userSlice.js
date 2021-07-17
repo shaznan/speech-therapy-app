@@ -45,6 +45,7 @@ const userSlice = createSlice({
         changeOverPrevScore: null,
         isLoggedIn: false,
         checkout_id: null,
+        userRole: null,
       },
     ],
     loading: "idle",
@@ -138,10 +139,12 @@ const userSlice = createSlice({
       state.entities[0].localId = "";
       state.entities[0].nickName = "";
       state.entities[0].WordsCount = [];
+      1;
       state.entities[0].averageScore = null;
       state.entities[0].scoreAvgeCriteria = null;
       state.entities[0].highScore = null;
       state.entities[0].changeOverPrevScore = null;
+      state.entities[0].userRole = null;
       state.entities[0].checkout_id = null;
       state.isLoggedIn = false;
     },

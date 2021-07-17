@@ -5,8 +5,8 @@ import { useStyles } from "../../styles/global.styles";
 import { performtestStyles } from "../../components/PerformTest_components/layout/PerformTest_Styles";
 import Title from "../../components/PerformTest_components/layout/Title/Title.component";
 import DisplayCurrentProgress from "../../components/PerformTest_components/layout/DisplayCurrentProgress/DisplayCurrentProgress";
-import StartNowBtn from "../../components/PerformTest_components/layout/StartNowBtn";
-import { useSelector } from "react-redux";
+// import StartNowBtn from "../../components/PerformTest_components/layout/StartNowBtn";
+import { useSelector, useDispatch } from "react-redux";
 import DisplayInstructions from "../../components/PerformTest_components/layout/DisplayInstructions/DisplayInstructions";
 import SelectCatergoryForm from "../../components/PerformTest_components/layout/SelectCatergory/SelectCatergoryForm";
 import TimerBeforeBegin from "../../components/PerformTest_components/layout/TimerBeforeBegin/TimerBeforeBegin.js";
@@ -21,6 +21,7 @@ import LoadSpinner from "../../components/Common_Layout/loadspinner/loadSpinner"
 import Dashboard from "../../components/PerformTest_components/layout/Dashboard/Dashboard";
 import PerformTestHome_Btn from "../../components/PerformTest_components/layout/PerformTestHome_btn";
 import useHydrateState from "../../components/useHydrateState";
+import AdminToolbar from "../../components/Common_Layout/AdminToolbar/AdminToolbar";
 
 function index() {
   const showStartBtn = useSelector((state) => state.performtest.showStartBtn);
@@ -29,6 +30,7 @@ function index() {
   const showInstructions = useSelector(
     (state) => state.performtest.showInstructions,
   );
+
   const loading = useSelector((state) => state.user.loading);
 
   const showCatergoryForm = useSelector(
@@ -52,8 +54,8 @@ function index() {
 
   return (
     <Fragment>
+      <AdminToolbar />
       <div className={classes.container}>
-        {/* //TODO: ENABLE */}
         <Navbar />
         <div className={classes.performtestbgimage}>
           <Grid container spacing={0}>

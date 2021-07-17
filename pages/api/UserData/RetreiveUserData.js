@@ -17,7 +17,7 @@ export default async (req, res) => {
     const testState = await performTestState.find({ uuid: uuid }).toArray();
 
     client.close();
-    const { email, localId, nickName, checkout_id } = users[0];
+    const { email, localId, nickName, checkout_id, userRole } = users[0];
     const {
       WordsCount,
       averageScore,
@@ -31,6 +31,7 @@ export default async (req, res) => {
       localId,
       nickName,
       checkout_id,
+      userRole,
       WordsCount,
       averageScore,
       scoreAvgeCriteria,

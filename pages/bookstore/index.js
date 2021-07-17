@@ -10,6 +10,7 @@ import Cart from "../../components/BookStore/Cart/Cart";
 import Client from "shopify-buy";
 import useHydrateState from "../../components/useHydrateState";
 import LoadSpinner from "../../components/Common_Layout/loadspinner/loadSpinner";
+import AdminToolbar from "../../components/Common_Layout/AdminToolbar/AdminToolbar";
 
 const client = Client.buildClient({
   domain: process.env.SHOPIFY_DOMAIN,
@@ -31,6 +32,7 @@ function BookStorePage(props) {
   return (
     <Fragment>
       <div>
+        <AdminToolbar />
         <Navbar />
         <LoadSpinner loading={loading} />
         {isLoggedIn && (
