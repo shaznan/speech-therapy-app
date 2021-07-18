@@ -5,16 +5,13 @@ import { Fragment } from "react";
 import Card from "../Articles_Container/Card.component";
 import { fetchArticleData } from "../../../store/articlesSlice";
 import { useDispatch, useSelector } from "react-redux";
+import WriteArticleBanner from "./WriteArticleBanner.component";
 
 function Articles_container() {
   const classes = useStyles();
   const dispatch = useDispatch();
   const [verifiedArticles, setVerifiedArticles] = useState(null);
   const articlesData = useSelector((state) => state.article.articlesData);
-
-  useEffect(() => {
-    dispatch(fetchArticleData());
-  }, []);
 
   useEffect(() => {
     if (!articlesData) return;
@@ -27,15 +24,14 @@ function Articles_container() {
 
   return (
     <Fragment>
-      <container className={classes.articles_MainContainer}>
+      <div className={classes.articles_MainContainer}>
         <Grid container spacing={8} className={classes.articles_cardContainer}>
           {verifiedArticles &&
             verifiedArticles.map((articleData, i) => {
               if (i > 2) return;
               return (
-                <Grid item lg={3} md={12}>
+                <Grid key={articleData._id} item lg={3} md={12}>
                   <Card
-                    key={articleData._id}
                     title={articleData.article.title}
                     body={`${articleData.article.body.blocks[0].text.slice(
                       0,
@@ -47,8 +43,11 @@ function Articles_container() {
                 </Grid>
               );
             })}
+          <Grid item sm={12} lg={12}>
+            <WriteArticleBanner />
+          </Grid>
         </Grid>
-      </container>
+      </div>
     </Fragment>
   );
 }
