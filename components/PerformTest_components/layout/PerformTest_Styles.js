@@ -1,5 +1,5 @@
 import { makeStyles } from "@material-ui/core/styles";
-import bgImage from "../../../assets/images/pf_bgimage.png";
+import bgImage from "../../../assets/images/pf_bgimage.jpg";
 
 const performtestStyles = makeStyles({
   title: {
@@ -9,9 +9,10 @@ const performtestStyles = makeStyles({
   },
   performtestbgimage: {
     backgroundImage: `url(${bgImage})`,
-    height: "83vh",
+    height: "87vh",
     backgroundRepeat: "no-repeat",
-    backgroundPosition: "bottom",
+    backgroundPosition: "bottom ",
+
     width: "100%",
   },
   container: {
