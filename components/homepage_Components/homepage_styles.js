@@ -92,6 +92,17 @@ const useStyles = makeStyles({
       width: "100%",
     },
   },
+  articles_MainContainer: {
+    height: "100vh",
+    display: "flex",
+    justifyContent: "center",
+    backgroundColor: "#f6f6f7",
+  },
+  articles_cardContainer: {
+    display: "flex",
+    justifyContent: "center",
+    marginTop: "10vh",
+  },
 });
 
 export { useStyles };
