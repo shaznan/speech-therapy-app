@@ -21,7 +21,7 @@ function FooterBody() {
             <span className={classes.copyrightSign}>&copy;</span>{" "}
             {`${"Copyright by "}`}
             <a
-              class="twitter-link"
+              className="twitter-link"
               target="_blank"
               href="https://github.com/shaznan">
               Shaznan Fairoze
