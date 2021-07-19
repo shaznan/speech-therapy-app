@@ -56,17 +56,17 @@ const useStyles = makeStyles(
         marginTop: "3rem",
       },
     },
-    bgimage: {
-      backgroundImage: `url(${bgImageOne})`,
-      backgroundSize: "cover",
-      backgroundRepeat: "no-repeat",
-      backgroundSize: "70rem ",
-      backgroundPositionX: "-10rem",
-      backgroundPositionY: "24.5%",
-      zIndex: "100",
-      position: "relative",
-      // bottom: "0",
-    },
+    // bgimage: {
+    //   backgroundImage: `url(${bgImageOne})`,
+    //   backgroundSize: "cover",
+    //   backgroundRepeat: "no-repeat",
+    //   backgroundSize: "70rem ",
+    //   backgroundPositionX: "-10rem",
+    //   backgroundPositionY: "24.5%",
+    //   zIndex: "100",
+    //   position: "relative",
+    //   // bottom: "0",
+    // },
 
     mainheading: {
       fontFamily: "product-sans, sans-serif",
