@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import VideoPlayerImage from "../../../assets/images/videoWindow-01.png";
+import VideoPlayerImage from "../../../assets/images/videowindow-01.png";
 import Image from "next/image";
 import { Grid } from "@material-ui/core";
 import { useStyles } from "../homepage_styles";
