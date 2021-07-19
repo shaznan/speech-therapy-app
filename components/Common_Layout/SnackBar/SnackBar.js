@@ -8,14 +8,17 @@ function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
-const useStyles = makeStyles({
-  root: {
-    width: "100%",
-    "& > * + *": {
-      // marginTop: theme.spacing(2),
+const useStyles = makeStyles(
+  {
+    root: {
+      width: "100%",
+      "& > * + *": {
+        // marginTop: theme.spacing(2),
+      },
     },
   },
-});
+  { index: 1 },
+);
 
 export default function CustomizedSnackbars({ status }) {
   const classes = useStyles();

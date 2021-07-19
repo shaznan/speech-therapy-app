@@ -2,13 +2,16 @@ import React, { Fragment } from "react";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles({
-  title: {
-    fontFamily: "spydolls, sans-serif",
-    // fontSize: "5rem",
-    lineHeight: "0.8em",
+const useStyles = makeStyles(
+  {
+    title: {
+      fontFamily: "spydolls, sans-serif",
+      // fontSize: "5rem",
+      lineHeight: "0.8em",
+    },
   },
-});
+  { index: 1 },
+);
 
 function Heading({ text, fontsize = "5rem" }) {
   const classes = useStyles();
@@ -17,8 +20,7 @@ function Heading({ text, fontsize = "5rem" }) {
       <Typography
         variant="h1"
         style={{ fontSize: fontsize }}
-        className={classes.title}
-      >
+        className={classes.title}>
         {text}
       </Typography>
     </Fragment>

@@ -13,36 +13,39 @@ const ReactMic = dynamic(
     }),
   {
     ssr: false,
-  }
+  },
 );
 
-const useStyles = makeStyles({
-  reactmic: {
-    display: "block",
-    visibility: "hidden",
-    margin: "auto",
-    width: "40rem",
-    height: "17rem",
-    marginTop: "3rem",
-    boxShadow: "0px 3px 29px rgba(0,0,0,0.05)",
-    borderRadius: "9px",
+const useStyles = makeStyles(
+  {
+    reactmic: {
+      display: "block",
+      visibility: "hidden",
+      margin: "auto",
+      width: "40rem",
+      height: "17rem",
+      marginTop: "3rem",
+      boxShadow: "0px 3px 29px rgba(0,0,0,0.05)",
+      borderRadius: "9px",
+    },
+    showreactmic: {
+      visibility: "visible",
+    },
+    visualcontainer: {
+      display: "flex",
+      flexDirection: "columns",
+      justifyContent: "center",
+      width: "100%",
+      position: "relative",
+    },
+    tooltip: {
+      position: "absolute",
+      top: 180,
+      left: 625,
+    },
   },
-  showreactmic: {
-    visibility: "visible",
-  },
-  visualcontainer: {
-    display: "flex",
-    flexDirection: "columns",
-    justifyContent: "center",
-    width: "100%",
-    position: "relative",
-  },
-  tooltip: {
-    position: "absolute",
-    top: 180,
-    left: 625,
-  },
-});
+  { index: 1 },
+);
 
 function SpeechInput() {
   // useRecorder(); //execute mic functionality and send recorded data to backend

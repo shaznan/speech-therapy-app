@@ -7,24 +7,27 @@ import Fade from "@material-ui/core/Fade";
 import { useSelector } from "react-redux";
 import { Player } from "@lottiefiles/react-lottie-player";
 
-const useStyles = makeStyles({
-  modal: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
+const useStyles = makeStyles(
+  {
+    modal: {
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+    },
+    background: {
+      backgroundColor: "white",
+      border: "none !important",
+      outline: "none !important",
+      padding: "2rem 4rem",
+      borderRadius: "1rem",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      flexDirection: "column",
+    },
   },
-  background: {
-    backgroundColor: "white",
-    border: "none !important",
-    outline: "none !important",
-    padding: "2rem 4rem",
-    borderRadius: "1rem",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    flexDirection: "column",
-  },
-});
+  { index: 1 },
+);
 
 export default function LoadSpinner({ loading }) {
   const classes = useStyles();

@@ -1,17 +1,20 @@
 import { makeStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles({
-  container: {
-    display: "flex",
-    justifyContent: "center",
-    marginTop: "4rem",
+const useStyles = makeStyles(
+  {
+    container: {
+      display: "flex",
+      justifyContent: "center",
+      marginTop: "4rem",
+    },
+    btncontainer: {
+      display: "flex",
+      justifyContent: "flex-end",
+      marginTop: "2rem",
+    },
   },
-  btncontainer: {
-    display: "flex",
-    justifyContent: "flex-end",
-    marginTop: "2rem",
-  },
-});
+  { index: 1 },
+);
 
 export { useStyles };
 
