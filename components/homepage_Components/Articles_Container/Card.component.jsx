@@ -11,17 +11,20 @@ import { articleSlice_Actions } from "../../../store/articlesSlice";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 
-const useStyles = makeStyles({
-  root: {
-    maxWidth: 345,
+const useStyles = makeStyles(
+  {
+    root: {
+      maxWidth: 345,
+    },
+    media: {
+      height: 140,
+    },
+    CardContent: {
+      height: "14vh",
+    },
   },
-  media: {
-    height: 140,
-  },
-  CardContent: {
-    height: "14vh",
-  },
-});
+  { index: 1 },
+);
 
 export default function MediaCard({ title, imgsrc, body, id }) {
   const classes = useStyles();

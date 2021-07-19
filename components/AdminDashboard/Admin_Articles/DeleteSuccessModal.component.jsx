@@ -6,22 +6,25 @@ import Fade from "@material-ui/core/Fade";
 import { useEffect } from "react";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 
-const useStyles = makeStyles((theme) => ({
-  modal: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  container: {
-    backgroundColor: "white",
-    boxShadow: "0px 3px 29px rgba(0,0,0,0.1)",
-    padding: "3rem 2rem",
-    borderRadius: "13px",
-  },
-  icon: {
-    color: "green",
-  },
-}));
+const useStyles = makeStyles(
+  (theme) => ({
+    modal: {
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+    },
+    container: {
+      backgroundColor: "white",
+      boxShadow: "0px 3px 29px rgba(0,0,0,0.1)",
+      padding: "3rem 2rem",
+      borderRadius: "13px",
+    },
+    icon: {
+      color: "green",
+    },
+  }),
+  { index: 1 },
+);
 
 export default function DeleteSuccessModal({ loading }) {
   const classes = useStyles();
