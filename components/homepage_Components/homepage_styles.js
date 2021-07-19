@@ -125,7 +125,7 @@ const useStyles = makeStyles({
   bannertxt: {
     textAlign: "center",
     color: "rgba(200,200,201,1)",
-    fontSize: "1.25rem",
+    fontSize: "1.24rem",
     marginBottom: "1rem",
     // width: "100vw",
   },

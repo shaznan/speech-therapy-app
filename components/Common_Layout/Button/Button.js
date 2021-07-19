@@ -4,7 +4,7 @@ import ArrowRightIcon from "@material-ui/icons/ArrowRight";
 import ArrowLeftIcon from "@material-ui/icons/ArrowLeft";
 import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 import { useStyles } from "./ButtonStyles";
-import { createMuiTheme } from "@material-ui/core/styles";
+import { createTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
 import Link from "next/link";
 
@@ -31,7 +31,7 @@ const DynamicButton = ({
     } //TODO: Remove if not used
   };
 
-  const theme = createMuiTheme({
+  const theme = createTheme({
     palette: {
       action: {
         disabledBackground: "white",
