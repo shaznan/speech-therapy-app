@@ -1,5 +1,5 @@
 import { makeStyles } from "@material-ui/core/styles";
-import bgImageOne from "../../assets/images/bg_image_one_light.png";
+// import bgImageOne from "../../assets/images/bg_image_one_light.png";
 
 const useStyles = makeStyles({
   maincontainer: {
@@ -69,17 +69,17 @@ const useStyles = makeStyles({
       marginLeft: "-2rem",
     },
   },
-  bgimage: {
-    backgroundImage: `url(${bgImageOne})`,
-    backgroundSize: "cover",
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "70rem ",
-    backgroundPositionX: "-10rem",
-    backgroundPositionY: "24.5%",
-    zIndex: "100",
-    position: "relative",
-    // bottom: "0",
-  },
+  //   bgimage: {
+  //     backgroundImage: `url(${bgImageOne})`,
+  //     backgroundSize: "cover",
+  //     backgroundRepeat: "no-repeat",
+  //     backgroundSize: "70rem ",
+  //     backgroundPositionX: "-10rem",
+  //     backgroundPositionY: "24.5%",
+  //     zIndex: "100",
+  //     position: "relative",
+  //     // bottom: "0",
+  //   },
 });
 
 export { useStyles };
