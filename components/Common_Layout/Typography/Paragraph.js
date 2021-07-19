@@ -7,7 +7,7 @@ const useStyles = makeStyles({
     fontSize: "1.2rem",
     marginBottom: "3rem",
     marginTop: "2rem",
-    opacity: 0.6,
+    opacity: 0.9,
     width: "30rem",
     lineHeight: 1.5,
     ["@media (max-width:1280px)"]: {
@@ -25,8 +25,7 @@ function Paragraph({ text, customstyle = {} }) {
       <Typography
         variant="subtitle1"
         className={classes.paragraph}
-        style={customstyle}
-      >
+        style={customstyle}>
         {text}
       </Typography>
     </Fragment>

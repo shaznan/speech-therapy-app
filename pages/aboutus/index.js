@@ -5,6 +5,7 @@ import AboutUsMain from "../../components/Aboutus_Components/AboutUsMain.compone
 import CultureAndFounder from "../../components/Aboutus_Components/CultureAndFounder.component";
 import useHydrateState from "../../components/useHydrateState";
 import AdminToolbar from "../../components/Common_Layout/AdminToolbar/AdminToolbar";
+import Footer from "../../components/Common_Layout/Footer/Footer.component";
 
 export default function AboutUs() {
   const [hydrateWithLocalStorage] = useHydrateState();
@@ -18,6 +19,7 @@ export default function AboutUs() {
       <Navbar />
       <AboutUsMain />
       <CultureAndFounder />
+      <Footer />
     </Fragment>
   );
 }

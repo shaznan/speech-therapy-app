@@ -13,6 +13,7 @@ import useHydrateState from "../../components/useHydrateState";
 import { articleSlice_Actions } from "../../store/articlesSlice";
 import LoadSpinner from "../../components/Common_Layout/loadspinner/loadSpinner";
 import AdminToolbar from "../../components/Common_Layout/AdminToolbar/AdminToolbar";
+import Footer from "../../components/Common_Layout/Footer/Footer.component";
 
 function ArticlesPage(props) {
   const dispatch = useDispatch();
@@ -42,6 +43,7 @@ function ArticlesPage(props) {
           {showArticleForm && <ArticleForm />}
         </Grid>
       </div>
+      <Footer />
     </Fragment>
   );
 }
