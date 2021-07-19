@@ -1,5 +1,4 @@
 import { makeStyles } from "@material-ui/core/styles";
-import bgImageOne from "../../assets/images/bg_image_one_light.png";
 import coverImage from "../../assets/images/home_coverpage.jpg";
 import whyST from "../../assets/images/whyspeechtherapy_bg.jpg";
 import videoPlayerbg from "../../assets/images/videoplayer_bg.jpg";
