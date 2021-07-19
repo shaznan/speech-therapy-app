@@ -21,6 +21,9 @@ const useStyles = makeStyles(
     },
     CardContent: {
       height: "14vh",
+      ["@media (max-width:800px)"]: {
+        height: "20vh",
+      },
     },
   },
   { index: 1 },

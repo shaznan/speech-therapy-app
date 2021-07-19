@@ -10,6 +10,7 @@ const useStyles = makeStyles(
       backgroundColor: "#707070",
       ["@media (max-width:800px)"]: {
         flexDirection: "column",
+        height: "100%",
       },
     },
     content_cont: {
@@ -31,8 +32,9 @@ const useStyles = makeStyles(
       width: "30vw",
       color: "rgba(220,220,220,1)",
       ["@media (max-width:800px)"]: {
-        width: "100vw",
+        width: "90vw",
         textAlign: "center",
+        fontSize: "0.8rem",
       },
     },
     heading: {
@@ -45,6 +47,7 @@ const useStyles = makeStyles(
       color: "rgba(200,200,200,0.8)",
       ["@media (max-width:800px)"]: {
         textAlign: "center",
+        fontSize: "0.8rem",
       },
     },
     icon: {
