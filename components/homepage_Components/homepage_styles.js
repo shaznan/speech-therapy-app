@@ -1,6 +1,8 @@
 import { makeStyles } from "@material-ui/core/styles";
 import bgImageOne from "../../assets/images/bg_image_one_light.png";
 import coverImage from "../../assets/images/home_coverpage.jpg";
+import whyST from "../../assets/images/whyspeechtherapy_bg.jpg";
+import videoPlayerbg from "../../assets/images/videoplayer_bg.jpg";
 
 const useStyles = makeStyles({
   "@global": {
@@ -46,7 +48,7 @@ const useStyles = makeStyles({
       width: "100%",
       height: "100vh",
     },
-    ["@media (max-width:400px)"]: {
+    ["@media (max-width:800px)"]: {
       transform: "scale(0.7)",
       textAlign: "center",
       width: "100%",
@@ -60,7 +62,7 @@ const useStyles = makeStyles({
     backgroundRepeat: "no-repeat",
     backgroundSize: "70rem ",
     backgroundPositionX: "-10rem",
-    backgroundPositionY: "25%",
+    backgroundPositionY: "24.5%",
     zIndex: "100",
     position: "relative",
     // bottom: "0",
@@ -112,7 +114,7 @@ const useStyles = makeStyles({
     marginTop: "11vh",
   },
   writearticleBanner: {
-    backgroundColor: "black",
+    backgroundColor: "#707070",
     height: "15vh",
     width: "100vw",
     display: "flex",
@@ -133,10 +135,21 @@ const useStyles = makeStyles({
     // width: "100vw",
   },
   feelsLike_cont: {
-    // display: "flex",
-    // justifyContent: "center",
-    height: "80vh",
+    height: "100vh",
     backgroundColor: "#f6f6f7",
+    backgroundImage: `url(${videoPlayerbg})`,
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "70rem ",
+    backgroundPositionX: "60rem",
+    backgroundPositionY: "25%",
+    zIndex: "100",
+    position: "relative",
+    backgroundColor: "#f6f6f7",
+    ["@media (max-width:800px)"]: {
+      backgroundPositionX: "-16rem",
+      height: "100vh",
+    },
   },
   feelsLike_txtContainer: {
     display: "flex",
@@ -146,7 +159,7 @@ const useStyles = makeStyles({
     height: "100%",
   },
   feelsLike_subtxt_cont: {
-    width: "59%",
+    width: "60%",
   },
   feelsLike_heading: {
     marginBottom: "2rem",
@@ -158,7 +171,7 @@ const useStyles = makeStyles({
   feelsLike_txt: {
     lineHeight: "1.8rem",
     fontSize: "1.1rem",
-    opacity: "0.8",
+    opacity: "0.75",
     ["@media (max-width:800px)"]: {
       textAlign: "center",
     },
@@ -183,6 +196,85 @@ const useStyles = makeStyles({
   },
   player_icon: {
     fontSize: "4.5rem",
+  },
+  whySpeech_cont: {
+    height: "80vh",
+    backgroundColor: "#f6f6f7",
+    backgroundImage: `url(${whyST})`,
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "70rem ",
+    backgroundPositionX: "-10rem",
+    backgroundPositionY: "25%",
+    zIndex: "100",
+    position: "relative",
+    ["@media (max-width:800px)"]: {
+      flexDirection: "column-reverse",
+      //   height: "100vh",
+    },
+  },
+  whySpeech_img: {
+    width: "100%",
+  },
+  whySPeech_imgcont: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  whyspeech_txtcont: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    height: "100%",
+    width: "100%",
+  },
+  whyspeech_txtsubcont: {
+    width: "60%",
+  },
+  whyspeech_heading: {
+    textAlign: "right",
+    marginBottom: "2rem",
+    ["@media (max-width:800px)"]: {
+      textAlign: "center",
+    },
+  },
+  whyspeech_txt: {
+    lineHeight: "1.8rem",
+    textAlign: "right",
+    fontSize: "1.1rem",
+    opacity: "0.75",
+    ["@media (max-width:800px)"]: {
+      textAlign: "center",
+    },
+  },
+  testimonial_cont: {
+    height: "50vh",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#f6f6f7",
+    overflow: "hidden",
+  },
+  Carousel: {
+    height: "35vh",
+    ["@media (max-width:800px)"]: {
+      transform: "scale(0.5)",
+    },
+  },
+  caroosel_itemcont: {
+    height: "32vh",
+  },
+  caroosel_item: {
+    height: "30vh",
+    display: "flex",
+    justifyContent: "center",
+  },
+  card_container: {
+    display: "flex",
+    justifyContent: "center",
+    flexDirection: "column",
+    height: "100%",
+    opacity: "0.75",
   },
 });
 

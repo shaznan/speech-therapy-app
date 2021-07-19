@@ -9,6 +9,7 @@ import ProductPage from "../../components/BookStore/ProductPageComponents/Produc
 import Cart from "../../components/BookStore/Cart/Cart";
 import useHydrateState from "../../components/useHydrateState";
 import LoadSpinner from "../../components/Common_Layout/loadspinner/loadSpinner";
+import Footer from "../../components/Common_Layout/Footer/Footer.component";
 
 const client = Client.buildClient({
   domain: process.env.SHOPIFY_DOMAIN,
@@ -40,6 +41,7 @@ function productpage(props) {
       <LoadSpinner loading={loading} />
       {isCartOpen && <Cart />}
       <ProductPage props={props} />
+      <Footer />
     </div>
   );
 }

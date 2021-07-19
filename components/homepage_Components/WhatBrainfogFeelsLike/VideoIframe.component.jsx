@@ -30,7 +30,7 @@ const useStyles = makeStyles({
     height: "90vh",
     ["@media (max-width:800px)"]: {
       width: "80vw",
-      height: "35vh",
+      height: "34vh",
     },
   },
 });

@@ -11,6 +11,7 @@ import Client from "shopify-buy";
 import useHydrateState from "../../components/useHydrateState";
 import LoadSpinner from "../../components/Common_Layout/loadspinner/loadSpinner";
 import AdminToolbar from "../../components/Common_Layout/AdminToolbar/AdminToolbar";
+import Footer from "../../components/Common_Layout/Footer/Footer.component";
 
 const client = Client.buildClient({
   domain: process.env.SHOPIFY_DOMAIN,
@@ -45,6 +46,7 @@ function BookStorePage(props) {
         )}
         {!isLoggedIn && <LoginMessage />}
       </div>
+      <Footer />
     </Fragment>
   );
 }

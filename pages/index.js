@@ -7,6 +7,9 @@ import { MongoClient } from "mongodb";
 import { articleSlice_Actions } from "../store/articlesSlice";
 import { useDispatch } from "react-redux";
 import WhatBrainfogFeelsLike from "../components/homepage_Components/WhatBrainfogFeelsLike/WhatBrainfogFeelsLike.componrnt";
+import WhySpeechTherapy from "../components/homepage_Components/WhySpeechTherapy/WhySpeechTherapy.component";
+import Testimonials from "../components/homepage_Components/Testimonials/Testimonials.component";
+import Footer from "../components/Common_Layout/Footer/Footer.component";
 
 const Home = (props) => {
   const dispatch = useDispatch();
@@ -28,6 +31,9 @@ const Home = (props) => {
       <WelcomeMsg_Container />
       <Articles_container />
       <WhatBrainfogFeelsLike />
+      <WhySpeechTherapy />
+      <Testimonials />
+      <Footer />
     </div>
   );
 };
