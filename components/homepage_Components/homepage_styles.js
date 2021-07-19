@@ -72,11 +72,17 @@ const useStyles = makeStyles(
     mainheading: {
       fontFamily: "product-sans, sans-serif",
       marginBottom: "3rem",
+      ["@media (max-width:800px)"]: {
+        fontSize: "2rem",
+      },
     },
     textdecoration: {
       fontFamily: "spydolls, sans-serif",
       fontSize: "5rem",
       lineHeight: "0.8em",
+      ["@media (max-width:800px)"]: {
+        fontSize: "4rem",
+      },
     },
 
     imagecontainer: {
@@ -103,8 +109,9 @@ const useStyles = makeStyles(
       },
     },
     articles_MainContainer: {
-      // height: "100vh",
+      height: "100%",
       display: "flex",
+      backgroundColor: "#f6f6f7",
       justifyContent: "center",
       backgroundColor: "#f6f6f7",
       marginBottom: "1rem",
@@ -119,6 +126,7 @@ const useStyles = makeStyles(
       height: "15vh",
       width: "100vw",
       display: "flex",
+      marginBottom: "-1rem",
       flexDirection: "column",
       justifyContent: "center",
       alignItems: "center",
@@ -149,7 +157,7 @@ const useStyles = makeStyles(
       backgroundColor: "#f6f6f7",
       ["@media (max-width:800px)"]: {
         backgroundPositionX: "-16rem",
-        height: "100vh",
+        height: "100%",
       },
     },
     feelsLike_txtContainer: {
@@ -161,15 +169,23 @@ const useStyles = makeStyles(
     },
     feelsLike_subtxt_cont: {
       width: "60%",
+      ["@media (max-width:800px)"]: {
+        width: "80%",
+      },
     },
-    feelsLike_heading: {
+    feelsLike_heading_cont: {
       marginBottom: "2rem",
       ["@media (max-width:800px)"]: {
         textAlign: "center",
         marginTop: "3rem",
       },
     },
-    feelsLike_txt: {
+    feelsLike_heading: {
+      ["@media (max-width:800px)"]: {
+        fontSize: "2rem",
+      },
+    },
+    feelsLiketxt_cont: {
       lineHeight: "1.8rem",
       fontSize: "1.1rem",
       opacity: "0.75",
@@ -177,6 +193,7 @@ const useStyles = makeStyles(
         textAlign: "center",
       },
     },
+
     videoplayerImg_cont: {
       display: "flex",
       justifyContent: "center",
@@ -188,7 +205,7 @@ const useStyles = makeStyles(
       width: "50vw",
       ["@media (max-width:800px)"]: {
         width: "90vw",
-        marginLeft: "2.5rem",
+        marginLeft: "1.5rem",
       },
     },
     player_iconbtm: {
@@ -210,8 +227,12 @@ const useStyles = makeStyles(
       zIndex: "100",
       position: "relative",
       ["@media (max-width:800px)"]: {
+        display: "flex",
         flexDirection: "column-reverse",
-        //   height: "100vh",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "100vh",
+        backgroundPositionX: "-15rem",
       },
     },
     whySpeech_img: {
@@ -231,18 +252,22 @@ const useStyles = makeStyles(
     },
     whyspeech_txtsubcont: {
       width: "60%",
+      ["@media (max-width:800px)"]: {
+        width: "80%",
+      },
     },
     whyspeech_heading: {
       textAlign: "right",
       marginBottom: "2rem",
       ["@media (max-width:800px)"]: {
         textAlign: "center",
+        fontSize: "2rem",
       },
     },
     whyspeech_txt: {
       lineHeight: "1.8rem",
       textAlign: "right",
-      fontSize: "1.1rem",
+      // fontSize: "1.1rem",
       opacity: "0.75",
       ["@media (max-width:800px)"]: {
         textAlign: "center",

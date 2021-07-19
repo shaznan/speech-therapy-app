@@ -11,10 +11,10 @@ function Text() {
           <Typography variant="h3" className={classes.whyspeech_heading}>
             Why Speech Therapy?
           </Typography>
-          <div className={classes.whyspeech_txt}>
+          <Typography className={classes.whyspeech_txt}>
             We put your brain under stress to think harder in isolation. Its a
             form of brain exercise unlike any other!
-          </div>
+          </Typography>
         </div>
       </div>
     </Fragment>
