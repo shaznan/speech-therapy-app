@@ -10,21 +10,20 @@ function PerformTestHome_Btn() {
   const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
   return (
     <Fragment>
-      <Grid container className={classes.performtesthome_btncont}>
+      <Grid container spacing={2} className={classes.performtesthome_btncont}>
         <Grid
           item
           md={isLoggedIn ? 6 : 12}
           style={{
             display: "flex",
             justifyContent: isLoggedIn ? "flex-end" : "center",
-            marginRight: "0.5rem",
-          }}
-        >
+          }}>
           <StartNowBtn />
         </Grid>
-        <Grid item md={5} style={{ marginLeft: "0.5rem" }}>
+        <Grid item md={6}>
           {isLoggedIn && (
             <DashboardBtn
+              className={classes.dashboardBtn}
               styles={{
                 marginTop: "0rem",
                 borderRadius: "7px",

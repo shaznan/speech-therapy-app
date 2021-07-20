@@ -9,17 +9,15 @@ import { useSelector } from "react-redux";
 function DisplayCurrentProgress() {
   const classes = performtestStyles();
   const showRemainingTime = useSelector(
-    (state) => state.performtest.showRemainingTime
+    (state) => state.performtest.showRemainingTime,
   );
   const isTimeIsUp = useSelector((state) => state.performtest.isTimeIsUp);
   return (
     <Fragment>
-      <Grid item lg={12}>
-        <Grid container spacing={0} className={classes.currentprogress}>
-          {showRemainingTime && !isTimeIsUp && <DisplayRemainingTime />}
-          {/* <DisplayWPM />  */}
-        </Grid>
-      </Grid>
+      <div className={classes.timespinner}>
+        {showRemainingTime && !isTimeIsUp && <DisplayRemainingTime />}
+        {/* <DisplayWPM />  */}
+      </div>
     </Fragment>
   );
 }

@@ -19,7 +19,11 @@ function StartNowBtn() {
   return (
     <Fragment>
       {/* <Grid item lg={12}> */}
-      <div style={{ display: "flex", justifyContent: "flex-end" }}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "flex-end",
+        }}>
         <DynamicButton
           onClickHandler={onClickHandler}
           type="primary"

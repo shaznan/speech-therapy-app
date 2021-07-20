@@ -21,8 +21,8 @@ function DashboardBtn({ styles, tryAgainHandler = () => {} }) {
       fontWeight: "bold",
       color: "white",
       textTransform: "capitalize",
-      ["@media (max-width:1280px)"]: {
-        fontSize: "1.5rem",
+      ["@media (max-width:800px)"]: {
+        fontSize: "0.8rem",
       },
     },
   });
@@ -44,8 +44,7 @@ function DashboardBtn({ styles, tryAgainHandler = () => {} }) {
       <Button
         className={`${classes.dashboardbtn} ${classes.btn}`}
         style={styles}
-        onClick={onClickHandler}
-      >
+        onClick={onClickHandler}>
         <DashboardIcon style={{ marginRight: "0.2rem" }} /> Dashboard
       </Button>
     </Fragment>

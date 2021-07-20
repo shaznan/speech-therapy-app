@@ -13,10 +13,9 @@ function Title() {
         <Typography variant="h5" className={classes.subtitle}>
           Verbal Fluency Test
         </Typography>
-        <Heading
-          text="Test your Verbal Fluency Rate"
-          className={classes.maintitle}
-        />
+        <div className={classes.maintitle_cont}>
+          <Heading text="Test your Verbal Fluency Rate" />
+        </div>
       </Grid>
     </Fragment>
   );

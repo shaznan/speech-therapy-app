@@ -10,7 +10,7 @@ import { decrementCountDown } from "../../../../store/actions/performTest/displa
 function DisplayRemainingTime() {
   const remainingTime = useSelector((state) => state.performtest.remainingTime);
   const countdownPercent = useSelector(
-    (state) => state.performtest.countdownPercent
+    (state) => state.performtest.countdownPercent,
   );
   const reducingFactor = countdownPercent / remainingTime;
   const dispatch = useDispatch();
@@ -20,7 +20,7 @@ function DisplayRemainingTime() {
   };
   const isRecording = useSelector((state) => state.performtest.isRecording);
   const mediaPermisson = useSelector(
-    (state) => state.performtest.mediaPermisson
+    (state) => state.performtest.mediaPermisson,
   );
 
   // Decrement countdown timer
@@ -43,14 +43,12 @@ function DisplayRemainingTime() {
   const classes = performtestStyles();
 
   return (
-    <Fragment>
-      <Grid item lg={2} className={classes.timespinner}>
-        <CountdownSpinner
-          value={countdownPercent}
-          Remainingtime={remainingTime}
-        />
-      </Grid>
-    </Fragment>
+    <div>
+      <CountdownSpinner
+        value={countdownPercent}
+        Remainingtime={remainingTime}
+      />
+    </div>
   );
 }
 
