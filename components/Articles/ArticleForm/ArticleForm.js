@@ -50,7 +50,9 @@ function ArticleForm() {
         <Fragment>
           <Grid container className={classes.form}>
             <div className={classes.form_container}>
-              <Heading text="Create your article" />
+              <div className={classes.headingcont}>
+                <Heading text="Create your article" />
+              </div>
               <div className={classes.closwindowbtn}>
                 <CloseWindowBtn onClickHandler={closeHandler} />
               </div>
@@ -68,13 +70,15 @@ function ArticleForm() {
                   issubmit={isSubmit}
                 />
                 <ArticleContnt />
-                <Button
-                  type="submit"
-                  form="articleform"
-                  className={classes.formbtn}
-                  onClick={submitHandler}>
-                  submit
-                </Button>
+                <div className={classes.formbtn_cont}>
+                  <Button
+                    type="submit"
+                    form="articleform"
+                    className={classes.formbtn}
+                    onClick={submitHandler}>
+                    submit
+                  </Button>
+                </div>
               </Form>
             </div>
           </Grid>

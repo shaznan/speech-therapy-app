@@ -30,7 +30,7 @@ function SelectTopic() {
 
   return (
     <Fragment>
-      <Grid item md={5} className={classes.selecttopic_cont}>
+      <Grid item md={5} sm={12} className={classes.selecttopic_cont}>
         <div className={classes.selecttopic}>
           <div className={classes.heading}>
             <Heading text="Select your topic" fontsize="4rem" />

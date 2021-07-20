@@ -16,8 +16,8 @@ const useStyles = makeStyles(
       color: "white",
       textTransform: "capitalize",
       borderRadius: "7px",
-      ["@media (max-width:1280px)"]: {
-        fontSize: "1.5rem",
+      ["@media (max-width:900px)"]: {
+        fontSize: "0.8rem",
       },
     },
     backbutton: {
@@ -32,8 +32,8 @@ const useStyles = makeStyles(
         },
       },
       color: "#636363",
-      ["@media (max-width:1280px)"]: {
-        fontSize: "1.5rem",
+      ["@media (max-width:900px)"]: {
+        fontSize: "0.8rem",
       },
     },
     primaryoutline: {
@@ -49,20 +49,32 @@ const useStyles = makeStyles(
         //   transform: "TranslateX(5px)",
         // },
       },
+      ["@media (max-width:900px)"]: {
+        fontSize: "0.8rem",
+      },
     },
 
     icon: {
       transition: "0.3s ease-in-out",
       fontSize: "2rem",
+      ["@media (max-width:900px)"]: {
+        fontSize: "0.8rem",
+      },
     },
     iconback: {
       transition: "0.3s ease-in-out",
       fontSize: "2rem",
       marginLeft: "-1rem",
+      ["@media (max-width:900px)"]: {
+        fontSize: "0.8rem",
+      },
     },
     carticon: {
       fontSize: "medium",
       marginLeft: "0.6rem",
+      ["@media (max-width:900px)"]: {
+        fontSize: "0.8rem",
+      },
     },
   },
   { index: 1 },

@@ -15,6 +15,9 @@ const useStyles = makeStyles(
       borderRadius: "1rem",
       outline: "none !important",
       boxShadow: "2px 2px 55px rgba(0,0,0,0.3)",
+      ["@media (max-width:960px)"]: {
+        width: "90%",
+      },
     },
     deletebtn_cont: {
       display: "flex",

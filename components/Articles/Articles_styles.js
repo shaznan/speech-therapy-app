@@ -1,21 +1,22 @@
 import { makeStyles } from "@material-ui/core/styles";
+import { Scale } from "chart.js";
 import bgImage from "../../assets/images/articles_cover_image-01.png";
 
 const useStyles = makeStyles(
   {
     container: {
-      height: "100vh",
+      // height: "100vh",
       overflow: "hidden",
     },
     body: {
       width: "100vw",
-      height: "87vh",
+      // height: "87vh",
       backgroundImage: `url(${bgImage})`,
       backgroundSize: "cover",
       backgroundRepeat: "no-repeat",
       backgroundSize: "120rem",
       backgroundPositionY: "-10rem",
-      height: "92vh",
+      // height: "92vh",
     },
     authorimage: {
       width: "20px",
@@ -36,6 +37,8 @@ const useStyles = makeStyles(
     selecttopic_cont: {
       display: "flex",
       justifyContent: "center",
+      alignItems: "center",
+      width: "100%",
     },
     selecttopic: {
       marginTop: "3rem",
@@ -45,6 +48,11 @@ const useStyles = makeStyles(
       backdropFilter: "blur(5px)",
       boxShadow: "0px 9px 40px rgba(0,0,0,0.08)",
       borderRadius: "13px",
+      // overflow: "scroll",
+      ["@media (max-width:960px)"]: {
+        width: "90vw",
+        height: "30rem",
+      },
       // overflowY: "scroll",
     },
     options_title: {
@@ -53,12 +61,15 @@ const useStyles = makeStyles(
     },
     deletebutton: {
       position: "absolute",
-      left: "22vw",
+      left: "85%",
       marginTop: "-0.7rem",
       transition: "0.2s ease-in-out",
       "&:hover": {
         color: "#FF4444",
       },
+      // ["@media (max-width:960px)"]: {
+      //   left:
+      // },
     },
     topicoptions_cont: {
       height: "60vh",
@@ -97,6 +108,10 @@ const useStyles = makeStyles(
       position: "relative",
       boxShadow: "0px 9px 40px rgba(0,0,0,0.08)",
       overflowY: "scroll",
+      ["@media (max-width:960px)"]: {
+        width: "100vw",
+        marginTop: "3rem",
+      },
       "&::-webkit-scrollbar": {
         width: "0em",
       },
@@ -104,11 +119,18 @@ const useStyles = makeStyles(
     },
     displayarea_body: {
       padding: "2rem 7rem",
+      ["@media (max-width:960px)"]: {
+        padding: "2rem 3rem",
+        // width: "90%",
+      },
     },
     displayarea_heading: {
       textAlign: "start",
       fontSize: "3rem",
       fontFamily: "Roboto, sans-serif",
+      ["@media (max-width:960px)"]: {
+        fontSize: "2rem",
+      },
     },
     linedivider: {
       height: "0.2rem",
@@ -187,17 +209,27 @@ const useStyles = makeStyles(
       height: "80vh",
       position: "relative",
       padding: "3rem 10em",
+      borderRadius: "13px",
       boxShadow: "0px 9px 40px rgba(0,0,0,0.08)",
-      borderRadius: "39px",
       overflow: "scroll",
+      ["@media (max-width:960px)"]: {
+        width: "90vw",
+        padding: "3rem 2rem",
+      },
       "&::-webkit-scrollbar": {
         width: "0em",
       },
+      // height: "30rem",
     },
     closwindowbtn: {
       position: "absolute",
       left: "75vw",
       top: "3vh",
+    },
+    headingcont: {
+      ["@media (max-width:960px)"]: {
+        transform: "Scale(0.7)",
+      },
     },
     textfeild: {
       backgroundColor: "white",
@@ -219,6 +251,9 @@ const useStyles = makeStyles(
           borderColor: "black",
         },
       },
+      ["@media (max-width:960px)"]: {
+        width: "100%",
+      },
     },
     formbtn: {
       backgroundColor: "#FF4444",
@@ -232,10 +267,15 @@ const useStyles = makeStyles(
       textTransform: "capitalize",
       borderRadius: "7px",
       ["@media (max-width:1280px)"]: {
-        fontSize: "1.5rem",
+        fontSize: "0.8rem",
       },
     },
 
+    formbtn_cont: {
+      display: "flex",
+      justifyContent: "center",
+      marginTop: "1rem",
+    },
     // helpertext: {
     //   backgroundColor: "yellow",
     // },

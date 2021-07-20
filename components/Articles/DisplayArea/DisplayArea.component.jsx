@@ -22,7 +22,7 @@ function DisplayArea() {
   return (
     <Fragment>
       {selectedTopic && (
-        <Grid className={classes.displayarea_cont} item md={7}>
+        <Grid className={classes.displayarea_cont} item md={7} sm={12}>
           <div className={classes.displayarea}>
             <div className={classes.coverimgcontainer}>
               <img
