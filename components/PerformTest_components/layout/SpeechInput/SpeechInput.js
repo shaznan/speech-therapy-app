@@ -22,26 +22,40 @@ const useStyles = makeStyles(
       display: "block",
       visibility: "hidden",
       margin: "auto",
-      width: "40rem",
-      height: "17rem",
+      width: "40vw",
+      height: "25vh",
       marginTop: "3rem",
       boxShadow: "0px 3px 29px rgba(0,0,0,0.05)",
       borderRadius: "9px",
+      ["@media (max-width:960px)"]: {
+        width: "90%",
+      },
     },
     showreactmic: {
       visibility: "visible",
     },
-    visualcontainer: {
+    mainContainer: {
       display: "flex",
       flexDirection: "columns",
       justifyContent: "center",
       width: "100%",
+    },
+    visualContainer: {
       position: "relative",
+      width: "40vw",
+      ["@media (max-width:960px)"]: {
+        width: "90vw",
+      },
     },
     tooltip: {
       position: "absolute",
-      top: 180,
-      left: 625,
+      right: "20vw",
+      bottom: "12.5vh",
+      ["@media (max-width:960px)"]: {
+        right: "45vw",
+      },
+      // transform: "translate(-50%,-50%)",
+      // left: "33.5%",
     },
   },
   { index: 1 },
@@ -54,17 +68,21 @@ function SpeechInput() {
 
   return (
     <Fragment>
-      <div className={classes.visualcontainer}>
-        <div className={classes.tooltip}>{isRecording && <CircleRipple />}</div>
-        <ReactMic
-          record={isRecording}
-          className={`${classes.reactmic} ${
-            isRecording && classes.showreactmic
-          }`}
-          visualSetting="sinewave"
-          strokeColor="#CCC9C9"
-          backgroundColor="white"
-        />
+      <div className={classes.mainContainer}>
+        <div className={classes.visualContainer}>
+          <div className={classes.tooltip}>
+            {isRecording && <CircleRipple />}
+          </div>
+          <ReactMic
+            record={isRecording}
+            className={`${classes.reactmic} ${
+              isRecording && classes.showreactmic
+            }`}
+            visualSetting="sinewave"
+            strokeColor="#FF4444"
+            backgroundColor="white"
+          />
+        </div>
       </div>
     </Fragment>
   );

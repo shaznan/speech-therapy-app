@@ -6,14 +6,14 @@ import MainCatergory from "./MainCatergorty.component";
 import { useStyles } from "./SelectForm_Styles";
 import SubCatergory from "./SubCatergory.component";
 import PrevAndNextBtns from "./PrevAndNextBtns.component";
-import CloseWindowBtn from "../../../Common_Layout/Button/CloseWindowBtn";
 import { useDispatch } from "react-redux";
 import { testActions } from "../../../../store/performTestSlice";
+import CloseBtn from "./CloseBtn.component";
 
 function SelectCatergoryForm() {
   const dispatch = useDispatch();
   const classes = useStyles();
-  
+
   const onClickHandler = () => {
     dispatch(testActions.setShowCatergoryForm(false));
     dispatch(testActions.setShowStartBtn(true));
@@ -24,7 +24,7 @@ function SelectCatergoryForm() {
       <Grid item lg={12} className={classes.container} style={{}}>
         <Grid container spacing={0} className={classes.cardcontainer}>
           <Card>
-            <CloseWindowBtn onClickHandler={onClickHandler} />
+            <CloseBtn onClickHandler={onClickHandler} />
             <MainCatergory />
             <SubCatergory />
             <PrevAndNextBtns />

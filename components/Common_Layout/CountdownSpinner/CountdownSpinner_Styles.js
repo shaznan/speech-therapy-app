@@ -2,10 +2,19 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(
   {
+    container: {
+      ["@media (max-width:800px)"]: {
+        transform: "scale(0.7)",
+        marginLeft: "1.5rem",
+      },
+    },
     time: {
       width: "9rem !important",
       backgroundColor: "transparent",
       zIndex: 1,
+      ["@media (max-width:800px)"]: {
+        width: "9rem !important",
+      },
     },
     yellowbar: {
       color: "#FFD105 !important",
@@ -25,12 +34,12 @@ const useStyles = makeStyles(
     circularbg: {
       position: "absolute",
       content: "''",
-      height: 124,
-      width: 124,
+      height: 134,
+      width: 134,
       backgroundColor: "white",
       borderRadius: 80,
-      top: "-2.5rem",
-      right: "-2.5rem",
+      top: "-2.8rem",
+      right: "-2.8rem",
     },
 
     countdownlabel: {

@@ -15,7 +15,10 @@ function DisplayRemainingTime({
 
   return (
     <Fragment>
-      <Box position="relative" display="inline-flex">
+      <Box
+        position="relative"
+        display="inline-flex"
+        className={classes.container}>
         <CircularProgress
           variant="determinate"
           value={value}
@@ -31,8 +34,7 @@ function DisplayRemainingTime({
               `${classes.countdownsec} ${
                 Remainingtime > 99 && classes.threedigitcountdownsec
               }` //if num of seconds has to be increased to (3) digits in the future
-            }
-          >
+            }>
             {/* show '0' in front if (1) digit */}
             {Remainingtime < 10 ? "0" + Remainingtime : Remainingtime}
           </Typography>

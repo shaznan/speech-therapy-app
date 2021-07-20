@@ -8,10 +8,18 @@ const useStyles = makeStyles(
       marginTop: "4rem",
       width: "35rem !important",
       position: "relative",
+      ["@media (max-width:960px)"]: {
+        // position: "absolute",
+        // width: "100%",
+      },
     },
     container: {
       display: "flex",
       justifyContent: "center",
+      ["@media (max-width:960px)"]: {
+        // position: "absolute",
+        width: "100%",
+      },
     },
     formlabel: {
       fontSize: "1rem !important",
