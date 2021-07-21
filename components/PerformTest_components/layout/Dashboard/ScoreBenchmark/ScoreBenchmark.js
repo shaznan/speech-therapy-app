@@ -23,12 +23,12 @@ function ScoreBenchmark({
             <img className={classes.errorimage} src={dinasaurImage} />
           </div>
         ) : (
-          <Grid item md={6} className={classes.scorebody_cont}>
+          <Grid item md={6} sm={6} className={classes.scorebody_cont}>
             <ColumnOne subheadingOne={subheadingOne} data={data} />
           </Grid>
         )}
         {((isError && heading !== "Social Ranking") || !isError) && (
-          <Grid item md={6} className={classes.scorebody_cont}>
+          <Grid item md={6} sm={6} className={classes.scorebody_cont}>
             <ColumnTwo subheadingTwo={subheadingTwo} data={data} />
           </Grid>
         )}

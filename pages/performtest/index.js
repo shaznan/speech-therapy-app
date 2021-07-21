@@ -70,7 +70,7 @@ function index() {
             {isAnalyzing && <AnalyzingResult />}
             <TranscriptErrorModal />
             <DisplayResult />
-            {/* {<Dashboard />} */}
+            {<Dashboard />}
           </Grid>
         </div>
       </div>
