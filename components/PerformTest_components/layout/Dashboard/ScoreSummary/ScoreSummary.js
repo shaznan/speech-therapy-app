@@ -7,13 +7,13 @@ import { useSelector } from "react-redux";
 function ScoreSummary() {
   const classes = useStyles();
   const changeOverPrevScore = useSelector(
-    (state) => state.user.entities[0].changeOverPrevScore
+    (state) => state.user.entities[0].changeOverPrevScore,
   );
   const averageScore = useSelector(
-    (state) => state.user.entities[0].averageScore
+    (state) => state.user.entities[0].averageScore,
   );
   const scoreAvgcriteria = useSelector(
-    (state) => state.user.entities[0].scoreAvgeCriteria
+    (state) => state.user.entities[0].scoreAvgeCriteria,
   );
   const highScore = useSelector((state) => state.user.entities[0].highScore);
   return (

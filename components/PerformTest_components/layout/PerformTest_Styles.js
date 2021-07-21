@@ -35,15 +35,15 @@ const performtestStyles = makeStyles(
       },
     },
     container: {
-      // height: "100vh",
+      height: "100vh",
       width: "100vw",
       overflow: "scroll",
 
-      //   ["@media (max-width:960px)"]: {
-      //     height: "100vh",
-      //     // overflow: "scroll",
-      //     // overflow: "scroll",
-      //   },
+      ["@media (max-width:960px)"]: {
+        height: "auto",
+        // overflow: "scroll",
+        // overflow: "scroll",
+      },
     },
 
     timespinner: {

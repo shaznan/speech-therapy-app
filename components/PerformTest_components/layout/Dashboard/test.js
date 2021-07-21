@@ -14,8 +14,8 @@ const useStyles = makeStyles(
       backgroundColor: "rgba(0,0,0,0.5)",
       position: "absolute",
     },
+
     dashboard_cont: {
-      position: "relative",
       backgroundImage: `url(${dashboardBg})`,
       backgroundSize: "cover",
       backgroundRepeat: "no-repeat",
@@ -25,6 +25,9 @@ const useStyles = makeStyles(
       marginTop: "2rem",
       transform: "translateX(-1%)",
       zIndex: "550",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
       borderRadius: "13px",
       margin: "auto",
       padding: "3rem 10em",
@@ -35,21 +38,7 @@ const useStyles = makeStyles(
       },
       ["@media (max-width:960px)"]: {
         padding: "0px",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
       },
-    },
-
-    // header:
-    closebtn: {
-      position: "absolute",
-      right: "4rem",
-      top: "1rem",
-    },
-
-    heading_cont: {
-      marginTop: "3rem",
     },
 
     benchmark_cont: {
@@ -124,6 +113,7 @@ const useStyles = makeStyles(
       backgroundColor: "rgb(249,249,249)",
       margin: "0.4rem 0rem",
     },
+
     highlightitem: {
       backgroundColor: "#fff1b3",
       margin: "0.4rem 0rem",
@@ -158,9 +148,7 @@ const useStyles = makeStyles(
       backdropFilter: "blur(5px)",
       ["@media (max-width:960px)"]: {
         width: "100vw",
-        height: "100%",
         flexDirection: "row",
-        marginTop: "1rem",
       },
     },
     score_label: {
@@ -203,11 +191,6 @@ const useStyles = makeStyles(
       flexDirection: "column",
       justifyContent: "center",
       alignItems: "center",
-      ["@media (max-width:960px)"]: {
-        marginTop: "0",
-        transform: "scale(0.5)",
-        paddingBottom: "0rem",
-      },
     },
     graph: {
       width: "40rem",
