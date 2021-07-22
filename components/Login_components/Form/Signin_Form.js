@@ -1,9 +1,9 @@
 import React from "react";
 import { Formik, Form } from "formik";
-import TextInputFeild from "./TextFeild.component";
+import TextInputFeild from "../../Common_Layout/Form/TextFeild.component";
 import * as Yup from "yup";
 import { useStyles } from "../loginStyles";
-import FormBtn from "./FormBtn.component";
+import FormBtn from "../../Common_Layout/Form/FormBtn.component";
 import useAuth from "./useAuth";
 import ErrorModal from "./ErrorModal.component";
 import { useSelector } from "react-redux";
@@ -13,7 +13,7 @@ function Signin_Form() {
   const classes = useStyles();
   const isEmailError = useSelector((state) => state.login_signup.isEmailError);
   const { fireBaseAuth } = useAuth(
-    "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyA5BBFvXMN08rnAvoSmQz1LZmh5wD3H0mA"
+    "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyA5BBFvXMN08rnAvoSmQz1LZmh5wD3H0mA",
   );
   const validate = Yup.object({
     email: Yup.string().email("Email is invalid").required("Email is Required"),
@@ -31,8 +31,7 @@ function Signin_Form() {
       validationSchema={validate}
       onSubmit={(values) => {
         fireBaseAuth(values.email, values.password);
-      }}
-    >
+      }}>
       {(formik) => (
         <div>
           <h1 className={classes.formheader}>Sign In</h1>
