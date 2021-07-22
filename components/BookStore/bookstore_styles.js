@@ -11,17 +11,27 @@ const useStyles = makeStyles(
       backgroundSize: "120rem",
       backgroundPositionY: "-20rem",
       height: "35vh",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      ["@media (max-width:900px)"]: {
+        height: "25vh",
+      },
     },
     mainheading: {
       display: "flex",
       justifyContent: "center",
-      marginTop: "7vh",
+      // marginTop: "5rem",
       opacity: 0.8,
+      ["@media (max-width:800px)"]: {
+        textAlign: "center",
+      },
     },
     viewcart_container: {
       position: "fixed",
       top: "16%",
       right: "3%",
+
       // marginLeft: "90%",
     },
     header_viewcartbtn: {
@@ -40,6 +50,23 @@ const useStyles = makeStyles(
     header_viewcartIcon: {
       // marginRight: "0.7rem",
     },
+    viewCartfooter_container: {
+      position: "fixed",
+      padding: "0.7rem",
+      bottom: 0,
+      width: "100vw",
+      backgroundColor: "white",
+      display: "flex",
+      justifyContent: "center",
+      boxShadow: "-5px -9px 40px rgba(0,0,0,0.09)",
+      backgroundColor: "rgba(240,240, 240,1)",
+      zIndex: 33,
+    },
+    viewCartfooter_txt: {
+      verticalAlign: "center",
+      marginLeft: "0.5rem",
+    },
+
     cart_cont: {
       position: "fixed",
       backgroundColor: "rgba(255,255,255,0.8)",
@@ -49,6 +76,9 @@ const useStyles = makeStyles(
       zIndex: "30",
       boxShadow: "0px 9px 40px rgba(0,0,0,0.09)",
       backdropFilter: "blur(5px)",
+      ["@media (max-width:900px)"]: {
+        width: "100%",
+      },
     },
     cart_heading: {
       display: "flex",
@@ -76,11 +106,18 @@ const useStyles = makeStyles(
     cart_items_cont: {
       width: "18vw",
       borderRadius: "9px",
+      position: "relative",
       boxShadow: "0px 9px 40px rgba(0,0,0,0.08)",
       backgroundColor: "white",
+      ["@media (max-width:900px)"]: {
+        width: "100%",
+      },
     },
     cartitem_img: {
       width: "2.5vw",
+      ["@media (max-width:900px)"]: {
+        width: "8vw",
+      },
     },
     closeBtn_cont: {
       display: "flex",
@@ -133,6 +170,16 @@ const useStyles = makeStyles(
       alignItems: "center",
       width: "100%",
     },
+    totalprice_cont: {
+      position: "absolute",
+      bottom: 0,
+      backgroundColor: "white",
+      display: "flex",
+      justifyContent: "center",
+      width: "100%",
+      padding: "0.5rem",
+      // width: "100%",
+    },
     checkout_btn: {
       fontWeight: "bold",
       fontSize: "1.1em",
@@ -148,8 +195,8 @@ const useStyles = makeStyles(
     searchcontainer: {
       display: "flex",
       marginTop: "2rem",
-      // width: "100%",
       justifyContent: "center",
+      // width: "100vw",
     },
     searcbox_main_cont: {
       backgroundColor: "#F6F6F7",
@@ -161,6 +208,10 @@ const useStyles = makeStyles(
       width: "25vw",
       borderRadius: "13px",
       border: "none",
+      ["@media (max-width:900px)"]: {
+        width: "100%",
+        marginTop: "-3rem",
+      },
       "& label.Mui-focused": {
         color: "rgba(255,255,255,0.0)",
       },
@@ -191,8 +242,13 @@ const useStyles = makeStyles(
       textAlign: "center",
       fontWeight: "5rem",
       fontSize: "3rem",
+      width: "100vw",
       marginTop: "4rem",
       fontFamily: "product-sans",
+      ["@media (max-width:900px)"]: {
+        fontSize: "2rem",
+        marginTop: "2rem",
+      },
       // height: "4vh",
     },
     catergories_cont: {
@@ -205,6 +261,9 @@ const useStyles = makeStyles(
       display: "flex",
       justifyContent: "center",
       marginTop: "4vh",
+      ["@media (max-width:900px)"]: {
+        padding: "0.5rem",
+      },
     },
     caterory_item: {
       opacity: "0.5",
@@ -216,6 +275,9 @@ const useStyles = makeStyles(
         //   fontWeight: "bold",
         cursor: "pointer",
       },
+      // ["@media (max-width:900px)"]: {
+      //   transform: "scale(0.7)",
+      // },
     },
     catergory_active: {
       color: "orange",
@@ -229,7 +291,7 @@ const useStyles = makeStyles(
       backgroundColor: "rgba(255,255,255,0.1)",
       padding: "3rem 10em",
       boxShadow: "0px 9px 40px rgba(0,0,0,0.08)",
-      borderRadius: "39px",
+      borderRadius: "13px",
       overflow: "scroll",
       "&::-webkit-scrollbar": {
         width: "0em",
@@ -239,6 +301,13 @@ const useStyles = makeStyles(
       display: "flex",
       marginTop: "2rem",
       justifyContent: "center",
+      ["@media (max-width:900px)"]: {
+        padding: "3rem 0em",
+        marginRight: "0rem",
+        backgroundColor: "white",
+        height: "100vh",
+        width: "100vw",
+      },
     },
     bookcard: {
       backgroundColor: "white",
@@ -252,12 +321,21 @@ const useStyles = makeStyles(
       "&::-webkit-scrollbar": {
         width: "0em",
       },
+      ["@media (max-width:900px)"]: {
+        marginRight: "1rem",
+        width: "40%",
+        height: "40%",
+      },
     },
     book_imgcont: {
       width: "100%",
       height: "33vh",
       position: "relative",
       overflow: "hidden",
+
+      ["@media (max-width:900px)"]: {
+        height: "25vh",
+      },
 
       "&:hover $img_overlay": {
         opacity: "1",
@@ -267,6 +345,9 @@ const useStyles = makeStyles(
         opacity: 1,
         transition: "0.5s ease-in-out",
         top: "50%",
+        ["@media (max-width:900px)"]: {
+          left: "25%",
+        },
       },
       "&:hover $book_img": {
         transform: "scale(1.1)",
@@ -293,12 +374,18 @@ const useStyles = makeStyles(
       top: "30%",
       opacity: 0,
       left: "33%",
+      ["@media (max-width:900px)"]: {
+        left: "25%",
+      },
     },
     book_img: {
       borderRadius: "13px 13px 0 0",
       width: "100%",
       position: "absolute",
       bottom: 0,
+      ["@media (max-width:900px)"]: {
+        top: 0,
+      },
     },
     book_title: {
       fontFamily: "product-sans",

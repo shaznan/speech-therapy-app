@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Grid from "@material-ui/core/Grid";
 import { useStyles } from "../bookstore_styles";
-import Catergories from "./Catergories.component";
+import Catergories from "./Catergories/Catergories.component";
 import DisplayBooks from "./DisplayBooks.component";
 import SearchBox from "./SearchBox.component";
 

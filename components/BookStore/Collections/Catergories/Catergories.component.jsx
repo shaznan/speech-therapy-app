@@ -1,12 +1,15 @@
 import React, { Fragment, useState } from "react";
 import Grid from "@material-ui/core/Grid";
-import { useStyles } from "../bookstore_styles";
-import { bookstoreSlice_Actions } from "../../../store/bookstoreSlice";
+import { useStyles } from "../../bookstore_styles";
+import { bookstoreSlice_Actions } from "../../../../store/bookstoreSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { fetchAllProducts } from "../../../store/bookstoreSlice";
-import { fetchProductsByType } from "../../../store/bookstoreSlice";
-import { fetchAllCollections } from "../../../store/bookstoreSlice";
+import { fetchAllProducts } from "../../../../store/bookstoreSlice";
+import { fetchProductsByType } from "../../../../store/bookstoreSlice";
+import { fetchAllCollections } from "../../../../store/bookstoreSlice";
+import ExpandedCatergory from "./ExpandedCatergory.component";
+import DropdownCatergory from "./DropdownCatergory.component";
+import useWindowDimensions from "../../../useWindowDimension";
 
 function Catergories({ catergoryItems }) {
   const classes = useStyles();
@@ -18,7 +21,7 @@ function Catergories({ catergoryItems }) {
   const bookCollections = useSelector(
     (state) => state.bookstore.bookCollections,
   );
-  const onClickHandler = (index, event) => {
+  const switchCatergoryHandler = (index, event) => {
     setActiveIndex(index);
     if (event.target.id === "All") {
       dispatch(bookstoreSlice_Actions.setSelectedCatergory(null));
@@ -26,6 +29,8 @@ function Catergories({ catergoryItems }) {
       dispatch(bookstoreSlice_Actions.setSelectedCatergory(event.target.id));
     }
   };
+
+  const { screenWidth } = useWindowDimensions();
 
   useEffect(() => {
     dispatch(fetchAllCollections());
@@ -47,23 +52,19 @@ function Catergories({ catergoryItems }) {
   return (
     <Fragment>
       <Grid container className={classes.catergories_cont} spacing={0}>
-        <Grid item md={5} className={classes.catergory}>
-          {catergoryItems.map((catergory, i) => (
-            <Grid
-              item
-              id={catergory.id}
-              md={2}
-              key={i}
-              className={`${activeIndex === i && classes.catergory_active} ${
-                classes.caterory_item
-              }`}
-              onClick={(e) => {
-                onClickHandler(i, e);
-              }}>
-              {catergory.itemName}
-            </Grid>
-          ))}
-        </Grid>
+        {screenWidth > 800 ? (
+          <ExpandedCatergory
+            catergoryItems={catergoryItems}
+            activeIndex={activeIndex}
+            switchCatergoryHandler={switchCatergoryHandler}
+          />
+        ) : (
+          <DropdownCatergory
+            catergoryItems={catergoryItems}
+            activeIndex={activeIndex}
+            switchCatergoryHandler={switchCatergoryHandler}
+          />
+        )}
       </Grid>
     </Fragment>
   );

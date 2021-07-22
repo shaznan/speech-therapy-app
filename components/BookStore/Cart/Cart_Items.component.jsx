@@ -29,6 +29,9 @@ function Cart_Items() {
                 price={item.variant.price}
               />
             ))}
+          <div className={classes.totalprice_cont}>
+            <strong>Total Price: LKR {checkout.totalPrice}</strong>
+          </div>
         </div>
       </Grid>
     </Fragment>

@@ -8,12 +8,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { bookstoreSlice_Actions } from "../../../store/bookstoreSlice";
 import { fetchCheckout } from "../../../store/bookstoreSlice";
 import { useEffect } from "react";
+import useWindowDimensions from "../../useWindowDimension";
 
 function LineItem({ itemId, img, title, price, qty }) {
   const classes = useStyles();
   const dispatch = useDispatch();
   const [isError, newCheckoutState, removeItemFromCart] = useRemoveItem();
   const checkout = useSelector((state) => state.bookstore.checkout);
+  const { screenWidth } = useWindowDimensions();
 
   const removeItemHandler = (e) => {
     e.preventDefault();
@@ -33,24 +35,24 @@ function LineItem({ itemId, img, title, price, qty }) {
       <Grid container className={classes.cartItem_main_cont}>
         <Grid item md={12}>
           <Grid container spacing={0} className={classes.cartItem_cont}>
-            <Grid item md={2} className={classes.closeBtn_cont}>
+            <Grid item lg={2} className={classes.closeBtn_cont}>
               <Button onClick={removeItemHandler}>
                 <HighlightOffIcon className={classes.cartitem_closeBtn} />
               </Button>
             </Grid>
-            <Grid item md={1} className={classes.itemQty}>
+            <Grid item lg={1} className={classes.itemQty}>
               <strong>{`x${qty}`}</strong>
             </Grid>
-            <Grid item md={2} className={classes.cartitem_img_cont}>
+            <Grid item lg={2} className={classes.cartitem_img_cont}>
               <img src={img} className={classes.cartitem_img} />
             </Grid>
-            <Grid item md={5} className={classes.cartitem_title_cont}>
+            <Grid item lg={5} className={classes.cartitem_title_cont}>
               <span className={classes.cartitem_title}>{`${title.slice(
                 0,
-                30,
+                screenWidth > 800 ? 30 : 15,
               )}...`}</span>
             </Grid>
-            <Grid item md={2} className={classes.cartitem_price}>
+            <Grid item lg={2} className={classes.cartitem_price}>
               <strong>{`LKR ${price}`}</strong>
             </Grid>
           </Grid>

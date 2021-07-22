@@ -71,8 +71,9 @@ function DisplayBooks() {
               <Grid
                 key={product.id}
                 item
-                md={2}
-                xs={6}
+                lg={2}
+                md={3}
+                sm={6}
                 className={classes.bookcard}>
                 <DisplayBooksProductImg product={product} />
                 <div className={classes.book_price}>

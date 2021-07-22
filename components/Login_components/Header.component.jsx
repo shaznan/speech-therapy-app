@@ -5,9 +5,11 @@ import { useStyles } from "./loginStyles";
 import Button from "../Common_Layout/Button/Button";
 import Heading from "../Common_Layout/Typography/Heading";
 import Link from "next/link";
+import useWindowDimensions from "../useWindowDimension";
 
 function Header() {
   const classes = useStyles();
+  const { screenWidth } = useWindowDimensions();
   return (
     <Fragment>
       <Grid container spacing={0} className={classes.headercontainer}>
@@ -17,7 +19,7 @@ function Header() {
           </Link>
         </Grid>
         <Grid item md={6} className={classes.loginheadercontainer}>
-          <Heading text="Login or Register with us!" />
+          {screenWidth > 800 && <Heading text="Login or Register with us!" />}
         </Grid>
       </Grid>
     </Fragment>

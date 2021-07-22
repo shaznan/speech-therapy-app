@@ -41,7 +41,6 @@ function productpage(props) {
       <LoadSpinner loading={loading} />
       {isCartOpen && <Cart />}
       <ProductPage props={props} />
-      <Footer />
     </div>
   );
 }

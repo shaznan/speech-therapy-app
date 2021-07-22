@@ -13,6 +13,11 @@ const useStyles = makeStyles(
       height: "30vh",
       // display: "inline",
       width: "30vw",
+      ["@media (max-width:1000px)"]: {
+        width: "90%",
+        display: "flex",
+        justifyContent: "center",
+      },
     },
     icon: {
       fontSize: "5rem",
@@ -26,11 +31,13 @@ const useStyles = makeStyles(
     heading_cont: {
       display: "flex",
       justifyContent: "center",
-      marginBottom: "1rem",
+      marginBottom: "0.8rem",
+      textAlign: "center",
+      ["@media (max-width:1000px)"]: {
+        fontSize: "0.6rem",
+      },
     },
-    //   heading: {
-    //     textAlign: "center",
-    //   },
+
     login_btn: {
       display: "flex",
       justifyContent: "center",

@@ -20,7 +20,7 @@ function LoginMessage() {
     router.push("/login_signup", null, { shallow: true });
     dispatch(login_signup_Actions.setPreviousRoute(router.pathname));
   };
-  
+
   return (
     <Fragment>
       <Grid container spacing={0} className={classes.maincont}>
@@ -30,9 +30,7 @@ function LoginMessage() {
               <LockOpenIcon className={classes.icon} />
             </Grid>
             <Grid item md={12} className={classes.heading_cont}>
-              <Typography variant="h4" className={classes.heading}>
-                Please login to continue
-              </Typography>
+              <h1 className={classes.heading}>Please login to continue</h1>
             </Grid>
             <Grid item md={12} className={classes.login_btn}>
               <Button
