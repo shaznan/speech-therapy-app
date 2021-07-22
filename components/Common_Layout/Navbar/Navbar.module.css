@@ -233,6 +233,11 @@
 /* Media Queries */
 
 @media only screen and (max-width: 1280px) {
+  .navbar {
+    display: flex;
+    align-items: center;
+  }
+
   .navitems {
     position: absolute;
     padding: 10rem 0rem;
@@ -264,13 +269,17 @@
     font-weight: bold;
   }
 
+  .avatarcontainer {
+    margin-bottom: 1rem;
+  }
+
   .menuIcon {
     display: inline-block;
     visibility: visible;
     position: absolute;
     left: 3vw;
     top: 2.3rem;
-    font-size: 2.5rem !important;
+    font-size: 2rem !important;
     /* width: 10vw; */
   }
   .custombtncontainer {
@@ -283,10 +292,19 @@
     width: 10rem;
   }
 
+  .avatar {
+    transform: scale(0.7);
+  }
+
+  .dropdowncontainer {
+    transform: scale(0.7);
+    top: 2rem;
+  }
+
   .login_registertext {
     /* margin-right: 1rem; */
     font-size: 0.6rem;
-    margin-top: 2.5rem;
+    margin-top: 1.4rem;
     margin-right: 1.2rem;
     padding: 9px 6px 2px 6px;
     height: 35px;

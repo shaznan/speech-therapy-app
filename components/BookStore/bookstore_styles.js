@@ -60,7 +60,7 @@ const useStyles = makeStyles(
       justifyContent: "center",
       boxShadow: "-5px -9px 40px rgba(0,0,0,0.09)",
       backgroundColor: "rgba(240,240, 240,1)",
-      zIndex: 500,
+      zIndex: 33,
     },
     viewCartfooter_txt: {
       verticalAlign: "center",

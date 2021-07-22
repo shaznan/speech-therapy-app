@@ -22,6 +22,9 @@ const useStyles = makeStyles({
     textAlign: "start",
     paddingLeft: "5rem",
     paddingTop: "2rem",
+    ["@media (max-width:800px)"]: {
+      paddingLeft: "2rem",
+    },
   },
   loginheadercontainer: {
     textAlign: "end",
@@ -54,6 +57,12 @@ const useStyles = makeStyles({
     marginLeft: "9vw",
     borderRadius: "9px",
     boxShadow: "0px 3px 29px rgba(0,0,0,0.1)",
+    ["@media (max-width:800px)"]: {
+      marginLeft: "15vw",
+    },
+    ["@media (max-width:485px)"]: {
+      marginLeft: "1vw",
+    },
   },
   formheader: {
     textAlign: "center",

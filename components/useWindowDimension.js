@@ -17,6 +17,7 @@ export default function useWindowDimensions() {
     getWindowDimensions(),
   );
 
+  //render code only in client side to avoid server side "window not defined" in next js
   useEffect(() => {
     if (!windowDimensions) return;
     const { width, height } = windowDimensions;
