@@ -317,10 +317,10 @@ const useStyles = makeStyles(
       marginBottom: "2rem",
       width: "20vw",
       height: "45vh",
-      overflowY: "scroll",
-      "&::-webkit-scrollbar": {
-        width: "0em",
-      },
+      overflowY: "hidden",
+      // "&::-webkit-scrollbar": {
+      //   width: "0em",
+      // },
       ["@media (max-width:900px)"]: {
         marginRight: "1rem",
         width: "40%",

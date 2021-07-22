@@ -175,7 +175,12 @@ const useStyles = makeStyles(
       fontWeight: "bold",
       backgroundColor: "white",
       borderRadius: "13px",
+      zIndex: "10",
       boxShadow: "0px 9px 40px rgba(0,0,0,0.08)",
+      ["@media (max-width:900px)"]: {
+        top: "10vh",
+        right: 0,
+      },
     },
   },
   { index: 1 },

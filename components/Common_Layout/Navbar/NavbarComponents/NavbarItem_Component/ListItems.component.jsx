@@ -5,9 +5,12 @@ import Grid from "@material-ui/core/Grid";
 import Link from "next/link";
 import React from "react";
 import Button from "@material-ui/core/Button";
+import { useDispatch } from "react-redux";
+import { navActions } from "../../../../../store/navSlice";
 
 function RenderListItems({ menuItems, emptyPathname }) {
   const router = useRouter();
+  const dispatch = useDispatch();
 
   const formatItem = (item) => {
     //format items to match page names
@@ -17,10 +20,10 @@ function RenderListItems({ menuItems, emptyPathname }) {
   };
 
   const redirectHandler = (item) => {
-    console.log(item);
     router.push(item == "Home" ? "/" : "/" + formatItem(item), null, {
       shallow: true,
     });
+    dispatch(navActions.setIsNavVisible(false));
   };
 
   //FIXME: WORK ON THE THROTTLING ISSUE
