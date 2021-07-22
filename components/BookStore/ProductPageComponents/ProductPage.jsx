@@ -12,22 +12,26 @@ function ProductPage({ props }) {
   return (
     <Fragment>
       <div className={classes.productpage_maincont}>
-        <Grid container className={classes.productpage_cont}>
-          <BackBtn />
-          <Grid item md={5} className={classes.img_cont}>
-            <div>
-              <img src={props.images[0].src} />
+        <Grid container spacing={2} className={classes.productpage_cont}>
+          <div className={classes.backbtn_cont}>
+            <BackBtn />
+          </div>
+          <Grid item md={5} sm={12} className={classes.img_cont}>
+            <div className={classes.img_subcontainer}>
+              <img src={props.images[0].src} className={classes.img} />
             </div>
           </Grid>
-          <Grid item md={7} className={classes.product_desc_cont}>
+          <Grid item md={7} sm={12} className={classes.product_desc_cont}>
             <Grid container spacing={0} className={classes.product_desc}>
               <Grid item md={12} className={classes.title}>
-                <Typography variant="h5">{props.title}</Typography>
+                <Typography variant="h6">{props.title}</Typography>
               </Grid>
               <Grid item md={12} className={classes.description_txt}>
                 {props.description}
               </Grid>
-              <ItemPrice props={props} />
+              <Grid item md={12} className={classes.price_cont}>
+                <ItemPrice props={props} />
+              </Grid>
             </Grid>
             <Add_RemoveItemsToCart />
             <AddToCart_ViewCart_Btn />

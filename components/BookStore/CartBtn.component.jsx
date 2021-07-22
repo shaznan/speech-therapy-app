@@ -31,7 +31,6 @@ const CartBtn = ({ type = "default", style }) => {
           onClick={onClickHandler}
           variant="outlined"
           className={classes.header_viewcartbtn}>
-          {/* <Badge badgeContent={badgeCount} color="secondary"> */}
           <Badge badgeContent={badgeCounter()} color="secondary">
             <ShoppingBasketIcon className={classes.header_viewcartIcon} />
           </Badge>

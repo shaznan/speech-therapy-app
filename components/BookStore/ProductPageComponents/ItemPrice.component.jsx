@@ -20,7 +20,7 @@ function ItemPrice({ props }) {
         Price Per Item: <strong>{`LKR ${numberWithCommas(price)}`}</strong>
       </Grid>
       <Grid item md={12} className={classes.price}>
-        Total Price:{" "}
+        Total Price:
         <strong>{`LKR ${numberWithCommas(price * selectedProductQty)}`}</strong>
       </Grid>
     </Fragment>
