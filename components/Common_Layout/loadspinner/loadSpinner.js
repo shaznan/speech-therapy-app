@@ -24,6 +24,9 @@ const useStyles = makeStyles(
       alignItems: "center",
       justifyContent: "center",
       flexDirection: "column",
+      ["@media (max-width:800px)"]: {
+        transform: "scale(0.5)",
+      },
     },
   },
   { index: 1 },

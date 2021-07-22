@@ -36,8 +36,12 @@ function DisplayUser() {
   return (
     <Fragment>
       <Grid item lg={3} xs={4}>
-        <div onClick={toggleDropdown} className={classes.userdetailcontainer}>
-          <DisplayUser_WelcomTxt avatar={avatar} nickName={nickName} />
+        <div className={classes.userdetailcontainer}>
+          <DisplayUser_WelcomTxt
+            avatar={avatar}
+            nickName={nickName}
+            toggleDropdown={toggleDropdown}
+          />
           <DisplayUserDropdown
             avatar={avatar}
             nickName={nickName}

@@ -2,12 +2,12 @@ import React, { Fragment } from "react";
 import useWindowDimensions from "../../../useWindowDimension";
 import classes from "../Navbar.module.css";
 
-function DisplayUser_WelcomTxt({ avatar, nickName }) {
+function DisplayUser_WelcomTxt({ avatar, nickName, toggleDropdown }) {
   const { screenWidth } = useWindowDimensions();
 
   return (
     <Fragment>
-      <div className={classes.avatarcontainer}>
+      <div onClick={toggleDropdown} className={classes.avatarcontainer}>
         <img src={avatar} className={classes.avatar} />
       </div>
       {screenWidth > 800 ? (
