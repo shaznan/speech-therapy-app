@@ -1,9 +1,9 @@
 import React from "react";
 import { Formik, Form } from "formik";
-import TextInputFeild from "./TextFeild.component";
+import TextInputFeild from "../../Common_Layout/Form/TextFeild.component";
 import * as Yup from "yup";
 import { useStyles } from "../loginStyles";
-import FormBtn from "./FormBtn.component";
+import FormBtn from "../../Common_Layout/Form/FormBtn.component";
 import useAuth from "./useAuth";
 import ErrorModal from "./ErrorModal.component";
 import { useSelector, useDispatch } from "react-redux";
@@ -15,7 +15,7 @@ function Signup_Form() {
   const dispatch = useDispatch();
   const isEmailError = useSelector((state) => state.login_signup.isEmailError);
   const { fireBaseAuth } = useAuth(
-    "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyA5BBFvXMN08rnAvoSmQz1LZmh5wD3H0mA"
+    "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyA5BBFvXMN08rnAvoSmQz1LZmh5wD3H0mA",
   );
 
   const validate = Yup.object({
@@ -44,8 +44,7 @@ function Signup_Form() {
         console.log(values);
         fireBaseAuth(values.email, values.password);
         dispatch(userSlice_Actions.setNickName(values.nickName));
-      }}
-    >
+      }}>
       {(formik) => (
         <div>
           <h1 className={classes.formheader}>Create Account</h1>

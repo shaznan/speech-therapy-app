@@ -31,21 +31,7 @@ const useStyles = makeStyles({
     paddingRight: "5rem",
     paddingTop: "2rem",
   },
-  textfield: {
-    width: "100%",
-    marginBottom: "1rem !important",
-    "& label.Mui-focused": {
-      color: "black",
-    },
-    "& .MuiOutlinedInput-root": {
-      "& fieldset": {
-        borderRadius: "13px",
-      },
-      "&.Mui-focused fieldset": {
-        borderColor: "black",
-      },
-    },
-  },
+
   headercontainer: {
     marginBottom: "-7rem",
   },

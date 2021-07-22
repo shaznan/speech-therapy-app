@@ -12,9 +12,9 @@ function FooterBody() {
           About
         </Typography>
         <Typography variant="subtitle1" className={classes.bodytext}>
-          SpeechTherapy is a global organization on the lookout for people who
-          are suffering from their day to day speech problems as a result of
-          having Brain Fog.
+          SpeechTherapy is a global organization on the lookout for solutions
+          for people who are suffering from their day to day speech problems as
+          a result of having Brain Fog.
         </Typography>
         <Typography variant="subtitle2">
           <p className="copyright" className={classes.copyright}>
