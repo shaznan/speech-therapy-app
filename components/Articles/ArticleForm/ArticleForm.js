@@ -11,6 +11,7 @@ import { articleSlice_Actions } from "../../../store/articlesSlice";
 import { useDispatch } from "react-redux";
 import useStoreArticleFormData from "./useStoreArticleFormData";
 import CloseWindowBtn from "../../Common_Layout/Button/CloseWindowBtn";
+import Fade from "react-reveal/Fade";
 
 function ArticleForm() {
   const classes = useStyles();
@@ -49,38 +50,40 @@ function ArticleForm() {
       {() => (
         <Fragment>
           <Grid container className={classes.form}>
-            <div className={classes.form_container}>
-              <div className={classes.headingcont}>
-                <Heading text="Create your article" />
-              </div>
-              <div className={classes.closwindowbtn}>
-                <CloseWindowBtn onClickHandler={closeHandler} />
-              </div>
-              <Form id="articleform" style={{ marginTop: "2rem" }}>
-                <TextInputFeild
-                  label="Title"
-                  name="title"
-                  type="text"
-                  issubmit={isSubmit}
-                />
-                <TextInputFeild
-                  label="Cover Image URL"
-                  name="coverimageurl"
-                  type="text"
-                  issubmit={isSubmit}
-                />
-                <ArticleContnt />
-                <div className={classes.formbtn_cont}>
-                  <Button
-                    type="submit"
-                    form="articleform"
-                    className={classes.formbtn}
-                    onClick={submitHandler}>
-                    submit
-                  </Button>
+            <Fade duration={1000} bottom>
+              <div className={classes.form_container}>
+                <div className={classes.headingcont}>
+                  <Heading text="Create your article" />
                 </div>
-              </Form>
-            </div>
+                <div className={classes.closwindowbtn}>
+                  <CloseWindowBtn onClickHandler={closeHandler} />
+                </div>
+                <Form id="articleform" style={{ marginTop: "2rem" }}>
+                  <TextInputFeild
+                    label="Title"
+                    name="title"
+                    type="text"
+                    issubmit={isSubmit}
+                  />
+                  <TextInputFeild
+                    label="Cover Image URL"
+                    name="coverimageurl"
+                    type="text"
+                    issubmit={isSubmit}
+                  />
+                  <ArticleContnt />
+                  <div className={classes.formbtn_cont}>
+                    <Button
+                      type="submit"
+                      form="articleform"
+                      className={classes.formbtn}
+                      onClick={submitHandler}>
+                      submit
+                    </Button>
+                  </div>
+                </Form>
+              </div>
+            </Fade>
           </Grid>
         </Fragment>
       )}
