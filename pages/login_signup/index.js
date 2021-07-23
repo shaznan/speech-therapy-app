@@ -8,6 +8,7 @@ import Signin_Form from "../../components/Login_components/Form/Signin_Form";
 import LogoImage from "../../components/Login_components/Logo.component";
 import { useSelector } from "react-redux";
 import Footer from "../../components/Login_components/Form/Footer.component";
+import Fade from "react-reveal/Fade";
 
 function login() {
   const classes = useStyles();
@@ -21,12 +22,14 @@ function login() {
         <Grid container spacing={0} className={classes.container}>
           <Header />
           <LogoImage />
-          <div className={classes.formcontainer}>
-            {signUpActive && <Signup_Form />}
-            {signInActive && <Signin_Form />}
-            {/* {isEmailError && <ErrorModal />} */}
-            <Footer />
-          </div>
+          <Fade duration={1000} left>
+            <div className={classes.formcontainer}>
+              {signUpActive && <Signup_Form />}
+              {signInActive && <Signin_Form />}
+              {/* {isEmailError && <ErrorModal />} */}
+              <Footer />
+            </div>
+          </Fade>
         </Grid>
       </div>
     </Fragment>
