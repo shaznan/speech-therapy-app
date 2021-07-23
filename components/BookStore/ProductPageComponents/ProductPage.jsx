@@ -6,6 +6,7 @@ import Add_RemoveItemsToCart from "./Add_RemoveItemsToCart.component";
 import AddToCart_ViewCart_Btn from "./AddToCart_ViewCart_Btn.component";
 import BackBtn from "./BackBtn.component";
 import ItemPrice from "./ItemPrice.component";
+import Fade from "react-reveal/Fade";
 
 function ProductPage({ props }) {
   const classes = useStyles();
@@ -17,9 +18,11 @@ function ProductPage({ props }) {
             <BackBtn />
           </div>
           <Grid item md={5} sm={12} className={classes.img_cont}>
-            <div className={classes.img_subcontainer}>
-              <img src={props.images[0].src} className={classes.img} />
-            </div>
+            <Fade duration={500} left>
+              <div className={classes.img_subcontainer}>
+                <img src={props.images[0].src} className={classes.img} />
+              </div>
+            </Fade>
           </Grid>
           <Grid item md={7} sm={12} className={classes.product_desc_cont}>
             <Grid container spacing={0} className={classes.product_desc}>
@@ -33,6 +36,7 @@ function ProductPage({ props }) {
                 <ItemPrice props={props} />
               </Grid>
             </Grid>
+
             <Add_RemoveItemsToCart />
             <AddToCart_ViewCart_Btn />
           </Grid>
