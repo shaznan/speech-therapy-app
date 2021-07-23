@@ -6,6 +6,7 @@ import personFigure from "../../assets/images/shaznan_image.png";
 // import personFigure from "../../../assets/images/shaznan_image.png";
 import { OurCultureText } from "./AboutusText";
 import { OurFounderText } from "./AboutusText";
+import Slide from "react-reveal/Slide";
 
 function CultureAndFounder() {
   const classes = useStyles();
@@ -21,7 +22,9 @@ function CultureAndFounder() {
           </Grid>
           <Grid item lg={6} xs={12} className={classes.imagecontainer}>
             <div>
-              <BannerImage url={personFigure} size="large" />
+              <Slide duration={1000} right>
+                <BannerImage url={personFigure} size="large" />
+              </Slide>
             </div>
           </Grid>
         </Grid>
