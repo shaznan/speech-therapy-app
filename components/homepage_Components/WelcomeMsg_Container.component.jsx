@@ -19,7 +19,10 @@ import Slide from "react-reveal/Slide";
 function WelcomeMsg_Container() {
   const loading = useSelector((state) => state.user.loading);
   const redirectHandler = () => {
-    router.push("/performtest", null, { shallow: true });
+    // router.push("/performtest", null, { shallow: true });
+    router.push("https://speechtherapy786.netlify.app/", null, {
+      shallow: true,
+    });
   };
   const router = useRouter();
   const classes = useStyles();
