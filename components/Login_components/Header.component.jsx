@@ -17,6 +17,9 @@ function Header() {
     (state) => state.login_signup.previousRoute,
   );
   const redirectHandler = () => {
+    if (!previousRoute) {
+      router.push("/", null, { shallow: true });
+    }
     router.push(previousRoute, null, { shallow: true });
   };
   return (

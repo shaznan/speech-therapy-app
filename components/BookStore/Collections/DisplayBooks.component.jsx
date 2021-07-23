@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import LoadMoreButton from "./LoadMoreButton.componrnt";
 import DisplayBooksProductImg from "./DisplayBooksProductImg.component";
 import { userSlice_Actions } from "../../../store/userSlice";
+import Fade from "react-reveal/Fade";
 
 function DisplayBooks() {
   const classes = useStyles();
@@ -67,7 +68,7 @@ function DisplayBooks() {
       <Grid container spacing={0}>
         <Grid item md={12} className={classes.displaybook_cont}>
           <Grid container className={classes.displaybooks}>
-            {products.map((product) => (
+            {products.map((product, i) => (
               <Grid
                 key={product.id}
                 item
@@ -75,11 +76,13 @@ function DisplayBooks() {
                 md={3}
                 sm={6}
                 className={classes.bookcard}>
-                <DisplayBooksProductImg product={product} />
-                <div className={classes.book_price}>
-                  {`USD ${product.variants[0].price}`}
-                </div>
-                <div className={classes.book_title}>{product.title}</div>
+                <Fade duration={150 + i * 150} bottom>
+                  <DisplayBooksProductImg product={product} />
+                  <div className={classes.book_price}>
+                    {`USD ${product.variants[0].price}`}
+                  </div>
+                  <div className={classes.book_title}>{product.title}</div>
+                </Fade>
               </Grid>
             ))}
             <LoadMoreButton />

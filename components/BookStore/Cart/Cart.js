@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import { bookstoreSlice_Actions } from "../../../store/bookstoreSlice";
 import Cart_Items from "./Cart_Items.component";
 import Checkout_Button from "./Checkout_Button.component";
+import Slide from "react-reveal/Slide";
 
 function Cart() {
   const classes = useStyles();
@@ -17,16 +18,18 @@ function Cart() {
 
   return (
     <Fragment>
-      <Grid container className={classes.cart_cont}>
-        <Grid item className={classes.cart_closeWindowBtn}>
-          <CloseWindowBtn onClickHandler={onCloseHandler} />
+      <Slide duration={700} right>
+        <Grid container className={classes.cart_cont}>
+          <Grid item className={classes.cart_closeWindowBtn}>
+            <CloseWindowBtn onClickHandler={onCloseHandler} />
+          </Grid>
+          <Grid item md={12} className={classes.cart_heading}>
+            <Heading text="Shopping Cart" fontsize="3.5rem" />
+          </Grid>
+          <Cart_Items />
+          <Checkout_Button />
         </Grid>
-        <Grid item md={12} className={classes.cart_heading}>
-          <Heading text="Shopping Cart" fontsize="3.5rem" />
-        </Grid>
-        <Cart_Items />
-        <Checkout_Button />
-      </Grid>
+      </Slide>
     </Fragment>
   );
 }

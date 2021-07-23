@@ -6,6 +6,7 @@ import { useStyles } from "../homepage_styles";
 import PlayCircleFilledWhiteIcon from "@material-ui/icons/PlayCircleFilledWhite";
 import Button from "@material-ui/core/Button";
 import VideoIframe from "./VideoIframe.component";
+import Zoom from "react-reveal/Zoom";
 
 function VideoPlayer() {
   const classes = useStyles();
@@ -16,7 +17,9 @@ function VideoPlayer() {
   return (
     <Fragment>
       <Grid container spacing={0} className={classes.videoplayerImg_cont}>
-        <img src={VideoPlayerImage} className={classes.videoplayerImg} />
+        <Zoom>
+          <img src={VideoPlayerImage} className={classes.videoplayerImg} />
+        </Zoom>
         <Button
           onClick={() => setPlayHandler(true)}
           className={classes.player_iconbtm}>

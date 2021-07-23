@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import WriteArticle from "./WriteArticle.component";
 import { useState } from "react";
 import { useEffect } from "react";
+import Fade from "react-reveal/Fade";
 
 function SelectTopic() {
   const classes = useStyles();
@@ -31,28 +32,30 @@ function SelectTopic() {
   return (
     <Fragment>
       <Grid item md={5} sm={12} className={classes.selecttopic_cont}>
-        <div className={classes.selecttopic}>
-          <div className={classes.heading}>
-            <Heading text="Select your topic" fontsize="4rem" />
+        <Fade duration={500}>
+          <div className={classes.selecttopic}>
+            <div className={classes.heading}>
+              <Heading text="Select your topic" fontsize="4rem" />
+            </div>
+            <ArticleTypeCheckbox />
+            <WriteArticle />
+            <div className={classes.topicoptions_cont}>
+              {filteredArticles &&
+                filteredArticles.map((item) => {
+                  return (
+                    <TopicOptions
+                      key={item._id}
+                      id={item._id}
+                      title={item.article.title}
+                      author={item.author}
+                      profileUrl={item.authorUrl}
+                      authorEmail={item.authorEmail}
+                    />
+                  );
+                })}
+            </div>
           </div>
-          <ArticleTypeCheckbox />
-          <WriteArticle />
-          <div className={classes.topicoptions_cont}>
-            {filteredArticles &&
-              filteredArticles.map((item) => {
-                return (
-                  <TopicOptions
-                    key={item._id}
-                    id={item._id}
-                    title={item.article.title}
-                    author={item.author}
-                    profileUrl={item.authorUrl}
-                    authorEmail={item.authorEmail}
-                  />
-                );
-              })}
-          </div>
-        </div>
+        </Fade>
       </Grid>
     </Fragment>
   );

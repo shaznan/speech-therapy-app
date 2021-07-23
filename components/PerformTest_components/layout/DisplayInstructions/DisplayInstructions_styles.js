@@ -26,8 +26,11 @@ const useStyles = makeStyles(
       },
     },
     paragraphtxt: {
+      ["@media (max-width:1650px)"]: {
+        fontSize: "0.95rem",
+      },
       ["@media (max-width:960px)"]: {
-        fontSize: "1rem",
+        fontSize: "0.95rem",
       },
     },
   },

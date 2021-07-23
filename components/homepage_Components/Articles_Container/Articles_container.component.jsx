@@ -3,7 +3,6 @@ import Grid from "@material-ui/core/Grid";
 import { useStyles } from "../homepage_styles";
 import { Fragment } from "react";
 import Card from "../Articles_Container/Card.component";
-import { fetchArticleData } from "../../../store/articlesSlice";
 import { useDispatch, useSelector } from "react-redux";
 import WriteArticleBanner from "./WriteArticleBanner.component";
 

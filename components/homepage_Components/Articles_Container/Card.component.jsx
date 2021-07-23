@@ -10,6 +10,7 @@ import Typography from "@material-ui/core/Typography";
 import { articleSlice_Actions } from "../../../store/articlesSlice";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/router";
+import Zoom from "react-reveal/Zoom";
 
 const useStyles = makeStyles(
   {
@@ -40,32 +41,34 @@ export default function MediaCard({ title, imgsrc, body, id }) {
   };
 
   return (
-    <Card className={classes.root}>
-      <CardActionArea>
-        <CardMedia
-          className={classes.media}
-          image={imgsrc}
-          title="Contemplative Reptile"
-        />
-        <CardContent className={classes.CardContent}>
-          <Typography gutterBottom variant="h5" component="h2">
-            {title}
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            {body}
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-      <CardActions>
-        <Button
-          onClick={() => {
-            showArticleHandler(id);
-          }}
-          size="small"
-          color="primary">
-          Read Article
-        </Button>
-      </CardActions>
-    </Card>
+    <Zoom duration={1000}>
+      <Card className={classes.root}>
+        <CardActionArea>
+          <CardMedia
+            className={classes.media}
+            image={imgsrc}
+            title="Contemplative Reptile"
+          />
+          <CardContent className={classes.CardContent}>
+            <Typography gutterBottom variant="h5" component="h2">
+              {title}
+            </Typography>
+            <Typography variant="body2" color="textSecondary" component="p">
+              {body}
+            </Typography>
+          </CardContent>
+        </CardActionArea>
+        <CardActions>
+          <Button
+            onClick={() => {
+              showArticleHandler(id);
+            }}
+            size="small"
+            color="primary">
+            Read Article
+          </Button>
+        </CardActions>
+      </Card>
+    </Zoom>
   );
 }

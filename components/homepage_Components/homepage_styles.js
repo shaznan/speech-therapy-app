@@ -198,7 +198,7 @@ const useStyles = makeStyles(
       justifyContent: "center",
       height: "100%",
       alignItems: "center",
-      position: "relative",
+      // position: "relative",
     },
     videoplayerImg: {
       width: "50vw",

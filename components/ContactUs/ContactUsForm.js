@@ -5,6 +5,7 @@ import { Formik, Form } from "formik";
 import TextInputFeild from "../Common_Layout/Form/TextFeild.component";
 import * as Yup from "yup";
 import FormBtn from "../Common_Layout/Form/FormBtn.component";
+import Fade from "react-reveal/Fade";
 
 function ContactUsForm() {
   const classes = useStyles();
@@ -52,15 +53,17 @@ function ContactUsForm() {
       validationSchema={validate}>
       {() => (
         <div className={classes.form_maincontainer}>
-          <div className={classes.formcontainer}>
-            <h1 className={classes.formheader}>Contact Us</h1>
-            <Form id="contact_us" onSubmit={sendEmail}>
-              <TextInputFeild label="Name" name="user_name" type="name" />
-              <TextInputFeild label="Email" name="user_email" type="email" />
-              <TextInputFeild label="Message" name="message" type="text" />
-              <FormBtn text="Submit" form="contact_us" />
-            </Form>
-          </div>
+          <Fade duration={1000} left>
+            <div className={classes.formcontainer}>
+              <h1 className={classes.formheader}>Contact Us</h1>
+              <Form id="contact_us" onSubmit={sendEmail}>
+                <TextInputFeild label="Name" name="user_name" type="name" />
+                <TextInputFeild label="Email" name="user_email" type="email" />
+                <TextInputFeild label="Message" name="message" type="text" />
+                <FormBtn text="Submit" form="contact_us" />
+              </Form>
+            </div>
+          </Fade>
         </div>
       )}
     </Formik>

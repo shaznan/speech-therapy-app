@@ -1,5 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import Fade from "react-reveal/Fade";
 
 const useStyles = makeStyles(
   {
@@ -23,16 +24,18 @@ function BannerImage({ url, size = "large" }) {
   const classes = useStyles();
   return (
     <div>
-      <img
-        src={url}
-        className={
-          size === "large"
-            ? classes.largeimage
-            : size === "medium"
-            ? classes.mediumimage
-            : null
-        }
-      />
+      <Fade duration={1000}>
+        <img
+          src={url}
+          className={
+            size === "large"
+              ? classes.largeimage
+              : size === "medium"
+              ? classes.mediumimage
+              : null
+          }
+        />
+      </Fade>
     </div>
   );
 }

@@ -9,6 +9,7 @@ import PrevAndNextBtns from "./PrevAndNextBtns.component";
 import { useDispatch } from "react-redux";
 import { testActions } from "../../../../store/performTestSlice";
 import CloseBtn from "./CloseBtn.component";
+import Fade from "react-reveal/Fade";
 
 function SelectCatergoryForm() {
   const dispatch = useDispatch();
@@ -22,14 +23,16 @@ function SelectCatergoryForm() {
   return (
     <Fragment>
       <Grid item lg={12} className={classes.container} style={{}}>
-        <Grid container spacing={0} className={classes.cardcontainer}>
-          <Card>
-            <CloseBtn onClickHandler={onClickHandler} />
-            <MainCatergory />
-            <SubCatergory />
-            <PrevAndNextBtns />
-          </Card>
-        </Grid>
+        <Fade duration={500} left>
+          <Grid container spacing={0} className={classes.cardcontainer}>
+            <Card>
+              <CloseBtn onClickHandler={onClickHandler} />
+              <MainCatergory />
+              <SubCatergory />
+              <PrevAndNextBtns />
+            </Card>
+          </Grid>
+        </Fade>
       </Grid>
     </Fragment>
   );

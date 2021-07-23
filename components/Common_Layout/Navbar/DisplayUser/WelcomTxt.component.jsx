@@ -11,7 +11,7 @@ function DisplayUser_WelcomTxt({ avatar, nickName, toggleDropdown }) {
         <img src={avatar} className={classes.avatar} />
       </div>
       {screenWidth > 800 ? (
-        <span className={classes.userdetail}>
+        <span onClick={toggleDropdown} className={classes.userdetail}>
           Welcome, <span className={classes.placeholder}>{nickName}</span>{" "}
         </span>
       ) : null}

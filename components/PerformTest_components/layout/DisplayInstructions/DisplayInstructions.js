@@ -10,6 +10,7 @@ import { useDispatch } from "react-redux";
 import Card from "../../../Common_Layout/Card/Card";
 import CloseWindowBtn from "../../../Common_Layout/Button/CloseWindowBtn";
 import CloseBtn from "../SelectCatergory/CloseBtn.component";
+import Fade from "react-reveal/Fade";
 
 function DisplayInstructions() {
   const classes = useStyles();
@@ -28,35 +29,38 @@ function DisplayInstructions() {
   return (
     <Fragment>
       <Grid item lg={12} sm={12} className={classes.container}>
-        <Card className={classes.cardcontainer}>
-          <CloseBtn onClickHandler={closeBtnOnClickHandler} />
-          <Paragraph
-            customstyle={paragraphstyle}
-            text={[
-              <div
-                key={"heading"}
-                style={{ color: "#636363", fontSize: "1.3rem" }}>
-                Instructions:
-              </div>,
-              <p key={"paragraph1"} className={classes.paragraphtxt}>
-                Select a catergory from the next window and get prepared to
-                <strong> speak out load 📢 </strong> as much words that comes to
-                your mind. Words relating to a certain catergory, or words
-                beggining with an alphabetical letter.
-              </p>,
-              <p key={"paragraph2"} className={classes.paragraphtxt}>
-                You will have 60 seconds to complete this challenge, good luck!
-              </p>,
-            ]}
-          />
-          <div className={classes.btncontainer}>
-            <Button
-              onClickHandler={onClickHandler}
-              type="next"
-              text="Select your catergory"
+        <Fade duration={500} left>
+          <Card className={classes.cardcontainer}>
+            <CloseBtn onClickHandler={closeBtnOnClickHandler} />
+            <Paragraph
+              customstyle={paragraphstyle}
+              text={[
+                <div
+                  key={"heading"}
+                  style={{ color: "#636363", fontSize: "1.3rem" }}>
+                  Instructions:
+                </div>,
+                <p key={"paragraph1"} className={classes.paragraphtxt}>
+                  Select a catergory from the next window and get prepared to
+                  <strong> speak out load 📢 </strong> as much words that comes
+                  to your mind. Words relating to a certain catergory, or words
+                  beggining with an alphabetical letter.
+                </p>,
+                <p key={"paragraph2"} className={classes.paragraphtxt}>
+                  You will have 60 seconds to complete this challenge, good
+                  luck!
+                </p>,
+              ]}
             />
-          </div>
-        </Card>
+            <div className={classes.btncontainer}>
+              <Button
+                onClickHandler={onClickHandler}
+                type="next"
+                text="Select your catergory"
+              />
+            </div>
+          </Card>
+        </Fade>
       </Grid>
     </Fragment>
   );
