@@ -12,6 +12,9 @@ import Navbar from "../../components/Common_Layout/Navbar/Navbar";
 import Grid from "@material-ui/core/Grid";
 import HomepageImage from "../../assets/images/homepage_image.png";
 import Container from "@material-ui/core/Container";
+// import config from "react-reveal/globals";
+// import { useEffect } from "react";
+import Slide from "react-reveal/Slide";
 
 function WelcomeMsg_Container() {
   const loading = useSelector((state) => state.user.loading);
@@ -21,9 +24,13 @@ function WelcomeMsg_Container() {
   const router = useRouter();
   const classes = useStyles();
 
+  // useEffect(() => {
+  //   config({ ssrFadeout: true });
+  // }, []);
+
   return (
     <Fragment>
-      <container className={classes.container}>
+      <div className={classes.container}>
         <AdminToolbar />
         <Navbar />
         <LoadSpinner loading={loading} />
@@ -33,11 +40,13 @@ function WelcomeMsg_Container() {
               <Grid item lg={6} xs={12} className={classes.textcontainer}>
                 <div>
                   <HomepageText />
-                  <Button
-                    type="primary"
-                    text="Perform Test"
-                    onClickHandler={redirectHandler}
-                  />
+                  <Slide bottom duration={1800}>
+                    <Button
+                      type="primary"
+                      text="Perform Test"
+                      onClickHandler={redirectHandler}
+                    />
+                  </Slide>
                 </div>
               </Grid>
               <Grid item lg={6} xs={12} className={classes.imagecontainer}>
@@ -48,7 +57,7 @@ function WelcomeMsg_Container() {
             </Grid>
           </Container>
         </div>
-      </container>
+      </div>
     </Fragment>
   );
 }
