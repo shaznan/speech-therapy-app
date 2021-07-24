@@ -68,6 +68,9 @@ const userSlice = createSlice({
         action.payload,
       ];
     },
+    setLoading(state, action) {
+      state.loading = action.payload;
+    },
     setState(state, action) {
       state.entities[0] = action.payload;
     },
