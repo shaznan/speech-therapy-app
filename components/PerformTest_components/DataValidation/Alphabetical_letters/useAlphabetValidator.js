@@ -1,8 +1,9 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { testActions } from "../../../../store/performTestSlice";
-import { userSlice_Actions } from "../../../../store/userSlice";
+import usePopulateScores from "../usePopulateScores";
 
+// validate transcript data if user choose alphabets
 function useAlphabetValidator() {
   const isAlphabetChecked = useSelector(
     (state) => state.performtest.isAlphabetChecked,
@@ -15,24 +16,9 @@ function useAlphabetValidator() {
   const isTranscriptReceived = useSelector(
     (state) => state.performtest.isTranscriptReceived,
   );
+  const { updateUserScores, updateUserWordCount } = usePopulateScores();
+
   const dispatch = useDispatch();
-
-  const populateUserScores = () => {
-    dispatch(userSlice_Actions.setAverageScore());
-    dispatch(userSlice_Actions.setScoreAvgeCriteria());
-    dispatch(userSlice_Actions.setHighScore());
-    dispatch(userSlice_Actions.setChangeOverPrevScore());
-  };
-
-  const populateUserWordCount = (wordsMatch, wordsUnRelated, accuracy) => {
-    dispatch(
-      userSlice_Actions.setWordsCount({
-        wordsMatch: wordsMatch,
-        wordsUnRelated: wordsUnRelated,
-        accuracyRate: accuracy,
-      }),
-    );
-  };
 
   //filter transcript words into matched, unrelated, based on selected topicn, calculate accuracy lvl
   useEffect(() => {
@@ -56,10 +42,10 @@ function useAlphabetValidator() {
     const accuracy = Math.round((wordsMatch / totalWordsCount) * 100);
 
     if (isTranscriptReceived) {
-      populateUserWordCount(wordsMatch, wordsUnRelated, accuracy);
+      updateUserWordCount(wordsMatch, wordsUnRelated, accuracy);
       dispatch(testActions.setIsAnalyzing(false));
       dispatch(testActions.setIsWordsCountReceived(true));
-      populateUserScores();
+      updateUserScores();
     }
   }, [isTranscriptReceived, transcript]);
 }
