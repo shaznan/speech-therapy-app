@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import { userSlice_Actions } from "../../../store/userSlice";
 import { fetchUserById } from "../../../store/userSlice";
 
-//authenticate both signIn and SignUp
+//authenticate both signIn and SignUp based on Url passed in from signin/signup form
 function useAuth(url) {
   const router = useRouter();
   const dispatch = useDispatch();
@@ -33,6 +33,7 @@ function useAuth(url) {
     dispatch(userSlice_Actions.setLocalId(res.data.localId));
   };
 
+  //handle sign in and sign up with firebase auth //
   const fireBaseAuth = (enteredEmail, enteredPassword) => {
     axios
       .post(url, {
@@ -41,7 +42,6 @@ function useAuth(url) {
         returnSecureToken: true,
       })
       .then((res) => {
-        //setstate only when login, when signup, local state will be used as display name coz res will not have displayName initially
         responseHandler(res);
         redirectHandler();
       })
@@ -71,30 +71,42 @@ function useAuth(url) {
     userRole: "User",
   };
 
-  //create new user account in mongodb  when sign up
-  useEffect(() => {
-    if (nickName !== "" && token !== "" && email !== "" && localId !== "") {
-      //setLocal storage
-      localStorage.setItem("state", JSON.stringify(signUpInitialState));
-      //store data in db
-      axios
-        .post("/api/UserData/createNewUser", signUpInitialState)
-        .then((res) => {
-          console.log("User account created");
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
-  }, [nickName, token, email, localId]);
+  //store sign up and retreive sign in data from mongodb//
 
-  //if signed in, update state with user specific state
   useEffect(() => {
-    if (nickName === "" && isLoggedIn && localId !== "") {
-      console.log(localId);
-      dispatch(fetchUserById(localId));
-    }
-  }, [nickName, isLoggedIn, localId]);
+    if (!localId) return;
+    dispatch(userSlice_Actions.setLoading("loading"));
+    axios
+      .get("/api/UserData/checkIfUserExistsInDB", {
+        params: {
+          userId: localId,
+        },
+      })
+      .then((res) => {
+        dispatch(userSlice_Actions.setLoading("success"));
+        //if user exists, retreive user data from db and store redux state
+        if (res.status === 200) {
+          dispatch(fetchUserById(localId));
+        }
+
+        //if user does not exist, create new user in db
+        if (res.status === 204) {
+          localStorage.setItem("state", JSON.stringify(signUpInitialState));
+          axios
+            .post("/api/UserData/createNewUser", signUpInitialState)
+            .then((res) => {
+              console.log("User account created");
+            })
+            .catch((err) => {
+              console.log("could not create account");
+            });
+        }
+      })
+      .catch((err) => {
+        dispatch(userSlice_Actions.setLoading("rejected"));
+        console.log("something went wrong");
+      });
+  }, [localId]);
 
   return {
     fireBaseAuth,

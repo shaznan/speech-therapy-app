@@ -9,17 +9,20 @@ import LogoImage from "../../components/Login_components/Logo.component";
 import { useSelector } from "react-redux";
 import Footer from "../../components/Login_components/Form/Footer.component";
 import Fade from "react-reveal/Fade";
+import LoadSpinner from "../../components/Common_Layout/loadspinner/loadSpinner";
 
 function login() {
   const classes = useStyles();
   const signInActive = useSelector((state) => state.login_signup.signInActive);
   const signUpActive = useSelector((state) => state.login_signup.signUpActive);
   const isEmailError = useSelector((state) => state.login_signup.isEmailError);
+  const loading = useSelector((state) => state.user.loading);
 
   return (
     <Fragment>
       <div className={classes.bgimage}>
         <Grid container spacing={0} className={classes.container}>
+          <LoadSpinner loading={loading} />
           <Header />
           <LogoImage />
           <Fade duration={1000} left>
