@@ -1,65 +1,51 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { testActions } from "../../../../store/performTestSlice";
-import { userSlice_Actions } from "../../../../store/userSlice";
+import usePopulateScores from "../usePopulateScores";
 
+// validate transcript data if user choose alphabets
 function useAlphabetValidator() {
   const isAlphabetChecked = useSelector(
-    (state) => state.performtest.isAlphabetChecked
+    (state) => state.performtest.isAlphabetChecked,
   );
   const selectedOptfromList = useSelector(
-    (state) => state.performtest.selectedOptfromList
+    (state) => state.performtest.selectedOptfromList,
   );
   const transcript = useSelector((state) => state.performtest.transcript);
 
   const isTranscriptReceived = useSelector(
-    (state) => state.performtest.isTranscriptReceived
+    (state) => state.performtest.isTranscriptReceived,
   );
+  const { updateUserScores, updateUserWordCount } = usePopulateScores();
+
   const dispatch = useDispatch();
 
-  //filter transcript words into matched, unrelated, based on selected option from dropdwn, calculate accuracy lvl
+  //filter transcript words into matched, unrelated, based on selected topicn, calculate accuracy lvl
   useEffect(() => {
     if (!isAlphabetChecked) return;
-    if (transcript === null) {
-      return;
-    }
-
+    if (transcript === null) return;
     const wordsBreakDown = transcript.toUpperCase().split(" ");
 
     //if user repeated same words, remove them
     const removeDuplicates = new Set(wordsBreakDown);
-
     const nonDuplicateWords = [...removeDuplicates];
-
     const totalWordsCount = nonDuplicateWords.length;
-
-    const initialLetter = nonDuplicateWords.map((word) => {
+    const initialLetters = nonDuplicateWords.map((word) => {
       return word[0];
     });
-
-    const wordsMatch = initialLetter.filter((letter) => {
+    const wordsMatch = initialLetters.filter((letter) => {
       return letter === selectedOptfromList;
     }).length;
-
-    const wordsUnRelated = initialLetter.filter((letter) => {
+    const wordsUnRelated = initialLetters.filter((letter) => {
       return letter !== selectedOptfromList;
     }).length;
     const accuracy = Math.round((wordsMatch / totalWordsCount) * 100);
 
     if (isTranscriptReceived) {
-      dispatch(
-        userSlice_Actions.setWordsCount({
-          wordsMatch: wordsMatch,
-          wordsUnRelated: wordsUnRelated,
-          accuracyRate: accuracy,
-        })
-      );
+      updateUserWordCount(wordsMatch, wordsUnRelated, accuracy);
       dispatch(testActions.setIsAnalyzing(false));
-      dispatch(userSlice_Actions.setAverageScore());
-      dispatch(userSlice_Actions.setScoreAvgeCriteria());
-      dispatch(userSlice_Actions.setHighScore());
-      dispatch(userSlice_Actions.setChangeOverPrevScore());
       dispatch(testActions.setIsWordsCountReceived(true));
+      updateUserScores();
     }
   }, [isTranscriptReceived, transcript]);
 }

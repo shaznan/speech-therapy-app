@@ -21,14 +21,14 @@ const performTestSlice = createSlice({
     //select catergory form
     isAlphabetChecked: true,
     isRandomChecked: false,
-    listOfAlphabets: "abcdefghijklmnopqrstuvwxyz",
+    listOfAlphabets: "abcdefghijklmnopqrstuvw",
     topicsToChooseFrom: null,
     selectedOptfromList: "",
     isOptionSelected: false,
     isRecording: false,
     //displayremainingtime component
     isTimeIsUp: false,
-    remainingTime: 3,
+    remainingTime: 60,
     countdownPercent: 100,
     //userecorder component
     mediaPermisson: null,
@@ -53,13 +53,16 @@ const performTestSlice = createSlice({
       state.showCatergoryForm = action.payload;
     },
     toggleCheckbox: (state, action) => {
-      action.payload === "alphabet"
-        ? (state.isAlphabetChecked = !state.isAlphabetChecked) &&
-          (state.selectedOptfromList = "")
-        : action.payload === "random"
-        ? (state.isRandomChecked = !state.isRandomChecked) &&
-          (state.selectedOptfromList = "")
-        : "";
+      if (action.payload === "alphabet") {
+        state.isAlphabetChecked = !state.isAlphabetChecked;
+        state.selectedOptfromList = "";
+        state.isOptionSelected = false;
+      }
+      if (action.payload === "random") {
+        state.isRandomChecked = !state.isRandomChecked;
+        state.selectedOptfromList = "";
+        state.isOptionSelected = false;
+      }
     },
 
     setSelectedOptfromList: (state, action) => {

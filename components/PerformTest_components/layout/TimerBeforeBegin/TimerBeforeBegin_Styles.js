@@ -16,6 +16,8 @@ const useStyles = makeStyles(
     },
     title: {
       textAlign: "center",
+      backgroundColor: "white",
+      padding: "0.5rem",
     },
   },
   { index: 1 },

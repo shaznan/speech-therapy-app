@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import FormLabel from "@material-ui/core/FormLabel";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -20,6 +20,19 @@ function SubCatergoryContent({ mainLabel, subLabel, optionsList }) {
   const selectedOptfromList = useSelector(
     (state) => state.performtest.selectedOptfromList,
   );
+  const isAlphabetChecked = useSelector(
+    (state) => state.performtest.isAlphabetChecked,
+  );
+
+  // console.log(optionsList);
+
+  useEffect(() => {
+    if (isAlphabetChecked === true) {
+      const randomLetter = Math.round(Math.random() * optionsList.length);
+      dispatch(testActions.setSelectedOptfromList(optionsList[randomLetter]));
+      dispatch(testActions.setIsOptionSelected(true));
+    }
+  }, [isAlphabetChecked]);
 
   const renderMenuItem = (optionlist) => {
     if (!optionsList) {
@@ -34,6 +47,18 @@ function SubCatergoryContent({ mainLabel, subLabel, optionsList }) {
       });
     }
   };
+
+  if (subLabel === "alphabet") {
+    return (
+      <Fragment>
+        <FormControl>
+          <FormLabel className={classes.formlabelsub} component="legend">
+            {mainLabel}
+          </FormLabel>
+        </FormControl>
+      </Fragment>
+    );
+  }
 
   return (
     <Fragment>
