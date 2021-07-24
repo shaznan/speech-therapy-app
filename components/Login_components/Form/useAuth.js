@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import { userSlice_Actions } from "../../../store/userSlice";
 import { fetchUserById } from "../../../store/userSlice";
 
-//authenticate both signIn and SignUp based on Url passes in
+//authenticate both signIn and SignUp based on Url passed in from signin/signup form
 function useAuth(url) {
   const router = useRouter();
   const dispatch = useDispatch();
@@ -33,7 +33,7 @@ function useAuth(url) {
     dispatch(userSlice_Actions.setLocalId(res.data.localId));
   };
 
-  //handle sign in and sign up with firebase auth //////////////////////
+  //handle sign in and sign up with firebase auth //
   const fireBaseAuth = (enteredEmail, enteredPassword) => {
     axios
       .post(url, {
@@ -71,7 +71,7 @@ function useAuth(url) {
     userRole: "User",
   };
 
-  //store sign up and retreive sign in data from mongodb//////////////////
+  //store sign up and retreive sign in data from mongodb//
 
   useEffect(() => {
     if (!localId) return;

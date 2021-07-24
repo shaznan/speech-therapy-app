@@ -230,7 +230,7 @@ const useStyles = makeStyles(
         flexDirection: "column-reverse",
         justifyContent: "center",
         alignItems: "center",
-        height: "100vh",
+        height: "100%",
         backgroundPositionX: "-15rem",
       },
     },
