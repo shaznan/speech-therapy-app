@@ -10,6 +10,7 @@ import { useDispatch } from "react-redux";
 import { testActions } from "../../../../store/performTestSlice";
 import CloseBtn from "./CloseBtn.component";
 import Fade from "react-reveal/Fade";
+import WithShowCatergory from "../Wrapper/WithShowCatergory";
 
 function SelectCatergoryForm() {
   const dispatch = useDispatch();
@@ -21,7 +22,7 @@ function SelectCatergoryForm() {
   };
 
   return (
-    <Fragment>
+    <WithShowCatergory>
       <Grid item lg={12} className={classes.container} style={{}}>
         <Fade duration={500} left>
           <Grid container spacing={0} className={classes.cardcontainer}>
@@ -34,7 +35,7 @@ function SelectCatergoryForm() {
           </Grid>
         </Fade>
       </Grid>
-    </Fragment>
+    </WithShowCatergory>
   );
 }
 

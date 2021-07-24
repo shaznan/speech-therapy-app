@@ -11,9 +11,6 @@ import { useSelector } from "react-redux";
 import Navbar from "../../components/Common_Layout/Navbar/Navbar";
 import Grid from "@material-ui/core/Grid";
 import HomepageImage from "../../assets/images/homepage_image.png";
-import Container from "@material-ui/core/Container";
-// import config from "react-reveal/globals";
-// import { useEffect } from "react";
 import Slide from "react-reveal/Slide";
 
 function WelcomeMsg_Container() {
@@ -23,11 +20,6 @@ function WelcomeMsg_Container() {
   };
   const router = useRouter();
   const classes = useStyles();
-
-  // useEffect(() => {
-  //   config({ ssrFadeout: true });
-  // }, []);
-
   return (
     <Fragment>
       <div className={classes.container}>
@@ -35,27 +27,23 @@ function WelcomeMsg_Container() {
         <Navbar />
         <LoadSpinner loading={loading} />
         <div className={classes.coverImage}>
-          <Container maxWidth="xl">
-            <Grid container spacing={0} className={classes.maincontainer}>
-              <Grid item lg={6} xs={12} className={classes.textcontainer}>
-                <div>
-                  <HomepageText />
-                  <Slide bottom duration={1800}>
-                    <Button
-                      type="primary"
-                      text="Perform Test"
-                      onClickHandler={redirectHandler}
-                    />
-                  </Slide>
-                </div>
-              </Grid>
-              <Grid item lg={6} xs={12} className={classes.imagecontainer}>
-                <div>
-                  <BannerImage url={HomepageImage} />
-                </div>
-              </Grid>
+          <Grid container spacing={0} className={classes.maincontainer}>
+            <Grid item lg={6} xs={12} className={classes.textcontainer}>
+              <div>
+                <HomepageText />
+                <Slide bottom duration={1800}>
+                  <Button
+                    type="primary"
+                    text="Perform Test"
+                    onClickHandler={redirectHandler}
+                  />
+                </Slide>
+              </div>
             </Grid>
-          </Container>
+            <Grid item lg={6} xs={12} className={classes.imagecontainer}>
+              <BannerImage url={HomepageImage} />
+            </Grid>
+          </Grid>
         </div>
       </div>
     </Fragment>

@@ -4,12 +4,13 @@ import DashboardBtn from "./DashboardBtn";
 import Grid from "@material-ui/core/Grid";
 import { performtestStyles } from "./PerformTest_Styles";
 import { useSelector } from "react-redux";
+import WithStartPage from "./Wrapper/WithStartPage";
 
-function PerformTestHome_Btn() {
+function HomeButtons() {
   const classes = performtestStyles();
   const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
   return (
-    <Fragment>
+    <WithStartPage>
       <Grid container spacing={2} className={classes.performtesthome_btncont}>
         <Grid
           item
@@ -33,8 +34,8 @@ function PerformTestHome_Btn() {
           )}
         </Grid>
       </Grid>
-    </Fragment>
+    </WithStartPage>
   );
 }
 
-export default PerformTestHome_Btn;
+export default HomeButtons;

@@ -11,8 +11,7 @@ const useStyles = makeStyles(
       borderRadius: "9px",
       boxShadow: "0px 3px 29px rgba(0,0,0,0.1)",
       ["@media (max-width:800px)"]: {
-        width: "90%",
-        // height: "60vh",
+        width: "100%",
         padding: "1rem 1rem 1rem 1rem",
       },
     },

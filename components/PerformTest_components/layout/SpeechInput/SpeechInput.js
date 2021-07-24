@@ -5,6 +5,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Fragment } from "react";
 import { useSelector } from "react-redux";
 import CircleRipple from "./CircleRipple.component";
+import WithIsRecording from "../Wrapper/WithIsRecording";
+
 //dynamically import React Mic to avoid ssr, imported module includes library that only works with browser
 const ReactMic = dynamic(
   () =>
@@ -54,20 +56,17 @@ const useStyles = makeStyles(
       ["@media (max-width:960px)"]: {
         right: "45vw",
       },
-      // transform: "translate(-50%,-50%)",
-      // left: "33.5%",
     },
   },
   { index: 1 },
 );
 
 function SpeechInput() {
-  // useRecorder(); //execute mic functionality and send recorded data to backend
   const classes = useStyles();
   const isRecording = useSelector((state) => state.performtest.isRecording);
 
   return (
-    <Fragment>
+    <WithIsRecording>
       <div className={classes.mainContainer}>
         <div className={classes.visualContainer}>
           <div className={classes.tooltip}>
@@ -84,12 +83,8 @@ function SpeechInput() {
           />
         </div>
       </div>
-    </Fragment>
+    </WithIsRecording>
   );
 }
 
 export default SpeechInput;
-
-//FIXME: when mic access is not granted timer still runs,
-//if no data input then dont set as chunk
-//hide the recording sign
