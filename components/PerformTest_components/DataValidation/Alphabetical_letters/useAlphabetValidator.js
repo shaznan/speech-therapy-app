@@ -5,61 +5,61 @@ import { userSlice_Actions } from "../../../../store/userSlice";
 
 function useAlphabetValidator() {
   const isAlphabetChecked = useSelector(
-    (state) => state.performtest.isAlphabetChecked
+    (state) => state.performtest.isAlphabetChecked,
   );
   const selectedOptfromList = useSelector(
-    (state) => state.performtest.selectedOptfromList
+    (state) => state.performtest.selectedOptfromList,
   );
   const transcript = useSelector((state) => state.performtest.transcript);
 
   const isTranscriptReceived = useSelector(
-    (state) => state.performtest.isTranscriptReceived
+    (state) => state.performtest.isTranscriptReceived,
   );
   const dispatch = useDispatch();
 
-  //filter transcript words into matched, unrelated, based on selected option from dropdwn, calculate accuracy lvl
+  const populateUserScores = () => {
+    dispatch(userSlice_Actions.setAverageScore());
+    dispatch(userSlice_Actions.setScoreAvgeCriteria());
+    dispatch(userSlice_Actions.setHighScore());
+    dispatch(userSlice_Actions.setChangeOverPrevScore());
+  };
+
+  const populateUserWordCount = (wordsMatch, wordsUnRelated, accuracy) => {
+    dispatch(
+      userSlice_Actions.setWordsCount({
+        wordsMatch: wordsMatch,
+        wordsUnRelated: wordsUnRelated,
+        accuracyRate: accuracy,
+      }),
+    );
+  };
+
+  //filter transcript words into matched, unrelated, based on selected topicn, calculate accuracy lvl
   useEffect(() => {
     if (!isAlphabetChecked) return;
-    if (transcript === null) {
-      return;
-    }
-
+    if (transcript === null) return;
     const wordsBreakDown = transcript.toUpperCase().split(" ");
 
     //if user repeated same words, remove them
     const removeDuplicates = new Set(wordsBreakDown);
-
     const nonDuplicateWords = [...removeDuplicates];
-
     const totalWordsCount = nonDuplicateWords.length;
-
-    const initialLetter = nonDuplicateWords.map((word) => {
+    const initialLetters = nonDuplicateWords.map((word) => {
       return word[0];
     });
-
-    const wordsMatch = initialLetter.filter((letter) => {
+    const wordsMatch = initialLetters.filter((letter) => {
       return letter === selectedOptfromList;
     }).length;
-
-    const wordsUnRelated = initialLetter.filter((letter) => {
+    const wordsUnRelated = initialLetters.filter((letter) => {
       return letter !== selectedOptfromList;
     }).length;
     const accuracy = Math.round((wordsMatch / totalWordsCount) * 100);
 
     if (isTranscriptReceived) {
-      dispatch(
-        userSlice_Actions.setWordsCount({
-          wordsMatch: wordsMatch,
-          wordsUnRelated: wordsUnRelated,
-          accuracyRate: accuracy,
-        })
-      );
+      populateUserWordCount(wordsMatch, wordsUnRelated, accuracy);
       dispatch(testActions.setIsAnalyzing(false));
-      dispatch(userSlice_Actions.setAverageScore());
-      dispatch(userSlice_Actions.setScoreAvgeCriteria());
-      dispatch(userSlice_Actions.setHighScore());
-      dispatch(userSlice_Actions.setChangeOverPrevScore());
       dispatch(testActions.setIsWordsCountReceived(true));
+      populateUserScores();
     }
   }, [isTranscriptReceived, transcript]);
 }
