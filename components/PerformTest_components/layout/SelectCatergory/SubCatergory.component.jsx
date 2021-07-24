@@ -40,10 +40,10 @@ function SubCatergory() {
     <Fragment>
       <SubCatergoryContent
         mainLabel={conditionallyRenderProps(
-          "Select an alphabetical letter of your choice",
+          "* An Alphabet letter will be randomly chosen for you",
           "Select a topic of your choice",
         )}
-        subLabel={conditionallyRenderProps("(A -  Z)", "Topics")}
+        subLabel={conditionallyRenderProps("alphabet", "Topics")}
         optionsList={isAlphabetChecked ? listOfAlphabets : topicsToChooseFrom}
       />
     </Fragment>
