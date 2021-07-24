@@ -10,7 +10,7 @@ const useStyles = makeStyles(
       position: "relative",
       ["@media (max-width:960px)"]: {
         // position: "absolute",
-        // width: "100%",
+        width: "100vw !important",
       },
     },
     container: {

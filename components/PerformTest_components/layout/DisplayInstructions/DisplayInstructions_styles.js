@@ -8,6 +8,9 @@ const useStyles = makeStyles(
       marginTop: "4rem",
       // height: "41vh",
       overflow: "scroll",
+      ["@media (max-width:960px)"]: {
+        width: "100%",
+      },
     },
 
     btncontainer: {
