@@ -22,8 +22,8 @@ function HomepageText() {
       <Slide duration={1400} bottom>
         <Paragraph
           text="Try out our tests in order to discover if you are
-a victim of brain fog, and join our community
-to fight BrainFog together! "
+                a victim of brain fog, and join our community
+                to fight BrainFog together! "
         />
       </Slide>
     </div>

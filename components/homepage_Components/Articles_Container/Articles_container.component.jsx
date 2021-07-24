@@ -3,15 +3,15 @@ import Grid from "@material-ui/core/Grid";
 import { useStyles } from "../homepage_styles";
 import { Fragment } from "react";
 import Card from "../Articles_Container/Card.component";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import WriteArticleBanner from "./WriteArticleBanner.component";
 
 function Articles_container() {
   const classes = useStyles();
-  const dispatch = useDispatch();
   const [verifiedArticles, setVerifiedArticles] = useState(null);
   const articlesData = useSelector((state) => state.article.articlesData);
 
+  //filter verified articles only
   useEffect(() => {
     if (!articlesData) return;
     setVerifiedArticles(
@@ -25,6 +25,7 @@ function Articles_container() {
     <Fragment>
       <div className={classes.articles_MainContainer}>
         <Grid container spacing={8} className={classes.articles_cardContainer}>
+          {/* return only first 3 verified article data and render as card */}
           {verifiedArticles &&
             verifiedArticles.map((articleData, i) => {
               if (i > 2) return;

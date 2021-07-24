@@ -11,6 +11,7 @@ import Card from "../../../Common_Layout/Card/Card";
 import CloseWindowBtn from "../../../Common_Layout/Button/CloseWindowBtn";
 import CloseBtn from "../SelectCatergory/CloseBtn.component";
 import Fade from "react-reveal/Fade";
+import WithShowInstructions from "../Wrapper/WithShowInstructions";
 
 function DisplayInstructions() {
   const classes = useStyles();
@@ -27,7 +28,7 @@ function DisplayInstructions() {
   };
 
   return (
-    <Fragment>
+    <WithShowInstructions>
       <Grid item lg={12} sm={12} className={classes.container}>
         <Fade duration={500} left>
           <Card className={classes.cardcontainer}>
@@ -62,7 +63,7 @@ function DisplayInstructions() {
           </Card>
         </Fade>
       </Grid>
-    </Fragment>
+    </WithShowInstructions>
   );
 }
 

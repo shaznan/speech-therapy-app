@@ -3,12 +3,20 @@ import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { testActions } from "../../../../store/performTestSlice";
 
+//Record user audio through microphone, convert recorded data to base64BinaryData and send binary data to backend to transcribe into words
+
 const useRecorder = () => {
   const isRecording = useSelector((state) => state.performtest.isRecording);
   const [chunks, setChunks] = useState([]);
   const [recorder, setRecorder] = useState(null);
   const [localStream, setLocalStream] = useState(null);
   const dispatch = useDispatch();
+
+  const resetState = () => {
+    setChunks([]);
+    setRecorder(null);
+    setLocalStream(null);
+  };
 
   useEffect(() => {
     //get access to browser mic
@@ -58,8 +66,8 @@ const useRecorder = () => {
     return () => recorder.removeEventListener("dataavailable", handleData);
   }, [recorder, isRecording]);
 
-  //convert returned blob into base64data
   useEffect(() => {
+    //convert returned blob into base64data
     if (chunks.length === 0) return;
     const blob = new Blob(chunks, {
       type: "audio/wav",
@@ -72,25 +80,18 @@ const useRecorder = () => {
       //remove unwanted tags from base64 data
       const base64BinaryData = base64data.substr(base64data.indexOf(",") + 1);
 
-      //POST Request to Api folder
+      //POST Request to api folder which sends audio data to GCP and returns transcribed text
       axios
         .post("api/SpeechToText", { audioBytes: base64BinaryData })
         .then((res) => {
           dispatch(testActions.setTranscript(res.data));
-          // dispatch(testActions.setIsAnalyzing(false));
           dispatch(testActions.setIsTranscriptReceived(true));
-          setChunks([]);
-          setRecorder(null);
-          setLocalStream(null);
+          resetState();
         })
         .catch((err) => {
-          console.log(err);
           dispatch(testActions.setIsTranscriptError(true));
-          // dispatch(testActions.setIsAnalyzing(false));
           dispatch(testActions.setIsTranscriptReceived(false));
-          setChunks([]);
-          setRecorder(null);
-          setLocalStream(null);
+          resetState();
         });
     };
   }, [chunks]);

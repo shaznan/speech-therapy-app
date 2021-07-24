@@ -1,20 +1,22 @@
 import React from "react";
+import WithAnalyzeResult from "../Wrapper/WithAnalyzeResult";
 import CubeAnimation from "./CubeAnimation.component";
 import Message from "./Message.component";
 
 function AnalyzingResult() {
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        flexDirection: "column",
-        width: "100%",
-      }}
-    >
-      <CubeAnimation />
-      <Message />
-    </div>
+    <WithAnalyzeResult>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          flexDirection: "column",
+          width: "100%",
+        }}>
+        <CubeAnimation />
+        <Message />
+      </div>
+    </WithAnalyzeResult>
   );
 }
 
