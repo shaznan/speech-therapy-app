@@ -28,7 +28,7 @@ const performTestSlice = createSlice({
     isRecording: false,
     //displayremainingtime component
     isTimeIsUp: false,
-    remainingTime: 2,
+    remainingTime: 60,
     countdownPercent: 100,
     //userecorder component
     mediaPermisson: null,
@@ -115,7 +115,7 @@ const performTestSlice = createSlice({
       state.showStartBtn = true;
       state.showRemainingTime = true;
       state.isAnalyzing = false;
-      state.remainingTime = 2;
+      state.remainingTime = 60;
       state.isTimeIsUp = false;
       state.isWordsCountReceived = false;
       state.selectedOptfromList = "";
