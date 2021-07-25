@@ -7,16 +7,13 @@ export default async (req, res) => {
     // console.log(userId);
     const client = await MongoClient.connect(
       "mongodb+srv://shaznanfairoze:qmpGwieO89Yy1QNM@speech-therapy-app.mb1pc.mongodb.net/UserData?retryWrites=true&w=majority",
-      {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-      },
     );
 
     const db = client.db();
     const userCollection = db.collection("userCollection");
     const users = await userCollection.find({ localId: userId }).toArray();
     client.close();
+    console.log(user);
 
     if (users.length > 0) {
       res.status(200).json({ message: "user exists" });

@@ -98,7 +98,12 @@ function useAuth(url) {
               console.log("User account created");
             })
             .catch((err) => {
-              console.log("could not create account");
+              dispatch(login_signup_Actions.setIsEmailError(true));
+              dispatch(
+                login_signup_Actions.setEmailErrorMsg(
+                  "Could not create account",
+                ),
+              );
             });
         }
       })
