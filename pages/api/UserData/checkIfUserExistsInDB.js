@@ -13,6 +13,7 @@ export default async (req, res) => {
     const users = await userCollection.find({ localId: userId }).toArray();
     client.close();
 
+    console.log(users);
     if (users.length > 0) {
       res.status(200).json({ message: "user exists" });
     } else {

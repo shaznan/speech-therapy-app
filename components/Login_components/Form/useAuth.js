@@ -103,7 +103,7 @@ function useAuth(url) {
         }
       })
       .catch((err) => {
-        dispatch(userSlice_Actions.setLoading("idle"));
+        dispatch(userSlice_Actions.setLoading("success"));
         dispatch(login_signup_Actions.setIsEmailError(true));
         dispatch(
           login_signup_Actions.setEmailErrorMsg("Sorry something went wrong"),
