@@ -11,7 +11,7 @@ function HomepageText() {
   return (
     <div>
       <Slide duration={700} bottom>
-        <h1 data-testid="heading">test</h1>
+        {/* <h1 data-testid="heading">test</h1> */}
         <Typography variant="h3" className={classes.mainheading}>
           Get Rid of BrainFog <br className={classes.linebreak} />
           And Elevate Your
