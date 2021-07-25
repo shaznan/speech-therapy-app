@@ -64,7 +64,7 @@ function DisplayBooks() {
   }, [searchboxQuery, initialProducts]);
 
   return (
-    <Fragment>
+    <Grid item md={12}>
       <Grid container spacing={0}>
         <Grid item md={12} className={classes.displaybook_cont}>
           <Grid container className={classes.displaybooks}>
@@ -89,7 +89,7 @@ function DisplayBooks() {
           </Grid>
         </Grid>
       </Grid>
-    </Fragment>
+    </Grid>
   );
 }
 

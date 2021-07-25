@@ -5,16 +5,17 @@ import { useStyles } from "./TimerBeforeBegin_Styles";
 import Grid from "@material-ui/core/Grid";
 import { useSelector } from "react-redux";
 
+//show message based on chosen option
 function Title() {
   const classes = useStyles();
   const isAlphabetChecked = useSelector(
-    (state) => state.performtest.isAlphabetChecked
+    (state) => state.performtest.isAlphabetChecked,
   );
   const isRandomChecked = useSelector(
-    (state) => state.performtest.isRandomChecked
+    (state) => state.performtest.isRandomChecked,
   );
   const selectedOptfromList = useSelector(
-    (state) => state.performtest.selectedOptfromList
+    (state) => state.performtest.selectedOptfromList,
   );
 
   const selectedCatergory = isAlphabetChecked

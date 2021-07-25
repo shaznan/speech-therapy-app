@@ -5,6 +5,7 @@ import Title from "./TimerTitle.component";
 import TimerSpinner from "./TimerSpinner.component";
 import WithCountdownBeforeBegin from "../Wrapper/WithCountdownBeforeBegin";
 
+//display message and timer before begin test
 function TimerBeforeBegin() {
   const classes = useStyles();
 

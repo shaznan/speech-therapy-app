@@ -171,7 +171,6 @@ const bookstoreSlice = createSlice({
     },
     [fetchAllCollections.fulfilled]: (state, action) => {
       state.loading = "success";
-      // console.log(action.payload.products);
       state.bookCollections = action.payload.map((collection) => {
         return {
           id: collection.id,

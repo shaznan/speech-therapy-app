@@ -7,6 +7,7 @@ import infoIcon from "../../../../assets/images/warning_icon.png";
 import useAnalyzeResult from "./useAnalyzeResult";
 import Link from "next/link";
 
+//conditionaly render props based on result criteria
 function ResultBody() {
   const classes = useStyles();
   const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
@@ -32,16 +33,14 @@ function ResultBody() {
         <strong>{header}</strong>
       </Typography>
       <Typography
-        className={`${classes.typography} ${classes.maintext} ${classes.score}`}
-      >
+        className={`${classes.typography} ${classes.maintext} ${classes.score}`}>
         You managed to score
         <span className={classes.highlight}> {wordsMatch} WPM</span>, Your
         accuracy was
         <span className={classes.accuracyrate}> {accuracyRate}%</span>
       </Typography>
       <Typography
-        className={`${classes.typography} ${classes.maintext} ${classes.score}`}
-      ></Typography>
+        className={`${classes.typography} ${classes.maintext} ${classes.score}`}></Typography>
       <Typography className={`${classes.typography} ${classes.maintext}`}>
         {body}
       </Typography>
@@ -63,9 +62,6 @@ function ResultBody() {
           to save progress and get access to your history dashboard
         </Typography>
       )}
-      {/* <Typography className={`${classes.typography} ${classes.captiontext}`}>
-        You can view your performance history by visiting your dashboard
-      </Typography> */}
       <Typography className={`${classes.typography} ${classes.maintext}`}>
         Keep practicing!
       </Typography>

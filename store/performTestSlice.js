@@ -28,19 +28,15 @@ const performTestSlice = createSlice({
     isRecording: false,
     //displayremainingtime component
     isTimeIsUp: false,
-    remainingTime: 60,
+    remainingTime: 2,
     countdownPercent: 100,
     //userecorder component
     mediaPermisson: null,
     transcript: null,
     isAnalyzing: false,
     isTranscriptError: false,
-    //data validation: words start with letter
-
     isWordsCountReceived: false,
     isTranscriptReceived: false,
-    //login
-    // isLoggedIn: false,
   },
   reducers: {
     setShowStartBtn: (state, action) => {
@@ -114,6 +110,20 @@ const performTestSlice = createSlice({
     },
     resetCountdownPercent(state, action) {
       state.countdownPercent = action.payload;
+    },
+    restartTest(state) {
+      state.showStartBtn = true;
+      state.showRemainingTime = true;
+      state.isAnalyzing = false;
+      state.remainingTime = 2;
+      state.isTimeIsUp = false;
+      state.isWordsCountReceived = false;
+      state.selectedOptfromList = "";
+      state.countdownPercent = 100;
+      state.transcript = null;
+      state.isTranscriptError = false;
+      state.isTranscriptReceived = false;
+      state.isOptionSelected = false;
     },
   },
   extraReducers: {

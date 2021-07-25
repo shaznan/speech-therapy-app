@@ -3,13 +3,14 @@ import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 import { useSelector, useDispatch } from "react-redux";
-import { restartTest } from "../../../../store/actions/performTest/performtestNavigation/navigation-actions";
 import { useStyles } from "./displayResult_styles";
 import ResultBody from "./ResultBody.component";
 import Buttons from "./Buttons.component";
 import { CloseBtn } from "./Buttons.component";
 import { updateUserData } from "../../../../store/userSlice";
+import { testActions } from "../../../../store/performTestSlice";
 
+//display result modal after transcript received and words analysed
 export default function DisplayResult() {
   const dispatch = useDispatch();
   const classes = useStyles();
@@ -24,7 +25,7 @@ export default function DisplayResult() {
   };
 
   const tryAgain = () => {
-    dispatch(restartTest());
+    dispatch(testActions.restartTest());
     setOpen(false);
   };
 
@@ -32,7 +33,7 @@ export default function DisplayResult() {
     isWordsCountReceived && setOpen(true);
   }, [isWordsCountReceived]);
 
-  //Send results to backend
+  //update userstate
   useEffect(() => {
     if (isWordsCountReceived) {
       dispatch(updateUserData(entities));

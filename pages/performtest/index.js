@@ -26,11 +26,9 @@ function index() {
   const [hydrateWithLocalStorage] = useHydrateState();
 
   const loading = useSelector((state) => state.user.loading);
-
-  useRecorder();
-  useAlphabetValidator(); // execute validation function
-  useTopicsValidator();
-  ////////////
+  useRecorder(); //handle browser recording, send data to GCP and receive transcript data
+  useAlphabetValidator(); // validate transcript data if user choose alphabets
+  useTopicsValidator(); //validate transcript data if user choose random topics
 
   //avoid losing state on page refresh
   useEffect(() => {
