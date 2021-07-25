@@ -43,7 +43,6 @@ function useAuth(url) {
       })
       .then((res) => {
         responseHandler(res);
-        redirectHandler();
       })
       .catch((error) => {
         console.log(error);
@@ -84,6 +83,7 @@ function useAuth(url) {
       })
       .then((res) => {
         dispatch(userSlice_Actions.setLoading("success"));
+        redirectHandler();
         //if user exists, retreive user data from db and store redux state
         if (res.status === 200) {
           dispatch(fetchUserById(localId));
@@ -103,8 +103,12 @@ function useAuth(url) {
         }
       })
       .catch((err) => {
-        dispatch(userSlice_Actions.setLoading("rejected"));
-        console.log("something went wrong");
+        dispatch(userSlice_Actions.setLoading("idle"));
+        dispatch(login_signup_Actions.setIsEmailError(true));
+        dispatch(
+          login_signup_Actions.setEmailErrorMsg("Sorry something went wrong"),
+        );
+        // console.log("something went wrong");
       });
   }, [localId]);
 
