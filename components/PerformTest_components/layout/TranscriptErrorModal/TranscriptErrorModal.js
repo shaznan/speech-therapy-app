@@ -6,24 +6,25 @@ import MicrophoneAnimation from "./MicrophoneAnimation.component";
 import Message from "./Message.component";
 import DynamicButton from "../../../Common_Layout/Button/Button";
 import { useSelector, useDispatch } from "react-redux";
-import { restartTest } from "../../../../store/actions/performTest/performtestNavigation/navigation-actions";
 import { useStyles } from "./transcriptErrorStyles";
+import { testActions } from "../../../../store/performTestSlice";
 
+//Handle error from speechtotext response
 export default function TranscriptErrorModal() {
   const dispatch = useDispatch();
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const isTranscriptError = useSelector(
-    (state) => state.performtest.isTranscriptError
+    (state) => state.performtest.isTranscriptError,
   );
 
   const handleClose = () => {
     setOpen(false);
-    dispatch(restartTest());
+    dispatch(testActions.restartTest());
   };
 
   const onClickHandler = () => {
-    dispatch(restartTest());
+    dispatch(testActions.restartTest());
     setOpen(false);
   };
 
@@ -43,8 +44,7 @@ export default function TranscriptErrorModal() {
         BackdropComponent={Backdrop}
         BackdropProps={{
           timeout: 500,
-        }}
-      >
+        }}>
         <Fade in={open}>
           <div className={classes.paper}>
             <Message />

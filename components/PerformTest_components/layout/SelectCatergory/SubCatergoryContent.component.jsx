@@ -24,8 +24,7 @@ function SubCatergoryContent({ mainLabel, subLabel, optionsList }) {
     (state) => state.performtest.isAlphabetChecked,
   );
 
-  // console.log(optionsList);
-
+  //if alphabet is checked throw randow alphabetical letter to user
   useEffect(() => {
     if (isAlphabetChecked === true) {
       const randomLetter = Math.round(Math.random() * optionsList.length);
@@ -34,6 +33,7 @@ function SubCatergoryContent({ mainLabel, subLabel, optionsList }) {
     }
   }, [isAlphabetChecked]);
 
+  //render menu item from state for topics selected
   const renderMenuItem = (optionlist) => {
     if (!optionsList) {
       return <MenuItem>loading..</MenuItem>;
@@ -48,6 +48,7 @@ function SubCatergoryContent({ mainLabel, subLabel, optionsList }) {
     }
   };
 
+  //if alphabet selected display message only
   if (subLabel === "alphabet") {
     return (
       <Fragment>
@@ -60,6 +61,7 @@ function SubCatergoryContent({ mainLabel, subLabel, optionsList }) {
     );
   }
 
+  //if topic selected show options to choose from
   return (
     <Fragment>
       <FormControl>

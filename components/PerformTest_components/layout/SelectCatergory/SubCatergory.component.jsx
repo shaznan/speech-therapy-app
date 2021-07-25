@@ -16,6 +16,7 @@ function SubCatergory() {
     (state) => state.performtest.isRandomChecked,
   );
 
+  //get updated topic names if admin adds new topic to db
   useEffect(() => {
     dispatch(retrieveTopicNames());
   }, [storeGitStatus]);

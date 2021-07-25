@@ -11,7 +11,6 @@ import Client from "shopify-buy";
 import useHydrateState from "../../components/useHydrateState";
 import LoadSpinner from "../../components/Common_Layout/loadspinner/loadSpinner";
 import AdminToolbar from "../../components/Common_Layout/AdminToolbar/AdminToolbar";
-import Footer from "../../components/Common_Layout/Footer/Footer.component";
 import useWindowDimensions from "../../components/useWindowDimension";
 import CartBtn_footer from "../../components/BookStore/CartBtn_footer.component";
 
@@ -27,6 +26,7 @@ function BookStorePage(props) {
   const loading = useSelector((state) => state.bookstore.loading);
   const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
   const { screenWidth } = useWindowDimensions();
+
   //hydrate store with book collection on initial render
   useEffect(() => {
     dispatch(bookstoreSlice_Actions.setProducts(props.products));
@@ -39,7 +39,6 @@ function BookStorePage(props) {
         <AdminToolbar />
         <Navbar />
         <LoadSpinner loading={loading} />
-        {/* if logged in show bookstore */}
         {isLoggedIn && (
           <div>
             {screenWidth > 800 ? <CartBtn /> : <CartBtn_footer />}
@@ -48,7 +47,6 @@ function BookStorePage(props) {
             <Collections />
           </div>
         )}
-        {/* if !logged in show login msg */}
         {!isLoggedIn && <LoginMessage />}
       </div>
     </Fragment>
@@ -66,7 +64,6 @@ export async function getStaticProps() {
           variants: [{ price: product.variants[0].price }],
           title: product.title,
           handle: product.handle,
-          // variantId: [{ variantId: product.variants[0].id }],
         };
       }),
     },

@@ -4,6 +4,7 @@ import { useStyles } from "../bookstore_styles";
 import Catergories from "./Catergories/Catergories.component";
 import DisplayBooks from "./DisplayBooks.component";
 import SearchBox from "./SearchBox.component";
+import Heading from "./Heading.component";
 
 function Collections(props) {
   const classes = useStyles();
@@ -20,15 +21,9 @@ function Collections(props) {
     <div>
       <Grid container className={classes.collection_cont}>
         <SearchBox />
-        <Grid item md={12}>
-          <h1 className={classes.collection_heading}>Collections</h1>
-        </Grid>
-        <Grid item md={12}>
-          <Catergories catergoryItems={catergoryItems} />
-        </Grid>
-        <Grid item md={12}>
-          <DisplayBooks />
-        </Grid>
+        <Heading />
+        <Catergories catergoryItems={catergoryItems} />
+        <DisplayBooks />
       </Grid>
     </div>
   );

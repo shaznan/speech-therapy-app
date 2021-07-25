@@ -14,6 +14,7 @@ import useWindowDimensions from "../../../useWindowDimension";
 function Catergories({ catergoryItems }) {
   const classes = useStyles();
   const dispatch = useDispatch();
+  const { screenWidth } = useWindowDimensions();
   const [activeIndex, setActiveIndex] = useState(0);
   const selectedCatergory = useSelector(
     (state) => state.bookstore.selectedCatergory,
@@ -21,6 +22,7 @@ function Catergories({ catergoryItems }) {
   const bookCollections = useSelector(
     (state) => state.bookstore.bookCollections,
   );
+
   const switchCatergoryHandler = (index, event) => {
     setActiveIndex(index);
     if (event.target.id === "All") {
@@ -30,19 +32,21 @@ function Catergories({ catergoryItems }) {
     }
   };
 
-  const { screenWidth } = useWindowDimensions();
-
+  //fetch all collection names with id's on initial load
   useEffect(() => {
     dispatch(fetchAllCollections());
   }, []);
 
   useEffect(() => {
     if (bookCollections !== null && selectedCatergory !== null) {
+      //find the collection id of the selected catergory
       const collectionId = bookCollections.find((collection) => {
         return collection.collectionName === selectedCatergory;
       });
+      //fetch all products in selected collection
       dispatch(fetchProductsByType(collectionId.id));
     }
+    //if no catergory selected, fetch all products
     if (selectedCatergory === null) {
       dispatch(fetchAllProducts());
     }
@@ -50,15 +54,17 @@ function Catergories({ catergoryItems }) {
   }, [selectedCatergory, bookCollections]);
 
   return (
-    <Fragment>
+    <Grid item md={12}>
       <Grid container className={classes.catergories_cont} spacing={0}>
         {screenWidth > 800 ? (
+          //for desktop view
           <ExpandedCatergory
             catergoryItems={catergoryItems}
             activeIndex={activeIndex}
             switchCatergoryHandler={switchCatergoryHandler}
           />
         ) : (
+          //for mobile view
           <DropdownCatergory
             catergoryItems={catergoryItems}
             activeIndex={activeIndex}
@@ -66,7 +72,7 @@ function Catergories({ catergoryItems }) {
           />
         )}
       </Grid>
-    </Fragment>
+    </Grid>
   );
 }
 

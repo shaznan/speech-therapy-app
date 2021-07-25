@@ -15,6 +15,8 @@ function LoginMessage() {
   const classes = useStyles();
   const dispatch = useDispatch();
   const router = useRouter();
+
+  //direct user to login page
   const goToLoginHandler = (e) => {
     e.preventDefault();
     router.push("/login_signup", null, { shallow: true });
