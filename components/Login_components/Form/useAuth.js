@@ -70,6 +70,21 @@ function useAuth(url) {
     userRole: "User",
   };
 
+  const createNewUserInDB = () => {
+    localStorage.setItem("state", JSON.stringify(signUpInitialState));
+    axios
+      .post("/api/UserData/createNewUser", signUpInitialState)
+      .then((res) => {
+        console.log("User account created");
+      })
+      .catch((err) => {
+        dispatch(login_signup_Actions.setIsEmailError(true));
+        dispatch(
+          login_signup_Actions.setEmailErrorMsg("Could not create account"),
+        );
+      });
+  };
+
   //store sign up and retreive sign in data from mongodb//
 
   useEffect(() => {
@@ -91,23 +106,22 @@ function useAuth(url) {
 
         //if user does not exist, create new user in db
         if (res.status === 204) {
-          localStorage.setItem("state", JSON.stringify(signUpInitialState));
-          axios
-            .post("/api/UserData/createNewUser", signUpInitialState)
-            .then((res) => {
-              console.log("User account created");
-            })
-            .catch((err) => {
-              console.log("could not create account");
-            });
+          createNewUserInDB();
         }
       })
       .catch((err) => {
-        dispatch(userSlice_Actions.setLoading("success"));
-        dispatch(login_signup_Actions.setIsEmailError(true));
-        dispatch(
-          login_signup_Actions.setEmailErrorMsg("Sorry something went wrong"),
-        );
+        //error 504 shows in vercel if cannot find user in db
+        if (err.response.status === 504) {
+          dispatch(userSlice_Actions.setLoading("success"));
+          createNewUserInDB();
+          redirectHandler();
+        } else {
+          dispatch(userSlice_Actions.setLoading("success"));
+          dispatch(login_signup_Actions.setIsEmailError(true));
+          dispatch(
+            login_signup_Actions.setEmailErrorMsg("Sorry something went wrong"),
+          );
+        }
         // console.log("something went wrong");
       });
   }, [localId]);
