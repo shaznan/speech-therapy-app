@@ -7,7 +7,7 @@ export default async (req, res) => {
 
     console.log(userId);
     const uri =
-      "mongodb+srv://shaznanfairoze:qmpGwieO89Yy1QM@speech-therapy-app.mb1pc.mongodb.net/UserData?retryWrites=true&w=majority";
+      "mongodb+srv://shaznanfairoze:qmpGwieO89Yy1QNM@speech-therapy-app.mb1pc.mongodb.net/UserData?retryWrites=true&w=majority";
     const client = new MongoClient(uri, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
