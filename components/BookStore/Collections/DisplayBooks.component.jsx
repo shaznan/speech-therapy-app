@@ -64,7 +64,7 @@ function DisplayBooks() {
   }, [searchboxQuery, initialProducts]);
 
   return (
-    <Grid item md={12}>
+    <Fragment>
       <Grid container spacing={0}>
         <Grid item md={12} className={classes.displaybook_cont}>
           <Grid container className={classes.displaybooks}>
@@ -79,7 +79,7 @@ function DisplayBooks() {
                 <Fade duration={150 + i * 150} bottom>
                   <DisplayBooksProductImg product={product} />
                   <div className={classes.book_price}>
-                    {`USD ${product.variants[0].price}`}
+                    {`LKR ${product.variants[0].price}`}
                   </div>
                   <div className={classes.book_title}>{product.title}</div>
                 </Fade>
@@ -89,7 +89,7 @@ function DisplayBooks() {
           </Grid>
         </Grid>
       </Grid>
-    </Grid>
+    </Fragment>
   );
 }
 
