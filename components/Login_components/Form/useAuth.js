@@ -122,7 +122,6 @@ function useAuth(url) {
             login_signup_Actions.setEmailErrorMsg("Sorry something went wrong"),
           );
         }
-
         // console.log("something went wrong");
       });
   }, [localId]);
