@@ -4,9 +4,9 @@ import { MongoClient } from "mongodb";
 export default async (req, res) => {
   if (req.method === "GET") {
     const userId = req.query.userId;
-    console.log(userId);
     const client = await MongoClient.connect(
       "mongodb+srv://shaznanfairoze:qmpGwieO89Yy1QNM@speech-therapy-app.mb1pc.mongodb.net/UserData?retryWrites=true&w=majority",
+      { useUnifiedTopology: true },
     );
     const db = await client.db();
     const userCollection = db.collection("userCollection");
