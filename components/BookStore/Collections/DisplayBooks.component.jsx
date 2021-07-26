@@ -29,10 +29,10 @@ function DisplayBooks() {
   // when sign in, fetch existing checkout & when signup create checkout
   useEffect(() => {
     if (!isLoggedIn) return;
-    if (checkout_id !== null) {
-      dispatch(fetchCheckout(checkout_id));
-    } else {
+    if (checkout_id === null) {
       dispatch(createCheckout(localId));
+    } else {
+      dispatch(fetchCheckout(checkout_id));
     }
   }, [isLoggedIn, checkout_id]);
 
@@ -68,23 +68,27 @@ function DisplayBooks() {
       <Grid container spacing={0}>
         <Grid item md={12} className={classes.displaybook_cont}>
           <Grid container className={classes.displaybooks}>
-            {products.map((product, i) => (
-              <Grid
-                key={product.id}
-                item
-                lg={2}
-                md={3}
-                sm={6}
-                className={classes.bookcard}>
-                <Fade duration={150 + i * 150} bottom>
-                  <DisplayBooksProductImg product={product} />
-                  <div className={classes.book_price}>
-                    {`LKR ${product.variants[0].price}`}
-                  </div>
-                  <div className={classes.book_title}>{product.title}</div>
-                </Fade>
-              </Grid>
-            ))}
+            {products &&
+              products.map((product, i) => (
+                <Grid
+                  key={product.id}
+                  item
+                  lg={2}
+                  md={3}
+                  sm={6}
+                  className={classes.bookcard}>
+                  <Fade duration={150 + i * 150} bottom>
+                    <DisplayBooksProductImg product={product} />
+                    <div className={classes.book_price}>
+                      {`LKR ${product.variants[0].price}`}
+                    </div>
+                    <div className={classes.book_title}>{product.title}</div>
+                  </Fade>
+                </Grid>
+              ))}
+            {!products && (
+              <div>Sorry something went wrong, please try again later!</div>
+            )}
             <LoadMoreButton />
           </Grid>
         </Grid>

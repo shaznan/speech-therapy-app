@@ -53,6 +53,11 @@ function SelectTopic() {
                     />
                   );
                 })}
+              {!filteredArticles && (
+                <div>
+                  Cannot display articles at the moment, please try again later!
+                </div>
+              )}
             </div>
           </div>
         </Fade>

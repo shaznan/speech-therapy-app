@@ -27,6 +27,8 @@ const articleSlice = createSlice({
   name: "article",
   initialState: {
     articlesData: null,
+    isArticleError: false,
+    articleErrMsg: null,
     topicIdSelected: null,
     deleteItemId: null,
     isDeleteClicked: false,
@@ -56,6 +58,15 @@ const articleSlice = createSlice({
     },
   },
   reducers: {
+    setIsArticleError(state, action) {
+      state.isArticleError = action.payload;
+    },
+    setArticleErrMsg(state, action) {
+      state.articleErrMsg = action.payload;
+    },
+    clearError(state) {
+      (state.isArticleError = false), (state.articleErrMsg = null);
+    },
     setArticles(state, action) {
       state.articlesData = action.payload;
     },
@@ -103,6 +114,8 @@ const articleSlice = createSlice({
     },
     [deleteArticleItem.rejected]: (state) => {
       state.loading = "failed";
+      state.isArticleError = true;
+      state.articleErrMsg = "Could not delete article";
     },
     [fetchArticleData.pending]: (state) => {
       state.loading = "loading";
@@ -114,6 +127,8 @@ const articleSlice = createSlice({
     },
     [fetchArticleData.rejected]: (state) => {
       state.loading = "failed";
+      state.isArticleError = true;
+      state.articleErrMsg = "Cannot fetch article data";
     },
   },
 });

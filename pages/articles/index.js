@@ -14,6 +14,8 @@ import { articleSlice_Actions } from "../../store/articlesSlice";
 import LoadSpinner from "../../components/Common_Layout/loadspinner/loadSpinner";
 import AdminToolbar from "../../components/Common_Layout/AdminToolbar/AdminToolbar";
 import Footer from "../../components/Common_Layout/Footer/Footer.component";
+import ErrorModal from "../../components/Common_Layout/Modal/ErrorModal";
+import Home from "../../components/Articles/Home";
 
 function ArticlesPage(props) {
   const dispatch = useDispatch();
@@ -21,6 +23,8 @@ function ArticlesPage(props) {
   const showArticleForm = useSelector((state) => state.article.showArticleForm);
   const loading = useSelector((state) => state.article.loading);
   const [hydrateWithLocalStorage] = useHydrateState();
+  const isArticleError = useSelector((state) => state.article.isArticleError);
+  const articleErrMsg = useSelector((state) => state.article.articleErrMsg);
 
   useEffect(() => {
     hydrateWithLocalStorage();
@@ -30,15 +34,26 @@ function ArticlesPage(props) {
     dispatch(articleSlice_Actions.setArticles(props.articles));
   }, []);
 
+  const clearErrorMsg = () => {
+    dispatch(articleSlice_Actions.clearError());
+  };
+
   return (
     <Fragment>
       <div className={classes.container}>
         <Navbar />
         <AdminToolbar />
         <LoadSpinner loading={loading} />
+        <ErrorModal
+          isError={isArticleError}
+          errorMsg={articleErrMsg}
+          dispatchFunc={clearErrorMsg}
+        />
         <Grid container className={classes.body}>
-          {!showArticleForm && <SelectTopic />}
-          {!showArticleForm && <DisplayArea />}
+          <Home>
+            <SelectTopic />
+            <DisplayArea />
+          </Home>
           <DeleteItemModal />
           {showArticleForm && <ArticleForm />}
         </Grid>

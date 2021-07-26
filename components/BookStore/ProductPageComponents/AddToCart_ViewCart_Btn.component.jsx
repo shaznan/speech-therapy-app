@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchCheckout } from "../../../store/bookstoreSlice";
 import useAddItemToCheckout from "./useAddItemToCheckout";
 import { bookstoreSlice_Actions } from "../../../store/bookstoreSlice";
+import ErrorModal from "../../Common_Layout/Modal/ErrorModal";
 
 function AddToCart_ViewCart_Btn() {
   const classes = useStyles();
@@ -29,6 +30,7 @@ function AddToCart_ViewCart_Btn() {
 
   return (
     <Fragment>
+      <ErrorModal isError={isError} errorMsg="Couldn't add item to cart" />
       <Grid container spacing={1} className={classes.buttons_cont}>
         <Grid item md={12} className={classes.addtocartBtn}>
           <Button

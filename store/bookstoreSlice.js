@@ -64,6 +64,8 @@ const bookstoreSlice = createSlice({
   name: "bookstore",
   initialState: {
     product: {},
+    isShopifyError: false,
+    shopifyErrorMsg: null,
     selectedCatergory: null,
     bookCollections: null,
     searchboxQuery: "",
@@ -89,13 +91,6 @@ const bookstoreSlice = createSlice({
     setCheckOut: (state, action) => {
       state.checkout = action.payload;
     },
-    // setIsCheckoutAvailable: (state) => {
-    //   if (state.checkout.hasOwnProperty(id)) {
-    //     state.isCheckoutAvailable = true;
-    //   } else {
-    //     state.isCheckoutAvailable = false;
-    //   }
-    // },
     incrementSelectedProductQty: (state) => {
       if (state.selectedProductQty > 4) {
         state.isCounterExceed = true;
@@ -131,6 +126,10 @@ const bookstoreSlice = createSlice({
       state.isMenuOpen = false;
       state.loading = "idle";
     },
+    clearShopifyError: (state) => {
+      state.isShopifyError = false;
+      state.shopifyErrorMsg = null;
+    },
   },
   extraReducers: {
     // fetchAllproducts
@@ -154,6 +153,8 @@ const bookstoreSlice = createSlice({
     },
     [fetchAllProducts.rejected]: (state) => {
       state.loading = "failed";
+      state.isShopifyError = true;
+      state.shopifyErrorMsg = "Couldn't Fetch book collection";
     },
     [fetchProductsByType.pending]: (state) => {
       state.loading = "loading";
@@ -165,6 +166,8 @@ const bookstoreSlice = createSlice({
     },
     [fetchProductsByType.rejected]: (state) => {
       state.loading = "failed";
+      state.isShopifyError = true;
+      state.shopifyErrorMsg = "Couldn't Fetch book collection";
     },
     [fetchAllCollections.pending]: (state) => {
       state.loading = "loading";
@@ -181,6 +184,8 @@ const bookstoreSlice = createSlice({
 
     [fetchAllCollections.rejected]: (state) => {
       state.loading = "failed";
+      state.isShopifyError = true;
+      state.shopifyErrorMsg = "Couldn't Fetch book collection";
     },
 
     //createCheckout
@@ -195,6 +200,8 @@ const bookstoreSlice = createSlice({
     },
     [createCheckout.rejected]: (state) => {
       state.loading = "failed";
+      state.isShopifyError = true;
+      state.shopifyErrorMsg = "Something went wrong";
     },
     // fetchcheckout
     [fetchCheckout.pending]: (state) => {
@@ -206,10 +213,11 @@ const bookstoreSlice = createSlice({
       state.loading = "success";
       state.checkout = action.payload;
       state.isCheckoutAvailable = true;
+      state.isShopifyError = false;
+      state.shopifyErrorMsg = null;
     },
     [fetchCheckout.rejected]: (state) => {
       state.loading = "failed";
-      console.log("failed");
     },
   },
 });

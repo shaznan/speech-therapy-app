@@ -20,6 +20,10 @@ function DisplayArea() {
     );
   }, [topicIdSelected]);
 
+  if (!articles) {
+    return <div>Sorry something went wrong please try again later</div>;
+  }
+
   return (
     <Fragment>
       {selectedTopic && (
