@@ -20,6 +20,9 @@ export default async (req, res) => {
         res.status(504).json({ message: "could not connect" });
       }
 
+      console.log(users);
+      console.log("hey");
+
       if (users.length > 0) {
         res.status(200).json({ message: "user exists" });
       } else {
