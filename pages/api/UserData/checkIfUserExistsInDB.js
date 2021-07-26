@@ -8,7 +8,7 @@ export default async (req, res) => {
     const client = await MongoClient.connect(
       "mongodb+srv://shaznanfairoze:qmpGwieO89Yy1QNM@speech-therapy-app.mb1pc.mongodb.net/UserData?retryWrites=true&w=majority",
     );
-    const db = client.db();
+    const db = await client.db();
     const userCollection = db.collection("userCollection");
     const users = await userCollection.find({ localId: userId }).toArray();
     client.close();
