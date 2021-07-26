@@ -90,7 +90,8 @@ function useAuth(url) {
         }
 
         //if user does not exist, create new user in db
-        if (res.status === 204) {
+        // if (res.status === 204) {
+        if (res.status !== 200) {
           localStorage.setItem("state", JSON.stringify(signUpInitialState));
           axios
             .post("/api/UserData/createNewUser", signUpInitialState)
