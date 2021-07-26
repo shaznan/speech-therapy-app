@@ -110,12 +110,11 @@ function useAuth(url) {
         }
       })
       .catch((err) => {
-        console.log(err.response.status);
+        //error 504 shows in vercel if cannot find user in db
         if (err.response.status === 504) {
-          //error 504 shows in vercel if cannot find user in db
-          console.log(err.status);
           dispatch(userSlice_Actions.setLoading("success"));
           createNewUserInDB();
+          redirectHandler();
         } else {
           dispatch(userSlice_Actions.setLoading("success"));
           dispatch(login_signup_Actions.setIsEmailError(true));
