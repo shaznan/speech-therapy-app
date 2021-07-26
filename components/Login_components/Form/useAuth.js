@@ -74,10 +74,10 @@ function useAuth(url) {
     localStorage.setItem("state", JSON.stringify(signUpInitialState));
     axios
       .post("/api/UserData/createNewUser", signUpInitialState)
-      .then(() => {
+      .then((res) => {
         console.log("User account created");
       })
-      .catch(() => {
+      .catch((err) => {
         dispatch(login_signup_Actions.setIsEmailError(true));
         dispatch(
           login_signup_Actions.setEmailErrorMsg("Could not create account"),
@@ -110,7 +110,7 @@ function useAuth(url) {
         }
       })
       .catch((err) => {
-        if (res.status === 504) {
+        if (err.status === 504) {
           //error 504 shows in vercel if cannot find user in db
           dispatch(userSlice_Actions.setLoading("success"));
           createNewUserInDB();

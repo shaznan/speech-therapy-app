@@ -20,7 +20,7 @@ export default async (req, res) => {
       client.close();
 
       if (err) {
-        res.status(504).json({ message: "could not connect" });
+        res.status(500).json({ message: "could not connect" });
       }
 
       console.log("hey");
