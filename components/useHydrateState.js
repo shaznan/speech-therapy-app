@@ -7,9 +7,8 @@ function useHydrateState() {
 
   const hydrateWithLocalStorage = () => {
     if (localStorage.hasOwnProperty("state")) {
-      dispatch(
-        userSlice_Actions.setState(JSON.parse(localStorage.getItem("state"))),
-      );
+      const localStorageState = JSON.parse(localStorage.getItem("state"));
+      dispatch(userSlice_Actions.setState(localStorageState));
       dispatch(userSlice_Actions.setIsLoggedIn(true));
     }
   };

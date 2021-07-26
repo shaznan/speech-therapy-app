@@ -13,6 +13,7 @@ import LoadSpinner from "../../components/Common_Layout/loadspinner/loadSpinner"
 import AdminToolbar from "../../components/Common_Layout/AdminToolbar/AdminToolbar";
 import useWindowDimensions from "../../components/useWindowDimension";
 import CartBtn_footer from "../../components/BookStore/CartBtn_footer.component";
+import ErrorModal from "../../components/Common_Layout/Modal/ErrorModal";
 
 const client = Client.buildClient({
   domain: process.env.SHOPIFY_DOMAIN,
@@ -26,12 +27,19 @@ function BookStorePage(props) {
   const loading = useSelector((state) => state.bookstore.loading);
   const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
   const { screenWidth } = useWindowDimensions();
-
+  const isShopifyError = useSelector((state) => state.bookstore.isShopifyError);
+  const shopifyErrorMsg = useSelector(
+    (state) => state.bookstore.shopifyErrorMsg,
+  );
   //hydrate store with book collection on initial render
   useEffect(() => {
     dispatch(bookstoreSlice_Actions.setProducts(props.products));
     hydrateWithLocalStorage();
   }, []);
+
+  const clearError = () => {
+    dispatch(bookstoreSlice_Actions.clearShopifyError());
+  };
 
   return (
     <Fragment>
@@ -39,6 +47,11 @@ function BookStorePage(props) {
         <AdminToolbar />
         <Navbar />
         <LoadSpinner loading={loading} />
+        <ErrorModal
+          isError={isShopifyError}
+          errorMsg={shopifyErrorMsg}
+          dispatchFunc={clearError}
+        />
         {isLoggedIn && (
           <div>
             {screenWidth > 800 ? <CartBtn /> : <CartBtn_footer />}
