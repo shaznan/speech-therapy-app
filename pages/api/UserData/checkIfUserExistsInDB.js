@@ -16,16 +16,17 @@ export default async (req, res) => {
       const collection = client.db().collection("userCollection");
       console.log(collection);
       const users = await collection.find({ localId: userId }).toArray();
+      console.log(users);
       client.close();
 
       if (err) {
         res.status(504).json({ message: "could not connect" });
       }
 
-      console.log(users);
       console.log("hey");
 
       if (users.length > 0) {
+        console.log("it works");
         res.status(200).json({ message: "user exists" });
       } else {
         res.status(204).json({ message: "user doesn't exist" });
