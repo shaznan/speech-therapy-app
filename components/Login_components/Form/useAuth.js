@@ -108,6 +108,7 @@ function useAuth(url) {
         }
       })
       .catch((err) => {
+        console.log(err);
         dispatch(userSlice_Actions.setLoading("success"));
         dispatch(login_signup_Actions.setIsEmailError(true));
         dispatch(
