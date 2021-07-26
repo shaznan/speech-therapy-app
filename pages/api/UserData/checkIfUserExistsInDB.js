@@ -5,6 +5,7 @@ export default async (req, res) => {
   if (req.method === "GET") {
     const userId = req.query.userId;
 
+    console.log(userId);
     const uri =
       "mongodb+srv://shaznanfairoze:qmpGwieO89Yy1QNM@speech-therapy-app.mb1pc.mongodb.net/UserData?retryWrites=true&w=majority";
     const client = new MongoClient(uri, {
@@ -13,6 +14,7 @@ export default async (req, res) => {
     });
     client.connect(async (err) => {
       const collection = client.db().collection("userCollection");
+      console.log(collection);
       const users = await collection.find({ localId: userId }).toArray();
       client.close();
 
