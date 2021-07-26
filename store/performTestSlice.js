@@ -13,6 +13,8 @@ export const retrieveTopicNames = createAsyncThunk(
 const performTestSlice = createSlice({
   name: "performtest",
   initialState: {
+    isPerformTestError: false,
+    ErrorMsg: null,
     showStartBtn: true,
     showInstructions: false,
     showCatergoryForm: false,
@@ -39,6 +41,16 @@ const performTestSlice = createSlice({
     isTranscriptReceived: false,
   },
   reducers: {
+    setIsPerformTestError: (state, action) => {
+      state.isPerformTestError = action.payload;
+    },
+    setErrorMsg: (state, action) => {
+      state.ErrorMsg = action.payload;
+    },
+    clearError: (state) => {
+      state.ErrorMsg = null;
+      state.isPerformTestError = false;
+    },
     setShowStartBtn: (state, action) => {
       state.showStartBtn = action.payload;
     },
@@ -136,6 +148,8 @@ const performTestSlice = createSlice({
     },
     [retrieveTopicNames.rejected]: (state) => {
       state.loading = "failed";
+      state.isPerformTestError = true;
+      state.ErrorMsg = "Couldn't receive topic names";
     },
   },
 });

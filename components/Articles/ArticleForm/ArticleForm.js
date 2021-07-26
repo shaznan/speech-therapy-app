@@ -16,7 +16,7 @@ import Fade from "react-reveal/Fade";
 function ArticleForm() {
   const classes = useStyles();
   const dispatch = useDispatch();
-  //store form data to backend
+  // store form data to backend
   useStoreArticleFormData();
   const [isSubmit, setIsSubmit] = useState(false);
   const submitHandler = () => {

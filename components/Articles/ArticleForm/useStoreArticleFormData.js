@@ -50,7 +50,14 @@ function useStoreArticleFormData() {
           dispatch(articleSlice_Actions.setIsFormSubmit(false));
           dispatch(fetchArticleData());
         })
-        .catch((err) => console.error(err));
+        .catch((err) => {
+          dispatch(articleSlice_Actions.setIsArticleError(true));
+          dispatch(
+            articleSlice_Actions.setArticleErrMsg(
+              "Could not save article data",
+            ),
+          );
+        });
     }
   }, [isLoggedIn, isFormSubmit]);
 }

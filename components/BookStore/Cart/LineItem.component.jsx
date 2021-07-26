@@ -6,21 +6,19 @@ import Button from "@material-ui/core/Button";
 import useRemoveItem from "./useRemoveItem";
 import { useDispatch, useSelector } from "react-redux";
 import { bookstoreSlice_Actions } from "../../../store/bookstoreSlice";
-import { fetchCheckout } from "../../../store/bookstoreSlice";
 import { useEffect } from "react";
 import useWindowDimensions from "../../useWindowDimension";
+import ErrorModal from "../../Common_Layout/Modal/ErrorModal";
 
 function LineItem({ itemId, img, title, price, qty }) {
   const classes = useStyles();
   const dispatch = useDispatch();
   const [isError, newCheckoutState, removeItemFromCart] = useRemoveItem();
-  const checkout = useSelector((state) => state.bookstore.checkout);
   const { screenWidth } = useWindowDimensions();
 
   const removeItemHandler = (e) => {
     e.preventDefault();
     removeItemFromCart(itemId);
-    // dispatch(fetchCheckout(checkout.id));
   };
 
   useEffect(() => {
@@ -32,6 +30,10 @@ function LineItem({ itemId, img, title, price, qty }) {
 
   return (
     <Fragment>
+      <ErrorModal
+        isError={isError}
+        errorMsg="Item was not deleted due to an internal error!"
+      />
       <Grid container className={classes.cartItem_main_cont}>
         <Grid item md={12}>
           <Grid container spacing={0} className={classes.cartItem_cont}>

@@ -6,23 +6,16 @@ import axios from "axios";
 import usePopulateScores from "../usePopulateScores";
 
 function useTopicsValidator() {
+  const dispatch = useDispatch();
   const [catergoryItems, setCatergoryItems] = useState(null);
   const isRandomChecked = useSelector(
     (state) => state.performtest.isRandomChecked,
   );
-
   const selectedOptfromList = useSelector(
     (state) => state.performtest.selectedOptfromList,
   );
-
   const transcript = useSelector((state) => state.performtest.transcript);
   const { updateUserScores, updateUserWordCount } = usePopulateScores();
-  const dispatch = useDispatch();
-
-  //TODO:REMOVE
-  const isWordsCountReceived = useSelector(
-    (state) => state.performtest.isWordsCountReceived,
-  );
 
   //compare transcript words with words that belong to selected topic catergory
   const CompareWordsRelatedToTopic = useCallback(
@@ -47,8 +40,6 @@ function useTopicsValidator() {
         },
       })
       .then((res) => {
-        console.log(res);
-        console.log(selectedOptfromList);
         setCatergoryItems(
           res.data[selectedOptfromList.toLowerCase()].list.map((word) => {
             //TODO: convert to function
@@ -56,7 +47,14 @@ function useTopicsValidator() {
           }),
         );
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        dispatch(testActions.setIsPerformTestError(true));
+        dispatch(
+          testActions.setErrorMsg(
+            "There was an error while Analyzing your speech, please try again later",
+          ),
+        );
+      });
   }, [isRandomChecked, transcript]);
 
   //create wordsMatch, wordsUnmated, accuracyrate
