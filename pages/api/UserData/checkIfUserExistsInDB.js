@@ -7,21 +7,22 @@ export default async (req, res) => {
 
     console.log(userId);
     const uri =
-      "mongodb+srv://shaznanfairoze:qmpGwieO89Yy1QNM@speech-therapy-app.mb1pc.mongodb.net/UserData?retryWrites=true&w=majority";
+      "mongodb+srv://shaznanfairoze:qmpGwieO89Yy1QM@speech-therapy-app.mb1pc.mongodb.net/UserData?retryWrites=true&w=majority";
     const client = new MongoClient(uri, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
-    client.connect(async (err) => {
+    client.connect(async () => {
       const collection = client.db().collection("userCollection");
       console.log(collection);
-      const users = await collection.find({ localId: userId }).toArray();
+      const users = await collection
+        .find({ localId: userId })
+        .toArray()
+        .catch((err) =>
+          res.status(500).json({ message: "Could not connect to data base" }),
+        );
       console.log(users);
       client.close();
-
-      if (err) {
-        res.status(500).json({ message: "could not connect" });
-      }
 
       console.log("hey");
 
@@ -31,6 +32,10 @@ export default async (req, res) => {
       } else {
         res.status(204).json({ message: "user doesn't exist" });
       }
+
+      // if (!Array.isArray(users)) {
+      //   console.log("false");
+      // }
       // perform actions on the collection object
     });
 

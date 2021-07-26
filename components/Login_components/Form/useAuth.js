@@ -110,9 +110,10 @@ function useAuth(url) {
         }
       })
       .catch((err) => {
-        if (err.status === 504) {
+        console.log(err.response.status);
+        if (err.response.status === 504) {
           //error 504 shows in vercel if cannot find user in db
-          console.log(err);
+          console.log(err.status);
           dispatch(userSlice_Actions.setLoading("success"));
           createNewUserInDB();
         } else {
