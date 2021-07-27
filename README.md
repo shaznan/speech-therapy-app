@@ -26,3 +26,12 @@ The Web App consists of 3 sections:
 6. [State Management](#fourth-examplehttpwwwfourthexamplecom)
 7. [Issues](#fourth-examplehttpwwwfourthexamplecom)
 8. [Upcoming features](#fourth-examplehttpwwwfourthexamplecom) 
+
+## Contributing 
+### Contributions are always welcome! If you have any ideas, suggestions, fixes, feel free to contribute. You can do that by going through the following steps:
+
+Clone this repo 
+1. Create a branch: `git checkout -b your-feature`
+2. Make some changes
+3. Test your changes
+4. Push your branch and open a Pull Request
