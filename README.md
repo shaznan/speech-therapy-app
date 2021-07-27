@@ -11,4 +11,4 @@ The Web App consists of 3 sections:
 
 2. Bookstore : An ecommerce online bookshop selling books relating to BrainFog and other psycology related issues.
  
-3. Articles : A platform to educate users by reading articles written by verified psychologists as well as articles from the community, Allows users to engage in writing their own article content describing the journey on their recovery
+3. Articles : A platform to educate users by reading articles written by verified psychologists as well as articles from the community, and allows users to engage in writing their own article content describing the journey on their recovery
