@@ -23,7 +23,7 @@ The Web App consists of 3 sections:
    5. [Components and styling](#third-example)
 4. [State Management](#fourth-examplehttpwwwfourthexamplecom)
 5. [Issues](#fourth-examplehttpwwwfourthexamplecom)
-6. [Upcoming features](#fourth-examplehttpwwwfourthexamplecom) 
+6. [Future Scope](#fourth-examplehttpwwwfourthexamplecom) 
 
 ## Contributing 
 ### Contributions are always welcome! If you have any ideas, suggestions, fixes, feel free to contribute. You can do that by going through the following steps:
