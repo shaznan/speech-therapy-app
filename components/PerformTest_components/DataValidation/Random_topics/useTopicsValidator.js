@@ -11,6 +11,10 @@ function useTopicsValidator() {
   const isRandomChecked = useSelector(
     (state) => state.performtest.isRandomChecked,
   );
+
+  const currentTestDuration = useSelector(
+    (state) => state.performtest.currentTestDuration,
+  );
   const selectedOptfromList = useSelector(
     (state) => state.performtest.selectedOptfromList,
   );
@@ -70,15 +74,20 @@ function useTopicsValidator() {
 
     const totalWords = [...removeDuplicates];
 
-    // Performs intersection operation
-    const wordsMatch = CompareWordsRelatedToTopic(
-      totalWords,
-      catergoryItems,
-    ).length;
+    //if you wish to change the duration of the test, then multiply result as a factor of 60s to get results Per Min
 
-    const wordsUnRelated = totalWords.length - wordsMatch;
+    const testDuration = 60;
+    const factor = testDuration / currentTestDuration;
 
-    const accuracy = Math.round((wordsMatch / totalWords.length) * 100);
+    // // dispatch wordscount to state
+    const wordsMatch =
+      CompareWordsRelatedToTopic(totalWords, catergoryItems).length * factor;
+
+    const wordsUnRelated = totalWords.length - wordsMatch * factor;
+
+    const totalWordCountLength = totalWords.length * factor;
+
+    const accuracy = Math.round((wordsMatch / totalWordCountLength) * 100);
 
     updateUserWordCount(wordsMatch, wordsUnRelated, accuracy);
     dispatch(testActions.setIsWordsCountReceived(true));

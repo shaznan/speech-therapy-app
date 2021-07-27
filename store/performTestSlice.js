@@ -30,7 +30,8 @@ const performTestSlice = createSlice({
     isRecording: false,
     //displayremainingtime component
     isTimeIsUp: false,
-    remainingTime: 60,
+    currentTestDuration: 20, //performtest duration
+    remainingTime: 20, //performtest duration
     countdownPercent: 100,
     //userecorder component
     mediaPermisson: null,
@@ -127,7 +128,7 @@ const performTestSlice = createSlice({
       state.showStartBtn = true;
       state.showRemainingTime = true;
       state.isAnalyzing = false;
-      state.remainingTime = 60;
+      state.remainingTime = 20; //performtest duration
       state.isTimeIsUp = false;
       state.isWordsCountReceived = false;
       state.selectedOptfromList = "";
