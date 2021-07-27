@@ -1,8 +1,7 @@
-# Speech Therapy App
-
+# Speech Therapy App 
 ![alt text](https://github.com/shaznan/speech-therapy-app/blob/documentation/docs/assets/App%20into%20with%20animation.gif?raw=true)
 
-## Description
+## Description 
 SpeechTherapyApp is built to help people diagnose if they are suffering from **Brain Fog**, a type of cognitive dysfunction involving the inability to have a sharp memory or to lack a sharp focus, which in turn cases poor verbal fluency amoungst individuals. 
 
 The Web App consists of 3 sections:
@@ -35,3 +34,5 @@ Clone this repo
 2. Make some changes
 3. Test your changes
 4. Push your branch and open a Pull Request
+
+![alt text](https://img.shields.io/badge/Version-v1.1-red)
