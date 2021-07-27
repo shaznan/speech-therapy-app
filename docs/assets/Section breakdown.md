@@ -19,10 +19,11 @@ Help user to educate on Brain Fog and related issues
 - View verified articles wriiten by experienced psychologists <br>
 - View articles written by the community <br>
 
-*Todo*: 
-> - Have an option for user to edit article if user is author. <br>
-> - Allow user to drag and drop local images in write articles editor instead of copy & paste URL
-> - introduce comments and likes on articles to increase user engagement. 
+> *Todo*: 
+- [ ] Allow user to edit article if user is author. <br>
+- [ ] Allow user to drag and drop local images in write articles editor instead of copy & paste URL
+- [ ] introduce comments and likes on articles to increase user engagement. 
+
 
 
 
