@@ -38,7 +38,9 @@ Clone this repo
 3. Test your changes
 4. Push your branch and open a Pull Request
 
+---
+
 ![alt text](https://img.shields.io/badge/Version-v1.1-red)
 ![Next js](https://img.shields.io/badge/BuiltUsing-NextJs-1abc9c.svg)
 
-![alt text](https://img.shields.io/badge/Version-v1.1-red)
+
