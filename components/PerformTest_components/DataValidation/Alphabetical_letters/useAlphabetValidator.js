@@ -16,6 +16,10 @@ function useAlphabetValidator() {
   const isTranscriptReceived = useSelector(
     (state) => state.performtest.isTranscriptReceived,
   );
+
+  const currentTestDuration = useSelector(
+    (state) => state.performtest.currentTestDuration,
+  );
   const { updateUserScores, updateUserWordCount } = usePopulateScores();
 
   const dispatch = useDispatch();
@@ -26,19 +30,31 @@ function useAlphabetValidator() {
     if (transcript === null) return;
     const wordsBreakDown = transcript.toUpperCase().split(" ");
 
+    //if you wish to change the duration of the test, then multiply result as a factor of 60s to get results Per Min
+
+    const testDuration = 60;
+    const factor = testDuration / currentTestDuration;
+
     //if user repeated same words, remove them
     const removeDuplicates = new Set(wordsBreakDown);
     const nonDuplicateWords = [...removeDuplicates];
-    const totalWordsCount = nonDuplicateWords.length;
+    const totalWordsCount = nonDuplicateWords.length * factor;
     const initialLetters = nonDuplicateWords.map((word) => {
       return word[0];
     });
-    const wordsMatch = initialLetters.filter((letter) => {
-      return letter === selectedOptfromList;
-    }).length;
-    const wordsUnRelated = initialLetters.filter((letter) => {
-      return letter !== selectedOptfromList;
-    }).length;
+
+    // dispatch wordscount to state
+
+    const wordsMatch =
+      initialLetters.filter((letter) => {
+        return letter === selectedOptfromList;
+      }).length * factor;
+
+    const wordsUnRelated =
+      initialLetters.filter((letter) => {
+        return letter !== selectedOptfromList;
+      }).length * factor;
+
     const accuracy = Math.round((wordsMatch / totalWordsCount) * 100);
 
     if (isTranscriptReceived) {

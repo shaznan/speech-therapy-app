@@ -16,6 +16,8 @@ The Web App consists of 3 sections:
 # Table of Contents
 1. [Technologies Used](docs/assets/Technologies_Used.md)
 2. [Section breakdown & Scope of functionalities](#example)
+1. [Technologies Used](#example)
+2. [Section breakdown & Features](#example)
 3. [Project Structure](#example2)
    1. [Project Architecture](#subparagraph1)
    2. [User Flows](#subparagraph1)
@@ -25,6 +27,7 @@ The Web App consists of 3 sections:
 4. [State Management](#fourth-examplehttpwwwfourthexamplecom)
 5. [Issues](#fourth-examplehttpwwwfourthexamplecom)
 6. [Future Scope](#fourth-examplehttpwwwfourthexamplecom) 
+6. [Upcoming features](#fourth-examplehttpwwwfourthexamplecom) 
 
 ## Contributing 
 ### Contributions are always welcome! If you have any ideas, suggestions, fixes, feel free to contribute. You can do that by going through the following steps:
@@ -35,7 +38,7 @@ Clone this repo
 3. Test your changes
 4. Push your branch and open a Pull Request
 
----
 ![alt text](https://img.shields.io/badge/Version-v1.1-red)
 ![Next js](https://img.shields.io/badge/BuiltUsing-NextJs-1abc9c.svg)
 
+![alt text](https://img.shields.io/badge/Version-v1.1-red)
