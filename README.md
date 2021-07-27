@@ -1,4 +1,5 @@
 # Speech Therapy App 
+
 ![alt text](https://github.com/shaznan/speech-therapy-app/blob/documentation/docs/assets/App%20into%20with%20animation.gif?raw=true)
 
 ## Description 
@@ -13,6 +14,8 @@ The Web App consists of 3 sections:
 3. Articles : A platform to educate users by reading articles written by verified psychologists as well as articles from the community, and allows users to engage in writing their own article content describing the journey on their recovery
 
 # Table of Contents
+1. [Technologies Used](docs/assets/Technologies_Used.md)
+2. [Section breakdown & Scope of functionalities](#example)
 1. [Technologies Used](#example)
 2. [Section breakdown & Features](#example)
 3. [Project Structure](#example2)
@@ -23,6 +26,7 @@ The Web App consists of 3 sections:
    5. [Components and styling](#third-example)
 4. [State Management](#fourth-examplehttpwwwfourthexamplecom)
 5. [Issues](#fourth-examplehttpwwwfourthexamplecom)
+6. [Future Scope](#fourth-examplehttpwwwfourthexamplecom) 
 6. [Upcoming features](#fourth-examplehttpwwwfourthexamplecom) 
 
 ## Contributing 
@@ -33,5 +37,8 @@ Clone this repo
 2. Make some changes
 3. Test your changes
 4. Push your branch and open a Pull Request
+
+![alt text](https://img.shields.io/badge/Version-v1.1-red)
+![Next js](https://img.shields.io/badge/BuiltUsing-NextJs-1abc9c.svg)
 
 ![alt text](https://img.shields.io/badge/Version-v1.1-red)
