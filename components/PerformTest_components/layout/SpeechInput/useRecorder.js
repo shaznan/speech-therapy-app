@@ -32,7 +32,6 @@ const useRecorder = () => {
       .query({ name: "microphone" })
       .then(function (permissionStatus) {
         dispatch(testActions.setMediaPermission(permissionStatus.state));
-        // console.log(permissionStatus.state);
       });
 
     // Lazily obtain recorder first time we're recording.

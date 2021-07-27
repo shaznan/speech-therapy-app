@@ -11,6 +11,7 @@ function useAnalyzeResult() {
   const [textOptions, setTextOptions] = useState({
     Header: null,
     body: null,
+    AnimationLink: null,
     ArticleLink: null,
   });
 
@@ -28,6 +29,8 @@ function useAnalyzeResult() {
         //TODO: Store in backend
         Header: "You might be suffering from a cognitive dysfunction 😐",
         body: "See your doctor if you have persistent lack of clarity that worsens or doesn’t improve.",
+        AnimationLink:
+          "https://assets2.lottiefiles.com/packages/lf20_fyqtse3p.json",
         ArticleLink: null,
       });
     }
@@ -36,6 +39,8 @@ function useAnalyzeResult() {
       setTextOptions({
         Header: "Your mental clarity should improve ",
         body: "Your verbal fluency is below average",
+        AnimationLink:
+          "https://assets10.lottiefiles.com/packages/lf20_s1ogvghi.json",
         ArticleLink: null,
       });
     }
@@ -43,6 +48,7 @@ function useAnalyzeResult() {
       setTextOptions({
         Header: "You're almost there!",
         body: "Your verbal fluency is average, there's room for imporvement!",
+        AnimationLink: "https://assets6.lottiefiles.com/temp/lf20_zPrwZA.json",
         ArticleLink: null,
       });
     }
@@ -50,6 +56,8 @@ function useAnalyzeResult() {
       setTextOptions({
         Header: "Congratulations! You did great!",
         body: "You are now an expert in verbal fluency!",
+        AnimationLink:
+          "https://assets2.lottiefiles.com/packages/lf20_kfl4ksd9.json",
         ArticleLink: null,
       });
     }
@@ -57,6 +65,8 @@ function useAnalyzeResult() {
       setTextOptions({
         Header: "Damn, you're killing it!",
         body: "You have achieved Mastery in verbal fluency!",
+        AnimationLink:
+          "https://assets2.lottiefiles.com/packages/lf20_cn1bp1vk.json",
         ArticleLink: null,
       });
     }

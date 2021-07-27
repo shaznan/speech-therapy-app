@@ -6,6 +6,7 @@ import { useStyles } from "./displayResult_styles";
 import infoIcon from "../../../../assets/images/warning_icon.png";
 import useAnalyzeResult from "./useAnalyzeResult";
 import Link from "next/link";
+import AnimationFeedback from "./AnimationFeedback.component";
 
 //conditionaly render props based on result criteria
 function ResultBody() {
@@ -29,6 +30,7 @@ function ResultBody() {
 
   return (
     <div className={classes.body}>
+      <AnimationFeedback link={textOptions.AnimationLink} />
       <Typography variant="h5" style={{ marginBottom: "1.2rem" }}>
         <strong>{header}</strong>
       </Typography>
