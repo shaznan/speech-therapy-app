@@ -12,3 +12,17 @@ The Web App consists of 3 sections:
 2. Bookstore : An ecommerce online bookshop selling books relating to BrainFog and other psycology related issues.
  
 3. Articles : A platform to educate users by reading articles written by verified psychologists as well as articles from the community, and allows users to engage in writing their own article content describing the journey on their recovery
+
+# Table of Contents
+1. [About](#example)
+2. [Technologies Used](#example)
+3. [Section breakdown & Features](#example)
+4. [Project Structure](#example2)
+   1. [Project Architecture](#subparagraph1)
+   2. [User Flows](#subparagraph1)
+   3. [Auth](#fourth-examplehttpwwwfourthexamplecom)
+   4. [Admin Panel](#fourth-examplehttpwwwfourthexamplecom) 
+   5. [Components and styling](#third-example)
+6. [State Management](#fourth-examplehttpwwwfourthexamplecom)
+7. [Issues](#fourth-examplehttpwwwfourthexamplecom)
+8. [Upcoming features](#fourth-examplehttpwwwfourthexamplecom) 
