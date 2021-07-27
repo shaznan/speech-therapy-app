@@ -1,8 +1,3 @@
 # Speech Therapy App
 
-- Common code found in displayremainingtime and timerspinner component, (refactor)
-- Refactor code in transcript error modal and display result modal 
-- Refactor code in useRecorder (similar code in res and error)
-- Disable next btn when user clicks close btn or back btn 
-- Backend Error Handling 
-- Sign In, signup form, and articles form have same code must refactor 
+![alt text](https://github.com/shaznan/speech-therapy-app/blob/documentation/docs/assets/App%20into%20with%20animation.gif?raw=true)
