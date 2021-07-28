@@ -1,5 +1,7 @@
 # Section Breakdown and Scope of Functionalities
 
+![ReadTime](https://img.shields.io/badge/Readtime-2mins-orange.svg)
+
 
 ## :house: Homepage 
 
