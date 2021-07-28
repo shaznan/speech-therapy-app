@@ -39,14 +39,17 @@ export default function DataGridDemo() {
     dispatch(fetchArticleData());
   }, [loading]);
 
+  console.log(articlesData);
+  console.log(rows);
+
   useEffect(() => {
     if (!articlesData) return;
     setRows(
       articlesData.map((article) => {
         return {
-          id: article.articleId,
+          id: article._id,
           article: article.article.title,
-          uuid: article.articleId,
+          uuid: article._id,
         };
       }),
     );
@@ -58,8 +61,6 @@ export default function DataGridDemo() {
       ? dispatch(adminSlice_Actions.setIsDeleteChecked(true))
       : dispatch(adminSlice_Actions.setIsDeleteChecked(false));
   }, [selectionModel]);
-
-  console.log(selectionModel);
 
   const itemSelectionHandler = (newSelection) => {
     setSelectionModel(newSelection.selectionModel);

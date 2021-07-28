@@ -15,10 +15,13 @@ function Navigation() {
     return text.toLowerCase().replace(/\s/g, "");
   };
 
-  const redirectHandler = (text) => {
-    if (text === "Go back") {
+  const routeHandler = (text) => {
+    //route back to homepage
+    if (text === "goback") {
       router.push("/", null, { shallow: true });
     }
+
+    //route to shopify admin GUI
     if (text === "Bookstore") {
       router.push(
         "https://speechtherapy-bookstore.myshopify.com/admin/products?selectedView=all",
@@ -26,7 +29,8 @@ function Navigation() {
         { shallow: true },
       );
     }
-    if (text !== "go back" || text !== "Bookstore") {
+    //route to selected catergory page
+    if (text !== "goback" && text !== "Bookstore") {
       router.push("/admin/" + formatText(text), null, { shallow: true });
     }
   };
@@ -36,10 +40,10 @@ function Navigation() {
       <AppBar position="static" className={classes.appbar}>
         <Toolbar>
           <Grid container spacing={0} className={classes.button_container}>
-            <CustomBtn onClick={redirectHandler} text="Go back" lg={9} md={9} />
-            <CustomBtn onClick={redirectHandler} text="Performtest" />
-            <CustomBtn onClick={redirectHandler} text="Articles" />
-            <CustomBtn onClick={redirectHandler} text="Bookstore" />
+            <CustomBtn onClick={routeHandler} text="goback" lg={9} md={9} />
+            <CustomBtn onClick={routeHandler} text="Performtest" />
+            <CustomBtn onClick={routeHandler} text="Articles" />
+            <CustomBtn onClick={routeHandler} text="Bookstore" />
           </Grid>
         </Toolbar>
       </AppBar>
