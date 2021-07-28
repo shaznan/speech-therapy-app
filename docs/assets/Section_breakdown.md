@@ -21,8 +21,8 @@ Help user to educate on Brain Fog and related issues
 - View articles written by the community <br>
 
 > *Todo*: 
-- [ ] Allow user to edit article if user is author. <br>
-- [ ] Allow user to drag and drop local images in write articles editor instead of copy & paste URL
+- [ ] Edit article if user is author. <br>
+- [ ] Drag and drop local images in write articles editor instead of copy & paste URL
 - [ ] introduce comments and likes on articles to increase user engagement. 
 
 ## Bookstore
@@ -37,6 +37,17 @@ Monetizing part of the project through drop shipping books from other book store
 - Add upto 5 items to cart at a time.     *(Shopify-buy sdk addItems to checkout)* 
 - Delete items from cart.  *(Shopify-buy sdk remove items from checkout)*
 - Retain checkout items after re-login.
+
+> *Todo*:
+- [ ] Wishlist 
+- [ ] Edit items in cart - qty selected
+- [ ] Introduce discounts: buy 4 get one free, percentage off and coupon code. 
+- [ ] User reviews 
+- [ ] Rank items based on top selling
+- [ ] option for downloading pdf version of book item.
+
+
+
 
 
 
