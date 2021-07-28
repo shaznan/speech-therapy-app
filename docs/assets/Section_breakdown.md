@@ -1,15 +1,15 @@
 # Section Breakdown and Scope of Functionalities
 
 
-## Homepage
+## :house: Homepage 
 
 Introduce speech therapy, Make user understand Brain Fog with homepage content as well as few handpicked article contents & Engage user to perform test or write an article 
 
-## About us
+## :busts_in_silhouette: About us 
 
 Convey organisation's goal, culture and introduce the team
 
-## Articles
+## :page_facing_up: Articles 
 
 Help user to educate on Brain Fog and related issues
 
@@ -25,7 +25,7 @@ Help user to educate on Brain Fog and related issues
 - [ ] Drag and drop local images in write articles editor instead of copy & paste URL
 - [ ] introduce comments and likes on articles to increase user engagement. 
 
-## Bookstore
+## :books: Bookstore 
 
 Monetizing part of the project through drop shipping books from other book stores offering BrainFog related products for a cheaper price. 
 
@@ -46,7 +46,7 @@ Monetizing part of the project through drop shipping books from other book store
 - [ ] Rank items based on top selling
 - [ ] option for downloading pdf version of book item.
 
-## PerformTest
+## :game_die: PerformTest 
 
 Main section of the project, run series of test to determine if user is victim of brain fog.
 
@@ -73,11 +73,11 @@ Main section of the project, run series of test to determine if user is victim o
 - [ ] Guess the word tests to analyze memory.  
 - [ ] Other form of tests to imporove mental clarity.
 
-## Contact us
+## :iphone: Contact us 
 
 Allow user to communicate with the team. 
 
-## Authentication 
+## :lock: Authentication 
 
 User sign in if existing user or sign up if new user. 
 <br>
@@ -87,7 +87,7 @@ Authenticate if user is Admin based on user roles.
 
 - [ ] Google sign-in 
 
-## Admin Panel
+## :cop: Admin Panel 
 
 Make changes to app state through the admin panel GUI.
 
