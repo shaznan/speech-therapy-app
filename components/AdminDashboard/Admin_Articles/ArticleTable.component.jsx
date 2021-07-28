@@ -34,10 +34,11 @@ export default function DataGridDemo() {
   const userId = useSelector((state) => state.user.entities[0].localId);
   const loading = useSelector((state) => state.adminDashboard.loading);
 
-  //fetch article data on initial load
+  // fetch updated article list after deleting item
   useEffect(() => {
     dispatch(fetchArticleData());
   }, [loading]);
+
 
   useEffect(() => {
     if (!articlesData) return;
@@ -58,8 +59,6 @@ export default function DataGridDemo() {
       ? dispatch(adminSlice_Actions.setIsDeleteChecked(true))
       : dispatch(adminSlice_Actions.setIsDeleteChecked(false));
   }, [selectionModel]);
-
-  console.log(selectionModel);
 
   const itemSelectionHandler = (newSelection) => {
     setSelectionModel(newSelection.selectionModel);

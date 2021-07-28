@@ -80,6 +80,7 @@ export async function getStaticProps() {
         authorEmail: article.authorEmail,
         authorUrl: article.authorUrl,
         isVerified: article.isVerified,
+        articleId: article.articleId,
         _id: article._id.toString(),
       })),
     },
