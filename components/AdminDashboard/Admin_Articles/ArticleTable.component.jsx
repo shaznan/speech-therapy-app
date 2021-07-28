@@ -34,22 +34,20 @@ export default function DataGridDemo() {
   const userId = useSelector((state) => state.user.entities[0].localId);
   const loading = useSelector((state) => state.adminDashboard.loading);
 
-  //fetch article data on initial load
+  // fetch updated article list after deleting item
   useEffect(() => {
     dispatch(fetchArticleData());
   }, [loading]);
 
-  console.log(articlesData);
-  console.log(rows);
 
   useEffect(() => {
     if (!articlesData) return;
     setRows(
       articlesData.map((article) => {
         return {
-          id: article._id,
+          id: article.articleId,
           article: article.article.title,
-          uuid: article._id,
+          uuid: article.articleId,
         };
       }),
     );
