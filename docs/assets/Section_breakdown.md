@@ -95,7 +95,13 @@ Make changes to app state through the admin panel GUI.
 
 - Restrict route access to admin page if user is not admin.
 - Verifiy actions in admin dashboard by checking if user is admin from the backend and only then perform read, write actions.
-- 
+- Delete user Articles
+- Add, delete or modify products in bookstore by being redirected to shopify admin panel
+- Add perform test topic catrgories and list of items belonging to that catergory for comparison. 
+
+> *Todo*: 
+ - Delete perform test catergories
+ - ban user from writing article, or performing test. 
 
 
 
