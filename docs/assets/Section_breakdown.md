@@ -53,13 +53,25 @@ Main section of the project, run series of test to determine if user is victim o
 **Features**:
 
 - Carry out semantic fluency tests - *generate semantic category exemplars*
-- phonemic fluency - *generate words beginning with a single*
+- phonemic fluency - *generate words beginning with a single letter*
 - View current score status: 
   1. Change over prev score
   2. Average score
   3. Score Avg Criteria
   4. High Score
-  5. Social Rank No
+- Compete with others through social ranking
+- Analyze performance over time using a graphical line-chart over view. *(Chart-js)*
+
+> *Todo*:
+
+- [ ] Display words spoken during the test after being analyzed.
+- [ ] Stop recording time when user has run out of words instead of waiting for allocated time to finish. 
+- [ ] Provide certificate of brainfog proof when user reaches a certain average score. 
+- [ ] Suggest books from book store when displaying results based on user scores.
+- [ ] Suggest verified articles when displaying results based on user scores. 
+- [ ] Puzzle's to solve within a given period of time to evaluate mind focus. 
+- [ ] Guess the word tests to analyze memory.  
+- [ ] Other form of tests to imporove mental clarity.
 
 
 
