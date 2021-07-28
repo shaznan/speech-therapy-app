@@ -27,8 +27,6 @@ The Web App consists of 3 sections:
 6. [Future Scope](#fourth-examplehttpwwwfourthexamplecom) 
 
 
-
-
 ## Contributing 
 ### Contributions are always welcome! If you have any ideas, suggestions, fixes, feel free to contribute. You can do that by going through the following steps:
 
@@ -42,5 +40,4 @@ Clone this repo
 
 ![alt text](https://img.shields.io/badge/Version-v1.1-red)
 ![Next js](https://img.shields.io/badge/BuiltUsing-NextJs-1abc9c.svg)
-
 
