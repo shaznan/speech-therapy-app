@@ -73,6 +73,30 @@ Main section of the project, run series of test to determine if user is victim o
 - [ ] Guess the word tests to analyze memory.  
 - [ ] Other form of tests to imporove mental clarity.
 
+## Contact us
+
+Allow user to communicate with the team. 
+
+## Authentication 
+
+User sign in if existing user or sign up if new user. 
+<br>
+Authenticate if user is Admin based on user roles. 
+
+> *Todo*:
+
+- [ ] Google sign-in 
+
+## Admin Panel
+
+Make changes to app state through the admin panel GUI.
+
+**Features**:
+
+- Restrict route access to admin page if user is not admin.
+- Verifiy actions in admin dashboard by checking if user is admin from the backend and only then perform read, write actions.
+- 
+
 
 
 
