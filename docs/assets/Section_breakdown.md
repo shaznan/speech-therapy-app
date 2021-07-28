@@ -46,6 +46,22 @@ Monetizing part of the project through drop shipping books from other book store
 - [ ] Rank items based on top selling
 - [ ] option for downloading pdf version of book item.
 
+## PerformTest
+
+Main section of the project, run series of test to determine if user is victim of brain fog.
+
+**Features**:
+
+- Carry out semantic fluency tests - *generate semantic category exemplars*
+- phonemic fluency - *generate words beginning with a single*
+- View current score status: 
+  1. Change over prev score
+  2. Average score
+  3. Score Avg Criteria
+  4. High Score
+  5. Social Rank No
+
+
 
 
 
