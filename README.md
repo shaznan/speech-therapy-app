@@ -13,7 +13,7 @@ The Web App consists of 3 sections:
  
 3. Articles : A platform to educate users by reading articles written by verified psychologists as well as articles from the community, and allows users to engage in writing their own article content describing the journey on their recovery
 
-# Table of Contents (Progress: First 2 chapters completed) 
+# Table of Contents (Writing docs in progress - first 2 completed) 
 1. [Technologies Used](docs/assets/Technologies_Used.md)
 2. [Section breakdown and scope of functionalities](docs/assets/Section_breakdown.md)
 3. [Project Structure](#example2)
