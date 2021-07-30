@@ -16,7 +16,7 @@ The Web App consists of 3 sections:
 # Table of Contents
 1. [Technologies Used](docs/assets/Technologies_Used.md)
 2. [Section breakdown and scope of functionalities](docs/assets/Section_breakdown.md)
-3. [Project Structure](docs/assets/Project_Structure.md)
+3. [Project Structure & Architect](docs/assets/Project_Structure.md)
    1. [Project Architecture](#subparagraph1)
    2. [User Flows](#subparagraph1)
    3. [Auth](#fourth-examplehttpwwwfourthexamplecom)
