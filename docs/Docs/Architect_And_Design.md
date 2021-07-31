@@ -9,6 +9,8 @@
 
 ## System Context Diagram <a name="system-context-diagram"></a>
 
+A High level overview of the project surrounded by it's users and the other systems that it interacts with. 
+
 <img src="https://github.com/shaznan/speech-therapy-app/blob/2f3acd204bb538d9cf52687673114fb2b71494a9/docs/assets/Speech%20therapy%20architecture%20%20(2).png" width="800" />
 
 
