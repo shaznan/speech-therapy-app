@@ -9,6 +9,10 @@
 
 ## System Context Diagram <a name="system-context-diagram"></a>
 
+![system context diagram](https://github.com/shaznan/speech-therapy-app/blob/documentation/docs/assets/Speech%20therapy%20architecture%20.png?raw=true)
+
+
+
 
 
 
