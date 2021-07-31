@@ -110,6 +110,10 @@
   z-index: 1;
   cursor: pointer;
   transition: 0.2s ease-in-out;
+  /*
+    Next.js automatically gives you all the browser prefixes you need!
+    https://nextjs.org/docs/advanced-features/customizing-postcss-config#default-behavior
+  */
   -o-transition: 0.2s ease-in-out;
   -ms-transition: 0.2s ease-in-out;
   -moz-transition: 0.2s ease-in-out;

@@ -32,6 +32,14 @@ function WelcomeMsg_Container() {
               <div>
                 <HomepageText />
                 <Slide bottom duration={1800}>
+                  {/*
+                    "redirectHandler" is routing us to a new URL....which is exactly what a link does!
+                    So insteaad of making a "redirectHandler" function, just wrap the `<Button>` component
+                    in <Link href='/performtest' passHref>
+                    (I use `passHref` prop on <Link> to tell the <Button> to act like a true HTML <a> link tag
+                    instead of a <button>, since that's semantically what it is!)
+                    See the passHref docs here - https://nextjs.org/docs/api-reference/next/link#if-the-child-is-a-custom-component-that-wraps-an-a-tag
+                  */}
                   <Button
                     type="primary"
                     text="Perform Test"
