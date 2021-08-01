@@ -3,7 +3,7 @@
   height: 13vh;
   position: relative;
   z-index: 500;
-  position: -webkit-sticky;
+  /* position: -webkit-sticky; */
   position: sticky;
   top: 0;
 }
@@ -110,10 +110,6 @@
   z-index: 1;
   cursor: pointer;
   transition: 0.2s ease-in-out;
-  -o-transition: 0.2s ease-in-out;
-  -ms-transition: 0.2s ease-in-out;
-  -moz-transition: 0.2s ease-in-out;
-  -webkit-transition: 0.2s ease-in-out;
 }
 
 .login_registertext:hover {
@@ -129,7 +125,7 @@
   right: 0;
   top: 100%;
   z-index: -1;
-  -webkit-transition: top 0.09s ease-in;
+  transition: top 0.09s ease-in;
 }
 
 .login_registertext:hover:before {
@@ -226,10 +222,6 @@
   justify-content: center;
 }
 
-/* .placeholder:hover {
-  cursor: pointer;
-} */
-
 /* Media Queries */
 
 @media only screen and (max-width: 1280px) {
@@ -245,7 +237,6 @@
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.849);
     text-align: center;
-    /* transition: 0.3s ease-in-out; */
     transition: all 500ms cubic-bezier(0.215, 0.61, 0.355, 1);
   }
 

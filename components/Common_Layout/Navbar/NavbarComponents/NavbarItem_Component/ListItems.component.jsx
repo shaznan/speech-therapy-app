@@ -2,9 +2,7 @@ import { Fragment } from "react";
 import { useRouter } from "next/router";
 import classes from "../../Navbar.module.css";
 import Grid from "@material-ui/core/Grid";
-import Link from "next/link";
 import React from "react";
-import Button from "@material-ui/core/Button";
 import { useDispatch } from "react-redux";
 import { navActions } from "../../../../../store/navSlice";
 
@@ -19,14 +17,9 @@ function RenderListItems({ menuItems, emptyPathname }) {
     return removeSpacing;
   };
 
-  const redirectHandler = (item) => {
-    router.push(item == "Home" ? "/" : "/" + formatItem(item), null, {
-      shallow: true,
-    });
+  const hideNavBar = () => {
     dispatch(navActions.setIsNavVisible(false));
   };
-
-  //FIXME: WORK ON THE THROTTLING ISSUE
 
   return (
     <Fragment>
@@ -40,13 +33,14 @@ function RenderListItems({ menuItems, emptyPathname }) {
                 ? classes.active
                 : ""
             }>
-            <span
+            <a
+              href={item == "Home" ? "/" : "/" + formatItem(item)}
               className={classes.navMenuItems}
               onClick={() => {
-                redirectHandler(item);
+                hideNavBar(item);
               }}>
               {item}
-            </span>
+            </a>
           </li>
         </Grid>
       ))}

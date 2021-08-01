@@ -10,10 +10,10 @@ import WhatBrainfogFeelsLike from "../components/homepage_Components/WhatBrainfo
 import WhySpeechTherapy from "../components/homepage_Components/WhySpeechTherapy/WhySpeechTherapy.component";
 import Testimonials from "../components/homepage_Components/Testimonials/Testimonials.component";
 import Footer from "../components/Common_Layout/Footer/Footer.component";
+import Navbar from "../components/Common_Layout/Navbar/Navbar";
 
 const Home = (props) => {
   const dispatch = useDispatch();
-  // const classes = useStyles();
   const [hydrateWithLocalStorage] = useHydrateState();
 
   //avoid loosing user state on page refresh
@@ -28,6 +28,7 @@ const Home = (props) => {
 
   return (
     <div>
+      <Navbar />
       <WelcomeMsg_Container />
       <Articles_container />
       <WhatBrainfogFeelsLike />

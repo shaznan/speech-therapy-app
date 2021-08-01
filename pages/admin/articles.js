@@ -1,12 +1,9 @@
 import Grid from "@material-ui/core/Grid";
 import { useStyles } from "../../components/AdminDashboard/AdminDashboard_styles";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Navigation from "../../components/AdminDashboard/Navigation.component";
-import AdminPerformtes from "../../components/AdminDashboard/Admin_PerformTest/AdminPerformtest";
 import AdminArticles from "../../components/AdminDashboard/Admin_Articles/AdminArticles";
 import { useSelector } from "react-redux";
-import { useRouter } from "next/router";
-import { useDispatch } from "react-redux";
 import useVerifyUserAdmin from "../../components/AdminDashboard/useVerifyUserAdmin";
 
 function HomePage() {

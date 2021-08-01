@@ -8,49 +8,53 @@ import { createTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
 import Link from "next/link";
 
-const DynamicButton = ({
-  type = "primary",
-  text = "",
-  onClickHandler = () => {},
-  disabled = false,
-  variant = null,
-  href = "",
-}) => {
-  const classes = useStyles();
-
-  const conditionallyRenderClassName = (type) => {
-    if (disabled === true) return;
-    if (type === "primary" || type === "next" || type === "cart") {
-      return classes.primarybutton;
-    }
-    if (type === "back") {
-      return classes.backbutton;
-    }
-    if (type === "primaryOutline") {
-      return `${classes.primarybutton} ${classes.primaryoutline} `;
-    } //TODO: Remove if not used
-  };
-
-  const theme = createTheme({
-    palette: {
-      action: {
-        disabledBackground: "white",
-        disabled: "lightgrey",
-      },
+const DynamicButton = React.forwardRef(
+  (
+    {
+      type = "primary",
+      text = "",
+      onClickHandler = () => {},
+      disabled = false,
+      variant = null,
+      href = "",
     },
-  });
+    ref,
+  ) => {
+    const classes = useStyles();
 
-  return (
-    <div>
-      <ThemeProvider theme={theme}>
-        <Link href={href}>
+    const conditionallyRenderClassName = (type) => {
+      if (disabled === true) return;
+      if (type === "primary" || type === "next" || type === "cart") {
+        return classes.primarybutton;
+      }
+      if (type === "back") {
+        return classes.backbutton;
+      }
+      if (type === "primaryOutline") {
+        return `${classes.primarybutton} ${classes.primaryoutline} `;
+      }
+    };
+
+    const theme = createTheme({
+      palette: {
+        action: {
+          disabledBackground: "white",
+          disabled: "lightgrey",
+        },
+      },
+    });
+
+    return (
+      <div>
+        <ThemeProvider theme={theme}>
+          {/* <Link href={href} passHref > */}
           <Button
             onClick={onClickHandler}
             disabled={disabled}
             className={conditionallyRenderClassName(type)}
             variant={variant}
-            href={href}>
-            {" "}
+            href={href}
+            ref={ref}>
             {type === "back" && <ArrowLeftIcon className={classes.iconback} />}
             {text}
             {type === "next" && <ArrowRightIcon className={classes.icon} />}
@@ -58,10 +62,11 @@ const DynamicButton = ({
               <AddShoppingCartIcon className={classes.carticon} />
             )}
           </Button>
-        </Link>
-      </ThemeProvider>
-    </div>
-  );
-};
+          {/* </Link> */}
+        </ThemeProvider>
+      </div>
+    );
+  },
+);
 
 export default DynamicButton;
