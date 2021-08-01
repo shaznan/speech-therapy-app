@@ -19,14 +19,9 @@ function RenderListItems({ menuItems, emptyPathname }) {
     return removeSpacing;
   };
 
-  const redirectHandler = (item) => {
-    router.push(item == "Home" ? "/" : "/" + formatItem(item), null, {
-      shallow: true,
-    });
+  const hideNavBar = () => {
     dispatch(navActions.setIsNavVisible(false));
   };
-
-  //FIXME: WORK ON THE THROTTLING ISSUE
 
   return (
     <Fragment>
@@ -40,13 +35,14 @@ function RenderListItems({ menuItems, emptyPathname }) {
                 ? classes.active
                 : ""
             }>
-            <span
+            <a
+              href={item == "Home" ? "/" : "/" + formatItem(item)}
               className={classes.navMenuItems}
               onClick={() => {
-                redirectHandler(item);
+                hideNavBar(item);
               }}>
               {item}
-            </span>
+            </a>
           </li>
         </Grid>
       ))}
