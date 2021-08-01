@@ -2,9 +2,7 @@ import { Fragment } from "react";
 import { useRouter } from "next/router";
 import classes from "../../Navbar.module.css";
 import Grid from "@material-ui/core/Grid";
-import Link from "next/link";
 import React from "react";
-import Button from "@material-ui/core/Button";
 import { useDispatch } from "react-redux";
 import { navActions } from "../../../../../store/navSlice";
 
