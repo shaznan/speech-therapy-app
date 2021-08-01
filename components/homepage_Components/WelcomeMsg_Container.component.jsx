@@ -7,7 +7,6 @@ import HomepageText from "./HomepageText";
 import Button from "../../components/Common_Layout/Button/Button";
 import BannerImage from "../../components/Common_Layout/Banner/BannerImage";
 import { useSelector } from "react-redux";
-import Navbar from "../../components/Common_Layout/Navbar/Navbar";
 import Grid from "@material-ui/core/Grid";
 import HomepageImage from "../../assets/images/homepage_image.png";
 import Slide from "react-reveal/Slide";
@@ -20,7 +19,6 @@ function WelcomeMsg_Container() {
     <Fragment>
       <div className={classes.container}>
         <AdminToolbar />
-        <Navbar />
         <LoadSpinner loading={loading} />
         <div className={classes.coverImage}>
           <Grid container spacing={0} className={classes.maincontainer}>
