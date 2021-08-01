@@ -16,10 +16,7 @@ function LoginMessage() {
   const dispatch = useDispatch();
   const router = useRouter();
 
-  //direct user to login page
-  const goToLoginHandler = (e) => {
-    e.preventDefault();
-    router.push("/login_signup", null, { shallow: true });
+  const pinCurrentRoute = () => {
     dispatch(login_signup_Actions.setPreviousRoute(router.pathname));
   };
 
@@ -35,11 +32,12 @@ function LoginMessage() {
               <h1 className={classes.heading}>Please login to continue</h1>
             </Grid>
             <Grid item md={12} className={classes.login_btn}>
-              <Button
-                onClickHandler={goToLoginHandler}
-                type="primary"
-                text="Login"
-              />
+              <Link href="/login_signup" passHref>
+                {/* using an <a> tag here to prevent hard refresh to retain current route state */}
+                <a onClick={pinCurrentRoute}>
+                  <Button type="primary" text="Login" />
+                </a>
+              </Link>
             </Grid>
           </Card>
         </Grid>

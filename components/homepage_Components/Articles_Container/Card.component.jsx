@@ -9,8 +9,8 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { articleSlice_Actions } from "../../../store/articlesSlice";
 import { useDispatch } from "react-redux";
-import { useRouter } from "next/router";
 import Zoom from "react-reveal/Zoom";
+import Link from "next/link";
 
 const useStyles = makeStyles(
   {
@@ -33,11 +33,9 @@ const useStyles = makeStyles(
 export default function MediaCard({ title, imgsrc, body, id }) {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const router = useRouter();
 
-  const showArticleHandler = (id) => {
+  const handleTopicSelected = (id) => {
     dispatch(articleSlice_Actions.setTopicIdSelected(id));
-    router.push("/articles", null, { shallow: true });
   };
 
   return (
@@ -59,14 +57,16 @@ export default function MediaCard({ title, imgsrc, body, id }) {
           </CardContent>
         </CardActionArea>
         <CardActions>
-          <Button
-            onClick={() => {
-              showArticleHandler(id);
-            }}
-            size="small"
-            color="primary">
-            Read Article
-          </Button>
+          <Link href="/articles">
+            <Button
+              onClick={() => {
+                handleTopicSelected(id);
+              }}
+              size="small"
+              color="primary">
+              Read Article
+            </Button>
+          </Link>
         </CardActions>
       </Card>
     </Zoom>

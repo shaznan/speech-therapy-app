@@ -6,19 +6,15 @@ import LoadSpinner from "../../components/Common_Layout/loadspinner/loadSpinner"
 import HomepageText from "./HomepageText";
 import Button from "../../components/Common_Layout/Button/Button";
 import BannerImage from "../../components/Common_Layout/Banner/BannerImage";
-import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import Navbar from "../../components/Common_Layout/Navbar/Navbar";
 import Grid from "@material-ui/core/Grid";
 import HomepageImage from "../../assets/images/homepage_image.png";
 import Slide from "react-reveal/Slide";
+import Link from "next/link";
 
 function WelcomeMsg_Container() {
   const loading = useSelector((state) => state.user.loading);
-  const redirectHandler = () => {
-    router.push("/performtest", null, { shallow: true });
-  };
-  const router = useRouter();
   const classes = useStyles();
   return (
     <Fragment>
@@ -32,11 +28,9 @@ function WelcomeMsg_Container() {
               <div>
                 <HomepageText />
                 <Slide bottom duration={1800}>
-                  <Button
-                    type="primary"
-                    text="Perform Test"
-                    onClickHandler={redirectHandler}
-                  />
+                  <Link href="/performtest" passHref>
+                    <Button type="primary" text="Perform Test" />
+                  </Link>
                 </Slide>
               </div>
             </Grid>
