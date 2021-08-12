@@ -5,26 +5,26 @@
     1. [System Context Diagram](#system-context-diagram)
     2. [Container diagram](#container-diagram)
     3. [Component diagram](#component-diagram)
-2. [Userflow](#subparagraph1)
-3. [Usecase](#test)
-    1. [Diagram](#test)
-    2. [Description](#test)
-       1. Sign-up usecase 
-       2. Sign-in usecase
-       3. Perform test usecase
-       4. Scoreboard usecase
-       5. Read articles usecase
-       6. Write articles usecase
-       7. Purchase books usecase
-       8. Control app article content usecase
-       9. Control perform test topics usecase
-5. [User story](#fourth-examplehttpwwwfourthexamplecom)
-6. [Sequence diagram](#fourth-examplehttpwwwfourthexamplecom)
-    1. Login sequence
-    2. Registration sequence
-    3. Perform test sequence
-    4. Bookstore sequence
-    5. Articles sequence
+2. [Userflow](#userflow)
+3. [Usecase](#usecase)
+    1. [Diagram](#usecase-diagram)
+    2. [Description](#usecase-description)
+       1. [Sign-up usecase](#signup-usecase)
+       2. [Sign-in usecase](#signin-usecase)
+       3. [Perform test usecase](#performtest-usecase)
+       4. [Scoreboard usecase](#scoreboard-usecase)
+       5. [Read articles usecase](#read-article-usecase)
+       6. [Write articles usecase](#writearticle-usecase)
+       7. [Purchase books usecase](#purchasebook-usecase)
+       8. [Control app article content usecase](#adminusecase-1)
+       9. [Control perform test topics usecase](#adminusecase-2)
+5. [User story](#user-story)
+6. [Sequence diagram](#sequence-diagram)
+    1. [Login sequence](#login-sequence)
+    2. [Registration sequence](#registration-sequence)
+    3. [Perform test sequence](#performtest-sequence)
+    4. [Bookstore sequence](#bookstore-sequence)
+    5. [Articles sequence](#articles-sequence)
 
 
 # C4 Model <a name="c4-model"></a>
@@ -95,7 +95,7 @@ The following diagram summarizes a list of actions between different actor roles
 
 <img src="https://github.com/shaznan/speech-therapy-app/blob/5b231d6436e721be459274ab7784cba18f27995b/docs/assets/user_story.jpg" width="1000" />
 
-# Sequence Diagram <a name="sequence diagram"> </a>
+# Sequence Diagram <a name="sequence-diagram"> </a>
 
 ### Login sequence <a name="login-sequence"> </a>
 <img src="https://github.com/shaznan/speech-therapy-app/blob/5b231d6436e721be459274ab7784cba18f27995b/docs/assets/login_sequence.jpg" width="1000" />
@@ -103,13 +103,13 @@ The following diagram summarizes a list of actions between different actor roles
 ### Registration sequence <a name="registration-sequence"> </a>
 <img src="https://github.com/shaznan/speech-therapy-app/blob/5b231d6436e721be459274ab7784cba18f27995b/docs/assets/registration_sequence.jpg" width="1000" />
 
-### Perform test sequence <a name="container-diagram"> </a>
+### Perform test sequence <a name="performtest-sequence"> </a>
 <img src="https://github.com/shaznan/speech-therapy-app/blob/5b231d6436e721be459274ab7784cba18f27995b/docs/assets/performtest_sequence.jpg" width="1000" />
 
-### Bookstore sequence
+### Bookstore sequence <a name="bookstore-sequence"> </a>
 <img src="https://github.com/shaznan/speech-therapy-app/blob/5b231d6436e721be459274ab7784cba18f27995b/docs/assets/bookstore_sequence.jpg" width="1000" />
 
-### Articles sequence
+### Articles sequence <a name="articles-sequence"> </a>
 <img src="https://github.com/shaznan/speech-therapy-app/blob/5b231d6436e721be459274ab7784cba18f27995b/docs/assets/articles_sequence.jpg" width="1000" />
 
 
