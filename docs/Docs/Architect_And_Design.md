@@ -9,8 +9,22 @@
 3. [Usecase](#test)
     1. [Diagram](#test)
     2. [Description](#test)
+       1. Sign-up usecase 
+       2. Sign-in usecase
+       3. Perform test usecase
+       4. View scoreboard usecase
+       5. Read articles usecase
+       6. Write articles usecase
+       7. Purchase books usecase
+       8. Control app article content usecase
+       9. Control perform test topics usecase
 5. [User story](#fourth-examplehttpwwwfourthexamplecom)
-6. [Sequence diagram](#fourth-examplehttpwwwfourthexamplecom) 
+6. [Sequence diagram](#fourth-examplehttpwwwfourthexamplecom)
+    1. Login sequence
+    2. Registration sequence
+    3. Perform test sequence
+    4. Bookstore sequence
+    5. Articles sequence
 
 
 # C4 Model <a name="c4-model"></a>
@@ -78,12 +92,26 @@ The following diagram summarizes a list of actions between different actor roles
 ### Control perform test topics usecase
 <img src="https://user-images.githubusercontent.com/74103414/129203898-cba5c6b2-255a-4d64-830b-cc3f88075738.png" width="850" />
 
+# User story
 
+<img src="https://github.com/shaznan/speech-therapy-app/blob/5b231d6436e721be459274ab7784cba18f27995b/docs/assets/user_story.jpg" width="1000" />
 
+# Sequence Diagram
 
+### Login sequence 
+<img src="https://github.com/shaznan/speech-therapy-app/blob/5b231d6436e721be459274ab7784cba18f27995b/docs/assets/login_sequence.jpg" width="1000" />
 
+### Registration sequence
+<img src="https://github.com/shaznan/speech-therapy-app/blob/5b231d6436e721be459274ab7784cba18f27995b/docs/assets/registration_sequence.jpg" width="1000" />
 
+### Perform test sequence
+<img src="https://github.com/shaznan/speech-therapy-app/blob/5b231d6436e721be459274ab7784cba18f27995b/docs/assets/performtest_sequence.jpg" width="1000" />
 
+### Bookstore sequence
+<img src="https://github.com/shaznan/speech-therapy-app/blob/5b231d6436e721be459274ab7784cba18f27995b/docs/assets/bookstore_sequence.jpg" width="1000" />
+
+### Articles sequence
+<img src="https://github.com/shaznan/speech-therapy-app/blob/5b231d6436e721be459274ab7784cba18f27995b/docs/assets/articles_sequence.jpg" width="1000" />
 
 
 
