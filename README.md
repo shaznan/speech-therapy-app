@@ -17,7 +17,7 @@ The Web App consists of 3 sections:
 1. [Technologies Used](docs/Docs/Technologies_Used.md)
 2. [Section breakdown and scope of functionalities](docs/Docs/Section_breakdown.md)
 3. [Project Structure & Architecture](docs/Docs/Architect_And_Design.md)
-4. [Future Scope](#fourth-examplehttpwwwfourthexamplecom) 
+
 
 
 ## Contributing 
