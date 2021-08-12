@@ -61,7 +61,6 @@ User sign in if existing user or sign up if new user.
 <br>
 Authenticate if user is Admin based on user roles. 
 
-
 ## :cop: Admin Panel 
 
 Make changes to app state through the admin panel GUI.
@@ -73,7 +72,6 @@ Make changes to app state through the admin panel GUI.
 - Delete user Articles
 - Add, delete or modify products in bookstore by being redirected to shopify admin panel
 - Add perform test topic catrgories and list of items belonging to that catergory for comparison. 
-
 
 
 
