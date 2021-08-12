@@ -13,18 +13,11 @@ The Web App consists of 3 sections:
  
 3. Articles : A platform to educate users by reading articles written by verified psychologists as well as articles from the community, and allows users to engage in writing their own article content describing the journey on their recovery
 
-# Table of Contents (Writing docs in progress - first 2 completed) 
-1. [Technologies Used](docs/assets/Technologies_Used.md)
-2. [Section breakdown and scope of functionalities](docs/assets/Section_breakdown.md)
-3. [Project Structure](#example2)
-   1. [Project Architecture](#subparagraph1)
-   2. [User Flows](#subparagraph1)
-   3. [Auth](#fourth-examplehttpwwwfourthexamplecom)
-   4. [Admin Panel](#fourth-examplehttpwwwfourthexamplecom) 
-   5. [Components and styling](#third-example)
-4. [State Management](#fourth-examplehttpwwwfourthexamplecom)
-5. [Issues](#fourth-examplehttpwwwfourthexamplecom)
-6. [Future Scope](#fourth-examplehttpwwwfourthexamplecom) 
+# Table of Contents
+1. [Technologies Used](docs/Docs/Technologies_Used.md)
+2. [Section breakdown and scope of functionalities](docs/Docs/Section_breakdown.md)
+3. [Project Structure & Architecture](docs/Docs/Architect_And_Design.md)
+4. [Future Scope](#fourth-examplehttpwwwfourthexamplecom) 
 
 
 ## Contributing 
