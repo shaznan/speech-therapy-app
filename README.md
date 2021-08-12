@@ -19,7 +19,6 @@ The Web App consists of 3 sections:
 3. [Project Structure & Architecture](docs/Docs/Architect_And_Design.md)
 
 
-
 ## Contributing 
 ### Contributions are always welcome! If you have any ideas, suggestions, fixes, feel free to contribute. You can do that by going through the following steps:
 
