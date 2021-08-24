@@ -22,14 +22,15 @@ export default async (req, res) => {
     const getTranscript = async () => {
       try {
         let response = await axios.post(
-          "https://speech.googleapis.com/v1p1beta1/speech:recognize?key=AIzaSyBotY11MdG9sfY2osCD2Eb-FtxaCYP1l2c",
-          requestBody
+          `https://speech.googleapis.com/v1p1beta1/speech:recognize?key=${process.env.GCP_API}`,
+          requestBody,
         );
         return await response;
       } catch (err) {
         console.error(err);
       }
     };
+
     getTranscript();
 
     const responseData = await getTranscript();
