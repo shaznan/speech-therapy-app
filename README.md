@@ -3,7 +3,7 @@
 ![alt text](https://github.com/shaznan/speech-therapy-app/blob/49012e96b2f9daebf06f131a0230fe09ce817498/docs/assets/App%20into%20with%20animation.gif)
 
 ## Description 
-SpeechTherapyApp is built to help people diagnose if they are suffering from **Brain Fog**, a type of cognitive dysfunction involving the inability to have a sharp memory or to lack a sharp focus, which in turn cases poor verbal fluency amoungst individuals. 
+SpeechTherapyApp is built to help people diagnose if they are suffering from **Brain Fog**, a type of cognitive dysfunction involving the inability to have a sharp memory or to lack a sharp focus, which in turn causes poor verbal fluency amoungst individuals. 
 
 The Web App consists of 3 sections:
 
