@@ -43,6 +43,9 @@ const DynamicButton = ({
   return (
     <div>
       <ThemeProvider theme={theme}>
+        {/* Instead of putting the `href` on both the <Link> and the <Button>,
+        you can just put a `passHref` prop on the <Link> and it will share the
+        href value with the <Button> */}
         <Link href={href}>
           <Button
             onClick={onClickHandler}
